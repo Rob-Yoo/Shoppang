@@ -9,13 +9,15 @@ import UIKit
 
 class TextButton: UIButton {
     
-    init(title: String, titleColor: UIColor = .white, font: UIFont = .medium13, bgColor: UIColor = .mainTheme) {
+    init(title: String, titleColor: UIColor = .white, font: UIFont = .bold15, bgColor: UIColor = .mainTheme) {
         super.init(frame: .zero)
         
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.titleLabel?.font = font
         self.backgroundColor = bgColor
+        self.layer.cornerRadius = 20
+        self.clipsToBounds = true
     }
     
     convenience init(type: TextButtonType) {

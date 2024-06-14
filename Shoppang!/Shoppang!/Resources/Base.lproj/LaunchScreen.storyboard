@@ -21,8 +21,8 @@
                                 <rect key="frame" x="21.666666666666657" y="294.33333333333337" width="350" height="263.33333333333337"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shoppang!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X0V-fJ-iD2">
-                                <rect key="frame" x="94.666666666666671" y="146.33333333333334" width="203.66666666666663" height="48"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                <rect key="frame" x="90.333333333333329" y="146.33333333333334" width="212.33333333333337" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
                                 <color key="textColor" red="0.93725490199999995" green="0.53725490200000003" blue="0.2784313725" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -36,9 +36,9 @@
                         <viewLayoutGuide key="safeArea" id="RCg-WQ-HKW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="fTu-Q2-yso" firstAttribute="top" secondItem="X0V-fJ-iD2" secondAttribute="bottom" constant="100" id="975-2O-QUd"/>
                             <constraint firstItem="TDG-cT-KAl" firstAttribute="top" secondItem="fTu-Q2-yso" secondAttribute="bottom" constant="40" id="Fps-pW-sos"/>
                             <constraint firstItem="TDG-cT-KAl" firstAttribute="centerX" secondItem="2ro-9e-61u" secondAttribute="centerX" id="NmC-Fe-RPH"/>
+                            <constraint firstItem="fTu-Q2-yso" firstAttribute="top" secondItem="X0V-fJ-iD2" secondAttribute="bottom" constant="100" id="OJD-Oe-qXz"/>
                             <constraint firstItem="fTu-Q2-yso" firstAttribute="centerY" secondItem="2ro-9e-61u" secondAttribute="centerY" id="SO1-k1-lkR"/>
                             <constraint firstItem="X0V-fJ-iD2" firstAttribute="centerX" secondItem="2ro-9e-61u" secondAttribute="centerX" id="hvY-bP-BaA"/>
                             <constraint firstItem="fTu-Q2-yso" firstAttribute="centerX" secondItem="2ro-9e-61u" secondAttribute="centerX" id="mr9-MQ-5gN"/>

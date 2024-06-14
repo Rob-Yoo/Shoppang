@@ -25,6 +25,7 @@
 		CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE192E2C1C29C400405878 /* TextButton.swift */; };
 		CCEE19322C1C2A9400405878 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */; };
 		CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */; };
+		CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CCEE192E2C1C29C400405878 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStateTextButton.swift; sourceTree = "<group>"; };
+		CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		CCEE19072C1C081900405878 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE19352C1C2F5A00405878 /* OnboardingScreens */,
 				CCEE192C2C1C29B100405878 /* Reusable */,
 				CCEE19142C1C0A6300405878 /* TabBar */,
 				CCEE19102C1C0A0E00405878 /* SearchProductScreens */,
@@ -227,6 +230,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CCEE19352C1C2F5A00405878 /* OnboardingScreens */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE19362C1C2F6100405878 /* OnboardingStartScreen */,
+			);
+			path = OnboardingScreens;
+			sourceTree = "<group>";
+		};
+		CCEE19362C1C2F6100405878 /* OnboardingStartScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */,
+			);
+			path = OnboardingStartScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,6 +334,7 @@
 				CCEE191C2C1C0B4A00405878 /* SettingListRootView.swift in Sources */,
 				CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */,
 				CCEE19192C1C0AEE00405878 /* SearchRootView.swift in Sources */,
+				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
 				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
@@ -467,6 +487,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shoppang!/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -499,6 +520,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shoppang!/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
