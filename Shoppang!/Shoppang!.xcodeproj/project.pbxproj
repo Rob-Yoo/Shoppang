@@ -62,14 +62,46 @@
 		CCEE18E32C1C06CC00405878 /* Shoppang! */ = {
 			isa = PBXGroup;
 			children = (
-				CCEE18E42C1C06CC00405878 /* AppDelegate.swift */,
-				CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */,
-				CCEE18E82C1C06CC00405878 /* ViewController.swift */,
-				CCEE18ED2C1C06CD00405878 /* Assets.xcassets */,
-				CCEE18EF2C1C06CD00405878 /* LaunchScreen.storyboard */,
+				CCEE19052C1C080500405878 /* Sources */,
+				CCEE19042C1C07F500405878 /* Resources */,
 				CCEE18F22C1C06CD00405878 /* Info.plist */,
 			);
 			path = "Shoppang!";
+			sourceTree = "<group>";
+		};
+		CCEE19042C1C07F500405878 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE18ED2C1C06CD00405878 /* Assets.xcassets */,
+				CCEE18EF2C1C06CD00405878 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CCEE19052C1C080500405878 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE19072C1C081900405878 /* Presenter */,
+				CCEE19062C1C080D00405878 /* App */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CCEE19062C1C080D00405878 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE18E42C1C06CC00405878 /* AppDelegate.swift */,
+				CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CCEE19072C1C081900405878 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE18E82C1C06CC00405878 /* ViewController.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
