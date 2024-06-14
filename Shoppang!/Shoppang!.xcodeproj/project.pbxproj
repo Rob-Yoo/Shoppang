@@ -17,6 +17,9 @@
 		CCEE19002C1C074B00405878 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CCEE18FF2C1C074B00405878 /* Kingfisher */; };
 		CCEE19032C1C075400405878 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CCEE19022C1C075400405878 /* Then */; };
 		CCEE190B2C1C094800405878 /* NavigationBarTitleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE190A2C1C094800405878 /* NavigationBarTitleProtocol.swift */; };
+		CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE190E2C1C09F400405878 /* SettingListViewController.swift */; };
+		CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19122C1C0A4F00405878 /* SearchViewController.swift */; };
+		CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19152C1C0A7200405878 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		CCEE18F02C1C06CD00405878 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCEE18F22C1C06CD00405878 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCEE190A2C1C094800405878 /* NavigationBarTitleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleProtocol.swift; sourceTree = "<group>"; };
+		CCEE190E2C1C09F400405878 /* SettingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListViewController.swift; sourceTree = "<group>"; };
+		CCEE19122C1C0A4F00405878 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CCEE19152C1C0A7200405878 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 		CCEE19072C1C081900405878 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE19142C1C0A6300405878 /* TabBar */,
+				CCEE19102C1C0A0E00405878 /* SearchProductScreens */,
+				CCEE190C2C1C09C400405878 /* UserSettingScreens */,
 				CCEE19082C1C08B400405878 /* Base */,
 			);
 			path = Presenter;
@@ -121,6 +130,46 @@
 				CCEE190A2C1C094800405878 /* NavigationBarTitleProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CCEE190C2C1C09C400405878 /* UserSettingScreens */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE190D2C1C09E400405878 /* SettingListScreen */,
+			);
+			path = UserSettingScreens;
+			sourceTree = "<group>";
+		};
+		CCEE190D2C1C09E400405878 /* SettingListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE190E2C1C09F400405878 /* SettingListViewController.swift */,
+			);
+			path = SettingListScreen;
+			sourceTree = "<group>";
+		};
+		CCEE19102C1C0A0E00405878 /* SearchProductScreens */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE19112C1C0A3C00405878 /* SearchScreen */,
+			);
+			path = SearchProductScreens;
+			sourceTree = "<group>";
+		};
+		CCEE19112C1C0A3C00405878 /* SearchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE19122C1C0A4F00405878 /* SearchViewController.swift */,
+			);
+			path = SearchScreen;
+			sourceTree = "<group>";
+		};
+		CCEE19142C1C0A6300405878 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE19152C1C0A7200405878 /* TabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,8 +254,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
+				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
 				CCEE190B2C1C094800405878 /* NavigationBarTitleProtocol.swift in Sources */,
 				CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */,
+				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,
 			);
