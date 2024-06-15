@@ -13,14 +13,11 @@ final class CurrentProfileImageView: UIView {
 
     lazy var profileImageView = ProfileImageView().then {
         $0.layer.borderWidth = 5
+        $0.layer.borderColor = UIColor.mainTheme.cgColor
+        $0.alpha = 1
     }
     
-    private let cameraImageView = UIImageView().then {
-        $0.image = UIImage(systemName: "camera.fill")
-        $0.contentMode = .scaleAspectFit
-        $0.tintColor = .white
-        $0.backgroundColor = .mainTheme
-    }
+    private let cameraImageView = CameraImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,12 +27,6 @@ final class CurrentProfileImageView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
-        // TODO: - 제대로 동작 안되므로 나중에 카메라 이미지뷰는 동글게 처리해야함
-        self.cameraImageView.layer.cornerRadius = self.cameraImageView.frame.width / 2
-        self.cameraImageView.clipsToBounds = true
     }
 }
 
@@ -53,8 +44,8 @@ extension CurrentProfileImageView {
         
         cameraImageView.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview()
-            $0.height.equalTo(30)
-            $0.width.equalTo(30)
+            $0.width.equalToSuperview().multipliedBy(0.3)
+            $0.height.equalTo(cameraImageView.snp.width)
         }
     }
 }
