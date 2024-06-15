@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class SearchRootView: UIView, NavigationBarTitleProtocol {
+final class SearchRootView: UIView, RootViewProtocol {
     //TODO: - UserDefault로부터 유저 닉네임 받아오기
     var navigationTitle: String = "${username}'s Shoppang"
     

@@ -28,10 +28,10 @@ class BaseViewController<ContentView: UIView>: UIViewController {
     }
 }
 
-//MARK: - Configure Subviews
+//MARK: - Configure NavigationBar
 extension BaseViewController {
     private func configureNavigationBar() {
-        UINavigationBar.appearance().tintColor = .black
+        self.configureNavBarAppearence()
         self.configureNavBarTitle()
         
         if let nc = self.navigationController, nc.viewControllers.count > 1 {
@@ -39,9 +39,18 @@ extension BaseViewController {
         }
     }
     
+    private func configureNavBarAppearence() {
+        let appearence = UINavigationBarAppearance()
+        
+        appearence.configureWithOpaqueBackground()
+        self.navigationController?.navigationBar.standardAppearance = appearence
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
+        self.navigationController?.navigationBar.tintColor = .black
+    }
+    
     private func configureNavBarTitle() {
-        guard let navBarInfo = self.contentView as? NavigationBarTitleProtocol else {
-            print("NavigationBarTitleProtocol을 채택하지 않은 ContentView가 들어왔습니다..!")
+        guard let navBarInfo = self.contentView as? RootViewProtocol else {
+            print("RootViewProtocol을 채택하지 않은 ContentView가 들어왔습니다..!")
             return
         }
             
@@ -53,7 +62,7 @@ extension BaseViewController {
         let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
 
         self.navigationItem.leftBarButtonItem = backButton
-        UINavigationBar.appearance().tintColor = .black
+        self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
 }
 
