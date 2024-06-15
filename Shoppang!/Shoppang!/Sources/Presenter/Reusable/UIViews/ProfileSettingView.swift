@@ -12,9 +12,9 @@ import Then
 final class ProfileSettingView: UIView {
     let settingType: ProfileSettingType
     
-    private let editableProfileImageView = EditableProfileImageView()
-    private let nicknameTextFieldView = NicknameTextFieldView()
-    private lazy var completeButton = TextButton(type: .complete)
+    let editableProfileImageView = CurrentProfileImageView()
+    let nicknameTextFieldView = NicknameTextFieldView()
+    lazy var completeButton = TextButton(type: .complete)
     
     init(type: ProfileSettingType) {
         self.settingType = type

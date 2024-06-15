@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC38046D2C1D82D500172CAF /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38046C2C1D82D500172CAF /* ProfileImageSettingViewController.swift */; };
+		CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38046E2C1D830700172CAF /* ProfileImageSettingView.swift */; };
+		CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804712C1D841800172CAF /* ProfileImageCollectionView.swift */; };
+		CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */; };
+		CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804752C1D853C00172CAF /* ReusableProtocol.swift */; };
+		CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */; };
 		CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */; };
 		CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */; };
 		CC7C830A2C1D79E3007406DA /* InitialProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */; };
 		CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */; };
-		CC7D8C162C1C4B270079FD71 /* EditableProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C152C1C4B270079FD71 /* EditableProfileImageView.swift */; };
+		CC7D8C162C1C4B270079FD71 /* CurrentProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C152C1C4B270079FD71 /* CurrentProfileImageView.swift */; };
 		CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
@@ -37,11 +43,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC38046C2C1D82D500172CAF /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
+		CC38046E2C1D830700172CAF /* ProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingView.swift; sourceTree = "<group>"; };
+		CC3804712C1D841800172CAF /* ProfileImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionView.swift; sourceTree = "<group>"; };
+		CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC3804752C1D853C00172CAF /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileImageSettingView.swift; sourceTree = "<group>"; };
 		CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
 		CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
 		CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialProfileSettingView.swift; sourceTree = "<group>"; };
 		CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
-		CC7D8C152C1C4B270079FD71 /* EditableProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableProfileImageView.swift; sourceTree = "<group>"; };
+		CC7D8C152C1C4B270079FD71 /* CurrentProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProfileImageView.swift; sourceTree = "<group>"; };
 		CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC38046B2C1D827800172CAF /* UIViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CC38046C2C1D82D500172CAF /* ProfileImageSettingViewController.swift */,
+			);
+			path = UIViewControllers;
+			sourceTree = "<group>";
+		};
+		CC3804702C1D83EF00172CAF /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				CC3804712C1D841800172CAF /* ProfileImageCollectionView.swift */,
+				CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
 		CC7C83062C1D737B007406DA /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -98,9 +127,11 @@
 		CC7D8C142C1C48D40079FD71 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				CC3804702C1D83EF00172CAF /* CollectionView */,
 				CCEE193D2C1C41E100405878 /* ProfileSettingView.swift */,
 				CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */,
-				CC7D8C152C1C4B270079FD71 /* EditableProfileImageView.swift */,
+				CC7D8C152C1C4B270079FD71 /* CurrentProfileImageView.swift */,
+				CC38046E2C1D830700172CAF /* ProfileImageSettingView.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -186,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEE190A2C1C094800405878 /* RootViewProtocol.swift */,
+				CC3804752C1D853C00172CAF /* ReusableProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -251,6 +283,7 @@
 		CCEE192C2C1C29B100405878 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				CC38046B2C1D827800172CAF /* UIViewControllers */,
 				CC7D8C142C1C48D40079FD71 /* UIViews */,
 				CC7D8C112C1C45570079FD71 /* ImageViews */,
 				CCEE192D2C1C29B900405878 /* Buttons */,
@@ -298,6 +331,7 @@
 			children = (
 				CCEE193F2C1C422000405878 /* InitialProfileSettingViewController.swift */,
 				CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */,
+				CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */,
 			);
 			path = ProfileSettingScreen;
 			sourceTree = "<group>";
@@ -389,7 +423,8 @@
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
 				CC7C830A2C1D79E3007406DA /* InitialProfileSettingView.swift in Sources */,
 				CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */,
-				CC7D8C162C1C4B270079FD71 /* EditableProfileImageView.swift in Sources */,
+				CC7D8C162C1C4B270079FD71 /* CurrentProfileImageView.swift in Sources */,
+				CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */,
 				CCEE19402C1C422000405878 /* InitialProfileSettingViewController.swift in Sources */,
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
 				CCEE190B2C1C094800405878 /* RootViewProtocol.swift in Sources */,
@@ -399,12 +434,17 @@
 				CCEE19192C1C0AEE00405878 /* SearchRootView.swift in Sources */,
 				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */,
+				CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
+				CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */,
 				CCEE193E2C1C41E100405878 /* ProfileSettingView.swift in Sources */,
 				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
+				CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */,
+				CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,
 				CCEE19322C1C2A9400405878 /* UIFont+Extension.swift in Sources */,
+				CC38046D2C1D82D500172CAF /* ProfileImageSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@ import SnapKit
 final class InitialProfileSettingView: UIView, RootViewProtocol {
     let navigationTitle = ProfileSettingType.Initial.rawValue
 
-    private let profileSettingView = ProfileSettingView(type: .Initial)
+    let profileSettingView = ProfileSettingView(type: .Initial)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

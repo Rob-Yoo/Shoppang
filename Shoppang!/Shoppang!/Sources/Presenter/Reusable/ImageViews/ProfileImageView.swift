@@ -10,7 +10,11 @@ import SnapKit
 import Then
 
 final class ProfileImageView: UIImageView {
-    var profileImage: UIImage
+    var profileImage: UIImage {
+        didSet {
+            self.image = profileImage
+        }
+    }
     
     init(profileImage: UIImage) {
         self.profileImage = profileImage

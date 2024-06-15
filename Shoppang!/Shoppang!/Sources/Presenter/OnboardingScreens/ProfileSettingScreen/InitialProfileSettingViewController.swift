@@ -11,8 +11,27 @@ class InitialProfileSettingViewController: BaseViewController<InitialProfileSett
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addUserAction()
     }
 
+    private func addUserAction() {
+        self.addActionToProfileImageView()
+    }
+    
+    private func addActionToProfileImageView() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
+
+        self.contentView.profileSettingView.editableProfileImageView.addGestureRecognizer(gestureRecognizer)
+    }
+}
+
+//MARK: - User Action Handling
+extension InitialProfileSettingViewController {
+    @objc private func profileImageViewTapped() {
+        let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView>()
+
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 
 #if DEBUG

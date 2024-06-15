@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class EditableProfileImageView: UIView {
+final class CurrentProfileImageView: UIView {
 
     private lazy var profileImageView = ProfileImageView().then {
         $0.layer.borderWidth = 5
@@ -40,7 +40,7 @@ final class EditableProfileImageView: UIView {
 }
 
 //MARK: - Configure Subviews
-extension EditableProfileImageView {
+extension CurrentProfileImageView {
     private func configureHierarchy() {
         self.addSubview(profileImageView)
         self.addSubview(cameraImageView)
