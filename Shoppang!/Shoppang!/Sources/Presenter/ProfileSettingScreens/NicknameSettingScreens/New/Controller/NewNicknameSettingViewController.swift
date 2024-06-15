@@ -33,6 +33,10 @@ class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingVie
     private func addActionToNicknameTextField() {
         self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
     }
+    
+    private func addActionToCompleteButton() {
+        self.contentView.nicknameSettingView.completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+    }
 }
 
 //MARK: - User Action Handling
@@ -47,6 +51,12 @@ extension NewNicknameSettingViewController {
         guard let text = sender.text else { return }
         self.model.nickname = text
     }
+    
+    @objc private func completeButtonTapped() {
+        self.model.saveProfile()
+        
+        //TODO: - 메인 화면으로 넘어가기
+    }
 }
 
 //MARK: - Observing Model
@@ -60,12 +70,6 @@ extension NewNicknameSettingViewController {
                 self?.contentView.nicknameSettingView.nicknameTextFieldView.update(status: status)
             }
             .store(in: &cancellable)
-        
-//        self.model.$profileImage
-//            .sink { [weak self] new in
-////                print(new)
-//            }
-//            .store(in: &cancellable)
     }
 }
 

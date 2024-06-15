@@ -15,6 +15,7 @@
 		CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */; };
 		CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804892C1DA91700172CAF /* ProfileModel.swift */; };
 		CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */; };
+		CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */; };
 		CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */; };
 		CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */; };
 		CC7C830A2C1D79E3007406DA /* NewNicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */; };
@@ -53,6 +54,7 @@
 		CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileImageSettingView.swift; sourceTree = "<group>"; };
 		CC3804892C1DA91700172CAF /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationStatus.swift; sourceTree = "<group>"; };
+		CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
 		CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
 		CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNicknameSettingView.swift; sourceTree = "<group>"; };
@@ -219,6 +221,14 @@
 			path = ProfileSetting;
 			sourceTree = "<group>";
 		};
+		CC38B1F62C1DE31C000AFD92 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		CCEE18D82C1C06CC00405878 = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +267,7 @@
 		CCEE19052C1C080500405878 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CC38B1F62C1DE31C000AFD92 /* Enums */,
 				CC3804872C1DA8A500172CAF /* Domain */,
 				CCEE19302C1C2A8200405878 /* Extensions */,
 				CCEE19092C1C092900405878 /* Protocols */,
@@ -504,6 +515,7 @@
 				CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */,
 				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
+				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,
 				CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */,
 				CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,
