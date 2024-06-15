@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InitialProfileSettingViewController: BaseViewController<InitialProfileSettingView> {
+class NewProfileSettingViewController: BaseViewController<NewProfileSettingView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class InitialProfileSettingViewController: BaseViewController<InitialProfileSett
 }
 
 //MARK: - User Action Handling
-extension InitialProfileSettingViewController {
+extension NewProfileSettingViewController {
     @objc private func profileImageViewTapped() {
         let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView>()
 
@@ -43,7 +43,7 @@ func updateUIViewController(_ uiView: UIViewController,context: Context) {
 }
 @available(iOS 13.0.0, *)
 func makeUIViewController(context: Context) -> UIViewController{
-    InitialProfileSettingViewController()
+    NewProfileSettingViewController()
     }
 }
 @available(iOS 13.0, *)

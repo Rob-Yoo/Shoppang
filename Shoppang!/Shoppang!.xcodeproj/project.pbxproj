@@ -15,7 +15,7 @@
 		CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */; };
 		CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */; };
 		CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */; };
-		CC7C830A2C1D79E3007406DA /* InitialProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */; };
+		CC7C830A2C1D79E3007406DA /* NewProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* NewProfileSettingView.swift */; };
 		CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */; };
 		CC7D8C162C1C4B270079FD71 /* CurrentProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C152C1C4B270079FD71 /* CurrentProfileImageView.swift */; };
 		CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */; };
@@ -39,7 +39,7 @@
 		CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */; };
 		CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */; };
 		CCEE193E2C1C41E100405878 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193D2C1C41E100405878 /* ProfileSettingView.swift */; };
-		CCEE19402C1C422000405878 /* InitialProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193F2C1C422000405878 /* InitialProfileSettingViewController.swift */; };
+		CCEE19402C1C422000405878 /* NewProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193F2C1C422000405878 /* NewProfileSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileImageSettingView.swift; sourceTree = "<group>"; };
 		CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
 		CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
-		CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialProfileSettingView.swift; sourceTree = "<group>"; };
+		CC7C83092C1D79E3007406DA /* NewProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileSettingView.swift; sourceTree = "<group>"; };
 		CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		CC7D8C152C1C4B270079FD71 /* CurrentProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentProfileImageView.swift; sourceTree = "<group>"; };
 		CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStateTextButton.swift; sourceTree = "<group>"; };
 		CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
 		CCEE193D2C1C41E100405878 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
-		CCEE193F2C1C422000405878 /* InitialProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialProfileSettingViewController.swift; sourceTree = "<group>"; };
+		CCEE193F2C1C422000405878 /* NewProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,8 +329,8 @@
 		CCEE193C2C1C411A00405878 /* ProfileSettingScreen */ = {
 			isa = PBXGroup;
 			children = (
-				CCEE193F2C1C422000405878 /* InitialProfileSettingViewController.swift */,
-				CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */,
+				CCEE193F2C1C422000405878 /* NewProfileSettingViewController.swift */,
+				CC7C83092C1D79E3007406DA /* NewProfileSettingView.swift */,
 				CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */,
 			);
 			path = ProfileSettingScreen;
@@ -421,11 +421,11 @@
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
-				CC7C830A2C1D79E3007406DA /* InitialProfileSettingView.swift in Sources */,
+				CC7C830A2C1D79E3007406DA /* NewProfileSettingView.swift in Sources */,
 				CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */,
 				CC7D8C162C1C4B270079FD71 /* CurrentProfileImageView.swift in Sources */,
 				CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */,
-				CCEE19402C1C422000405878 /* InitialProfileSettingViewController.swift in Sources */,
+				CCEE19402C1C422000405878 /* NewProfileSettingViewController.swift in Sources */,
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
 				CCEE190B2C1C094800405878 /* RootViewProtocol.swift in Sources */,
 				CCEE191C2C1C0B4A00405878 /* SettingListRootView.swift in Sources */,

@@ -8,6 +8,6 @@
 import Foundation
 
 enum ProfileSettingType: String {
-    case Initial = "PROFILE SETTING"
+    case New = "PROFILE SETTING"
     case Editing = "EDIT PROFILE"
 }

@@ -33,7 +33,7 @@ extension ProfileSettingView {
         self.configureEditableProfileImageView()
         self.configureNicknameTextFieldView()
         
-        if (settingType == .Initial) {
+        if (settingType == .New) {
             self.configureCompleteButton()
         }
     }

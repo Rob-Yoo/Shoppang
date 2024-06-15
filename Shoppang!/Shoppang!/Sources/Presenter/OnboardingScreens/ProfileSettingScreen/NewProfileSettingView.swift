@@ -8,10 +8,10 @@
 import UIKit
 import SnapKit
 
-final class InitialProfileSettingView: UIView, RootViewProtocol {
-    let navigationTitle = ProfileSettingType.Initial.rawValue
+final class NewProfileSettingView: UIView, RootViewProtocol {
+    let navigationTitle = ProfileSettingType.New.rawValue
 
-    let profileSettingView = ProfileSettingView(type: .Initial)
+    let profileSettingView = ProfileSettingView(type: .New)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
