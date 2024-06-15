@@ -42,7 +42,7 @@ class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingVie
 //MARK: - User Action Handling
 extension NewNicknameSettingViewController {
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView>()
+        let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView>(model: self.model)
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -65,11 +65,33 @@ extension NewNicknameSettingViewController {
         self.model.$nickname
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
-                let status = self?.model.nicknameValidationStatus ?? .countError
-
-                self?.contentView.nicknameSettingView.nicknameTextFieldView.update(status: status)
+                self?.updateNickNicknameTextFieldView()
             }
             .store(in: &cancellable)
+        
+        self.model.$profileImageNumber
+            .receive(on: RunLoop.main)
+            .sink { [weak self] new in
+                self?.updateEditableProfileImageView(imageNumber: new)
+            }
+            .store(in: &cancellable)
+    }
+}
+
+//MARK: - Update Views
+extension NewNicknameSettingViewController {
+    private func updateNickNicknameTextFieldView() {
+        let status = self.model.nicknameValidationStatus
+        let nicknameTextFieldView = self.contentView.nicknameSettingView.nicknameTextFieldView
+
+        nicknameTextFieldView.update(status: status)
+    }
+    
+    private func updateEditableProfileImageView(imageNumber: Int) {
+        let profileImage = UIImage.profileImages[imageNumber]
+        let profileImageView = self.contentView.nicknameSettingView.editableProfileImageView.profileImageView
+        
+        profileImageView.update(image: profileImage)
     }
 }
 

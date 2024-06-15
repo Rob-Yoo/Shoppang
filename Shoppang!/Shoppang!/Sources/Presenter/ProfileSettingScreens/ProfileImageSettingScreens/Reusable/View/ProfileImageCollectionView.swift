@@ -7,8 +7,19 @@
 
 import UIKit
 
+protocol ProfileImageCollectionViewDelegate: AnyObject {
+    func profileImageSelected(idx: Int)
+}
+
 final class ProfileImageCollectionView: UICollectionView {
-    private let profileImages = UIImage.profileImages
+
+    var selectedProfileImageNumber = 0 {
+        didSet {
+            self.reloadData()
+        }
+    }
+
+    weak var profileImageCollectionViewDelegate: ProfileImageCollectionViewDelegate?
     
     init(layout: () -> UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: layout())
@@ -24,11 +35,11 @@ final class ProfileImageCollectionView: UICollectionView {
 
 extension ProfileImageCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.profileImages.count
+        return UIImage.profileImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let profileImage = self.profileImages[indexPath.row]
+        let profileImage = UIImage.profileImages[indexPath.item]
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileImageCollectionViewCell.reusableIdentifier, for: indexPath) as? ProfileImageCollectionViewCell else {
             return UICollectionViewCell()
@@ -38,5 +49,20 @@ extension ProfileImageCollectionView: UICollectionViewDelegate, UICollectionView
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard (indexPath.item == selectedProfileImageNumber), let c = cell as? ProfileImageCollectionViewCell else { return }
+
+        c.isSelected = true
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let idx = indexPath.item
+        
+        guard let delegate = self.profileImageCollectionViewDelegate else {
+            print("ProfileImageCollectionViewDelegate 설정 필요")
+            return
+        }
+        
+        delegate.profileImageSelected(idx: idx)
+    }
 }

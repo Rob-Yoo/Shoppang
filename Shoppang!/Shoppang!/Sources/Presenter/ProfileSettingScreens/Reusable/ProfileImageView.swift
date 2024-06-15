@@ -10,27 +10,10 @@ import SnapKit
 import Then
 
 final class ProfileImageView: UIImageView {
-    var profileImage: UIImage {
-        didSet {
-            self.image = profileImage
-        }
-    }
     
-    init(profileImage: UIImage) {
-        self.profileImage = profileImage
-        super.init(frame: .infinite)
+    init() {
+        super.init(frame: .zero)
         self.configure()
-    }
-    
-    convenience init() {
-        guard let image = UserDefaults.standard.object(forKey: "UserProfileImage") as? UIImage else {
-            let randomImage = UIImage.profileImages.randomElement()!
-    
-            self.init(profileImage: randomImage)
-            return
-        }
-        
-        self.init(profileImage: image)
     }
     
     required init?(coder: NSCoder) {
@@ -43,9 +26,19 @@ final class ProfileImageView: UIImageView {
     }
     
     private func configure() {
-        self.image = self.profileImage
         self.contentMode = .scaleAspectFill
-        self.layer.borderColor = UIColor.mainTheme.cgColor
-        self.layer.borderWidth = 3
+        self.layer.borderColor = UIColor.placeholder.cgColor
+        self.layer.borderWidth = 1
+        self.alpha = 0.5
+    }
+    
+    func update(image: UIImage) {
+        self.image = image
+    }
+    
+    func update(isSelected: Bool) {
+        self.layer.borderColor = (isSelected) ? UIColor.mainTheme.cgColor : UIColor.placeholder.cgColor
+        self.layer.borderWidth = (isSelected) ? 3 : 1
+        self.alpha = (isSelected) ? 1 : 0.5
     }
 }

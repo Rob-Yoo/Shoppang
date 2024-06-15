@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-final class ProfileImageSettingView: UIView {
+class ProfileImageSettingView: UIView {
     
-    private let currentProfileImageView = CurrentProfileImageView()
+    let currentProfileImageView = CurrentProfileImageView()
     
-    private let profileImageCollectionView = ProfileImageCollectionView() {
+    let profileImageCollectionView = ProfileImageCollectionView() {
         let layout = UICollectionViewFlowLayout()
         let width = (UIScreen.main.bounds.width - 50) / 4
         let height = width

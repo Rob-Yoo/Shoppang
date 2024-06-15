@@ -8,18 +8,13 @@
 import UIKit
 import SnapKit
 
-final class NewProfileImageSettingView: UIView, RootViewProtocol {
+final class NewProfileImageSettingView: ProfileImageSettingView, RootViewProtocol {
     var navigationTitle = ProfileSettingType.New.navigationTitle
     
-    private let profileImageSettingView = ProfileImageSettingView()
+//    private let profileImageSettingView = ProfileImageSettingView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.addSubview(profileImageSettingView)
-        profileImageSettingView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
-        }
     }
     
     required init?(coder: NSCoder) {

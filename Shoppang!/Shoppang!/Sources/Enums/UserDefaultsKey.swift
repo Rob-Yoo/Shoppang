@@ -8,6 +8,6 @@
 import Foundation
 
 enum UserDefaultsKey {
-    static let profileImage = "ProfileImage"
+    static let profileImageNumber = "ProfileImageNumber"
     static let nickname = "Nickname"
 }

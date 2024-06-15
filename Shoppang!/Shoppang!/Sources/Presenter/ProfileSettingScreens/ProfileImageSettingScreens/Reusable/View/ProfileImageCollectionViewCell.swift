@@ -9,8 +9,13 @@ import UIKit
 import SnapKit
 
 final class ProfileImageCollectionViewCell: UICollectionViewCell {
-    
+
     private let profileImageView = ProfileImageView()
+    override var isSelected: Bool {
+        didSet {
+            self.profileImageView.update(isSelected: isSelected)
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,6 +35,6 @@ final class ProfileImageCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCellData(image: UIImage) {
-        self.profileImageView.profileImage = image
+        self.profileImageView.update(image: image)
     }
 }

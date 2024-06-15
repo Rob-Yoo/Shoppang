@@ -8,9 +8,9 @@
 import UIKit
 import Combine
 
-class ProfileModel {
+final class ProfileModel {
     @Published var nickname: String = ""
-    var profileImage: UIImage = UIImage.profileImages.randomElement()!
+    @Published var profileImageNumber = Int.random(in: 0..<UIImage.profileImages.count)
     
     var nicknameValidationStatus: NicknameValidationStatus {
         if (isCountError()) { return .countError }
@@ -22,7 +22,7 @@ class ProfileModel {
     
     func saveProfile() {
         if (nicknameValidationStatus == .ok) {
-            UserDefaults.standard.setValue(profileImage, forKey: UserDefaultsKey.profileImage)
+            UserDefaults.standard.setValue(profileImageNumber, forKey: UserDefaultsKey.profileImageNumber)
             UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname)
         }
     }
