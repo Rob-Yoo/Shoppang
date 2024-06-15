@@ -6,22 +6,32 @@
 //
 
 import UIKit
+import Combine
 
 class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingView> {
+    
+    private let model = ProfileModel()
+    private var cancellable = Set<AnyCancellable>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.observingModel()
         self.addUserAction()
     }
 
     private func addUserAction() {
         self.addActionToProfileImageView()
+        self.addActionToNicknameTextField()
     }
     
     private func addActionToProfileImageView() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
 
         self.contentView.nicknameSettingView.editableProfileImageView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    private func addActionToNicknameTextField() {
+        self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
     }
 }
 
@@ -31,6 +41,31 @@ extension NewNicknameSettingViewController {
         let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView>()
 
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    @objc private func nicknameTextFieldDidChange(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        self.model.nickname = text
+    }
+}
+
+//MARK: - Observing Model
+extension NewNicknameSettingViewController {
+    private func observingModel() {
+        self.model.$nickname
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                let status = self?.model.nicknameValidationStatus ?? .countError
+
+                self?.contentView.nicknameSettingView.nicknameTextFieldView.update(status: status)
+            }
+            .store(in: &cancellable)
+        
+//        self.model.$profileImage
+//            .sink { [weak self] new in
+////                print(new)
+//            }
+//            .store(in: &cancellable)
     }
 }
 

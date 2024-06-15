@@ -11,7 +11,7 @@ import Then
 
 final class NicknameTextFieldView: UIView {
     
-    private let nicknameTextField = UITextField().then {
+    let nicknameTextField = UITextField().then {
         $0.placeholder = "닉네임을 입력해주세요 :)"
         $0.font = .regular14
         $0.textColor = .black
@@ -22,8 +22,7 @@ final class NicknameTextFieldView: UIView {
         $0.backgroundColor = .placeholder
     }
     
-    private let statusLabel = UILabel().then {
-        $0.text = "상태 레이블"
+    let statusLabel = UILabel().then {
         $0.textColor = .mainTheme
         $0.font = .regular13
     }
@@ -36,6 +35,15 @@ final class NicknameTextFieldView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(status: NicknameValidationStatus) {
+        let statusColor: UIColor = (status == .ok) ? .black : .mainTheme
+        let lineColor: UIColor = (status == .ok) ? .black : .placeholder
+
+        self.line.backgroundColor = lineColor
+        self.statusLabel.text = status.statusText
+        self.statusLabel.textColor = statusColor
     }
     
 }

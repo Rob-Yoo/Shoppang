@@ -11,7 +11,7 @@ import Then
 
 final class CurrentProfileImageView: UIView {
 
-    private lazy var profileImageView = ProfileImageView().then {
+    lazy var profileImageView = ProfileImageView().then {
         $0.layer.borderWidth = 5
     }
     
