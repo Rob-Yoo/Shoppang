@@ -6,15 +6,27 @@
 //
 
 import UIKit
+import SnapKit
 
-class InitialProfileSettingView: UIView {
+final class InitialProfileSettingView: UIView, RootViewProtocol {
+    let navigationTitle = ProfileSettingType.Initial.rawValue
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    private let profileSettingView = ProfileSettingView(type: .Initial)
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.configureProfileSettingView()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureProfileSettingView() {
+        self.addSubview(profileSettingView)
+        
+        profileSettingView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
 }

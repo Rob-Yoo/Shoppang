@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */; };
+		CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */; };
+		CC7C830A2C1D79E3007406DA /* InitialProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */; };
+		CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */; };
+		CC7D8C162C1C4B270079FD71 /* EditableProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C152C1C4B270079FD71 /* EditableProfileImageView.swift */; };
+		CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -16,7 +22,7 @@
 		CCEE18FD2C1C074200405878 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CCEE18FC2C1C074200405878 /* SnapKit */; };
 		CCEE19002C1C074B00405878 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CCEE18FF2C1C074B00405878 /* Kingfisher */; };
 		CCEE19032C1C075400405878 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = CCEE19022C1C075400405878 /* Then */; };
-		CCEE190B2C1C094800405878 /* NavigationBarTitleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE190A2C1C094800405878 /* NavigationBarTitleProtocol.swift */; };
+		CCEE190B2C1C094800405878 /* RootViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE190A2C1C094800405878 /* RootViewProtocol.swift */; };
 		CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE190E2C1C09F400405878 /* SettingListViewController.swift */; };
 		CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19122C1C0A4F00405878 /* SearchViewController.swift */; };
 		CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19152C1C0A7200405878 /* TabBarController.swift */; };
@@ -26,9 +32,17 @@
 		CCEE19322C1C2A9400405878 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */; };
 		CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */; };
 		CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */; };
+		CCEE193E2C1C41E100405878 /* ProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193D2C1C41E100405878 /* ProfileSettingView.swift */; };
+		CCEE19402C1C422000405878 /* InitialProfileSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193F2C1C422000405878 /* InitialProfileSettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
+		CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
+		CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialProfileSettingView.swift; sourceTree = "<group>"; };
+		CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		CC7D8C152C1C4B270079FD71 /* EditableProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableProfileImageView.swift; sourceTree = "<group>"; };
+		CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +50,7 @@
 		CCEE18ED2C1C06CD00405878 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCEE18F02C1C06CD00405878 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCEE18F22C1C06CD00405878 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCEE190A2C1C094800405878 /* NavigationBarTitleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleProtocol.swift; sourceTree = "<group>"; };
+		CCEE190A2C1C094800405878 /* RootViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewProtocol.swift; sourceTree = "<group>"; };
 		CCEE190E2C1C09F400405878 /* SettingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListViewController.swift; sourceTree = "<group>"; };
 		CCEE19122C1C0A4F00405878 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		CCEE19152C1C0A7200405878 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -46,6 +60,8 @@
 		CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStateTextButton.swift; sourceTree = "<group>"; };
 		CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
+		CCEE193D2C1C41E100405878 /* ProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingView.swift; sourceTree = "<group>"; };
+		CCEE193F2C1C422000405878 /* InitialProfileSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialProfileSettingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +79,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC7C83062C1D737B007406DA /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		CC7D8C112C1C45570079FD71 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		CC7D8C142C1C48D40079FD71 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE193D2C1C41E100405878 /* ProfileSettingView.swift */,
+				CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */,
+				CC7D8C152C1C4B270079FD71 /* EditableProfileImageView.swift */,
+			);
+			path = UIViews;
+			sourceTree = "<group>";
+		};
 		CCEE18D82C1C06CC00405878 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +143,7 @@
 		CCEE19052C1C080500405878 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CC7C83062C1D737B007406DA /* Enums */,
 				CCEE19302C1C2A8200405878 /* Extensions */,
 				CCEE19092C1C092900405878 /* Protocols */,
 				CCEE19072C1C081900405878 /* Presenter */,
@@ -142,7 +185,7 @@
 		CCEE19092C1C092900405878 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CCEE190A2C1C094800405878 /* NavigationBarTitleProtocol.swift */,
+				CCEE190A2C1C094800405878 /* RootViewProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -208,6 +251,8 @@
 		CCEE192C2C1C29B100405878 /* Reusable */ = {
 			isa = PBXGroup;
 			children = (
+				CC7D8C142C1C48D40079FD71 /* UIViews */,
+				CC7D8C112C1C45570079FD71 /* ImageViews */,
 				CCEE192D2C1C29B900405878 /* Buttons */,
 			);
 			path = Reusable;
@@ -226,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */,
+				CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,6 +279,7 @@
 		CCEE19352C1C2F5A00405878 /* OnboardingScreens */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE193C2C1C411A00405878 /* ProfileSettingScreen */,
 				CCEE19362C1C2F6100405878 /* OnboardingStartScreen */,
 			);
 			path = OnboardingScreens;
@@ -244,6 +291,15 @@
 				CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */,
 			);
 			path = OnboardingStartScreen;
+			sourceTree = "<group>";
+		};
+		CCEE193C2C1C411A00405878 /* ProfileSettingScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE193F2C1C422000405878 /* InitialProfileSettingViewController.swift */,
+				CC7C83092C1D79E3007406DA /* InitialProfileSettingView.swift */,
+			);
+			path = ProfileSettingScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,15 +384,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
-				CCEE190B2C1C094800405878 /* NavigationBarTitleProtocol.swift in Sources */,
+				CC7C830A2C1D79E3007406DA /* InitialProfileSettingView.swift in Sources */,
+				CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */,
+				CC7D8C162C1C4B270079FD71 /* EditableProfileImageView.swift in Sources */,
+				CCEE19402C1C422000405878 /* InitialProfileSettingViewController.swift in Sources */,
+				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
+				CCEE190B2C1C094800405878 /* RootViewProtocol.swift in Sources */,
 				CCEE191C2C1C0B4A00405878 /* SettingListRootView.swift in Sources */,
+				CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */,
 				CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */,
 				CCEE19192C1C0AEE00405878 /* SearchRootView.swift in Sources */,
 				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
+				CCEE193E2C1C41E100405878 /* ProfileSettingView.swift in Sources */,
 				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,
