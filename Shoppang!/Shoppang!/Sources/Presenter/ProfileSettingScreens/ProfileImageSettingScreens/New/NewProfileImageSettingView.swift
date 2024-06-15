@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class NewProfileImageSettingView: UIView, RootViewProtocol {
-    var navigationTitle = ProfileSettingType.New.rawValue
+    var navigationTitle = ProfileSettingType.New.navigationTitle
     
     private let profileImageSettingView = ProfileImageSettingView()
     

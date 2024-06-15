@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 final class NewNicknameSettingView: UIView, RootViewProtocol {
-    let navigationTitle = ProfileSettingType.New.rawValue
+    let navigationTitle = ProfileSettingType.New.navigationTitle
 
     let nicknameSettingView = NicknameSettingView(type: .New)
     

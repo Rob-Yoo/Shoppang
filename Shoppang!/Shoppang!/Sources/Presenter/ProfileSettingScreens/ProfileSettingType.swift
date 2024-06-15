@@ -7,7 +7,16 @@
 
 import Foundation
 
-enum ProfileSettingType: String {
-    case New = "PROFILE SETTING"
-    case Editing = "EDIT PROFILE"
+enum ProfileSettingType {
+    case New
+    case Editing
+    
+    var navigationTitle: String {
+        switch self {
+        case .New:
+            return "PROFILE SETTING"
+        case .Editing:
+            return "EDIT PROFILE"
+        }
+    }
 }
