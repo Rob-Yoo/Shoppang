@@ -1,5 +1,5 @@
 //
-//  NavigationBarTitleProtocol.swift
+//  RootViewProtocol.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 6/14/24.
@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol NavigationBarTitleProtocol {
+protocol RootViewProtocol {
     var navigationTitle: String { get }
 }
