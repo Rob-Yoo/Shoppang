@@ -1,5 +1,5 @@
 //
-//  ProfileSettingView.swift
+//  NicknameSettingView.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 6/14/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class ProfileSettingView: UIView {
+final class NicknameSettingView: UIView {
     let settingType: ProfileSettingType
     
     let editableProfileImageView = CurrentProfileImageView()
@@ -28,7 +28,7 @@ final class ProfileSettingView: UIView {
 }
 
 //MARK: - Configure Subviews
-extension ProfileSettingView {
+extension NicknameSettingView {
     private func configureSubviews() {
         self.configureEditableProfileImageView()
         self.configureNicknameTextFieldView()

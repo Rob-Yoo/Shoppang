@@ -67,7 +67,7 @@ extension OnboardingStartViewController {
 //MARK: - User Action Handling
 extension OnboardingStartViewController {
     @objc func startButtonTapped() {
-        let nextVC = NewProfileSettingViewController()
+        let nextVC = NewNicknameSettingViewController()
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

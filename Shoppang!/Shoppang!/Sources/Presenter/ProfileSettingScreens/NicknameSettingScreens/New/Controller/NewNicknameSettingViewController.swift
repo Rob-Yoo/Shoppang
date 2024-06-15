@@ -1,5 +1,5 @@
 //
-//  ProfileSettingViewController.swift
+//  NewNicknameSettingViewController.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 6/14/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewProfileSettingViewController: BaseViewController<NewProfileSettingView> {
+class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +21,12 @@ class NewProfileSettingViewController: BaseViewController<NewProfileSettingView>
     private func addActionToProfileImageView() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
 
-        self.contentView.profileSettingView.editableProfileImageView.addGestureRecognizer(gestureRecognizer)
+        self.contentView.nicknameSettingView.editableProfileImageView.addGestureRecognizer(gestureRecognizer)
     }
 }
 
 //MARK: - User Action Handling
-extension NewProfileSettingViewController {
+extension NewNicknameSettingViewController {
     @objc private func profileImageViewTapped() {
         let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView>()
 
@@ -43,7 +43,7 @@ func updateUIViewController(_ uiView: UIViewController,context: Context) {
 }
 @available(iOS 13.0.0, *)
 func makeUIViewController(context: Context) -> UIViewController{
-    NewProfileSettingViewController()
+    NewNicknameSettingViewController()
     }
 }
 @available(iOS 13.0, *)
