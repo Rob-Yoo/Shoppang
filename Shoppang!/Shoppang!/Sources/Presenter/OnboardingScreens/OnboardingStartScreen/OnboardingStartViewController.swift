@@ -23,7 +23,9 @@ class OnboardingStartViewController: UIViewController {
         $0.contentMode = .scaleAspectFit
     }
     
-    private let startButton = TextButton(type: .start)
+    private lazy var startButton = TextButton(type: .start).then {
+        $0.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,10 @@ class OnboardingStartViewController: UIViewController {
         self.configureHierarchy()
         self.configureLayout()
     }
-    
+}
+
+//MARK: - Configure Subviews
+extension OnboardingStartViewController {
     private func configureHierarchy() {
         self.view.addSubview(appTitleLabel)
         self.view.addSubview(appImageView)
@@ -56,5 +61,14 @@ class OnboardingStartViewController: UIViewController {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(10)
             $0.height.equalToSuperview().multipliedBy(0.05)
         }
+    }
+}
+
+//MARK: - User Action Handling
+extension OnboardingStartViewController {
+    @objc func startButtonTapped() {
+        let nextVC = InitialProfileSettingViewController()
+
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
