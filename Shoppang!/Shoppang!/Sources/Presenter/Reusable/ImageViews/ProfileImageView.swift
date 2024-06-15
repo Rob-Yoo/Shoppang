@@ -9,24 +9,39 @@ import UIKit
 import SnapKit
 import Then
 
-final class ProfileImageView: UIView {
+final class ProfileImageView: UIImageView {
     var profileImage: UIImage
-    
-    private lazy var profileImageView = UIImageView().then {
-        $0.image = self.profileImage
-        $0.contentMode = .scaleAspectFill
-        $0.layer.cornerRadius = self.frame.width / 2
-        $0.clipsToBounds = true
-        $0.layer.borderColor = UIColor.mainTheme.cgColor
-        $0.layer.borderWidth = 3
-    }
     
     init(profileImage: UIImage) {
         self.profileImage = profileImage
-        super.init(frame: .zero)
+        super.init(frame: .infinite)
+        self.configure()
+    }
+    
+    convenience init() {
+        guard let image = UserDefaults.standard.object(forKey: "UserProfileImage") as? UIImage else {
+            let randomImage = UIImage.profileImages.randomElement()!
+    
+            self.init(profileImage: randomImage)
+            return
+        }
+        
+        self.init(profileImage: image)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        self.layer.cornerRadius = self.frame.width / 2
+        self.clipsToBounds = true
+    }
+    
+    private func configure() {
+        self.image = self.profileImage
+        self.contentMode = .scaleAspectFill
+        self.layer.borderColor = UIColor.mainTheme.cgColor
+        self.layer.borderWidth = 3
     }
 }

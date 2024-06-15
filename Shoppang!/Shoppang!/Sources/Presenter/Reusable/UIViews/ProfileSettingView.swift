@@ -9,9 +9,8 @@ import UIKit
 import SnapKit
 import Then
 
-final class ProfileSettingView: UIView, NavigationBarTitleProtocol {
+final class ProfileSettingView: UIView {
     let settingType: ProfileSettingType
-    let navigationTitle: String
     
     private let editableProfileImageView = EditableProfileImageView()
     private let nicknameTextFieldView = NicknameTextFieldView()
@@ -19,7 +18,6 @@ final class ProfileSettingView: UIView, NavigationBarTitleProtocol {
     
     init(type: ProfileSettingType) {
         self.settingType = type
-        self.navigationTitle = type.rawValue
         super.init(frame: .zero)
         self.configureSubviews()
     }
@@ -35,7 +33,7 @@ extension ProfileSettingView {
         self.configureEditableProfileImageView()
         self.configureNicknameTextFieldView()
         
-        if (settingType == .Join) {
+        if (settingType == .Initial) {
             self.configureCompleteButton()
         }
     }

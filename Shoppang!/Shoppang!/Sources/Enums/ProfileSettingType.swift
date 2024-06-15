@@ -8,6 +8,6 @@
 import Foundation
 
 enum ProfileSettingType: String {
-    case Join = "PROFILE SETTING"
-    case Edit = "EDIT PROFILE"
+    case Initial = "PROFILE SETTING"
+    case Editing = "EDIT PROFILE"
 }
