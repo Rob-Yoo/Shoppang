@@ -19,6 +19,12 @@
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
 		CC4A6B302C1EB1D900AC878A /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B2F2C1EB1D900AC878A /* Placeholder.swift */; };
 		CC4A6B322C1EB31400AC878A /* EmptySearchedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */; };
+		CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */; };
+		CC4A6B372C1EBE4A00AC878A /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */; };
+		CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */; };
+		CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3A2C1EC18A00AC878A /* API.swift */; };
+		CC4A6B3E2C1EC78100AC878A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */; };
+		CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */; };
 		CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */; };
 		CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */; };
 		CC7C830A2C1D79E3007406DA /* NewNicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */; };
@@ -62,6 +68,12 @@
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
 		CC4A6B2F2C1EB1D900AC878A /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchedListView.swift; sourceTree = "<group>"; };
+		CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
+		CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
+		CC4A6B3A2C1EC18A00AC878A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRootView.swift; sourceTree = "<group>"; };
 		CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
 		CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
 		CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNicknameSettingView.swift; sourceTree = "<group>"; };
@@ -216,6 +228,7 @@
 		CC3804872C1DA8A500172CAF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CC4A6B352C1EBE3100AC878A /* SearchProduct */,
 				CC3804882C1DA8AB00172CAF /* ProfileSetting */,
 			);
 			path = Domain;
@@ -239,9 +252,36 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		CC4A6B352C1EBE3100AC878A /* SearchProduct */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */,
+				CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */,
+			);
+			path = SearchProduct;
+			sourceTree = "<group>";
+		};
+		CC4A6B3C2C1EC76D00AC878A /* SearchResultScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A6B3F2C1EC78F00AC878A /* View */,
+				CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */,
+			);
+			path = SearchResultScreen;
+			sourceTree = "<group>";
+		};
+		CC4A6B3F2C1EC78F00AC878A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CC9954F42C1EA08700CF1374 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */,
 				CC9954F52C1EA09E00CF1374 /* NavigationManager.swift */,
 				CCEE19092C1C092900405878 /* Protocols */,
 				CCEE19302C1C2A8200405878 /* Extensions */,
@@ -272,6 +312,7 @@
 				CCEE19052C1C080500405878 /* Sources */,
 				CCEE19042C1C07F500405878 /* Resources */,
 				CCEE18F22C1C06CD00405878 /* Info.plist */,
+				CC4A6B3A2C1EC18A00AC878A /* API.swift */,
 			);
 			path = "Shoppang!";
 			sourceTree = "<group>";
@@ -356,6 +397,7 @@
 		CCEE19102C1C0A0E00405878 /* SearchProductScreens */ = {
 			isa = PBXGroup;
 			children = (
+				CC4A6B3C2C1EC76D00AC878A /* SearchResultScreen */,
 				CCEE19112C1C0A3C00405878 /* SearchScreen */,
 			);
 			path = SearchProductScreens;
@@ -511,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC4A6B372C1EBE4A00AC878A /* SearchResultDTO.swift in Sources */,
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
@@ -519,6 +562,7 @@
 				CC7D8C162C1C4B270079FD71 /* CurrentProfileImageView.swift in Sources */,
 				CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */,
 				CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */,
+				CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */,
 				CC4A6B302C1EB1D900AC878A /* Placeholder.swift in Sources */,
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
 				CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */,
@@ -528,6 +572,9 @@
 				CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */,
 				CC4A6B322C1EB31400AC878A /* EmptySearchedListView.swift in Sources */,
 				CCEE19192C1C0AEE00405878 /* SearchRootView.swift in Sources */,
+				CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */,
+				CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */,
+				CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */,
 				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
 				CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */,
@@ -544,6 +591,7 @@
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,
 				CC9954F62C1EA09E00CF1374 /* NavigationManager.swift in Sources */,
 				CCEE19322C1C2A9400405878 /* UIFont+Extension.swift in Sources */,
+				CC4A6B3E2C1EC78100AC878A /* SearchResultViewController.swift in Sources */,
 				CC38046D2C1D82D500172CAF /* ProfileImageSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
