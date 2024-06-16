@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC347B3F2C1F2F0100DD50A6 /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */; };
+		CC347B412C1F315E00DD50A6 /* SearchHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B402C1F315E00DD50A6 /* SearchHistoryTableView.swift */; };
+		CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B422C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift */; };
+		CC347B462C1F438800DD50A6 /* SearchHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B452C1F438800DD50A6 /* SearchHistoryModel.swift */; };
 		CC38046D2C1D82D500172CAF /* ProfileImageSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38046C2C1D82D500172CAF /* ProfileImageSettingViewController.swift */; };
 		CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38046E2C1D830700172CAF /* ProfileImageSettingView.swift */; };
 		CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804712C1D841800172CAF /* ProfileImageCollectionView.swift */; };
@@ -18,7 +22,7 @@
 		CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */; };
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
 		CC4A6B302C1EB1D900AC878A /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B2F2C1EB1D900AC878A /* Placeholder.swift */; };
-		CC4A6B322C1EB31400AC878A /* EmptySearchedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */; };
+		CC4A6B322C1EB31400AC878A /* EmptySearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */; };
 		CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */; };
 		CC4A6B372C1EBE4A00AC878A /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */; };
 		CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */; };
@@ -61,6 +65,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
+		CC347B402C1F315E00DD50A6 /* SearchHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableView.swift; sourceTree = "<group>"; };
+		CC347B422C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		CC347B452C1F438800DD50A6 /* SearchHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryModel.swift; sourceTree = "<group>"; };
 		CC38046C2C1D82D500172CAF /* ProfileImageSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingViewController.swift; sourceTree = "<group>"; };
 		CC38046E2C1D830700172CAF /* ProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageSettingView.swift; sourceTree = "<group>"; };
 		CC3804712C1D841800172CAF /* ProfileImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionView.swift; sourceTree = "<group>"; };
@@ -72,7 +80,7 @@
 		CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
 		CC4A6B2F2C1EB1D900AC878A /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
-		CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchedListView.swift; sourceTree = "<group>"; };
+		CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchHistoryView.swift; sourceTree = "<group>"; };
 		CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
 		CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
@@ -127,6 +135,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC347B442C1F437800DD50A6 /* SearchHistory */ = {
+			isa = PBXGroup;
+			children = (
+				CC347B452C1F438800DD50A6 /* SearchHistoryModel.swift */,
+			);
+			path = SearchHistory;
+			sourceTree = "<group>";
+		};
 		CC38047A2C1D971100172CAF /* ProfileSettingScreens */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +254,7 @@
 		CC3804872C1DA8A500172CAF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CC347B442C1F437800DD50A6 /* SearchHistory */,
 				CC4A6B352C1EBE3100AC878A /* SearchProduct */,
 				CC3804882C1DA8AB00172CAF /* ProfileSetting */,
 			);
@@ -447,7 +464,10 @@
 			isa = PBXGroup;
 			children = (
 				CCEE19182C1C0AEE00405878 /* SearchRootView.swift */,
-				CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */,
+				CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */,
+				CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */,
+				CC347B402C1F315E00DD50A6 /* SearchHistoryTableView.swift */,
+				CC347B422C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -595,13 +615,17 @@
 				CCEE191C2C1C0B4A00405878 /* SettingListRootView.swift in Sources */,
 				CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */,
 				CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */,
-				CC4A6B322C1EB31400AC878A /* EmptySearchedListView.swift in Sources */,
+				CC4A6B322C1EB31400AC878A /* EmptySearchHistoryView.swift in Sources */,
+				CC347B412C1F315E00DD50A6 /* SearchHistoryTableView.swift in Sources */,
 				CCEE19192C1C0AEE00405878 /* SearchRootView.swift in Sources */,
+				CC347B3F2C1F2F0100DD50A6 /* SearchHistoryView.swift in Sources */,
 				CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */,
 				CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */,
 				CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */,
 				CC4A6B452C1EDEC600AC878A /* SearchResultCollectionView.swift in Sources */,
 				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
+				CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */,
+				CC347B462C1F438800DD50A6 /* SearchHistoryModel.swift in Sources */,
 				CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */,
 				CC4A6B432C1ECF7400AC878A /* SortButtonsStackView.swift in Sources */,
 				CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */,

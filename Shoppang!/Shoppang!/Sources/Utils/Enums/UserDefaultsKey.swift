@@ -11,4 +11,5 @@ enum UserDefaultsKey {
     static let profileImageNumber = "ProfileImageNumber"
     static let nickname = "Nickname"
     static let isUser = "isUser"
+    static let searchHistory = "SearchHistory"
 }

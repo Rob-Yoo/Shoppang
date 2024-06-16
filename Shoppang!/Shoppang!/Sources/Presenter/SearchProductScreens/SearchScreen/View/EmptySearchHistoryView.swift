@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Then
 
-final class EmptySearchedListView: UIView {
+final class EmptySearchHistoryView: UIView {
 
     private let imageView = UIImageView().then {
         $0.image = .empty
@@ -36,7 +36,7 @@ final class EmptySearchedListView: UIView {
 }
 
 //MARK: - Configure Subviews
-extension EmptySearchedListView {
+extension EmptySearchHistoryView {
     private func configureHierarchy() {
         self.addSubview(imageView)
         self.addSubview(descriptionLabel)

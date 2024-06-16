@@ -21,7 +21,9 @@ final class SearchRootView: UIView, RootViewProtocol {
         $0.backgroundColor = .placeholder
     }
     
-    lazy var emptySearchedListView = EmptySearchedListView()
+    let emptyHistoryView = EmptySearchHistoryView()
+    
+    let searchHistoryView = SearchHistoryView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,6 +33,17 @@ final class SearchRootView: UIView, RootViewProtocol {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func decideSearchHistoryView(searchHistory: [String]) {
+        if (searchHistory.isEmpty) {
+            self.searchHistoryView.isHidden = true
+            self.emptyHistoryView.isHidden = false
+        } else {
+            self.searchHistoryView.isHidden = false
+            self.emptyHistoryView.isHidden = true
+            self.searchHistoryView.searchHistoryTableView.searchHistory = searchHistory
+        }
+    }
 }
 
 //MARK: - Configure Subviews
@@ -39,7 +52,8 @@ extension SearchRootView {
     private func configureSubviews() {
         self.configureSearchBar()
         self.configureLine()
-        self.configureEmptySearchedListView()  //TODO: - 최근 검색어 유무에 따라 호출 여부 결정
+        self.configureEmptySearchHistoryView()
+        self.configureSearchHistoryView()
     }
     
     private func configureSearchBar() {
@@ -62,10 +76,19 @@ extension SearchRootView {
         }
     }
     
-    private func configureEmptySearchedListView() {
-        self.addSubview(emptySearchedListView)
+    private func configureEmptySearchHistoryView() {
+        self.addSubview(emptyHistoryView)
         
-        emptySearchedListView.snp.makeConstraints {
+        emptyHistoryView.snp.makeConstraints {
+            $0.top.equalTo(line.snp.bottom)
+            $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
+        }
+    }
+    
+    private func configureSearchHistoryView() {
+        self.addSubview(searchHistoryView)
+        
+        searchHistoryView.snp.makeConstraints {
             $0.top.equalTo(line.snp.bottom)
             $0.horizontalEdges.bottom.equalTo(self.safeAreaLayoutGuide)
         }
