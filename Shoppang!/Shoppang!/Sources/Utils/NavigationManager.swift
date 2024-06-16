@@ -7,12 +7,8 @@
 
 import UIKit
 
-final class NavigationManager {
-    static let shared = NavigationManager()
-    
-    private init() {}
-    
-    func changeWindowScene(didDeleteAccount: Bool) {
+struct NavigationManager {
+    static func changeWindowScene(didDeleteAccount: Bool) {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
 
         let sceneDelegate = windowScene.delegate as? SceneDelegate

@@ -61,7 +61,7 @@ extension NewNicknameSettingViewController {
     
     @objc private func completeButtonTapped() {
         self.model.saveProfile()
-        NavigationManager.shared.changeWindowScene(didDeleteAccount: false)
+        NavigationManager.changeWindowScene(didDeleteAccount: false)
     }
     
     @objc private func dismissKeyboard() {
