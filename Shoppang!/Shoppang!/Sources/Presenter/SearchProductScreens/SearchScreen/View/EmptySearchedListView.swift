@@ -13,7 +13,7 @@ final class EmptySearchedListView: UIView {
 
     private let imageView = UIImageView().then {
         $0.image = .empty
-        $0.contentMode = .scaleAspectFill
+        $0.contentMode = .center
     }
     
     private let descriptionLabel = UILabel().then {
@@ -50,7 +50,7 @@ extension EmptySearchedListView {
         }
         
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(imageView.snp.bottom).offset(10)
+            $0.top.equalTo(imageView.snp.bottom)
             $0.centerX.equalToSuperview()
         }
     }
