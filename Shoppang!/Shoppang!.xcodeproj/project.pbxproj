@@ -17,6 +17,8 @@
 		CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */; };
 		CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */; };
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
+		CC4A6B302C1EB1D900AC878A /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B2F2C1EB1D900AC878A /* Placeholder.swift */; };
+		CC4A6B322C1EB31400AC878A /* EmptySearchedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */; };
 		CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */; };
 		CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */; };
 		CC7C830A2C1D79E3007406DA /* NewNicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */; };
@@ -58,6 +60,8 @@
 		CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationStatus.swift; sourceTree = "<group>"; };
 		CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
+		CC4A6B2F2C1EB1D900AC878A /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
+		CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchedListView.swift; sourceTree = "<group>"; };
 		CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
 		CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
 		CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNicknameSettingView.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */,
+				CC4A6B2F2C1EB1D900AC878A /* Placeholder.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEE19182C1C0AEE00405878 /* SearchRootView.swift */,
+				CC4A6B312C1EB31400AC878A /* EmptySearchedListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -513,12 +519,14 @@
 				CC7D8C162C1C4B270079FD71 /* CurrentProfileImageView.swift in Sources */,
 				CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */,
 				CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */,
+				CC4A6B302C1EB1D900AC878A /* Placeholder.swift in Sources */,
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
 				CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */,
 				CCEE190B2C1C094800405878 /* RootViewProtocol.swift in Sources */,
 				CCEE191C2C1C0B4A00405878 /* SettingListRootView.swift in Sources */,
 				CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */,
 				CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */,
+				CC4A6B322C1EB31400AC878A /* EmptySearchedListView.swift in Sources */,
 				CCEE19192C1C0AEE00405878 /* SearchRootView.swift in Sources */,
 				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
 				CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */,

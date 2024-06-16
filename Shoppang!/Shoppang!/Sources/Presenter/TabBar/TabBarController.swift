@@ -13,6 +13,7 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTabBarController()
+        self.configureTabBar()
     }
 
     private func configureTabBarController() {
@@ -25,9 +26,16 @@ final class TabBarController: UITabBarController {
                 $0.tabBarItem = UITabBarItem(title: title, image: icon, selectedImage: icon)
             }
         }
+    }
+    
+    private func configureTabBar() {
+        let apearance = UITabBarAppearance()
         
-        UITabBar.appearance().tintColor = .mainTheme
-        UITabBar.appearance().unselectedItemTintColor = .unselectedTabBar
+        apearance.configureWithOpaqueBackground()
+        self.tabBar.standardAppearance = apearance
+        self.tabBar.scrollEdgeAppearance = apearance
+        self.tabBar.tintColor = .mainTheme
+        self.tabBar.unselectedItemTintColor = .unselectedTabBar
     }
 
 }

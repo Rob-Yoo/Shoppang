@@ -12,7 +12,14 @@ final class SearchViewController: BaseViewController<SearchRootView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.configureNavigationBar()
     }
     
+    private func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.configureWithTransparentBackground()
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
 }
