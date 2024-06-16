@@ -25,6 +25,11 @@
 		CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3A2C1EC18A00AC878A /* API.swift */; };
 		CC4A6B3E2C1EC78100AC878A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */; };
 		CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */; };
+		CC4A6B432C1ECF7400AC878A /* SortButtonsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B422C1ECF7400AC878A /* SortButtonsStackView.swift */; };
+		CC4A6B452C1EDEC600AC878A /* SearchResultCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B442C1EDEC600AC878A /* SearchResultCollectionView.swift */; };
+		CC4A6B472C1EDF2700AC878A /* SearchResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B462C1EDF2700AC878A /* SearchResultCollectionViewCell.swift */; };
+		CC4A6B4B2C1EDFE200AC878A /* ProductImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B4A2C1EDFE200AC878A /* ProductImageView.swift */; };
+		CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B4C2C1EF90100AC878A /* String+Extension.swift */; };
 		CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */; };
 		CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */; };
 		CC7C830A2C1D79E3007406DA /* NewNicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */; };
@@ -49,7 +54,7 @@
 		CCEE191C2C1C0B4A00405878 /* SettingListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE191B2C1C0B4A00405878 /* SettingListRootView.swift */; };
 		CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE192E2C1C29C400405878 /* TextButton.swift */; };
 		CCEE19322C1C2A9400405878 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */; };
-		CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */; };
+		CCEE19342C1C2D8A00405878 /* SortButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19332C1C2D8A00405878 /* SortButton.swift */; };
 		CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */; };
 		CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193D2C1C41E100405878 /* NicknameSettingView.swift */; };
 		CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */; };
@@ -74,6 +79,11 @@
 		CC4A6B3A2C1EC18A00AC878A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRootView.swift; sourceTree = "<group>"; };
+		CC4A6B422C1ECF7400AC878A /* SortButtonsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButtonsStackView.swift; sourceTree = "<group>"; };
+		CC4A6B442C1EDEC600AC878A /* SearchResultCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionView.swift; sourceTree = "<group>"; };
+		CC4A6B462C1EDF2700AC878A /* SearchResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC4A6B4A2C1EDFE200AC878A /* ProductImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImageView.swift; sourceTree = "<group>"; };
+		CC4A6B4C2C1EF90100AC878A /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTextFieldView.swift; sourceTree = "<group>"; };
 		CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingType.swift; sourceTree = "<group>"; };
 		CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNicknameSettingView.swift; sourceTree = "<group>"; };
@@ -96,7 +106,7 @@
 		CCEE191B2C1C0B4A00405878 /* SettingListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListRootView.swift; sourceTree = "<group>"; };
 		CCEE192E2C1C29C400405878 /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiStateTextButton.swift; sourceTree = "<group>"; };
+		CCEE19332C1C2D8A00405878 /* SortButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortButton.swift; sourceTree = "<group>"; };
 		CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
 		CCEE193D2C1C41E100405878 /* NicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingView.swift; sourceTree = "<group>"; };
 		CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNicknameSettingViewController.swift; sourceTree = "<group>"; };
@@ -273,9 +283,22 @@
 		CC4A6B3F2C1EC78F00AC878A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC4A6B492C1EDF8F00AC878A /* Reusable */,
 				CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */,
+				CC4A6B422C1ECF7400AC878A /* SortButtonsStackView.swift */,
+				CC4A6B442C1EDEC600AC878A /* SearchResultCollectionView.swift */,
+				CC4A6B462C1EDF2700AC878A /* SearchResultCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CC4A6B492C1EDF8F00AC878A /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				CCEE19332C1C2D8A00405878 /* SortButton.swift */,
+				CC4A6B4A2C1EDFE200AC878A /* ProductImageView.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		CC9954F42C1EA08700CF1374 /* Utils */ = {
@@ -449,7 +472,6 @@
 			isa = PBXGroup;
 			children = (
 				CCEE192E2C1C29C400405878 /* TextButton.swift */,
-				CCEE19332C1C2D8A00405878 /* MultiStateTextButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -459,6 +481,7 @@
 			children = (
 				CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */,
 				CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */,
+				CC4A6B4C2C1EF90100AC878A /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -553,9 +576,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC4A6B472C1EDF2700AC878A /* SearchResultCollectionViewCell.swift in Sources */,
 				CC4A6B372C1EBE4A00AC878A /* SearchResultDTO.swift in Sources */,
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
+				CC4A6B4B2C1EDFE200AC878A /* ProductImageView.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
 				CC7C830A2C1D79E3007406DA /* NewNicknameSettingView.swift in Sources */,
 				CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */,
@@ -575,9 +600,12 @@
 				CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */,
 				CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */,
 				CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */,
+				CC4A6B452C1EDEC600AC878A /* SearchResultCollectionView.swift in Sources */,
 				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
 				CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */,
-				CCEE19342C1C2D8A00405878 /* MultiStateTextButton.swift in Sources */,
+				CC4A6B432C1ECF7400AC878A /* SortButtonsStackView.swift in Sources */,
+				CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */,
+				CCEE19342C1C2D8A00405878 /* SortButton.swift in Sources */,
 				CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
 				CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */,
