@@ -11,11 +11,12 @@ import Then
 
 final class NicknameTextFieldView: UIView {
     
-    let nicknameTextField = UITextField().then {
+    lazy var nicknameTextField = UITextField().then {
         $0.placeholder = "닉네임을 입력해주세요 :)"
         $0.font = .regular14
         $0.textColor = .black
         $0.borderStyle = .none
+        $0.delegate = self
     }
     
     private let line = UIView().then {
@@ -48,6 +49,7 @@ final class NicknameTextFieldView: UIView {
     
 }
 
+//MARK: - Configure Subviews
 extension NicknameTextFieldView {
     private func configureHierarchy() {
         self.addSubview(nicknameTextField)
@@ -72,5 +74,12 @@ extension NicknameTextFieldView {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+    }
+}
+
+extension NicknameTextFieldView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
     }
 }

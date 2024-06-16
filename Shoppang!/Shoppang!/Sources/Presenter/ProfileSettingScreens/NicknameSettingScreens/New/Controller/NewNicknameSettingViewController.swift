@@ -22,6 +22,8 @@ class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingVie
     private func addUserAction() {
         self.addActionToProfileImageView()
         self.addActionToNicknameTextField()
+        self.addActionToCompleteButton()
+        self.addKeyboardDismissAction()
     }
     
     private func addActionToProfileImageView() {
@@ -36,6 +38,11 @@ class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingVie
     
     private func addActionToCompleteButton() {
         self.contentView.nicknameSettingView.completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
+    }
+    
+    private func addKeyboardDismissAction() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.contentView.addGestureRecognizer(gestureRecognizer)
     }
 }
 
@@ -54,8 +61,11 @@ extension NewNicknameSettingViewController {
     
     @objc private func completeButtonTapped() {
         self.model.saveProfile()
-        
-        //TODO: - 메인 화면으로 넘어가기
+        NavigationManager.shared.changeWindowScene(didDeleteAccount: false)
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.contentView.endEditing(true)
     }
 }
 

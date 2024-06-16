@@ -24,6 +24,7 @@ final class ProfileModel {
         if (nicknameValidationStatus == .ok) {
             UserDefaults.standard.setValue(profileImageNumber, forKey: UserDefaultsKey.profileImageNumber)
             UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname)
+            UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isUser)
         }
     }
 }
