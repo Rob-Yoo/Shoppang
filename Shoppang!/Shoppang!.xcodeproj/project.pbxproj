@@ -46,6 +46,9 @@
 		CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6EE2C1FD47C00DD5556 /* ProductDetailViewController.swift */; };
 		CC9AE6F32C1FDA3100DD5556 /* AddCartBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F22C1FDA3100DD5556 /* AddCartBarButtonItem.swift */; };
 		CC9AE6F52C20075A00DD5556 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F42C20075A00DD5556 /* ProfileView.swift */; };
+		CC9AE6F72C2020CA00DD5556 /* SettingListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */; };
+		CC9AE6F92C2021AB00DD5556 /* SettingListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */; };
+		CC9AE6FB2C20223400DD5556 /* SettingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -109,6 +112,9 @@
 		CC9AE6EE2C1FD47C00DD5556 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		CC9AE6F22C1FDA3100DD5556 /* AddCartBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartBarButtonItem.swift; sourceTree = "<group>"; };
 		CC9AE6F42C20075A00DD5556 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListTableView.swift; sourceTree = "<group>"; };
+		CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListType.swift; sourceTree = "<group>"; };
+		CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListTableViewCell.swift; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -457,18 +463,11 @@
 		CCEE190C2C1C09C400405878 /* SettingScreens */ = {
 			isa = PBXGroup;
 			children = (
-				CCEE190D2C1C09E400405878 /* SettingListScreen */,
-			);
-			path = SettingScreens;
-			sourceTree = "<group>";
-		};
-		CCEE190D2C1C09E400405878 /* SettingListScreen */ = {
-			isa = PBXGroup;
-			children = (
 				CCEE191A2C1C0B3A00405878 /* View */,
+				CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */,
 				CCEE190E2C1C09F400405878 /* SettingListViewController.swift */,
 			);
-			path = SettingListScreen;
+			path = SettingScreens;
 			sourceTree = "<group>";
 		};
 		CCEE19102C1C0A0E00405878 /* SearchProductScreens */ = {
@@ -515,6 +514,8 @@
 			children = (
 				CCEE191B2C1C0B4A00405878 /* SettingListRootView.swift */,
 				CC9AE6F42C20075A00DD5556 /* ProfileView.swift */,
+				CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */,
+				CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -646,6 +647,7 @@
 				CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */,
 				CC7D8C162C1C4B270079FD71 /* CurrentProfileImageView.swift in Sources */,
 				CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */,
+				CC9AE6FB2C20223400DD5556 /* SettingListTableViewCell.swift in Sources */,
 				CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */,
 				CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */,
 				CC4A6B302C1EB1D900AC878A /* Placeholder.swift in Sources */,
@@ -673,6 +675,7 @@
 				CC4A6B432C1ECF7400AC878A /* SortButtonsView.swift in Sources */,
 				CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* SortButton.swift in Sources */,
+				CC9AE6F92C2021AB00DD5556 /* SettingListType.swift in Sources */,
 				CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
 				CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */,
@@ -682,6 +685,7 @@
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
 				CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */,
 				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,
+				CC9AE6F72C2020CA00DD5556 /* SettingListTableView.swift in Sources */,
 				CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */,
 				CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,

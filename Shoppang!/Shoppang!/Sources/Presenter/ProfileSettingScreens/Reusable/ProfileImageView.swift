@@ -27,9 +27,7 @@ final class ProfileImageView: UIImageView {
     
     private func configure() {
         self.contentMode = .scaleAspectFill
-        self.layer.borderColor = UIColor.placeholder.cgColor
-        self.layer.borderWidth = 1
-        self.alpha = 0.5
+        self.uncolorProfileImageView()
     }
     
     func update(image: UIImage) {
@@ -37,8 +35,18 @@ final class ProfileImageView: UIImageView {
     }
     
     func update(isSelected: Bool) {
-        self.layer.borderColor = (isSelected) ? UIColor.mainTheme.cgColor : UIColor.placeholder.cgColor
-        self.layer.borderWidth = (isSelected) ? 3 : 1
-        self.alpha = (isSelected) ? 1 : 0.5
+        isSelected ? self.colorProfileImageView() : self.uncolorProfileImageView()
+    }
+    
+    func colorProfileImageView() {
+        self.layer.borderColor = UIColor.mainTheme.cgColor
+        self.layer.borderWidth = 3
+        self.alpha = 1
+    }
+    
+    func uncolorProfileImageView() {
+        self.layer.borderColor = UIColor.placeholder.cgColor
+        self.layer.borderWidth = 1
+        self.alpha = 0.5
     }
 }
