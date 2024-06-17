@@ -36,11 +36,28 @@ final class ProfileModel {
     }
     
     func saveProfile() {
-        if (nicknameValidationStatus == .ok) {
-            UserDefaults.standard.setValue(String(profileImageNumber), forKey: UserDefaultsKey.profileImageNumber)
-            UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname)
+        guard (nicknameValidationStatus == .ok) else { return }
+        let isUser = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUser)
+
+        if (isUser == false) {
             UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isUser)
+            self.saveJoinDate()
         }
+
+        self.saveUserProfile()
+    }
+    
+    private func saveJoinDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        let currentDate = dateFormatter.string(from: Date())
+
+        UserDefaults.standard.setValue(currentDate, forKey: UserDefaultsKey.joinDate)
+    }
+    
+    private func saveUserProfile() {
+        UserDefaults.standard.setValue(String(profileImageNumber), forKey: UserDefaultsKey.profileImageNumber)
+        UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname)
     }
 }
 
