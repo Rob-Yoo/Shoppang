@@ -36,7 +36,7 @@ final class EditNicknameSettingViewController: BaseViewController<EditNicknameSe
     }
     
     private func addActionToSaveButton() {
-        let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
+        let saveButton = UIBarButtonItem(title: Literal.ButtonTitle.Save, style: .plain, target: self, action: #selector(saveButtonTapped))
         
         self.navigationItem.rightBarButtonItem = saveButton
     }
@@ -63,7 +63,9 @@ extension EditNicknameSettingViewController {
     
     @objc private func saveButtonTapped() {
         self.model.saveProfile()
-        self.navigationController?.popViewController(animated: true)
+        if (self.model.checkNicknameValidationStatus() == .ok) {
+            self.navigationController?.popViewController(animated: true)            
+        }
     }
     
     @objc private func profileImageViewTapped() {
