@@ -8,12 +8,15 @@
 import UIKit
 
 final class SettingListViewController: BaseViewController<SettingListRootView> {
-
-    private let model = NewProfileModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addUserAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.update()
     }
     
     private func addUserAction() {
@@ -30,9 +33,17 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
     }
     
     @objc private func profileViewTapped() {
-        let nextVC = EditNicknameSettingViewController(model: self.model)
+        let nextVC = EditNicknameSettingViewController()
 
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func update() {
+        let user = UserProfile()
+        let profileImage = UIImage.profileImages[user.profileImageNumber]
+        
+        self.contentView.profileView.update(image: profileImage, nickname: user.nickname)
+        self.contentView.settingListTableView.cartListCount = user.cartListCount
     }
 }
 

@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class NewProfileModel {
+final class ProfileModel {
     
     @Published var nickname: String = {
         
@@ -47,7 +47,7 @@ final class NewProfileModel {
 }
 
 //MARK: - Implementation ProfileImageModel
-extension NewProfileModel: ProfileImageModel {
+extension ProfileModel: ProfileImageModel {
     var profileImageNumberPublisher: Published<Int>.Publisher { return $profileImageNumber }
     
     func setProfileImageNumber(number: Int) {
@@ -56,7 +56,7 @@ extension NewProfileModel: ProfileImageModel {
 }
 
 //MARK: - 닉네임 유효성 검사 로직
-extension NewProfileModel {
+extension ProfileModel {
     func validateNickname(nickname: String) -> NicknameValidationStatus {
         if (isCountError(nickname)) { return .countError }
         if (isCharacterError(nickname)) { return .characterError }
@@ -85,7 +85,7 @@ extension NewProfileModel {
 }
 
 //MARK: - Save Data Methods
-extension NewProfileModel {
+extension ProfileModel {
     private func saveJoinDate() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"

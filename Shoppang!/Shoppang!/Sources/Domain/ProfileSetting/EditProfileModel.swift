@@ -10,14 +10,13 @@ import Combine
 
 final class EditProfileModel {
 
-    private let profileModel: NewProfileModel
+    private let profileModel: ProfileModel
     
     @Published var nickname: String
     @Published var profileImageNumber: Int
 
-    
-    init(profileModel: NewProfileModel) {
-        self.profileModel = profileModel
+    init() {
+        self.profileModel = ProfileModel()
         self.nickname = profileModel.nickname
         self.profileImageNumber = profileModel.profileImageNumber
     }

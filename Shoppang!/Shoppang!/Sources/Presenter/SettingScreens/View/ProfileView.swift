@@ -17,14 +17,14 @@ final class ProfileView: UIView {
     }
     
     private let nicknameLabel = UILabel().then {
-        $0.text = "지뉴지뉴"
         $0.textColor = .black
         $0.font = .bold16
         $0.numberOfLines = 1
     }
     
     private let joinDateLabel = UILabel().then {
-        $0.text = "2024.06.17 가입"
+        $0.text = (UserDefaults.standard.string(forKey: UserDefaultsKey.joinDate) ??
+        "0000.00.00") + " 가입"
         $0.textColor = .placeholder
         $0.font = .regular13
     }
@@ -43,6 +43,11 @@ final class ProfileView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(image: UIImage, nickname: String) {
+        self.nicknameLabel.text = nickname
+        self.profileImageView.update(image: image)
     }
 }
 

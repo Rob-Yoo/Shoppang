@@ -13,8 +13,8 @@ final class EditNicknameSettingViewController: BaseViewController<EditNicknameSe
     private let model: EditProfileModel
     private var cancellable = Set<AnyCancellable>()
     
-    init(model: NewProfileModel) {
-        self.model = EditProfileModel(profileModel: model)
+    init() {
+        self.model = EditProfileModel()
         super.init(nibName: nil, bundle: nil)
     }
     

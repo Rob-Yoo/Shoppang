@@ -17,7 +17,7 @@
 		CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */; };
 		CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804752C1D853C00172CAF /* ReusableProtocol.swift */; };
 		CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */; };
-		CC38048A2C1DA91700172CAF /* NewProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804892C1DA91700172CAF /* NewProfileModel.swift */; };
+		CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804892C1DA91700172CAF /* ProfileModel.swift */; };
 		CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */; };
 		CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */; };
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
@@ -54,6 +54,7 @@
 		CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */; };
 		CC9AE7062C204EE800DD5556 /* EditProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7052C204EE800DD5556 /* EditProfileImageSettingView.swift */; };
 		CC9AE7082C2050D100DD5556 /* ProfileImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7072C2050D100DD5556 /* ProfileImageModel.swift */; };
+		CC9AE70A2C205B9500DD5556 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7092C205B9500DD5556 /* UserProfile.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -88,7 +89,7 @@
 		CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC3804752C1D853C00172CAF /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileImageSettingView.swift; sourceTree = "<group>"; };
-		CC3804892C1DA91700172CAF /* NewProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileModel.swift; sourceTree = "<group>"; };
+		CC3804892C1DA91700172CAF /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationStatus.swift; sourceTree = "<group>"; };
 		CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileModel.swift; sourceTree = "<group>"; };
 		CC9AE7052C204EE800DD5556 /* EditProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageSettingView.swift; sourceTree = "<group>"; };
 		CC9AE7072C2050D100DD5556 /* ProfileImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageModel.swift; sourceTree = "<group>"; };
+		CC9AE7092C205B9500DD5556 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -277,9 +279,10 @@
 			isa = PBXGroup;
 			children = (
 				CC9AE7072C2050D100DD5556 /* ProfileImageModel.swift */,
-				CC3804892C1DA91700172CAF /* NewProfileModel.swift */,
+				CC3804892C1DA91700172CAF /* ProfileModel.swift */,
 				CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */,
 				CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */,
+				CC9AE7092C205B9500DD5556 /* UserProfile.swift */,
 			);
 			path = ProfileSetting;
 			sourceTree = "<group>";
@@ -689,12 +692,13 @@
 				CC9AE6ED2C1FD40400DD5556 /* ProductDetailView.swift in Sources */,
 				CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */,
 				CC347B462C1F438800DD50A6 /* SearchHistoryModel.swift in Sources */,
-				CC38048A2C1DA91700172CAF /* NewProfileModel.swift in Sources */,
+				CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */,
 				CC4A6B432C1ECF7400AC878A /* SortButtonsView.swift in Sources */,
 				CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* SortButton.swift in Sources */,
 				CC9AE6F92C2021AB00DD5556 /* SettingListType.swift in Sources */,
 				CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */,
+				CC9AE70A2C205B9500DD5556 /* UserProfile.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
 				CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */,
 				CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */,

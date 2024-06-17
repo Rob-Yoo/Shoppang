@@ -10,7 +10,7 @@ import Combine
 
 class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingView> {
     
-    private let model = NewProfileModel()
+    private let model = ProfileModel()
     private var cancellable = Set<AnyCancellable>()
 
     override func viewDidLoad() {
@@ -49,7 +49,7 @@ class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingVie
 //MARK: - User Action Handling
 extension NewNicknameSettingViewController {
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView, NewProfileModel>(model: self.model)
+        let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView, ProfileModel>(model: self.model)
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

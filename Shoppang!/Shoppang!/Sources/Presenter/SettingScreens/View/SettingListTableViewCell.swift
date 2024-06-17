@@ -41,11 +41,15 @@ final class SettingListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCellData(type: SettingListType, cartListCount: Int = 0) {
+    func configureCellData(type: SettingListType, cartListCount: Int) {
         self.titleLabel.text = type.title
         
         guard type == .cartList else { return }
         self.configureCartListCountView()
+        self.cartListCountLabel.text = String(cartListCount) + "개"
+    }
+    
+    func updateCartListCountLabel(cartListCount: Int) {
         self.cartListCountLabel.text = String(cartListCount) + "개"
     }
 }
