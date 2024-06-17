@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class ProfileImageSettingViewController<ContentView: ProfileImageSettingView, Model: ProfileImageModel>: BaseViewController<ContentView> {
+final class ProfileImageSettingViewController<ContentView: ProfileImageSettingView, Model: ProfileImageProtocol>: BaseViewController<ContentView> {
     
     private var model: Model
     private var cancellable = Set<AnyCancellable>()

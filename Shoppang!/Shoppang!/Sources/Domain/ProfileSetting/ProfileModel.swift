@@ -47,7 +47,7 @@ final class ProfileModel {
 }
 
 //MARK: - Implementation ProfileImageModel
-extension ProfileModel: ProfileImageModel {
+extension ProfileModel: ProfileImageProtocol {
     var profileImageNumberPublisher: Published<Int>.Publisher { return $profileImageNumber }
     
     func setProfileImageNumber(number: Int) {

@@ -9,12 +9,14 @@ import UIKit
 
 final class ProductDetailViewController: BaseViewController<ProductDetailView> {
 
-    private let navigationTitle: String
-    private let weblink: String
+    private var model: CartProtocol
+    private var product: Product
+    private var isCart: Bool
     
-    init(product: Product) {
-        self.navigationTitle = product.title.htmlElementDeleted
-        self.weblink = product.link
+    init(product: Product, model: CartProtocol, isCart: Bool) {
+        self.model = model
+        self.product = product
+        self.isCart = isCart
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -25,21 +27,21 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavigationBar()
-        self.contentView.urlLink = weblink
+        self.contentView.urlLink = product.link
     }
     
     private func configureNavigationBar() {
-        self.navigationItem.title = self.navigationTitle
-        let button = AddCartBarButton()
+        self.navigationItem.title = product.title.htmlElementDeleted
+        let button = CartBarButton(isCart: self.isCart)
         let barbutton = UIBarButtonItem(customView: button)
         
         self.navigationItem.rightBarButtonItem = barbutton
-        button.addTarget(self, action: #selector(addCartButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
     }
     
-    @objc private func addCartButtonTapped(sender: UIButton) {
-        guard let addCartButton = sender as? AddCartBarButton else { return }
-        
-        addCartButton.isSelected.toggle()
+    @objc private func cartButtonTapped(sender: UIButton) {
+        guard let cartButton = sender as? CartBarButton else { return }
+        cartButton.isCart ? self.model.removeFromCartList(productID: product.productId) : self.model.addToCartList(productID: product.productId)
+        cartButton.isCart.toggle()
     }
 }

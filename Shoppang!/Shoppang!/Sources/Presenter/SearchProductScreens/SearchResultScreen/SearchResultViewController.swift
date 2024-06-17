@@ -26,13 +26,10 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureNavigationTitle()
+        
+        self.navigationItem.title = self.navigationTitle
         self.addUserAction()
         self.observeModel()
-    }
-    
-    private func configureNavigationTitle() {
-        self.navigationItem.title = self.navigationTitle
     }
     
     private func addUserAction() {
@@ -62,15 +59,27 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = self.model.searchResult.items[indexPath.item]
-        let nextVC = ProductDetailViewController(product: product)
+        let isCart = self.model.cartList.contains(product.productId)
+        let nextVC = ProductDetailViewController(product: product, model: self.model, isCart: isCart)
         
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
-extension SearchResultViewController: SortButtonsViewDelegate {
+extension SearchResultViewController: SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate {
+    
     func sortButtonTapped(type: SortType) {
         self.model.sortType = type
+    }
+    
+    func cartButtonTapped(idx: Int) {
+        let productID = self.model.searchResult.items[idx].productId
+        
+        if (self.model.cartList.contains(productID)) {
+            self.model.removeFromCartList(productID: productID)
+        } else {
+            self.model.addToCartList(productID: productID)
+        }
     }
 }
 
@@ -82,6 +91,14 @@ extension SearchResultViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.contentView.update(searchResult: new)
+            }
+            .store(in: &cancellable)
+        
+        self.model.$cartList
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] new in
+                self?.contentView.productListCollectionView.cartList = new
             }
             .store(in: &cancellable)
     }

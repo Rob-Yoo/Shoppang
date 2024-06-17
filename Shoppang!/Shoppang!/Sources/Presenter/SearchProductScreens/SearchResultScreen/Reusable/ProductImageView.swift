@@ -19,16 +19,7 @@ final class ProductImageView: UIView {
         $0.layer.borderWidth = 0.5
     }
     
-    let addCartButton = UIButton().then {
-        let unselectedImage = UIImage.likeUnselected
-        let selectedImage = UIImage.likeSelected
-
-        $0.setImage(unselectedImage, for: .normal)
-        $0.setImage(selectedImage, for: .selected)
-        $0.backgroundColor = UIColor(white: 0, alpha: 0.4)
-        $0.layer.cornerRadius = 10
-        $0.clipsToBounds = true
-    }
+    let cartButton = CartButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +36,7 @@ final class ProductImageView: UIView {
 extension ProductImageView {
     private func configureHierarchy() {
         self.addSubview(imageView)
-        self.addSubview(addCartButton)
+        self.addSubview(cartButton)
     }
     
     private func configureLayout() {
@@ -53,10 +44,10 @@ extension ProductImageView {
             $0.edges.equalToSuperview()
         }
         
-        addCartButton.snp.makeConstraints {
+        cartButton.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(10)
             $0.width.equalToSuperview().multipliedBy(0.2)
-            $0.height.equalTo(addCartButton.snp.width)
+            $0.height.equalTo(cartButton.snp.width)
         }
     }
 }

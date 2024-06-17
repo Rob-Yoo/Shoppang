@@ -10,9 +10,15 @@ import SnapKit
 import Then
 import Kingfisher
 
+protocol SearchResultCollectionViewCellDelegate: AnyObject {
+    func cartButtonTapped(idx: Int)
+}
+
 final class SearchResultCollectionViewCell: UICollectionViewCell {
     
-    let productImageView = ProductImageView()
+    lazy var productImageView = ProductImageView().then {
+        $0.cartButton.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
+    }
     
     private let mallNameLabel = UILabel().then {
         $0.textColor = .placeholder
@@ -40,7 +46,7 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCellData(data: Product) {
+    func configureCellData(data: Product, isCart: Bool) {
         let url = URL(string: data.image)
         let formattedPrice = Int(data.lprice)!.formatted()
 
@@ -48,6 +54,18 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
         self.mallNameLabel.text = data.mallName
         self.productNameLabel.text = data.title.htmlElementDeleted
         self.priceLabel.text = formattedPrice + "원"
+        self.productImageView.cartButton.isCart = isCart
+    }
+    
+    @objc func cartButtonTapped() {
+        guard let collectionView = superview as? UICollectionView, let indexPath = collectionView.indexPath(for: self) else { return }
+
+        guard let delegate = collectionView.delegate as? SearchResultCollectionViewCellDelegate else {
+            print("SearchResultViewController가 UICollectionViewDelegate를 채택하지 않았습니다")
+            return
+        }
+        
+        delegate.cartButtonTapped(idx: indexPath.item)
     }
 }
 

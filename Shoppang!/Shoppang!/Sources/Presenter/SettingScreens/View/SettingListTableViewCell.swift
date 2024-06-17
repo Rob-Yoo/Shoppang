@@ -46,11 +46,11 @@ final class SettingListTableViewCell: UITableViewCell {
         
         guard type == .cartList else { return }
         self.configureCartListCountView()
-        self.cartListCountLabel.text = String(cartListCount) + "개"
+        self.cartListCountLabel.text = cartListCount.formatted() + "개"
     }
     
     func updateCartListCountLabel(cartListCount: Int) {
-        self.cartListCountLabel.text = String(cartListCount) + "개"
+        self.cartListCountLabel.text = cartListCount.formatted() + "개"
     }
 }
 

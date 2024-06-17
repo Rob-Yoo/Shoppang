@@ -16,6 +16,11 @@ final class SearchResultCollectionView: UICollectionView {
             self.reloadData()
         }
     }
+    var cartList = SearchResultModel.loadCartList() {
+        didSet {
+            self.reloadData()
+        }
+    }
     
     init(layout: () -> UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: layout())
@@ -40,7 +45,7 @@ extension SearchResultCollectionView: UICollectionViewDelegate, UICollectionView
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.reusableIdentifier, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configureCellData(data: product)
+        cell.configureCellData(data: product, isCart: cartList.contains(product.productId))
         return cell
     }
 }

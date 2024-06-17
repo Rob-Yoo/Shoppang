@@ -35,6 +35,13 @@ final class SearchResultModel {
             self.fetchSearchResult(url: url, isAppend: true)
         }
     }
+    
+    @Published var cartList = loadCartList() {
+        didSet {
+            let cart = Array(cartList)
+            UserDefaults.standard.setValue(cart, forKey: UserDefaultsKey.userCartList)
+        }
+    }
 }
 
 //MARK: - Data Manipulation
@@ -47,5 +54,26 @@ extension SearchResultModel {
                 self?.searchResult = result
             }
         }
+    }
+}
+
+//MARK: - Cart List Manipulation
+extension SearchResultModel {
+    static func loadCartList() -> Set<String> {
+        guard let cartList = UserDefaults.standard.array(forKey: UserDefaultsKey.userCartList) as? [String] else {
+            return Set<String>()
+        }
+        
+        return Set(cartList)
+    }
+}
+
+extension SearchResultModel: CartProtocol {
+    func addToCartList(productID: String) {
+        self.cartList.insert(productID)
+    }
+    
+    func removeFromCartList(productID: String) {
+        self.cartList.remove(productID)
     }
 }

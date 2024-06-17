@@ -33,7 +33,7 @@ final class EditProfileModel {
 }
 
 //MARK: - Implementation ProfileImageModel
-extension EditProfileModel: ProfileImageModel {
+extension EditProfileModel: ProfileImageProtocol {
     var profileImageNumberPublisher: Published<Int>.Publisher { return $profileImageNumber }
     
     func setProfileImageNumber(number: Int) {

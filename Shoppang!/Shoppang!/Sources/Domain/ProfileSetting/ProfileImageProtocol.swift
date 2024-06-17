@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol ProfileImageModel {
+protocol ProfileImageProtocol {
     var profileImageNumberPublisher: Published<Int>.Publisher { get }
     
     func setProfileImageNumber(number: Int)
