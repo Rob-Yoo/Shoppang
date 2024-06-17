@@ -61,7 +61,10 @@ extension NewNicknameSettingViewController {
     
     @objc private func completeButtonTapped() {
         self.model.saveProfile()
-        NavigationManager.changeWindowScene(didDeleteAccount: false)
+
+        if (self.model.checkNicknameValidationStatus() == .ok) {
+            NavigationManager.changeWindowScene(didDeleteAccount: false)
+        }
     }
     
     @objc private func dismissKeyboard() {
