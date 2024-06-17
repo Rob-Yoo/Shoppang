@@ -10,13 +10,12 @@ import Combine
 
 final class SearchResultViewController: BaseViewController<SearchResultRootView> {
 
-    private let navigationTitle: String
     private let model = SearchResultModel()
     private var cancellable = Set<AnyCancellable>()
     
     init(query: String) {
-        self.navigationTitle = query
         super.init(nibName: nil, bundle: nil)
+        self.navigationItem.title = query
         self.model.searchingProduct = query
     }
     
@@ -26,8 +25,6 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationItem.title = self.navigationTitle
         self.addUserAction()
         self.observeModel()
     }
@@ -48,7 +45,22 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
 }
 
 //MARK: - User Action Handling
-extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UICollectionViewDelegate {
+extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UICollectionViewDelegate, SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate {
+    
+    func sortButtonTapped(type: SortType) {
+        self.model.sortType = type
+    }
+    
+    func cartButtonTapped(idx: Int) {
+        let productID = self.model.searchResult.items[idx].productId
+        
+        if (self.model.cartList.contains(productID)) {
+            self.model.removeFromCartList(productID: productID)
+        } else {
+            self.model.addToCartList(productID: productID)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if self.model.searchResult.items.count - 2 == indexPath.item {
@@ -64,23 +76,7 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
         
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
-}
-
-extension SearchResultViewController: SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate {
     
-    func sortButtonTapped(type: SortType) {
-        self.model.sortType = type
-    }
-    
-    func cartButtonTapped(idx: Int) {
-        let productID = self.model.searchResult.items[idx].productId
-        
-        if (self.model.cartList.contains(productID)) {
-            self.model.removeFromCartList(productID: productID)
-        } else {
-            self.model.addToCartList(productID: productID)
-        }
-    }
 }
 
 

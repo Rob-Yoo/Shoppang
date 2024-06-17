@@ -16,8 +16,6 @@ final class ProfileImageSettingViewController<ContentView: ProfileImageSettingVi
     init(model: Model) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
-        self.addUserAction()
-        self.observingModel()
     }
     
     required init?(coder: NSCoder) {
@@ -26,6 +24,8 @@ final class ProfileImageSettingViewController<ContentView: ProfileImageSettingVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addUserAction()
+        self.observingModel()
     }
 
     private func addUserAction() {

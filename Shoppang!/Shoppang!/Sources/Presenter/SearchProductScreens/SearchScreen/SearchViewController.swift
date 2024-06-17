@@ -58,7 +58,12 @@ final class SearchViewController: BaseViewController<SearchRootView> {
         self.contentView.emptyHistoryView.addGestureRecognizer(tap)
         self.contentView.searchHistoryView.searchHistoryTableView.keyboardDismissMode = .onDrag
     }
-    
+
+}
+
+//MARK: - User Action Handling
+extension SearchViewController: UISearchBarDelegate, UITableViewDelegate, SearchViewHistoryTableViewDelegate {
+
     @objc func deleteAllButtonTapped() {
         self.model.searchHistory = []
     }
@@ -66,10 +71,7 @@ final class SearchViewController: BaseViewController<SearchRootView> {
     @objc func keyboardDismiss() {
         self.contentView.endEditing(true)
     }
-}
-
-//MARK: - User Action Handling
-extension SearchViewController: UISearchBarDelegate, UITableViewDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text else { return }
         let nextVC = SearchResultViewController(query: query)
@@ -82,15 +84,15 @@ extension SearchViewController: UISearchBarDelegate, UITableViewDelegate {
         let query = self.model.searchHistory[indexPath.row]
         let nextVC = SearchResultViewController(query: query)
         
+        self.model.saveSearchHistory(keyword: query)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
-}
-
-extension SearchViewController: SearchViewHistoryTableViewDelegate {
+    
     func deleteCell(at: Int) {
         self.model.removeSearchHistory(idx: at)
     }
 }
+
 
 //MARK: - Observing Model
 extension SearchViewController {
