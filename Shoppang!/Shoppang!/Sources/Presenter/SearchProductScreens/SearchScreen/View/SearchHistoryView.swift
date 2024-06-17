@@ -18,7 +18,7 @@ final class SearchHistoryView: UIView {
     }
     
     let deleteAllButton = UILabel().then {
-        $0.text = "전체 삭제"
+        $0.text = Literal.ButtonTitle.DeleteAll
         $0.textColor = .mainTheme
         $0.font = .regular14
         $0.isUserInteractionEnabled = true

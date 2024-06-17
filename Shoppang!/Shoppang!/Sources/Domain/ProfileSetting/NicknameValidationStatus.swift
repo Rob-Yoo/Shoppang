@@ -16,13 +16,13 @@ enum NicknameValidationStatus {
     var statusText: String {
         switch self {
         case .ok:
-            return "사용할 수 있는 닉네임입니다 :D"
+            return Literal.StatusLabel.OK
         case .countError:
-            return "2글자 이상 10글자 미만으로 설정해주세요."
+            return Literal.StatusLabel.CountError
         case .characterError:
-            return "닉네임에 @, #, $, %, 띄어쓰기는 포함할 수 없어요."
+            return Literal.StatusLabel.CharacterError
         case .numberError:
-            return "닉네임에 숫자는 포함할 수 없어요."
+            return Literal.StatusLabel.NumError
         }
     }
 }

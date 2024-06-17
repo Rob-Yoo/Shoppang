@@ -21,7 +21,7 @@ class TextButton: UIButton {
     }
     
     convenience init(type: TextButtonType) {
-        self.init(title: type.rawValue)
+        self.init(title: type.title)
     }
     
     required init?(coder: NSCoder) {
@@ -31,8 +31,17 @@ class TextButton: UIButton {
 }
 
 extension TextButton {
-    enum TextButtonType: String {
-        case start = "시작하기"
-        case complete = "완료"
+    enum TextButtonType {
+        case start
+        case complete
+        
+        var title: String {
+            switch self {
+            case .start:
+                return Literal.ButtonTitle.Start
+            case .complete:
+                return Literal.ButtonTitle.Complete
+            }
+        }
     }
 }

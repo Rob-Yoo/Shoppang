@@ -12,7 +12,7 @@ import Then
 final class NicknameTextFieldView: UIView {
     
     lazy var nicknameTextField = UITextField().then {
-        $0.placeholder = Placeholder.nicknamePlaceholder
+        $0.placeholder = Literal.Placeholder.Nickname
         $0.font = .regular14
         $0.textColor = .black
         $0.borderStyle = .none

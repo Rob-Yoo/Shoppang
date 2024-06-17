@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 final class SettingListRootView: UIView, RootViewProtocol {
-    var navigationTitle: String = "SETTING"
+    var navigationTitle: String = Literal.NavigationTitle.Setting
     
     let profileView = ProfileView()
     private let line = UIView().then { $0.backgroundColor = .black }

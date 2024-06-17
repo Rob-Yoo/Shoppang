@@ -14,9 +14,9 @@ enum ProfileSettingType {
     var navigationTitle: String {
         switch self {
         case .New:
-            return "PROFILE SETTING"
+            return Literal.NavigationTitle.NewProfile
         case .Editing:
-            return "EDIT PROFILE"
+            return Literal.NavigationTitle.EditProfile
         }
     }
 }

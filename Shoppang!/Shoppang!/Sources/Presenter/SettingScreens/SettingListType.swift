@@ -10,22 +10,22 @@ import Foundation
 enum SettingListType: CaseIterable {
     case cartList
     case faq
-    case oneToOneAsking
+    case privateAsking
     case notificationSetting
     case deleteAccount
     
     var title: String {
         switch self {
         case .cartList:
-            return "나의 장바구니 목록"
+            return Literal.SettingList.CartList
         case .faq:
-            return "자주 묻는 질문"
-        case .oneToOneAsking:
-            return"1:1 문의"
+            return Literal.SettingList.FAQ
+        case .privateAsking:
+            return Literal.SettingList.PrivateAsking
         case .notificationSetting:
-            return"알림 설정"
+            return Literal.SettingList.NotificationSetting
         case .deleteAccount:
-            return "탈퇴하기"
+            return Literal.SettingList.DeleteAccount
         }
     }
 }

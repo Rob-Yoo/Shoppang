@@ -16,13 +16,13 @@ enum SortType: String {
     var title: String {
         switch self {
         case .sim:
-            return "정확도"
+            return Literal.ButtonTitle.Sim
         case .date:
-            return "날짜순"
+            return Literal.ButtonTitle.Date
         case .dsc:
-            return "가격높은순"
+            return Literal.ButtonTitle.Dsc
         case .asc:
-            return "가격낮은순"
+            return Literal.ButtonTitle.Asc
         }
     }
 }
