@@ -15,16 +15,16 @@ final class SortButton: TextButton {
 
     override var isSelected: Bool {
         didSet {
-            self.backgroundColor = isSelected ? selectedBgColor : unselectedBgColor
+            self.updateState()
         }
     }
     
-    init(title: String, type: SortType, selectedBgColor: UIColor = .charcoal, unselectedBgColor: UIColor = .white, isSelected: Bool = false) {
+    init(type: SortType, selectedBgColor: UIColor = .charcoal, unselectedBgColor: UIColor = .white, isSelected: Bool = false) {
         self.selectedBgColor = selectedBgColor
         self.unselectedBgColor = unselectedBgColor
         self.type = type
         
-        super.init(title: title)
+        super.init(title: type.title)
         self.isSelected = isSelected
         self.configure()
     }
@@ -34,12 +34,18 @@ final class SortButton: TextButton {
     }
     
     private func configure() {
-        self.setTitleColor(.black, for: .normal)
-        self.setTitleColor(.white, for: .selected)
-        self.backgroundColor = self.unselectedBgColor
+        self.updateState()
+        self.titleLabel?.font = .medium14
         self.layer.borderColor = UIColor.placeholder.cgColor
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 0.7
         self.layer.cornerRadius = 15
         self.clipsToBounds = true
+    }
+    
+    private func updateState() {
+        let titleColor: UIColor = isSelected ? .white : .black
+        
+        self.backgroundColor = isSelected ? selectedBgColor : unselectedBgColor
+        self.setTitleColor(titleColor, for: .normal)
     }
 }

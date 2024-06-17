@@ -37,10 +37,15 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     private func addUserAction() {
         self.addActionToSearchResultCollectionView()
+        self.addActionToSortButtonsView()
     }
     
     private func addActionToSearchResultCollectionView() {
         self.contentView.productListCollectionView.prefetchDataSource = self
+    }
+    
+    private func addActionToSortButtonsView() {
+        self.contentView.sortButtonsView.sortButtonsViewDelegate = self
     }
 }
 
@@ -52,6 +57,12 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
                 self.model.page += 1
             }
         }
+    }
+}
+
+extension SearchResultViewController: SortButtonsViewDelegate {
+    func sortButtonTapped(type: SortType) {
+        self.model.sortType = type
     }
 }
 

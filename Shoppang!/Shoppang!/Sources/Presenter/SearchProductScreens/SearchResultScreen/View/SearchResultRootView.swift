@@ -15,7 +15,7 @@ final class SearchResultRootView: UIView {
         $0.font = .bold15
     }
     
-    let sortButtonsStackView = SortButtonsStackView()
+    let sortButtonsView = SortButtonsView()
     
     let productListCollectionView = SearchResultCollectionView() {
         let layout = UICollectionViewFlowLayout()
@@ -42,13 +42,14 @@ final class SearchResultRootView: UIView {
         self.totalCountLabel.text = searchResult.total.formatted() + "개의 검색 결과"
         self.productListCollectionView.productList = searchResult.items
     }
+
 }
 
 //MARK: - Configure Subviews
 extension SearchResultRootView {
     private func configureHierarchy() {
         self.addSubview(totalCountLabel)
-        self.addSubview(sortButtonsStackView)
+        self.addSubview(sortButtonsView)
         self.addSubview(productListCollectionView)
     }
     
@@ -58,14 +59,14 @@ extension SearchResultRootView {
             $0.horizontalEdges.equalToSuperview().inset(20)
         }
         
-        sortButtonsStackView.snp.makeConstraints {
+        sortButtonsView.snp.makeConstraints {
             $0.top.equalTo(totalCountLabel.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalToSuperview().multipliedBy(0.04)
         }
         
         productListCollectionView.snp.makeConstraints {
-            $0.top.equalTo(sortButtonsStackView.snp.bottom).offset(20)
+            $0.top.equalTo(sortButtonsView.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.bottom.equalTo(self.safeAreaLayoutGuide)
         }
