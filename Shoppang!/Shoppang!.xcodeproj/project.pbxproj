@@ -45,6 +45,7 @@
 		CC9AE6ED2C1FD40400DD5556 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6EC2C1FD40400DD5556 /* ProductDetailView.swift */; };
 		CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6EE2C1FD47C00DD5556 /* ProductDetailViewController.swift */; };
 		CC9AE6F32C1FDA3100DD5556 /* AddCartBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F22C1FDA3100DD5556 /* AddCartBarButtonItem.swift */; };
+		CC9AE6F52C20075A00DD5556 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F42C20075A00DD5556 /* ProfileView.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -107,6 +108,7 @@
 		CC9AE6EC2C1FD40400DD5556 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		CC9AE6EE2C1FD47C00DD5556 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		CC9AE6F22C1FDA3100DD5556 /* AddCartBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartBarButtonItem.swift; sourceTree = "<group>"; };
+		CC9AE6F42C20075A00DD5556 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -430,7 +432,7 @@
 				CCEE19352C1C2F5A00405878 /* OnboardingScreens */,
 				CC38047A2C1D971100172CAF /* ProfileSettingScreens */,
 				CCEE19102C1C0A0E00405878 /* SearchProductScreens */,
-				CCEE190C2C1C09C400405878 /* UserSettingScreens */,
+				CCEE190C2C1C09C400405878 /* SettingScreens */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -452,12 +454,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		CCEE190C2C1C09C400405878 /* UserSettingScreens */ = {
+		CCEE190C2C1C09C400405878 /* SettingScreens */ = {
 			isa = PBXGroup;
 			children = (
 				CCEE190D2C1C09E400405878 /* SettingListScreen */,
 			);
-			path = UserSettingScreens;
+			path = SettingScreens;
 			sourceTree = "<group>";
 		};
 		CCEE190D2C1C09E400405878 /* SettingListScreen */ = {
@@ -512,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				CCEE191B2C1C0B4A00405878 /* SettingListRootView.swift */,
+				CC9AE6F42C20075A00DD5556 /* ProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */,
 				CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */,
 				CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */,
+				CC9AE6F52C20075A00DD5556 /* ProfileView.swift in Sources */,
 				CC4A6B452C1EDEC600AC878A /* SearchResultCollectionView.swift in Sources */,
 				CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */,
 				CC9AE6ED2C1FD40400DD5556 /* ProductDetailView.swift in Sources */,

@@ -10,6 +10,8 @@ import UIKit
 final class SettingListRootView: UIView, RootViewProtocol {
     var navigationTitle: String = "SETTING"
     
+    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
