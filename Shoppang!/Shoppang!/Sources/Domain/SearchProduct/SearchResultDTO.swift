@@ -11,9 +11,9 @@ struct SearchResultDTO: Decodable {
     let total: Int
     let start: Int
     let display: Int
-    var items: [SearchResult]
+    var items: [Product]
     
-    private init(total: Int, start: Int, display: Int, items: [SearchResult]) {
+    private init(total: Int, start: Int, display: Int, items: [Product]) {
         self.total = total
         self.start = start
         self.display = display
@@ -25,7 +25,7 @@ struct SearchResultDTO: Decodable {
     }
 }
 
-struct SearchResult: Decodable {
+struct Product: Decodable {
     let title: String
     let link: String
     let image: String

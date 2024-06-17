@@ -11,7 +11,7 @@ import Then
 
 final class SearchResultCollectionView: UICollectionView {
     
-    var productList = [SearchResult]() {
+    var productList = [Product]() {
         didSet {
             self.reloadData()
         }

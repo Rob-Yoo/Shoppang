@@ -35,7 +35,10 @@ final class SearchResultModel {
             self.fetchSearchResult(url: url, isAppend: true)
         }
     }
-    
+}
+
+//MARK: - Data Manipulation
+extension SearchResultModel {
     private func fetchSearchResult(url: String, isAppend: Bool = false) {
         NetworkManager.requestURL(url: url) { [weak self] (result: SearchResultDTO) in
             if (isAppend) {

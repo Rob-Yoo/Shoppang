@@ -40,7 +40,7 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCellData(data: SearchResult) {
+    func configureCellData(data: Product) {
         let url = URL(string: data.image)
         let formattedPrice = Int(data.lprice)!.formatted()
 

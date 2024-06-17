@@ -12,4 +12,5 @@ enum UserDefaultsKey {
     static let nickname = "Nickname"
     static let isUser = "isUser"
     static let searchHistory = "SearchHistory"
+    static let userCartList = "UserCartList"
 }

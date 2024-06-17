@@ -42,6 +42,7 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     private func addActionToSearchResultCollectionView() {
         self.contentView.productListCollectionView.prefetchDataSource = self
+        self.contentView.productListCollectionView.delegate = self
     }
     
     private func addActionToSortButtonsView() {
@@ -50,13 +51,20 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
 }
 
 //MARK: - User Action Handling
-extension SearchResultViewController: UICollectionViewDataSourcePrefetching {
+extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if self.model.searchResult.items.count - 2 == indexPath.item {
                 self.model.page += 1
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = self.model.searchResult.items[indexPath.item]
+        let nextVC = ProductDetailViewController(product: product)
+        
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
