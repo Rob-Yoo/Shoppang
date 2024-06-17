@@ -1,29 +1,44 @@
 //
-//  NewNicknameSettingViewController.swift
+//  EditNicknameSettingViewController.swift
 //  Shoppang!
 //
-//  Created by Jinyoung Yoo on 6/14/24.
+//  Created by Jinyoung Yoo on 6/17/24.
 //
 
 import UIKit
 import Combine
 
-class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingView> {
+final class EditNicknameSettingViewController: BaseViewController<EditNicknameSettingView> {
     
-    private let model = ProfileModel()
+    private let model: EditProfileModel
     private var cancellable = Set<AnyCancellable>()
-
+    
+    init(model: NewProfileModel) {
+        self.model = EditProfileModel(profileModel: model)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.observingModel()
         self.addUserAction()
+        self.observeModel()
     }
-
+    
     private func addUserAction() {
+        self.addActionToSaveButton()
         self.addActionToProfileImageView()
         self.addActionToNicknameTextField()
-        self.addActionToCompleteButton()
         self.addKeyboardDismissAction()
+    }
+    
+    private func addActionToSaveButton() {
+        let saveButton = UIBarButtonItem(title: "저장", style: .plain, target: self, action: #selector(saveButtonTapped))
+        
+        self.navigationItem.rightBarButtonItem = saveButton
     }
     
     private func addActionToProfileImageView() {
@@ -36,20 +51,23 @@ class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingVie
         self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
     }
     
-    private func addActionToCompleteButton() {
-        self.contentView.nicknameSettingView.completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
-    }
-    
     private func addKeyboardDismissAction() {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.contentView.addGestureRecognizer(gestureRecognizer)
     }
+    
 }
 
 //MARK: - User Action Handling
-extension NewNicknameSettingViewController {
+extension EditNicknameSettingViewController {
+    
+    @objc private func saveButtonTapped() {
+        self.model.saveProfile()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController<NewProfileImageSettingView>(model: self.model)
+        let nextVC = ProfileImageSettingViewController<EditProfileImageSettingView, EditProfileModel>(model: self.model)
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -58,20 +76,15 @@ extension NewNicknameSettingViewController {
         guard let text = sender.text else { return }
         self.model.nickname = text
     }
-    
-    @objc private func completeButtonTapped() {
-        self.model.saveProfile()
-        NavigationManager.changeWindowScene(didDeleteAccount: false)
-    }
-    
+
     @objc private func dismissKeyboard() {
         self.contentView.endEditing(true)
     }
 }
 
 //MARK: - Observing Model
-extension NewNicknameSettingViewController {
-    private func observingModel() {
+extension EditNicknameSettingViewController {
+    private func observeModel() {
         self.model.$nickname
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
@@ -81,24 +94,25 @@ extension NewNicknameSettingViewController {
         
         self.model.$profileImageNumber
             .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.updateEditableProfileImageView(imageNumber: new)
+            .sink { [weak self] _ in
+                self?.updateEditableProfileImageView()
             }
             .store(in: &cancellable)
     }
 }
 
 //MARK: - Update Views
-extension NewNicknameSettingViewController {
+extension EditNicknameSettingViewController {
     private func updateNickNicknameTextFieldView() {
-        let status = self.model.nicknameValidationStatus
+        let status = self.model.checkNicknameValidationStatus()
         let nicknameTextFieldView = self.contentView.nicknameSettingView.nicknameTextFieldView
 
+        nicknameTextFieldView.nicknameTextField.text = self.model.nickname
         nicknameTextFieldView.update(status: status)
     }
     
-    private func updateEditableProfileImageView(imageNumber: Int) {
-        let profileImage = UIImage.profileImages[imageNumber]
+    private func updateEditableProfileImageView() {
+        let profileImage = UIImage.profileImages[self.model.profileImageNumber]
         let profileImageView = self.contentView.nicknameSettingView.editableProfileImageView.profileImageView
         
         profileImageView.update(image: profileImage)

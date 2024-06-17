@@ -9,10 +9,11 @@ import UIKit
 
 final class SettingListViewController: BaseViewController<SettingListRootView> {
 
-    private let model = ProfileModel()
+    private let model = NewProfileModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addUserAction()
     }
     
     private func addUserAction() {
@@ -29,7 +30,9 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
     }
     
     @objc private func profileViewTapped() {
-        
+        let nextVC = EditNicknameSettingViewController(model: self.model)
+
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

@@ -1,0 +1,101 @@
+//
+//  ProfileModel.swift
+//  Shoppang!
+//
+//  Created by Jinyoung Yoo on 6/15/24.
+//
+
+import UIKit
+import Combine
+
+final class NewProfileModel {
+    
+    @Published var nickname: String = {
+        
+        guard let userNickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname) else {
+            return ""
+        }
+        
+        return userNickname
+    }()
+
+    @Published var profileImageNumber: Int = {
+
+        guard let imageNumber = UserDefaults.standard.string(forKey: UserDefaultsKey.profileImageNumber) else {
+            return Int.random(in: 0..<UIImage.profileImages.count)
+        }
+        
+        return Int(imageNumber)!
+    }()
+    
+    func checkNicknameValidationStatus() -> NicknameValidationStatus {
+        return self.validateNickname(nickname: nickname)
+    }
+    
+    func saveProfile() {
+        guard (checkNicknameValidationStatus() == .ok) else { return }
+        let isUser = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUser)
+
+        if (isUser == false) {
+            UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isUser)
+            self.saveJoinDate()
+        }
+
+        self.saveUserProfile()
+    }
+
+}
+
+//MARK: - Implementation ProfileImageModel
+extension NewProfileModel: ProfileImageModel {
+    var profileImageNumberPublisher: Published<Int>.Publisher { return $profileImageNumber }
+    
+    func setProfileImageNumber(number: Int) {
+        self.profileImageNumber = number
+    }
+}
+
+//MARK: - 닉네임 유효성 검사 로직
+extension NewProfileModel {
+    func validateNickname(nickname: String) -> NicknameValidationStatus {
+        if (isCountError(nickname)) { return .countError }
+        if (isCharacterError(nickname)) { return .characterError }
+        if (isNumberError(nickname)) { return .numberError }
+        
+        return .ok
+    }
+
+    private func isCountError(_ nickname: String) -> Bool {
+        if (nickname.count < 2 || nickname.count >= 10) { return true }
+        return false
+    }
+    
+    private func isCharacterError(_ nickname: String) -> Bool {
+        let forbiddenCharacters = ["@", "#", "$", "%", " "]
+        let forbidden = nickname.filter { forbiddenCharacters.contains(String($0)) }
+        
+        return forbidden.isEmpty ? false : true
+    }
+    
+    private func isNumberError(_ nickname: String) -> Bool {
+        let forbidden = nickname.filter { $0.isNumber }
+        
+        return forbidden.isEmpty ? false : true
+    }
+}
+
+//MARK: - Save Data Methods
+extension NewProfileModel {
+    private func saveJoinDate() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        let currentDate = dateFormatter.string(from: Date())
+
+        UserDefaults.standard.setValue(currentDate, forKey: UserDefaultsKey.joinDate)
+    }
+    
+    private func saveUserProfile() {
+        UserDefaults.standard.setValue(String(profileImageNumber), forKey: UserDefaultsKey.profileImageNumber)
+        UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname)
+    }
+}

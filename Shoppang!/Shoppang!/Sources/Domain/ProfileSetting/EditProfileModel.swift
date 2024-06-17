@@ -1,0 +1,43 @@
+//
+//  EditProfileModel.swift
+//  Shoppang!
+//
+//  Created by Jinyoung Yoo on 6/17/24.
+//
+
+import Foundation
+import Combine
+
+final class EditProfileModel {
+
+    private let profileModel: NewProfileModel
+    
+    @Published var nickname: String
+    @Published var profileImageNumber: Int
+
+    
+    init(profileModel: NewProfileModel) {
+        self.profileModel = profileModel
+        self.nickname = profileModel.nickname
+        self.profileImageNumber = profileModel.profileImageNumber
+    }
+    
+    func checkNicknameValidationStatus() -> NicknameValidationStatus {
+        return self.profileModel.validateNickname(nickname: nickname)
+    }
+    
+    func saveProfile() {
+        self.profileModel.nickname = nickname
+        self.profileModel.profileImageNumber = profileImageNumber
+        self.profileModel.saveProfile()
+    }
+}
+
+//MARK: - Implementation ProfileImageModel
+extension EditProfileModel: ProfileImageModel {
+    var profileImageNumberPublisher: Published<Int>.Publisher { return $profileImageNumber }
+    
+    func setProfileImageNumber(number: Int) {
+        self.profileImageNumber = number
+    }
+}

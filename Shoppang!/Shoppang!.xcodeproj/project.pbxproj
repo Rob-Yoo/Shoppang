@@ -17,7 +17,7 @@
 		CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */; };
 		CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804752C1D853C00172CAF /* ReusableProtocol.swift */; };
 		CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */; };
-		CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804892C1DA91700172CAF /* ProfileModel.swift */; };
+		CC38048A2C1DA91700172CAF /* NewProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804892C1DA91700172CAF /* NewProfileModel.swift */; };
 		CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */; };
 		CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */; };
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
@@ -49,6 +49,11 @@
 		CC9AE6F72C2020CA00DD5556 /* SettingListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */; };
 		CC9AE6F92C2021AB00DD5556 /* SettingListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */; };
 		CC9AE6FB2C20223400DD5556 /* SettingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */; };
+		CC9AE6FF2C20336F00DD5556 /* EditNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */; };
+		CC9AE7012C20338300DD5556 /* EditNicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7002C20338300DD5556 /* EditNicknameSettingView.swift */; };
+		CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */; };
+		CC9AE7062C204EE800DD5556 /* EditProfileImageSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7052C204EE800DD5556 /* EditProfileImageSettingView.swift */; };
+		CC9AE7082C2050D100DD5556 /* ProfileImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7072C2050D100DD5556 /* ProfileImageModel.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -83,7 +88,7 @@
 		CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC3804752C1D853C00172CAF /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		CC3804782C1D8A5A00172CAF /* NewProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileImageSettingView.swift; sourceTree = "<group>"; };
-		CC3804892C1DA91700172CAF /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		CC3804892C1DA91700172CAF /* NewProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfileModel.swift; sourceTree = "<group>"; };
 		CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationStatus.swift; sourceTree = "<group>"; };
 		CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
@@ -115,6 +120,11 @@
 		CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListTableView.swift; sourceTree = "<group>"; };
 		CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListType.swift; sourceTree = "<group>"; };
 		CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListTableViewCell.swift; sourceTree = "<group>"; };
+		CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameSettingViewController.swift; sourceTree = "<group>"; };
+		CC9AE7002C20338300DD5556 /* EditNicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameSettingView.swift; sourceTree = "<group>"; };
+		CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileModel.swift; sourceTree = "<group>"; };
+		CC9AE7052C204EE800DD5556 /* EditProfileImageSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileImageSettingView.swift; sourceTree = "<group>"; };
+		CC9AE7072C2050D100DD5556 /* ProfileImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageModel.swift; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +185,7 @@
 			children = (
 				CC38047F2C1D981400172CAF /* Reusable */,
 				CC38047D2C1D97E800172CAF /* New */,
+				CC9AE6FC2C2032F900DD5556 /* Edit */,
 			);
 			path = NicknameSettingScreens;
 			sourceTree = "<group>";
@@ -183,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				CC3804812C1D987500172CAF /* Reusable */,
+				CC9AE7042C204ECA00DD5556 /* Edit */,
 				CC3804802C1D986400172CAF /* New */,
 			);
 			path = ProfileImageSettingScreens;
@@ -191,8 +203,8 @@
 		CC38047D2C1D97E800172CAF /* New */ = {
 			isa = PBXGroup;
 			children = (
-				CC3804862C1D9A0300172CAF /* View */,
-				CC3804852C1D99FB00172CAF /* Controller */,
+				CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */,
+				CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */,
 			);
 			path = New;
 			sourceTree = "<group>";
@@ -251,22 +263,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CC3804852C1D99FB00172CAF /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		CC3804862C1D9A0300172CAF /* View */ = {
-			isa = PBXGroup;
-			children = (
-				CC7C83092C1D79E3007406DA /* NewNicknameSettingView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		CC3804872C1DA8A500172CAF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,8 +276,10 @@
 		CC3804882C1DA8AB00172CAF /* ProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
+				CC9AE7072C2050D100DD5556 /* ProfileImageModel.swift */,
+				CC3804892C1DA91700172CAF /* NewProfileModel.swift */,
+				CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */,
 				CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */,
-				CC3804892C1DA91700172CAF /* ProfileModel.swift */,
 			);
 			path = ProfileSetting;
 			sourceTree = "<group>";
@@ -371,6 +369,23 @@
 				CC9AE6EC2C1FD40400DD5556 /* ProductDetailView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CC9AE6FC2C2032F900DD5556 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AE7002C20338300DD5556 /* EditNicknameSettingView.swift */,
+				CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		CC9AE7042C204ECA00DD5556 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AE7052C204EE800DD5556 /* EditProfileImageSettingView.swift */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		CCEE18D82C1C06CC00405878 = {
@@ -637,11 +652,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4A6B472C1EDF2700AC878A /* SearchResultCollectionViewCell.swift in Sources */,
+				CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */,
 				CC4A6B372C1EBE4A00AC878A /* SearchResultDTO.swift in Sources */,
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
 				CC4A6B4B2C1EDFE200AC878A /* ProductImageView.swift in Sources */,
 				CC9AE6F32C1FDA3100DD5556 /* AddCartBarButtonItem.swift in Sources */,
+				CC9AE7012C20338300DD5556 /* EditNicknameSettingView.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
 				CC7C830A2C1D79E3007406DA /* NewNicknameSettingView.swift in Sources */,
 				CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */,
@@ -649,6 +666,7 @@
 				CC38046F2C1D830700172CAF /* ProfileImageSettingView.swift in Sources */,
 				CC9AE6FB2C20223400DD5556 /* SettingListTableViewCell.swift in Sources */,
 				CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */,
+				CC9AE6FF2C20336F00DD5556 /* EditNicknameSettingViewController.swift in Sources */,
 				CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */,
 				CC4A6B302C1EB1D900AC878A /* Placeholder.swift in Sources */,
 				CC9AE6EA2C1FC0F800DD5556 /* SortType.swift in Sources */,
@@ -671,7 +689,7 @@
 				CC9AE6ED2C1FD40400DD5556 /* ProductDetailView.swift in Sources */,
 				CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */,
 				CC347B462C1F438800DD50A6 /* SearchHistoryModel.swift in Sources */,
-				CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */,
+				CC38048A2C1DA91700172CAF /* NewProfileModel.swift in Sources */,
 				CC4A6B432C1ECF7400AC878A /* SortButtonsView.swift in Sources */,
 				CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* SortButton.swift in Sources */,
@@ -682,10 +700,12 @@
 				CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */,
 				CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */,
 				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
+				CC9AE7082C2050D100DD5556 /* ProfileImageModel.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
 				CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */,
 				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,
 				CC9AE6F72C2020CA00DD5556 /* SettingListTableView.swift in Sources */,
+				CC9AE7062C204EE800DD5556 /* EditProfileImageSettingView.swift in Sources */,
 				CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */,
 				CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,

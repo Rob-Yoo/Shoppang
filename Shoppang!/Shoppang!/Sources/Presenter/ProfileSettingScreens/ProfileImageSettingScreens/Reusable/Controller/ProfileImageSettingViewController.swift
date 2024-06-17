@@ -8,12 +8,12 @@
 import UIKit
 import Combine
 
-final class ProfileImageSettingViewController<ContentView: ProfileImageSettingView>: BaseViewController<ContentView> {
+final class ProfileImageSettingViewController<ContentView: ProfileImageSettingView, Model: ProfileImageModel>: BaseViewController<ContentView> {
     
-    private let model: ProfileModel
+    private var model: Model
     private var cancellable = Set<AnyCancellable>()
     
-    init(model: ProfileModel) {
+    init(model: Model) {
         self.model = model
         super.init(nibName: nil, bundle: nil)
         self.addUserAction()
@@ -36,14 +36,14 @@ final class ProfileImageSettingViewController<ContentView: ProfileImageSettingVi
 //MARK: - User Action Handling
 extension ProfileImageSettingViewController: ProfileImageCollectionViewDelegate {
     func profileImageSelected(idx: Int) {
-        self.model.profileImageNumber = idx
+        self.model.setProfileImageNumber(number: idx)
     }
 }
 
 //MARK: - Observing Model
 extension ProfileImageSettingViewController {
     private func observingModel() {
-        self.model.$profileImageNumber
+        self.model.profileImageNumberPublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.updateProfileImageSettingView(imageNumber: new)

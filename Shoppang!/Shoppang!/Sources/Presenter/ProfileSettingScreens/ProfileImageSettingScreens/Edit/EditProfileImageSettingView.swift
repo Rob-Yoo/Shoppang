@@ -1,15 +1,16 @@
 //
-//  NewProfileImageSettingView.swift
+//  EditProfileImageSettingView.swift
 //  Shoppang!
 //
-//  Created by Jinyoung Yoo on 6/15/24.
+//  Created by Jinyoung Yoo on 6/17/24.
 //
 
 import UIKit
 import SnapKit
 
-final class NewProfileImageSettingView: ProfileImageSettingView, RootViewProtocol {
-    var navigationTitle = ProfileSettingType.New.navigationTitle
+final class EditProfileImageSettingView: ProfileImageSettingView, RootViewProtocol {
+    var navigationTitle = ProfileSettingType.Editing.navigationTitle
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
