@@ -12,7 +12,7 @@ final class SearchHistoryModel {
     @Published var searchHistory: [String]
     
     init() {
-        guard let history = UserDefaults.standard.array(forKey: UserDefaultsKey.searchHistory), let searchHistory = history as? [String] else {
+        guard let history = UserDefaults.standard.array(forKey: UserDefaultsKey.searchHistory.rawValue), let searchHistory = history as? [String] else {
             self.searchHistory = []
             return
         }
@@ -29,11 +29,11 @@ final class SearchHistoryModel {
         
         if (searchHistory.count > 100) { searchHistory.removeLast() }
 
-        UserDefaults.standard.setValue(searchHistory, forKey: UserDefaultsKey.searchHistory)
+        UserDefaults.standard.setValue(searchHistory, forKey: UserDefaultsKey.searchHistory.rawValue)
     }
     
     func removeSearchHistory(idx: Int) {
         self.searchHistory.remove(at: idx)
-        UserDefaults.standard.setValue(searchHistory, forKey: UserDefaultsKey.searchHistory)
+        UserDefaults.standard.setValue(searchHistory, forKey: UserDefaultsKey.searchHistory.rawValue)
     }
 }

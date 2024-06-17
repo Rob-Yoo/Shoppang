@@ -23,7 +23,7 @@ final class ProfileView: UIView {
     }
     
     private let joinDateLabel = UILabel().then {
-        $0.text = (UserDefaults.standard.string(forKey: UserDefaultsKey.joinDate) ??
+        $0.text = (UserDefaults.standard.string(forKey: UserDefaultsKey.joinDate.rawValue) ??
         "0000.00.00") + " 가입"
         $0.textColor = .placeholder
         $0.font = .regular13

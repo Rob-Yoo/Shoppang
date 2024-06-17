@@ -16,11 +16,12 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.update()
+        self.checkUserProfile()
     }
     
     private func addUserAction() {
         self.addActionToProfileView()
+        self.addActionToDeleteAccountCell()
     }
     
     private func addActionToProfileView() {
@@ -32,13 +33,7 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
         self.contentView.settingListTableView.delegate = self
     }
     
-    @objc private func profileViewTapped() {
-        let nextVC = EditNicknameSettingViewController()
-
-        self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
-    func update() {
+    func checkUserProfile() {
         let user = UserProfile()
         let profileImage = UIImage.profileImages[user.profileImageNumber]
         
@@ -47,11 +42,40 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
     }
 }
 
+//MARK: - User Action Handling
 extension SettingListViewController: UITableViewDelegate {
+    
+    @objc private func profileViewTapped() {
+        let nextVC = EditNicknameSettingViewController()
+
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let type = SettingListType.allCases[indexPath.row]
         
-        if (type == .deleteAccount) {}
+        if (type == .deleteAccount) {
+            showAlert()
+        }
     }
 }
 
+extension SettingListViewController {
+    private func showAlert() {
+        let alert = UIAlertController(title: "탈퇴하기", message: "탈퇴를 하면 데이터가 모두 초기화됩니다.\n탈퇴 하시겠습니까?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default, handler: deleteUserAccount)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true)
+    }
+    
+    private func deleteUserAccount(_ action: UIAlertAction) {
+        UserDefaultsKey.allCases.forEach {
+            UserDefaults.standard.removeObject(forKey: $0.rawValue)
+        }
+        NavigationManager.changeWindowScene(didDeleteAccount: true)
+    }
+}

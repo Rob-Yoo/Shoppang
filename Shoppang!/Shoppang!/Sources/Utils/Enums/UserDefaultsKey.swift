@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum UserDefaultsKey {
-    static let profileImageNumber = "ProfileImageNumber"
-    static let nickname = "Nickname"
-    static let isUser = "isUser"
-    static let joinDate = "JoinDate"
+enum UserDefaultsKey: String, CaseIterable {
+    case profileImageNumber
+    case nickname
+    case isUser
+    case joinDate
 
-    static let searchHistory = "SearchHistory"
-    static let userCartList = "UserCartList"
+    case searchHistory
+    case userCartList
 }

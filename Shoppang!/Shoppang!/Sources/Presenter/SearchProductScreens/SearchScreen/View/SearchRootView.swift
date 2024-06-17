@@ -10,7 +10,7 @@ import SnapKit
 import Then
 
 final class SearchRootView: UIView, RootViewProtocol {
-    var navigationTitle: String = "\(UserDefaults.standard.string(forKey: UserDefaultsKey.nickname)!)'s Shoppang!"
+    var navigationTitle: String = "\(UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue)!)'s Shoppang!"
     
     let searchBar = UISearchBar().then {
         $0.placeholder = Placeholder.searchBarPlaceholder

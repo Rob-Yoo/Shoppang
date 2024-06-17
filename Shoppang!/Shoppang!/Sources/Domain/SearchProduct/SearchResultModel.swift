@@ -39,7 +39,7 @@ final class SearchResultModel {
     @Published var cartList = loadCartList() {
         didSet {
             let cart = Array(cartList)
-            UserDefaults.standard.setValue(cart, forKey: UserDefaultsKey.userCartList)
+            UserDefaults.standard.setValue(cart, forKey: UserDefaultsKey.userCartList.rawValue)
         }
     }
 }
@@ -60,7 +60,7 @@ extension SearchResultModel {
 //MARK: - Cart List Manipulation
 extension SearchResultModel {
     static func loadCartList() -> Set<String> {
-        guard let cartList = UserDefaults.standard.array(forKey: UserDefaultsKey.userCartList) as? [String] else {
+        guard let cartList = UserDefaults.standard.array(forKey: UserDefaultsKey.userCartList.rawValue) as? [String] else {
             return Set<String>()
         }
         

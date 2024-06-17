@@ -12,7 +12,7 @@ final class ProfileModel {
     
     @Published var nickname: String = {
         
-        guard let userNickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname) else {
+        guard let userNickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) else {
             return ""
         }
         
@@ -21,7 +21,7 @@ final class ProfileModel {
 
     @Published var profileImageNumber: Int = {
 
-        guard let imageNumber = UserDefaults.standard.string(forKey: UserDefaultsKey.profileImageNumber) else {
+        guard let imageNumber = UserDefaults.standard.string(forKey: UserDefaultsKey.profileImageNumber.rawValue) else {
             return Int.random(in: 0..<UIImage.profileImages.count)
         }
         
@@ -34,10 +34,10 @@ final class ProfileModel {
     
     func saveProfile() {
         guard (checkNicknameValidationStatus() == .ok) else { return }
-        let isUser = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUser)
+        let isUser = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUser.rawValue)
 
         if (isUser == false) {
-            UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isUser)
+            UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isUser.rawValue)
             self.saveJoinDate()
         }
 
@@ -91,11 +91,11 @@ extension ProfileModel {
         dateFormatter.dateFormat = "yyyy.MM.dd"
         let currentDate = dateFormatter.string(from: Date())
 
-        UserDefaults.standard.setValue(currentDate, forKey: UserDefaultsKey.joinDate)
+        UserDefaults.standard.setValue(currentDate, forKey: UserDefaultsKey.joinDate.rawValue)
     }
     
     private func saveUserProfile() {
-        UserDefaults.standard.setValue(String(profileImageNumber), forKey: UserDefaultsKey.profileImageNumber)
-        UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname)
+        UserDefaults.standard.setValue(String(profileImageNumber), forKey: UserDefaultsKey.profileImageNumber.rawValue)
+        UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname.rawValue)
     }
 }
