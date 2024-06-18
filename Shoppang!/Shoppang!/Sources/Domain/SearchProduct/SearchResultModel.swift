@@ -28,8 +28,10 @@ final class SearchResultModel {
     
     var page = 1 {
         didSet {
-            guard 1 < page && page <= 1000 else { return }
-            guard page * searchResult.display <= searchResult.total else { return }
+            guard 1 < page && page <= 1000, page * searchResult.display <= searchResult.total else {
+                self.searchResult = self.searchResult
+                return
+            }
             
             let url = API.searchProductURL(query: self.searchingProduct, sort: self.sortType.rawValue, page: page)
             self.fetchSearchResult(url: url, isAppend: true)
