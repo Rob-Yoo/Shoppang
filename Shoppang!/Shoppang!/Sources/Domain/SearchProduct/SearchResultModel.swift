@@ -28,7 +28,13 @@ final class SearchResultModel {
     
     var page = 1 {
         didSet {
-            guard 1 < page && page <= 1000, page * searchResult.display <= searchResult.total else {
+            // 페이지네이션이 아닌 경우 guard
+            guard 1 < page && page <= 1000 else {
+                return
+            }
+            
+            // 마지막 페이지가 아닌 경우 guard
+            guard page * searchResult.display <= searchResult.total else {
                 self.searchResult = self.searchResult
                 return
             }
