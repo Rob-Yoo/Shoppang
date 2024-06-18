@@ -10,13 +10,14 @@ import Combine
 
 final class SearchResultViewController: BaseViewController<SearchResultRootView> {
 
+    private let query: String
     private let model = SearchResultModel()
     private var cancellable = Set<AnyCancellable>()
     
     init(query: String) {
+        self.query = query
         super.init(nibName: nil, bundle: nil)
         self.navigationItem.title = query
-        self.model.searchingProduct = query
     }
     
     required init?(coder: NSCoder) {
@@ -25,8 +26,10 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.contentView.makeToastActivity(.center)
         self.addUserAction()
         self.observeModel()
+        self.model.searchingProduct = query
     }
     
     private func addUserAction() {
@@ -64,6 +67,7 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if self.model.searchResult.items.count - 2 == indexPath.item {
+                self.contentView.makeToastActivity(.center)
                 self.model.page += 1
             }
         }
@@ -84,8 +88,10 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
 extension SearchResultViewController {
     private func observeModel() {
         self.model.$searchResult
+            .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
+                self?.contentView.hideToastActivity()
                 self?.contentView.update(searchResult: new)
             }
             .store(in: &cancellable)
