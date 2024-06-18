@@ -61,6 +61,7 @@ extension ProfileModel {
         if (isCountError(nickname)) { return .countError }
         if (isCharacterError(nickname)) { return .characterError }
         if (isNumberError(nickname)) { return .numberError }
+        if (isWhitespaceError(nickname)) { return .whitespaceError }
         
         return .ok
     }
@@ -71,7 +72,7 @@ extension ProfileModel {
     }
     
     private func isCharacterError(_ nickname: String) -> Bool {
-        let forbiddenCharacters = ["@", "#", "$", "%", " "]
+        let forbiddenCharacters = ["@", "#", "$", "%"]
         let forbidden = nickname.filter { forbiddenCharacters.contains(String($0)) }
         
         return forbidden.isEmpty ? false : true
@@ -81,6 +82,15 @@ extension ProfileModel {
         let forbidden = nickname.filter { $0.isNumber }
         
         return forbidden.isEmpty ? false : true
+    }
+    
+    private func isWhitespaceError(_ nickname: String) -> Bool {
+        let filteredWhitespace = nickname.trimmingCharacters(in: .whitespaces)
+        
+        guard nickname == filteredWhitespace else { return true }
+        guard nickname.filter({ $0.isWhitespace }).count <= 1 else { return true }
+        
+        return false
     }
 }
 

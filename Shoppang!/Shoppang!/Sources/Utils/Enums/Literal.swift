@@ -25,6 +25,7 @@ enum Literal {
         static let CountError = "2글자 이상 10글자 미만으로 설정해주세요"
         static let CharacterError = "닉네임에 @, #, $, % 는 포함할 수 없어요."
         static let NumError = "닉네임에 숫자는 포함할 수 없어요."
+        static let WhitespaceError = "올바르지 않은 띄어쓰기에요. (올바른 예시: 옹골찬 고래밥)"
     }
     
     enum SettingList {

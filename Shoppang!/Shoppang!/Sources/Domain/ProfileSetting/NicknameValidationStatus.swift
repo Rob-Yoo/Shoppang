@@ -12,6 +12,7 @@ enum NicknameValidationStatus {
     case countError
     case characterError
     case numberError
+    case whitespaceError
     
     var statusText: String {
         switch self {
@@ -23,6 +24,8 @@ enum NicknameValidationStatus {
             return Literal.StatusLabel.CharacterError
         case .numberError:
             return Literal.StatusLabel.NumError
+        case .whitespaceError:
+            return Literal.StatusLabel.WhitespaceError
         }
     }
 }
