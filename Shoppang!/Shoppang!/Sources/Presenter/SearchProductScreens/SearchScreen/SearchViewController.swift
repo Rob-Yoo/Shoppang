@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 import Combine
 
 final class SearchViewController: BaseViewController<SearchRootView> {
@@ -73,9 +74,15 @@ extension SearchViewController: UISearchBarDelegate, UITableViewDelegate, Search
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let query = searchBar.text else { return }
-        let nextVC = SearchResultViewController(query: query)
+        guard let text = searchBar.text else { return }
+        let query = text.trimmingCharacters(in: .whitespaces)
         
+        guard !query.isEmpty else {
+            self.contentView.makeToast("검색어를 입력해주세요.", duration: 1.0, position: .center)
+            return
+        }
+
+        let nextVC = SearchResultViewController(query: query)
         self.model.saveSearchHistory(keyword: query)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
