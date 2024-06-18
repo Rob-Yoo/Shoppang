@@ -35,7 +35,7 @@ final class SearchResultModel {
             
             // 마지막 페이지가 아닌 경우 guard
             guard page * searchResult.display <= searchResult.total else {
-                self.searchResult = self.searchResult
+                self.searchResult = SearchResultDTO()
                 return
             }
             

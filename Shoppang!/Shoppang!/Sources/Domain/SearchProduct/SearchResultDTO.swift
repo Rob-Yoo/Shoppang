@@ -21,7 +21,7 @@ struct SearchResultDTO: Decodable {
     }
     
     init() {
-        self.init(total: 0, start: 0, display: 0, items: [])
+        self.init(total: 0, start: -1, display: 0, items: [])
     }
 }
 

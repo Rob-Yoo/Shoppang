@@ -52,6 +52,8 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
     
     func sortButtonTapped(type newType: SortType) {
         guard self.model.sortType != newType else { return }
+        self.contentView.hideToastActivity() // 스크롤 시 생기는 Indicator 삭제
+        self.contentView.makeToastActivity(.center)
         self.model.sortType = newType
     }
     
@@ -99,7 +101,9 @@ extension SearchResultViewController {
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.contentView.hideToastActivity()
-                self?.contentView.update(searchResult: new)
+                if (new.start != -1) {
+                    self?.contentView.update(searchResult: new)
+                }
             }
             .store(in: &cancellable)
         
