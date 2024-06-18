@@ -34,6 +34,14 @@ class OnboardingStartViewController: UIViewController {
         self.configureHierarchy()
         self.configureLayout()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let appearance = UINavigationBarAppearance()
+        
+        appearance.configureWithTransparentBackground()
+        self.navigationController?.navigationBar.standardAppearance = appearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
 }
 
 //MARK: - Configure Subviews
