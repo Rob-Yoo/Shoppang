@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class ProductDetailViewController: BaseViewController<ProductDetailView> {
 
@@ -28,6 +29,7 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
         super.viewDidLoad()
         self.configureNavigationBar()
         self.contentView.urlLink = product.link
+        self.contentView.productDetailViewDelegate = self
     }
     
     private func configureNavigationBar() {
@@ -43,5 +45,12 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
         guard let cartButton = sender as? CartBarButton else { return }
         cartButton.isCart ? self.model.removeFromCartList(productID: product.productId) : self.model.addToCartList(productID: product.productId)
         cartButton.isCart.toggle()
+    }
+}
+
+extension ProductDetailViewController: ProductDetailViewDelegate {
+    func handleURLError() {
+        self.contentView.makeToast("🚨 유효하지 않은 URL이에요...", duration: 1.5, position: .center)
+        self.navigationController?.popViewController(animated: true)
     }
 }

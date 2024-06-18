@@ -10,17 +10,28 @@ import WebKit
 import Then
 import SnapKit
 
+protocol ProductDetailViewDelegate: AnyObject {
+    func handleURLError()
+}
+
 final class ProductDetailView: UIView {
     
     private let webView = WKWebView()
     var urlLink = "" {
         didSet {
-            let url = URL(string: urlLink)!
+            guard let url = URL(string: urlLink) else {
+                guard let delegate = self.productDetailViewDelegate else { return }
+                delegate.handleURLError()
+                return
+            }
+
             let request = URLRequest(url: url)
             
             webView.load(request)
         }
     }
+    
+    weak var productDetailViewDelegate: ProductDetailViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

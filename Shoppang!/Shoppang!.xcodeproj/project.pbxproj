@@ -78,6 +78,8 @@
 		CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */; };
 		CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193D2C1C41E100405878 /* NicknameSettingView.swift */; };
 		CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */; };
+		CCFA7CC82C2126EE009E1F24 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */; };
+		CCFA7CCE2C212B4E009E1F24 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CCFA7CCD2C212B4E009E1F24 /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +152,7 @@
 		CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
 		CCEE193D2C1C41E100405878 /* NicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingView.swift; sourceTree = "<group>"; };
 		CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNicknameSettingViewController.swift; sourceTree = "<group>"; };
+		CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,7 @@
 				CCEE19002C1C074B00405878 /* Kingfisher in Frameworks */,
 				CCEE18FA2C1C073500405878 /* Alamofire in Frameworks */,
 				CCEE18FD2C1C074200405878 /* SnapKit in Frameworks */,
+				CCFA7CCE2C212B4E009E1F24 /* Toast in Frameworks */,
 				CCEE19032C1C075400405878 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +349,7 @@
 		CC9954F42C1EA08700CF1374 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */,
 				CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */,
 				CC9954F52C1EA09E00CF1374 /* NavigationManager.swift */,
 				CCEE19092C1C092900405878 /* Protocols */,
@@ -599,6 +604,7 @@
 				CCEE18FC2C1C074200405878 /* SnapKit */,
 				CCEE18FF2C1C074B00405878 /* Kingfisher */,
 				CCEE19022C1C075400405878 /* Then */,
+				CCFA7CCD2C212B4E009E1F24 /* Toast */,
 			);
 			productName = "Shoppang!";
 			productReference = CCEE18E12C1C06CC00405878 /* Shoppang!.app */;
@@ -633,6 +639,7 @@
 				CCEE18FB2C1C074200405878 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				CCEE18FE2C1C074B00405878 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CCEE19012C1C075400405878 /* XCRemoteSwiftPackageReference "Then" */,
+				CCFA7CCC2C212B4E009E1F24 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = CCEE18E22C1C06CC00405878 /* Products */;
 			projectDirPath = "";
@@ -716,6 +723,7 @@
 				CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */,
 				CC9AE70E2C20834500DD5556 /* CartButton.swift in Sources */,
 				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,
+				CCFA7CC82C2126EE009E1F24 /* AlertManager.swift in Sources */,
 				CC9AE6F72C2020CA00DD5556 /* SettingListTableView.swift in Sources */,
 				CC9AE7062C204EE800DD5556 /* EditProfileImageSettingView.swift in Sources */,
 				CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */,
@@ -871,7 +879,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shoppang!/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
+				INFOPLIST_KEY_CFBundleDisplayName = "유진영";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -904,7 +912,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shoppang!/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
+				INFOPLIST_KEY_CFBundleDisplayName = "유진영";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -983,6 +991,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		CCFA7CCC2C212B4E009E1F24 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1005,6 +1021,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CCEE19012C1C075400405878 /* XCRemoteSwiftPackageReference "Then" */;
 			productName = Then;
+		};
+		CCFA7CCD2C212B4E009E1F24 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCFA7CCC2C212B4E009E1F24 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
