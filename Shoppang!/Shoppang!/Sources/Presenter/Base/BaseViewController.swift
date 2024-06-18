@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BaseViewController<ContentView: UIView>: UIViewController {
+class BaseViewController<ContentView: UIView>: UIViewController, UIGestureRecognizerDelegate {
 
     let contentView = ContentView()
     
@@ -19,12 +19,19 @@ class BaseViewController<ContentView: UIView>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
-
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.configureNavigationBar()
     }
     
     @objc func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    // Navigation Stack에 뷰가 2개 이상일 경우 스와이프 제스처 허용
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        guard let nc = navigationController else { return false }
+        
+        return nc.viewControllers.count > 1
     }
 }
 
