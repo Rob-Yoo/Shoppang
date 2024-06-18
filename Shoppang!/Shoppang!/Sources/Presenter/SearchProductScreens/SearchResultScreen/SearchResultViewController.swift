@@ -67,8 +67,8 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             if self.model.searchResult.items.count - 2 == indexPath.item {
-                self.contentView.makeToastActivity(.center)
                 self.model.page += 1
+                self.contentView.makeToastActivity(.center)
             }
         }
     }

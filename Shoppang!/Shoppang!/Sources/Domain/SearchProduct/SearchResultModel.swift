@@ -47,13 +47,19 @@ final class SearchResultModel {
 //MARK: - Data Manipulation
 extension SearchResultModel {
     private func fetchSearchResult(url: String, isAppend: Bool = false) {
-        NetworkManager.requestURL(url: url) { [weak self] (result: SearchResultDTO) in
+        let success: (SearchResultDTO) -> Void = { [weak self] result in
             if (isAppend) {
                 self?.searchResult.items.append(contentsOf: result.items)
             } else {
                 self?.searchResult = result
             }
         }
+        
+        let failure: (Error) -> Void = { [weak self] _ in
+            self?.searchResult = SearchResultDTO()
+        }
+
+        NetworkManager.requestURL(url: url, success: success, failure: failure)
     }
 }
 
