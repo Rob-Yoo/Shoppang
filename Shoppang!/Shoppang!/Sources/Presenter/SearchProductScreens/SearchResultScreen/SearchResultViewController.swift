@@ -48,10 +48,11 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
 }
 
 //MARK: - User Action Handling
-extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UICollectionViewDelegate, SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate {
+extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UICollectionViewDelegate, SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
     
-    func sortButtonTapped(type: SortType) {
-        self.model.sortType = type
+    func sortButtonTapped(type newType: SortType) {
+        guard self.model.sortType != newType else { return }
+        self.model.sortType = newType
     }
     
     func cartButtonTapped(idx: Int) {
@@ -78,9 +79,15 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
         let isCart = self.model.cartList.contains(product.productId)
         let nextVC = ProductDetailViewController(product: product, model: self.model, isCart: isCart)
         
+        nextVC.productDetailViewControllerDelegate = self
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    func showInvalidUrlToast() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            self.contentView.makeToast("🚨 해당 사이트의 주소가 없거나 유효하지 않아요", duration: 1.5)
+        }
+    }
 }
 
 

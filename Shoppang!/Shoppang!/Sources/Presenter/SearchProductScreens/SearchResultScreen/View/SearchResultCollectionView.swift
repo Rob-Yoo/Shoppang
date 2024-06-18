@@ -14,6 +14,11 @@ final class SearchResultCollectionView: UICollectionView {
     var productList = [Product]() {
         didSet {
             self.reloadData()
+            
+            guard !productList.isEmpty, oldValue.count >= productList.count else { return }
+
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.scrollToItem(at: indexPath, at: .top, animated: true)
         }
     }
     var cartList = SearchResultModel.loadCartList() {
