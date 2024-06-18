@@ -28,7 +28,7 @@ final class SearchResultModel {
     
     var page = 1 {
         willSet {
-            guard page <= 1000 else { return }
+            guard 1 < page && page <= 1000 else { return }
             guard page * searchResult.display <= searchResult.total else { return }
             
             let url = API.searchProductURL(query: self.searchingProduct, sort: self.sortType.rawValue, page: newValue)
