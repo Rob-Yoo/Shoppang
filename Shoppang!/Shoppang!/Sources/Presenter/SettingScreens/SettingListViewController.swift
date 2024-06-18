@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 final class SettingListViewController: BaseViewController<SettingListRootView> {
     
@@ -53,25 +54,17 @@ extension SettingListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let type = SettingListType.allCases[indexPath.row]
-        
+
         if (type == .deleteAccount) {
-            showAlert()
+            let alert = AlertManager.makeDeleteAccountAlert(handler: deleteUserAccount)
+            self.present(alert, animated: true)
+        } else {
+            self.contentView.makeToast("🚧 아직 준비중이에요...", duration: 1.5, position: .center)
         }
     }
 }
 
 extension SettingListViewController {
-    private func showAlert() {
-        let alert = UIAlertController(title: "탈퇴하기", message: "탈퇴를 하면 데이터가 모두 초기화됩니다.\n탈퇴 하시겠습니까?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "확인", style: .default, handler: deleteUserAccount)
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
-        
-        alert.addAction(ok)
-        alert.addAction(cancel)
-        
-        self.present(alert, animated: true)
-    }
-    
     private func deleteUserAccount(_ action: UIAlertAction) {
         UserDefaultsKey.allCases.forEach {
             UserDefaults.standard.removeObject(forKey: $0.rawValue)
