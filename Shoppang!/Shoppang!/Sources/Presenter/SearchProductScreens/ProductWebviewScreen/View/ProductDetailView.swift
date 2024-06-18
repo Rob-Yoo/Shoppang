@@ -24,7 +24,6 @@ final class ProductDetailView: UIView {
                 delegate.handleURLError()
                 return
             }
-
             let request = URLRequest(url: url)
             
             webView.load(request)
@@ -36,6 +35,7 @@ final class ProductDetailView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configure()
+        webView.navigationDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -48,5 +48,13 @@ final class ProductDetailView: UIView {
         webView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+}
+
+extension ProductDetailView: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
+        print(navigation.description)
+        guard let delegate = self.productDetailViewDelegate else { return }
+        delegate.handleURLError()
     }
 }

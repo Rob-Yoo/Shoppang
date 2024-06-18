@@ -8,11 +8,17 @@
 import UIKit
 import Toast
 
+protocol ProductDetailViewControllerDelegate: AnyObject {
+    func showInvalidUrlToast()
+}
+
 final class ProductDetailViewController: BaseViewController<ProductDetailView> {
 
     private var model: CartProtocol
     private var product: Product
     private var isCart: Bool
+    
+    weak var productDetailViewControllerDelegate: ProductDetailViewControllerDelegate?
     
     init(product: Product, model: CartProtocol, isCart: Bool) {
         self.model = model
@@ -28,8 +34,8 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureNavigationBar()
-        self.contentView.urlLink = product.link
         self.contentView.productDetailViewDelegate = self
+        self.contentView.urlLink = product.link
     }
     
     private func configureNavigationBar() {
@@ -50,7 +56,12 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
 
 extension ProductDetailViewController: ProductDetailViewDelegate {
     func handleURLError() {
-        self.contentView.makeToast("🚨 유효하지 않은 URL이에요...", duration: 1.5, position: .center)
+        guard let delegate = self.productDetailViewControllerDelegate else {
+            print("ProductDetailViewControllerDelegate 설정 후 사용해주세요")
+            return
+        }
+        
         self.navigationController?.popViewController(animated: true)
+        delegate.showInvalidUrlToast()
     }
 }
