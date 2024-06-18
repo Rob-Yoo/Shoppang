@@ -183,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				CC7C83072C1D73CB007406DA /* ProfileSettingType.swift */,
-				CC3804822C1D98B200172CAF /* Reusable */,
+				CC3804822C1D98B200172CAF /* Custom */,
 				CC38047B2C1D977D00172CAF /* NicknameSettingScreens */,
 				CC38047C2C1D979400172CAF /* ProfileImageSettingScreens */,
 			);
@@ -193,7 +193,7 @@
 		CC38047B2C1D977D00172CAF /* NicknameSettingScreens */ = {
 			isa = PBXGroup;
 			children = (
-				CC38047F2C1D981400172CAF /* Reusable */,
+				CC38047F2C1D981400172CAF /* Custom */,
 				CC38047D2C1D97E800172CAF /* New */,
 				CC9AE6FC2C2032F900DD5556 /* Edit */,
 			);
@@ -219,13 +219,13 @@
 			path = New;
 			sourceTree = "<group>";
 		};
-		CC38047F2C1D981400172CAF /* Reusable */ = {
+		CC38047F2C1D981400172CAF /* Custom */ = {
 			isa = PBXGroup;
 			children = (
 				CCEE193D2C1C41E100405878 /* NicknameSettingView.swift */,
 				CC7C83042C1D6B82007406DA /* NicknameTextFieldView.swift */,
 			);
-			path = Reusable;
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		CC3804802C1D986400172CAF /* New */ = {
@@ -245,14 +245,14 @@
 			path = Reusable;
 			sourceTree = "<group>";
 		};
-		CC3804822C1D98B200172CAF /* Reusable */ = {
+		CC3804822C1D98B200172CAF /* Custom */ = {
 			isa = PBXGroup;
 			children = (
 				CC7D8C122C1C45A40079FD71 /* ProfileImageView.swift */,
 				CC7D8C152C1C4B270079FD71 /* CurrentProfileImageView.swift */,
 				CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */,
 			);
-			path = Reusable;
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		CC3804832C1D998600172CAF /* Controller */ = {
@@ -318,7 +318,7 @@
 		CC4A6B3C2C1EC76D00AC878A /* SearchResultScreen */ = {
 			isa = PBXGroup;
 			children = (
-				CC4A6B492C1EDF8F00AC878A /* Reusable */,
+				CC4A6B492C1EDF8F00AC878A /* Custom */,
 				CC4A6B3F2C1EC78F00AC878A /* View */,
 				CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */,
 			);
@@ -336,22 +336,30 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CC4A6B492C1EDF8F00AC878A /* Reusable */ = {
+		CC4A6B492C1EDF8F00AC878A /* Custom */ = {
 			isa = PBXGroup;
 			children = (
 				CCEE19332C1C2D8A00405878 /* SortButton.swift */,
 				CC4A6B4A2C1EDFE200AC878A /* ProductImageView.swift */,
 				CC9AE70D2C20834500DD5556 /* CartButton.swift */,
 			);
-			path = Reusable;
+			path = Custom;
 			sourceTree = "<group>";
 		};
-		CC9954F42C1EA08700CF1374 /* Utils */ = {
+		CC72DD832C2160510093AC09 /* Mangers */ = {
 			isa = PBXGroup;
 			children = (
 				CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */,
 				CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */,
 				CC9954F52C1EA09E00CF1374 /* NavigationManager.swift */,
+			);
+			path = Mangers;
+			sourceTree = "<group>";
+		};
+		CC9954F42C1EA08700CF1374 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CC72DD832C2160510093AC09 /* Mangers */,
 				CCEE19092C1C092900405878 /* Protocols */,
 				CCEE19302C1C2A8200405878 /* Extensions */,
 				CC38B1F62C1DE31C000AFD92 /* Enums */,
@@ -368,18 +376,18 @@
 			path = ProductWebviewScreen;
 			sourceTree = "<group>";
 		};
-		CC9AE6F02C1FDA0900DD5556 /* Reusable */ = {
+		CC9AE6F02C1FDA0900DD5556 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
 				CC9AE6F22C1FDA3100DD5556 /* CartBarButton.swift */,
 			);
-			path = Reusable;
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		CC9AE6F12C1FDA1100DD5556 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CC9AE6F02C1FDA0900DD5556 /* Reusable */,
+				CC9AE6F02C1FDA0900DD5556 /* Custom */,
 				CC9AE6EC2C1FD40400DD5556 /* ProductDetailView.swift */,
 			);
 			path = View;
