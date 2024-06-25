@@ -12,7 +12,6 @@ class BaseViewController<ContentView: UIView>: UIViewController, UIGestureRecogn
     let contentView = ContentView()
     
     override func loadView() {
-        super.loadView()
         self.view = contentView
     }
     

@@ -19,13 +19,15 @@ final class ProductImageView: UIView {
         $0.layer.borderWidth = 0.5
     }
     
-    let cartButton = CartButton()
+    lazy var cartButton = CartButton()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(hasCartButton: Bool = true) {
+        super.init(frame: .zero)
         self.backgroundColor = .clear
-        self.configureHierarchy()
-        self.configureLayout()
+        self.configureImageView()
+        if (hasCartButton) {
+            self.configureCarButton()
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -34,15 +36,17 @@ final class ProductImageView: UIView {
 }
 
 extension ProductImageView {
-    private func configureHierarchy() {
+
+    private func configureImageView() {
         self.addSubview(imageView)
-        self.addSubview(cartButton)
-    }
-    
-    private func configureLayout() {
+        
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+    
+    private func configureCarButton() {
+        self.addSubview(cartButton)
         
         cartButton.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(10)

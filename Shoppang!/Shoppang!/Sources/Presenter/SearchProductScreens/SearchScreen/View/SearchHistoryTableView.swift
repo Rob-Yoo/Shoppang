@@ -41,7 +41,6 @@ extension SearchHistoryTableView: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchHistoryTableViewCell.reusableIdentifier, for: indexPath) as? SearchHistoryTableViewCell else { return UITableViewCell() }
         
         cell.searchKeywordLabel.text = searchKeyword
-        cell.deleteButton.tag = indexPath.row
         return cell
     }
 }

@@ -13,6 +13,7 @@ enum Literal {
         static let Search = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? "옹골찬 고래밥" + "'s Shoppang!"
         static let Setting = "SETTING"
         static let EditProfile = "EDIT PROFILE"
+        static let AppleProduct = "APPLE COLLECTION"
     }
     
     enum Placeholder {

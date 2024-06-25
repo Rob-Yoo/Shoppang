@@ -45,12 +45,15 @@ extension TabBarController {
     
     enum Tab: CaseIterable {
         case search
+        case appleCollection
         case setting
         
         var viewController: UIViewController {
             switch self {
             case .search:
                 return SearchViewController()
+            case .appleCollection:
+                return AppleProductViewController()
             case .setting:
                 return SettingListViewController()
             }
@@ -60,6 +63,8 @@ extension TabBarController {
             switch self {
             case .search:
                 return (title: "검색", icon: UIImage(systemName: "magnifyingglass"))
+            case .appleCollection:
+                return (title: "Apple 컬렉션", icon: UIImage(systemName: "square.stack"))
             case .setting:
                 return (title: "설정", icon: UIImage(systemName: "person"))
             }
