@@ -86,6 +86,7 @@
 		CCEE193A2C1C325300405878 /* OnboardingStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */; };
 		CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193D2C1C41E100405878 /* NicknameSettingView.swift */; };
 		CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */; };
+		CCF4EC922C2BE14D00D6E1D1 /* ProductDetailStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCF4EC912C2BE14D00D6E1D1 /* ProductDetailStackView.swift */; };
 		CCFA7CC82C2126EE009E1F24 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */; };
 		CCFA7CCE2C212B4E009E1F24 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CCFA7CCD2C212B4E009E1F24 /* Toast */; };
 /* End PBXBuildFile section */
@@ -168,6 +169,7 @@
 		CCEE19392C1C325300405878 /* OnboardingStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartViewController.swift; sourceTree = "<group>"; };
 		CCEE193D2C1C41E100405878 /* NicknameSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingView.swift; sourceTree = "<group>"; };
 		CCEE193F2C1C422000405878 /* NewNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNicknameSettingViewController.swift; sourceTree = "<group>"; };
+		CCF4EC912C2BE14D00D6E1D1 /* ProductDetailStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailStackView.swift; sourceTree = "<group>"; };
 		CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +206,7 @@
 				CC77E16E2C2A695500EF8598 /* AppleProductTableViewCell.swift */,
 				CC021D582C29C2FD00685E3A /* AppleProductCollectionView.swift */,
 				CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */,
+				CCF4EC912C2BE14D00D6E1D1 /* ProductDetailStackView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */,
 				CC9AE6FF2C20336F00DD5556 /* EditNicknameSettingViewController.swift in Sources */,
 				CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */,
+				CCF4EC922C2BE14D00D6E1D1 /* ProductDetailStackView.swift in Sources */,
 				CC9AE6EA2C1FC0F800DD5556 /* SortType.swift in Sources */,
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
 				CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */,

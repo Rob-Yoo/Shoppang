@@ -11,6 +11,8 @@ import Then
 
 final class AppleProductTableViewCell: UITableViewCell {
     
+    private var productList = [Product]()
+    
     private let titleLabel = UILabel().then {
         $0.textColor = .black
         $0.font = .bold16
@@ -23,6 +25,8 @@ final class AppleProductTableViewCell: UITableViewCell {
         self.backgroundColor = .white
         self.configureHierarchy()
         self.configureLayout()
+        self.productCollectionView.delegate = self
+        self.productCollectionView.dataSource = self
     }
     
     required init?(coder: NSCoder) {
@@ -51,6 +55,23 @@ extension AppleProductTableViewCell {
     
     func configureCellData(title: String, productList: [Product]) {
         self.titleLabel.text = title
-        self.productCollectionView.productList = productList
+        
+    }
+}
+
+extension AppleProductTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.productList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let data = self.productList[indexPath.item]
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppleProductCollectionViewCell.reusableIdentifier, for: indexPath) as? AppleProductCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configureCellData(data: data)
+        return cell
     }
 }

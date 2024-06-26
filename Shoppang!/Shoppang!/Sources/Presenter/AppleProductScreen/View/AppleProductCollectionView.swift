@@ -9,16 +9,8 @@ import UIKit
 
 final class AppleProductCollectionView: UICollectionView {
     
-    var productList = [Product]() {
-        didSet {
-            self.reloadData()
-        }
-    }
-    
     init() {
         super.init(frame: .zero, collectionViewLayout: AppleProductCollectionView.layout())
-        self.delegate = self
-        self.dataSource = self
         self.backgroundColor = .mainTheme
         
         self.register(AppleProductCollectionViewCell.self, forCellWithReuseIdentifier: AppleProductCollectionViewCell.reusableIdentifier)
@@ -37,9 +29,21 @@ final class AppleProductCollectionView: UICollectionView {
         return layout
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
+//    override func layoutIfNeeded() {
+//        super.layoutIfNeeded()
+//        
+//        guard let layout = self.collectionViewLayout as? UICollectionViewFlowLayout else {
+//            return
+//        }
+//        
+//        let width = (self.frame.width - 3) / 2.5
+//        let height = self.frame.height - 2
+//        layout.itemSize = CGSize(width: width, height: height)
+//        layout.minimumLineSpacing = 1
+//    }
+//    
+    override func draw(_ rect: CGRect) {
+        print(#function)
         guard let layout = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return
         }
@@ -49,21 +53,14 @@ final class AppleProductCollectionView: UICollectionView {
         layout.itemSize = CGSize(width: width, height: height)
         layout.minimumLineSpacing = 1
     }
-}
-
-extension AppleProductCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.productList.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let data = self.productList[indexPath.item]
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppleProductCollectionViewCell.reusableIdentifier, for: indexPath) as? AppleProductCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        
-        cell.configureCellData(data: data)
-        return cell
-    }
+//    override func updateConstraintsIfNeeded() {
+//        guard let layout = self.collectionViewLayout as? UICollectionViewFlowLayout else {
+//            return
+//        }
+//
+//        let width = (self.frame.width - 3) / 2.5
+//        let height = self.frame.height - 2
+//        layout.itemSize = CGSize(width: width, height: height)
+//        layout.minimumLineSpacing = 1
+//    }
 }
