@@ -13,36 +13,29 @@ class NewNicknameSettingViewController: BaseViewController<NewNicknameSettingVie
     private let model = ProfileModel()
     private var cancellable = Set<AnyCancellable>()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.observingModel()
-        self.addUserAction()
-    }
-
-    private func addUserAction() {
-        self.addActionToProfileImageView()
-        self.addActionToNicknameTextField()
-        self.addActionToCompleteButton()
+    override func addUserAction() {
+        let profileImageViewTapGR = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
+        
+        self.contentView.nicknameSettingView.editableProfileImageView.addGestureRecognizer(profileImageViewTapGR)
+        self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
+        self.contentView.nicknameSettingView.completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         self.addKeyboardDismissAction()
     }
     
-    private func addActionToProfileImageView() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
-
-        self.contentView.nicknameSettingView.editableProfileImageView.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    private func addActionToNicknameTextField() {
-        self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
-    }
-    
-    private func addActionToCompleteButton() {
-        self.contentView.nicknameSettingView.completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
-    }
-    
-    private func addKeyboardDismissAction() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.contentView.addGestureRecognizer(gestureRecognizer)
+    override func observeModel() {
+        self.model.$nickname
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.updateNickNicknameTextFieldView()
+            }
+            .store(in: &cancellable)
+        
+        self.model.$profileImageNumber
+            .receive(on: RunLoop.main)
+            .sink { [weak self] new in
+                self?.updateEditableProfileImageView(imageNumber: new)
+            }
+            .store(in: &cancellable)
     }
 }
 
@@ -65,29 +58,6 @@ extension NewNicknameSettingViewController {
         if (self.model.checkNicknameValidationStatus() == .ok) {
             NavigationManager.changeWindowScene(didDeleteAccount: false)
         }
-    }
-    
-    @objc private func dismissKeyboard() {
-        self.contentView.endEditing(true)
-    }
-}
-
-//MARK: - Observing Model
-extension NewNicknameSettingViewController {
-    private func observingModel() {
-        self.model.$nickname
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateNickNicknameTextFieldView()
-            }
-            .store(in: &cancellable)
-        
-        self.model.$profileImageNumber
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.updateEditableProfileImageView(imageNumber: new)
-            }
-            .store(in: &cancellable)
     }
 }
 

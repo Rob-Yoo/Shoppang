@@ -20,17 +20,32 @@ class BaseViewController<ContentView: UIView>: UIViewController, UIGestureRecogn
         self.view.backgroundColor = .systemBackground
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.configureNavigationBar()
+        self.addUserAction()
+        self.observeModel()
     }
     
-    @objc func backButtonTapped() {
-        self.navigationController?.popViewController(animated: true)
-    }
+    //MARK: - Overriding Methods
+    func addUserAction() {}
+    func observeModel() {}
     
     // Navigation Stack에 뷰가 2개 이상일 경우 스와이프 제스처 허용
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         guard let nc = navigationController else { return false }
         
         return nc.viewControllers.count > 1
+    }
+    
+    func addKeyboardDismissAction() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.contentView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc private func dismissKeyboard() {
+        self.contentView.endEditing(true)
+    }
+
+    @objc func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
@@ -71,4 +86,3 @@ extension BaseViewController {
         self.navigationItem.leftBarButtonItem?.tintColor = .black
     }
 }
-

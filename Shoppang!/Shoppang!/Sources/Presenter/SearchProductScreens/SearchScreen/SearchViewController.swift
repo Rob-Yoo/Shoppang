@@ -14,18 +14,46 @@ final class SearchViewController: BaseViewController<SearchRootView> {
     private let model = SearchHistoryModel()
     private var cancellable = Set<AnyCancellable>()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.addUserAction()
-        self.observeModel()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
     }
     
+    override func addUserAction() {
+        let deleteAllGR = UITapGestureRecognizer(target: self, action: #selector(deleteAllButtonTapped))
+
+        self.contentView.searchHistoryView.deleteAllButton.addGestureRecognizer(deleteAllGR)
+        self.contentView.searchHistoryView.searchHistoryTableView.delegate = self
+        self.contentView.searchHistoryView.searchHistoryTableView.dataSource = self
+        self.contentView.searchBar.delegate = self
+        self.addKeyboardDismissAction()
+    }
+    
+    override func observeModel() {
+        self.model.$searchHistory
+            .receive(on: RunLoop.main)
+            .sink { [weak self] new in
+                if (new.isEmpty) {
+                    self?.contentView.presentEmptyHistoryView()
+                } else {
+                    self?.contentView.presentSearchHistoryView()
+                    self?.contentView.searchHistoryView.searchHistoryTableView.reloadData()
+                }
+            }
+            .store(in: &cancellable)
+    }
+    
+    override func addKeyboardDismissAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+
+        self.contentView.emptyHistoryView.addGestureRecognizer(tap)
+        self.contentView.searchHistoryView.searchHistoryTableView.keyboardDismissMode = .onDrag
+    }
+
+}
+
+//MARK: - Configure Navigation Bar
+extension SearchViewController {
     private func configureNavigationBar() {
         let nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? "옹골찬 고래밥"
         let appearance = UINavigationBarAppearance()
@@ -35,32 +63,6 @@ final class SearchViewController: BaseViewController<SearchRootView> {
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.navigationItem.title = nickname + "'s Shoppang!"
     }
-    
-    private func addUserAction() {
-        self.addActionToSearchBar()
-        self.addActionToSearchHistoryView()
-        self.addKeyboardDismissAction()
-    }
-    
-    private func addActionToSearchBar() {
-        self.contentView.searchBar.delegate = self
-    }
-    
-    private func addActionToSearchHistoryView() {
-        let deleteAllGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(deleteAllButtonTapped))
-
-        self.contentView.searchHistoryView.deleteAllButton.addGestureRecognizer(deleteAllGestureRecognizer)
-        self.contentView.searchHistoryView.searchHistoryTableView.delegate = self
-        self.contentView.searchHistoryView.searchHistoryTableView.dataSource = self
-    }
-    
-    private func addKeyboardDismissAction() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
-
-        self.contentView.emptyHistoryView.addGestureRecognizer(tap)
-        self.contentView.searchHistoryView.searchHistoryTableView.keyboardDismissMode = .onDrag
-    }
-
 }
 
 //MARK: - User Action Handling
@@ -90,24 +92,6 @@ extension SearchViewController: UISearchBarDelegate, SearchViewHistoryTableViewD
     
     func deleteCell(at: Int) {
         self.model.removeSearchHistory(idx: at)
-    }
-}
-
-
-//MARK: - Observing Model
-extension SearchViewController {
-    private func observeModel() {
-        self.model.$searchHistory
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                if (new.isEmpty) {
-                    self?.contentView.presentEmptyHistoryView()
-                } else {
-                    self?.contentView.presentSearchHistoryView()
-                    self?.contentView.searchHistoryView.searchHistoryTableView.reloadData()
-                }
-            }
-            .store(in: &cancellable)
     }
 }
 

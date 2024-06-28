@@ -10,50 +10,34 @@ import Combine
 
 final class EditNicknameSettingViewController: BaseViewController<EditNicknameSettingView> {
     
-    private let model: EditProfileModel
+    private let model = EditProfileModel()
     private var cancellable = Set<AnyCancellable>()
     
-    init() {
-        self.model = EditProfileModel()
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.addUserAction()
-        self.observeModel()
-    }
-    
-    private func addUserAction() {
-        self.addActionToSaveButton()
-        self.addActionToProfileImageView()
-        self.addActionToNicknameTextField()
+    override func addUserAction() {
+        let saveButton = UIBarButtonItem(title: Literal.ButtonTitle.Save, style: .plain, target: self, action: #selector(saveButtonTapped))
+        let profileImageViewTapGR = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
+
+        
+        self.navigationItem.rightBarButtonItem = saveButton
+        self.contentView.nicknameSettingView.editableProfileImageView.addGestureRecognizer(profileImageViewTapGR)
+        self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
         self.addKeyboardDismissAction()
     }
     
-    private func addActionToSaveButton() {
-        let saveButton = UIBarButtonItem(title: Literal.ButtonTitle.Save, style: .plain, target: self, action: #selector(saveButtonTapped))
+    override func observeModel() {
+        self.model.$nickname
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.updateNickNicknameTextFieldView()
+            }
+            .store(in: &cancellable)
         
-        self.navigationItem.rightBarButtonItem = saveButton
-    }
-    
-    private func addActionToProfileImageView() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
-
-        self.contentView.nicknameSettingView.editableProfileImageView.addGestureRecognizer(gestureRecognizer)
-    }
-    
-    private func addActionToNicknameTextField() {
-        self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
-    }
-    
-    private func addKeyboardDismissAction() {
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.contentView.addGestureRecognizer(gestureRecognizer)
+        self.model.$profileImageNumber
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.updateEditableProfileImageView()
+            }
+            .store(in: &cancellable)
     }
     
 }
@@ -77,29 +61,6 @@ extension EditNicknameSettingViewController {
     @objc private func nicknameTextFieldDidChange(_ sender: UITextField) {
         guard let text = sender.text else { return }
         self.model.nickname = text
-    }
-
-    @objc private func dismissKeyboard() {
-        self.contentView.endEditing(true)
-    }
-}
-
-//MARK: - Observing Model
-extension EditNicknameSettingViewController {
-    private func observeModel() {
-        self.model.$nickname
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateNickNicknameTextFieldView()
-            }
-            .store(in: &cancellable)
-        
-        self.model.$profileImageNumber
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateEditableProfileImageView()
-            }
-            .store(in: &cancellable)
     }
 }
 

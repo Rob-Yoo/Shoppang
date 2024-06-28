@@ -10,27 +10,15 @@ import Toast
 
 final class SettingListViewController: BaseViewController<SettingListRootView> {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.addUserAction()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.checkUserProfile()
     }
     
-    private func addUserAction() {
-        self.addActionToProfileView()
-        self.addActionToDeleteAccountCell()
-    }
-    
-    private func addActionToProfileView() {
+    override func addUserAction() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(profileViewTapped))
+
         self.contentView.profileView.addGestureRecognizer(tap)
-    }
-    
-    private func addActionToDeleteAccountCell() {
         self.contentView.settingListTableView.delegate = self
     }
     

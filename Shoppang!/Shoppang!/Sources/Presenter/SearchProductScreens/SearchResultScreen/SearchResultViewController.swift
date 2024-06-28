@@ -27,23 +27,34 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     override func viewDidLoad() {
         super.viewDidLoad()
         self.contentView.makeToastActivity(.center)
-        self.addUserAction()
-        self.observeModel()
         self.model.searchingProduct = query
     }
     
-    private func addUserAction() {
-        self.addActionToSearchResultCollectionView()
-        self.addActionToSortButtonsView()
-    }
-    
-    private func addActionToSearchResultCollectionView() {
+    override func addUserAction() {
         self.contentView.productListCollectionView.prefetchDataSource = self
         self.contentView.productListCollectionView.delegate = self
+        self.contentView.sortButtonsView.sortButtonsViewDelegate = self
     }
     
-    private func addActionToSortButtonsView() {
-        self.contentView.sortButtonsView.sortButtonsViewDelegate = self
+    override func observeModel() {
+        self.model.$searchResult
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] new in
+                self?.contentView.hideToastActivity()
+                if (new.start != -1) {
+                    self?.contentView.update(searchResult: new)
+                }
+            }
+            .store(in: &cancellable)
+        
+        self.model.$cartList
+            .dropFirst()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] new in
+                self?.contentView.productListCollectionView.cartList = new
+            }
+            .store(in: &cancellable)
     }
 }
 
@@ -89,30 +100,5 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             self.contentView.makeToast("🚨 해당 사이트의 주소가 없거나 유효하지 않아요", duration: 1.5)
         }
-    }
-}
-
-
-//MARK: - Observing Model
-extension SearchResultViewController {
-    private func observeModel() {
-        self.model.$searchResult
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.contentView.hideToastActivity()
-                if (new.start != -1) {
-                    self?.contentView.update(searchResult: new)
-                }
-            }
-            .store(in: &cancellable)
-        
-        self.model.$cartList
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.contentView.productListCollectionView.cartList = new
-            }
-            .store(in: &cancellable)
     }
 }

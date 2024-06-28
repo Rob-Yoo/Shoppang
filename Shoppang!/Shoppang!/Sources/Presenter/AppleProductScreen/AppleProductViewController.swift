@@ -23,18 +23,14 @@ class AppleProductViewController: BaseViewController<AppleProductRootView> {
         super.viewDidLoad()
         self.contentView.makeToastActivity(.center)
         self.addDelegate()
-        self.observeModel()
     }
     
     private func addDelegate() {
         self.contentView.appleProductTableView.delegate = self
         self.contentView.appleProductTableView.dataSource = self
     }
-}
-
-//MARK: - Observe Model
-extension AppleProductViewController {
-    private func observeModel() {
+    
+    override func observeModel() {
         self.model.$appleProductList
             .dropFirst()
             .receive(on: RunLoop.main)
