@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    
     var htmlElementDeleted: String {
         guard let encodedData = self.data(using: .utf8) else {
             return self
@@ -26,5 +27,11 @@ extension String {
         } catch {
             return self
         }
+    }
+    
+    static private let dateFormatter = DateFormatter()
+    static func getCurrentDate(dateFormat: String) -> String {
+        dateFormatter.dateFormat = dateFormat
+        return dateFormatter.string(from: Date())
     }
 }

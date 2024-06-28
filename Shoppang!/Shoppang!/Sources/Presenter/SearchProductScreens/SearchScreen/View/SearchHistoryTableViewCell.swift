@@ -27,6 +27,12 @@ final class SearchHistoryTableViewCell: UITableViewCell {
         $0.numberOfLines = 1
     }
     
+    let searchedDateLabel = UILabel().then {
+        $0.textColor = .lightGray
+        $0.textAlignment = .center
+        $0.font = .regular13
+    }
+    
     lazy var deleteButton = UIImageView().then {
         let imageConfiguration = UIImage.SymbolConfiguration(font: .regular13)
         let tap = UITapGestureRecognizer(target: self, action: #selector(deleteButtonTapped))
@@ -52,6 +58,7 @@ final class SearchHistoryTableViewCell: UITableViewCell {
     private func configureHierarchy() {
         self.contentView.addSubview(clockImageView)
         self.contentView.addSubview(searchKeywordLabel)
+        self.contentView.addSubview(searchedDateLabel)
         self.contentView.addSubview(deleteButton)
     }
     
@@ -65,13 +72,18 @@ final class SearchHistoryTableViewCell: UITableViewCell {
         searchKeywordLabel.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
             $0.leading.equalTo(clockImageView.snp.trailing).offset(5)
-            $0.width.equalToSuperview().multipliedBy(0.8)
+            $0.width.equalToSuperview().multipliedBy(0.65)
+        }
+        
+        searchedDateLabel.snp.makeConstraints {
+            $0.verticalEdges.equalToSuperview()
+            $0.leading.equalTo(searchKeywordLabel.snp.trailing).offset(15)
+            $0.trailing.equalTo(deleteButton.snp.leading).offset(-15)
         }
         
         deleteButton.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview()
-            $0.leading.equalTo(searchKeywordLabel.snp.trailing)
-            $0.trailing.equalToSuperview()
+            $0.trailing.equalToSuperview().inset(10)
         }
     }
     

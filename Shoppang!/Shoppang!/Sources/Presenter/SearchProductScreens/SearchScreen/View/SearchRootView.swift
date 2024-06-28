@@ -34,15 +34,14 @@ final class SearchRootView: UIView, RootViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func decideSearchHistoryView(searchHistory: [String]) {
-        if (searchHistory.isEmpty) {
-            self.searchHistoryView.isHidden = true
-            self.emptyHistoryView.isHidden = false
-        } else {
-            self.searchHistoryView.isHidden = false
-            self.emptyHistoryView.isHidden = true
-            self.searchHistoryView.searchHistoryTableView.searchHistory = searchHistory
-        }
+    func presentSearchHistoryView() {
+        self.searchHistoryView.isHidden = false
+        self.emptyHistoryView.isHidden = true
+    }
+    
+    func presentEmptyHistoryView() {
+        self.searchHistoryView.isHidden = true
+        self.emptyHistoryView.isHidden = false
     }
 }
 

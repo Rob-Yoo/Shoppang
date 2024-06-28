@@ -64,6 +64,7 @@ extension AppleProductViewController: UITableViewDelegate, UITableViewDataSource
         cell.productCollectionView.delegate = self
         cell.productCollectionView.dataSource = self
         cell.productCollectionView.tag = indexPath.row
+//        cell.productCollectionView
         return cell
     }
 }

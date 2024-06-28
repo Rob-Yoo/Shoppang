@@ -29,21 +29,7 @@ final class AppleProductCollectionView: UICollectionView {
         return layout
     }
     
-//    override func layoutIfNeeded() {
-//        super.layoutIfNeeded()
-//        
-//        guard let layout = self.collectionViewLayout as? UICollectionViewFlowLayout else {
-//            return
-//        }
-//        
-//        let width = (self.frame.width - 3) / 2.5
-//        let height = self.frame.height - 2
-//        layout.itemSize = CGSize(width: width, height: height)
-//        layout.minimumLineSpacing = 1
-//    }
-//    
     override func draw(_ rect: CGRect) {
-        print(#function)
         guard let layout = self.collectionViewLayout as? UICollectionViewFlowLayout else {
             return
         }
@@ -53,14 +39,4 @@ final class AppleProductCollectionView: UICollectionView {
         layout.itemSize = CGSize(width: width, height: height)
         layout.minimumLineSpacing = 1
     }
-//    override func updateConstraintsIfNeeded() {
-//        guard let layout = self.collectionViewLayout as? UICollectionViewFlowLayout else {
-//            return
-//        }
-//
-//        let width = (self.frame.width - 3) / 2.5
-//        let height = self.frame.height - 2
-//        layout.itemSize = CGSize(width: width, height: height)
-//        layout.minimumLineSpacing = 1
-//    }
 }

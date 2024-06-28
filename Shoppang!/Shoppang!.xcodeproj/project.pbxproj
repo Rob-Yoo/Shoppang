@@ -11,6 +11,7 @@
 		CC021D552C29C21200685E3A /* AppleProductTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D542C29C21200685E3A /* AppleProductTableView.swift */; };
 		CC021D592C29C2FD00685E3A /* AppleProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D582C29C2FD00685E3A /* AppleProductCollectionView.swift */; };
 		CC021D5B2C29C3C200685E3A /* AppleProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */; };
+		CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */; };
 		CC30CAC52C2B31BD00A2B9A1 /* AppleProductRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */; };
 		CC347B3F2C1F2F0100DD50A6 /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */; };
 		CC347B412C1F315E00DD50A6 /* SearchHistoryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B402C1F315E00DD50A6 /* SearchHistoryTableView.swift */; };
@@ -96,6 +97,7 @@
 		CC021D542C29C21200685E3A /* AppleProductTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductTableView.swift; sourceTree = "<group>"; };
 		CC021D582C29C2FD00685E3A /* AppleProductCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductCollectionView.swift; sourceTree = "<group>"; };
 		CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductRootView.swift; sourceTree = "<group>"; };
 		CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
 		CC347B402C1F315E00DD50A6 /* SearchHistoryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableView.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				CCEE19312C1C2A9400405878 /* UIFont+Extension.swift */,
 				CC7D8C172C1C4CE10079FD71 /* UIImage+Extension.swift */,
 				CC4A6B4C2C1EF90100AC878A /* String+Extension.swift */,
+				CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -737,6 +740,7 @@
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
 				CC9AE70C2C20812E00DD5556 /* CartProtocol.swift in Sources */,
 				CC7C830A2C1D79E3007406DA /* NewNicknameSettingView.swift in Sources */,
+				CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */,
 				CC021D5B2C29C3C200685E3A /* AppleProductCollectionViewCell.swift in Sources */,
 				CC9AE7102C20AA5C00DD5556 /* Literal.swift in Sources */,
 				CC7D8C182C1C4CE10079FD71 /* UIImage+Extension.swift in Sources */,

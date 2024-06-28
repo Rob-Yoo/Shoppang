@@ -57,6 +57,11 @@ extension AppleProductTableViewCell {
         self.titleLabel.text = title
         
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.productCollectionView.layoutIfNeeded()
+    }
 }
 
 extension AppleProductTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {

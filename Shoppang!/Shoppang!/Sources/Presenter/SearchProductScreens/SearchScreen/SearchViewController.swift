@@ -51,6 +51,7 @@ final class SearchViewController: BaseViewController<SearchRootView> {
 
         self.contentView.searchHistoryView.deleteAllButton.addGestureRecognizer(deleteAllGestureRecognizer)
         self.contentView.searchHistoryView.searchHistoryTableView.delegate = self
+        self.contentView.searchHistoryView.searchHistoryTableView.dataSource = self
     }
     
     private func addKeyboardDismissAction() {
@@ -63,10 +64,10 @@ final class SearchViewController: BaseViewController<SearchRootView> {
 }
 
 //MARK: - User Action Handling
-extension SearchViewController: UISearchBarDelegate, UITableViewDelegate, SearchViewHistoryTableViewDelegate {
+extension SearchViewController: UISearchBarDelegate, SearchViewHistoryTableViewDelegate {
 
     @objc func deleteAllButtonTapped() {
-        self.model.searchHistory = []
+        self.model.removeAllSearchHistory()
     }
     
     @objc func keyboardDismiss() {
@@ -87,14 +88,6 @@ extension SearchViewController: UISearchBarDelegate, UITableViewDelegate, Search
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let query = self.model.searchHistory[indexPath.row]
-        let nextVC = SearchResultViewController(query: query)
-        
-        self.model.saveSearchHistory(keyword: query)
-        self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
     func deleteCell(at: Int) {
         self.model.removeSearchHistory(idx: at)
     }
@@ -107,8 +100,39 @@ extension SearchViewController {
         self.model.$searchHistory
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
-                self?.contentView.decideSearchHistoryView(searchHistory: new)
+                if (new.isEmpty) {
+                    self?.contentView.presentEmptyHistoryView()
+                } else {
+                    self?.contentView.presentSearchHistoryView()
+                    self?.contentView.searchHistoryView.searchHistoryTableView.reloadData()
+                }
             }
             .store(in: &cancellable)
+    }
+}
+
+//MARK: - TableView Delegate/DataSource
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.model.searchHistory.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let history = self.model.searchHistory[indexPath.row]
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchHistoryTableViewCell.reusableIdentifier, for: indexPath) as? SearchHistoryTableViewCell else { return UITableViewCell() }
+        
+        cell.searchKeywordLabel.text = history.keyword
+        cell.searchedDateLabel.text = history.date
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let history = self.model.searchHistory[indexPath.row]
+        let nextVC = SearchResultViewController(query: history.keyword)
+        
+        self.contentView.searchBar.text = history.keyword
+        self.model.saveSearchHistory(keyword: history.keyword)
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }

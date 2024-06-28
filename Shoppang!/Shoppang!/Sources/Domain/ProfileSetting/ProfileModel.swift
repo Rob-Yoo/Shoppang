@@ -97,9 +97,7 @@ extension ProfileModel {
 //MARK: - Save Data Methods
 extension ProfileModel {
     private func saveJoinDate() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        let currentDate = dateFormatter.string(from: Date())
+        let currentDate = String.getCurrentDate(dateFormat: "yyyy.MM.dd")
 
         UserDefaults.standard.setValue(currentDate, forKey: UserDefaultsKey.joinDate.rawValue)
     }
