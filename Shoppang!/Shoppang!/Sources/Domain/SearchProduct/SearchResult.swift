@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchResultDTO: Decodable {
+struct SearchResult: Decodable {
     let total: Int
     let start: Int
     let display: Int

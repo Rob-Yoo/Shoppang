@@ -7,11 +7,19 @@
 
 import UIKit
 import SnapKit
+import Then
 
 final class AppleProductRootView: UIView, RootViewProtocol {
     var navigationTitle: String = Literal.NavigationTitle.AppleProduct
     
-    let appleProductTableView = AppleProductTableView()
+    let appleProductTableView = UITableView(frame: .zero, style: .plain).then {
+        $0.backgroundColor = .clear
+        $0.rowHeight = UIScreen.main.bounds.height * 0.3
+        $0.showsVerticalScrollIndicator = false
+        $0.allowsSelection = false
+        $0.separatorStyle = .none
+        $0.register(AppleProductTableViewCell.self, forCellReuseIdentifier: AppleProductTableViewCell.reusableIdentifier)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

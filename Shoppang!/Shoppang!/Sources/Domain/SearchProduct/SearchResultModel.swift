@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class SearchResultModel {
-    @Published var searchResult = SearchResultDTO()
+    @Published var searchResult = SearchResult()
     var searchingProduct: String = "" {
         willSet {
             let url = API.searchProductURL(query: newValue, sort: self.sortType.rawValue, page: 1)
@@ -35,7 +35,7 @@ final class SearchResultModel {
             
             // 마지막 페이지가 아닌 경우 guard
             guard page * searchResult.display <= searchResult.total else {
-                self.searchResult = SearchResultDTO()
+                self.searchResult = SearchResult()
                 return
             }
             
@@ -55,7 +55,7 @@ final class SearchResultModel {
 //MARK: - Data Manipulation
 extension SearchResultModel {
     private func fetchSearchResult(url: String, isAppend: Bool = false) {
-        let success: (SearchResultDTO) -> Void = { [weak self] result in
+        let success: (SearchResult) -> Void = { [weak self] result in
             if (isAppend) {
                 self?.searchResult.items.append(contentsOf: result.items)
             } else {
@@ -64,7 +64,7 @@ extension SearchResultModel {
         }
         
         let failure: (Error) -> Void = { [weak self] _ in
-            self?.searchResult = SearchResultDTO()
+            self?.searchResult = SearchResult()
         }
 
         NetworkManager.requestURL(url: url, success: success, failure: failure)

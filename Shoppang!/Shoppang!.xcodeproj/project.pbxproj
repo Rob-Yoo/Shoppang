@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CC021D532C29C1F700685E3A /* AppleProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D522C29C1F700685E3A /* AppleProductViewController.swift */; };
-		CC021D552C29C21200685E3A /* AppleProductTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D542C29C21200685E3A /* AppleProductTableView.swift */; };
-		CC021D592C29C2FD00685E3A /* AppleProductCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D582C29C2FD00685E3A /* AppleProductCollectionView.swift */; };
 		CC021D5B2C29C3C200685E3A /* AppleProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */; };
 		CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */; };
 		CC30CAC52C2B31BD00A2B9A1 /* AppleProductRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */; };
@@ -29,7 +27,7 @@
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
 		CC4A6B322C1EB31400AC878A /* EmptySearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */; };
 		CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */; };
-		CC4A6B372C1EBE4A00AC878A /* SearchResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */; };
+		CC4A6B372C1EBE4A00AC878A /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B362C1EBE4A00AC878A /* SearchResult.swift */; };
 		CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */; };
 		CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3A2C1EC18A00AC878A /* API.swift */; };
 		CC4A6B3E2C1EC78100AC878A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */; };
@@ -94,8 +92,6 @@
 
 /* Begin PBXFileReference section */
 		CC021D522C29C1F700685E3A /* AppleProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductViewController.swift; sourceTree = "<group>"; };
-		CC021D542C29C21200685E3A /* AppleProductTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductTableView.swift; sourceTree = "<group>"; };
-		CC021D582C29C2FD00685E3A /* AppleProductCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductCollectionView.swift; sourceTree = "<group>"; };
 		CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductRootView.swift; sourceTree = "<group>"; };
@@ -115,7 +111,7 @@
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
 		CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchHistoryView.swift; sourceTree = "<group>"; };
 		CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDTO.swift; sourceTree = "<group>"; };
+		CC4A6B362C1EBE4A00AC878A /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		CC4A6B3A2C1EC18A00AC878A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
@@ -204,9 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */,
-				CC021D542C29C21200685E3A /* AppleProductTableView.swift */,
 				CC77E16E2C2A695500EF8598 /* AppleProductTableViewCell.swift */,
-				CC021D582C29C2FD00685E3A /* AppleProductCollectionView.swift */,
 				CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */,
 				CCF4EC912C2BE14D00D6E1D1 /* ProductDetailStackView.swift */,
 			);
@@ -350,7 +344,7 @@
 		CC4A6B352C1EBE3100AC878A /* SearchProduct */ = {
 			isa = PBXGroup;
 			children = (
-				CC4A6B362C1EBE4A00AC878A /* SearchResultDTO.swift */,
+				CC4A6B362C1EBE4A00AC878A /* SearchResult.swift */,
 				CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */,
 				CC9AE6E92C1FC0F800DD5556 /* SortType.swift */,
 				CC9AE70B2C20812E00DD5556 /* CartProtocol.swift */,
@@ -731,7 +725,7 @@
 			files = (
 				CC4A6B472C1EDF2700AC878A /* SearchResultCollectionViewCell.swift in Sources */,
 				CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */,
-				CC4A6B372C1EBE4A00AC878A /* SearchResultDTO.swift in Sources */,
+				CC4A6B372C1EBE4A00AC878A /* SearchResult.swift in Sources */,
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
 				CC4A6B4B2C1EDFE200AC878A /* ProductImageView.swift in Sources */,
@@ -755,11 +749,9 @@
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
 				CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */,
 				CCEE190B2C1C094800405878 /* RootViewProtocol.swift in Sources */,
-				CC021D552C29C21200685E3A /* AppleProductTableView.swift in Sources */,
 				CCEE191C2C1C0B4A00405878 /* SettingListRootView.swift in Sources */,
 				CC7C83052C1D6B82007406DA /* NicknameTextFieldView.swift in Sources */,
 				CC77E1722C2A70D400EF8598 /* AppleProductModel.swift in Sources */,
-				CC021D592C29C2FD00685E3A /* AppleProductCollectionView.swift in Sources */,
 				CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */,
 				CC4A6B322C1EB31400AC878A /* EmptySearchHistoryView.swift in Sources */,
 				CC347B412C1F315E00DD50A6 /* SearchHistoryTableView.swift in Sources */,

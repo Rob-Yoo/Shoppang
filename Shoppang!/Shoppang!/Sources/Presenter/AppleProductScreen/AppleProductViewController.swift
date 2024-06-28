@@ -39,7 +39,6 @@ extension AppleProductViewController {
             .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
-                print("hi")
                 self?.contentView.hideToastActivity()
                 self?.contentView.appleProductTableView.reloadData()
             }
@@ -54,17 +53,15 @@ extension AppleProductViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let title = AppleProductType.allCases[indexPath.row].title
-        let productList = self.model.appleProductList[indexPath.row].items
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AppleProductTableViewCell.reusableIdentifier, for: indexPath) as? AppleProductTableViewCell else {
             return UITableViewCell()
         }
         
-        cell.configureCellData(title: title, productList: productList)
+        cell.configureCellData(title: title)
         cell.productCollectionView.delegate = self
         cell.productCollectionView.dataSource = self
         cell.productCollectionView.tag = indexPath.row
-//        cell.productCollectionView
         return cell
     }
 }
@@ -77,7 +74,7 @@ extension AppleProductViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let idx = collectionView.tag
-        let product = self.model.appleProductList[idx].items[indexPath.row]
+        let product = self.model.appleProductList[idx].items[indexPath.item]
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppleProductCollectionViewCell.reusableIdentifier, for: indexPath) as? AppleProductCollectionViewCell else {
             return UICollectionViewCell()

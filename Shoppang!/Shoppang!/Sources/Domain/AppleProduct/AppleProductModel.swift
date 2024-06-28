@@ -9,20 +9,20 @@ import Foundation
 import Combine
 
 final class AppleProductModel {
-    @Published var appleProductList = [SearchResultDTO]()
+    @Published var appleProductList = [SearchResult]()
 }
 
 extension AppleProductModel {
     func fetchAppleProductResult() {
         let urls = AppleProductType.allCases.map { $0.url }
-        var productList = Array(repeating: SearchResultDTO(), count: AppleProductType.allCases.count)
+        var productList = Array(repeating: SearchResult(), count: AppleProductType.allCases.count)
 
         let group = DispatchGroup()
         
         for (idx, url) in urls.enumerated() {
             group.enter()
             DispatchQueue.global().async(group: group) {
-                NetworkManager.requestURL(url: url){ (result: SearchResultDTO) in
+                NetworkManager.requestURL(url: url){ (result: SearchResult) in
                     productList[idx] = result
                     group.leave()
                 } failure: { _ in
