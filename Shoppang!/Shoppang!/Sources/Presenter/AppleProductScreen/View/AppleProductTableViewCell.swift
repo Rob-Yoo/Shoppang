@@ -69,20 +69,3 @@ extension AppleProductTableViewCell {
         self.titleLabel.text = title
     }
 }
-
-//extension AppleProductTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return self.productList.count
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let data = self.productList[indexPath.item]
-//        
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppleProductCollectionViewCell.reusableIdentifier, for: indexPath) as? AppleProductCollectionViewCell else {
-//            return UICollectionViewCell()
-//        }
-//        
-//        cell.configureCellData(data: data)
-//        return cell
-//    }
-//}

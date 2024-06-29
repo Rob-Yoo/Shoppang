@@ -43,6 +43,7 @@ class AppleProductViewController: BaseViewController<AppleProductRootView> {
 }
 
 extension AppleProductViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.model.appleProductList.count
     }
@@ -53,12 +54,18 @@ extension AppleProductViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AppleProductTableViewCell.reusableIdentifier, for: indexPath) as? AppleProductTableViewCell else {
             return UITableViewCell()
         }
-        
         cell.configureCellData(title: title)
-        cell.productCollectionView.delegate = self
-        cell.productCollectionView.dataSource = self
         cell.productCollectionView.tag = indexPath.row
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let appleProductCell = cell as? AppleProductTableViewCell else {
+            return
+        }
+        
+        appleProductCell.productCollectionView.delegate = self
+        appleProductCell.productCollectionView.dataSource = self
     }
 }
 
@@ -71,11 +78,11 @@ extension AppleProductViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let idx = collectionView.tag
         let product = self.model.appleProductList[idx].items[indexPath.item]
-        
+
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppleProductCollectionViewCell.reusableIdentifier, for: indexPath) as? AppleProductCollectionViewCell else {
             return UICollectionViewCell()
         }
-        
+
         cell.configureCellData(data: product)
         return cell
     }
