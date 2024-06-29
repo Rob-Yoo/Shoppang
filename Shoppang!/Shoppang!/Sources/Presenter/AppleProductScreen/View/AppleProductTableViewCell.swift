@@ -35,14 +35,21 @@ final class AppleProductTableViewCell: UITableViewCell {
     
     private func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = (UIScreen.main.bounds.width - 3) / 2.5
-        let height = width * 1.3
         
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
-        layout.itemSize = CGSize(width: width, height: height)
         layout.minimumLineSpacing = 1
         return layout
+    }
+    
+    override func draw(_ rect: CGRect) {
+        guard let layout = self.productCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        let width = (self.productCollectionView.frame.width - 3) / 2.5
+        let height = self.productCollectionView.frame.height - 2
+        
+        layout.itemSize = CGSize(width: width, height: height)
     }
 }
 

@@ -36,6 +36,7 @@ final class AppleProductCollectionViewCell: UICollectionViewCell {
         self.productImageView.imageView.kf.setImage(with: url)
         self.productDetailStackView.update(product: data)
     }
+    
 }
 
 //MARK: - Configure Subviews
