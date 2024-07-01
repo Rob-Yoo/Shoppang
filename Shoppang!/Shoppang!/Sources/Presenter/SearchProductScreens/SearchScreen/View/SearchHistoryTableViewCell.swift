@@ -21,19 +21,19 @@ final class SearchHistoryTableViewCell: UITableViewCell {
         $0.tintColor = .black
     }
     
-    let searchKeywordLabel = UILabel().then {
+    private let searchKeywordLabel = UILabel().then {
         $0.textColor = .black
         $0.font = .regular13
         $0.numberOfLines = 1
     }
     
-    let searchedDateLabel = UILabel().then {
+    private let searchedDateLabel = UILabel().then {
         $0.textColor = .lightGray
         $0.textAlignment = .center
         $0.font = .regular13
     }
     
-    lazy var deleteButton = UIImageView().then {
+    private lazy var deleteButton = UIImageView().then {
         let imageConfiguration = UIImage.SymbolConfiguration(font: .regular13)
         let tap = UITapGestureRecognizer(target: self, action: #selector(deleteButtonTapped))
         
@@ -85,6 +85,11 @@ final class SearchHistoryTableViewCell: UITableViewCell {
             $0.verticalEdges.equalToSuperview()
             $0.trailing.equalToSuperview().inset(10)
         }
+    }
+    
+    func configureCellData(data: SearchHistory) {
+        self.searchKeywordLabel.text = data.keyword
+        self.searchedDateLabel.text = data.date
     }
     
     @objc func deleteButtonTapped() {

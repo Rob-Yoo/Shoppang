@@ -106,8 +106,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchHistoryTableViewCell.reusableIdentifier, for: indexPath) as? SearchHistoryTableViewCell else { return UITableViewCell() }
         
-        cell.searchKeywordLabel.text = history.keyword
-        cell.searchedDateLabel.text = history.date
+        cell.configureCellData(data: history)
         return cell
     }
     
