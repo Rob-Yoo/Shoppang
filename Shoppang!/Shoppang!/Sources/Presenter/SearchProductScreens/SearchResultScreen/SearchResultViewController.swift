@@ -33,6 +33,7 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     override func addUserAction() {
         self.contentView.productListCollectionView.prefetchDataSource = self
         self.contentView.productListCollectionView.delegate = self
+        self.contentView.productListCollectionView.dataSource = self
         self.contentView.sortButtonsView.sortButtonsViewDelegate = self
     }
     
@@ -42,9 +43,12 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.contentView.hideToastActivity()
-                if (new.start != -1) {
-                    self?.contentView.update(searchResult: new)
-                }
+                
+                guard new.start != -1 else { return }
+                let isNew = (!new.items.isEmpty && self?.model.page == 1) ? true : false
+        
+                self?.contentView.update(searchResult: new)
+                self?.contentView.productListCollectionView.update(isNew: isNew)
             }
             .store(in: &cancellable)
         
@@ -52,30 +56,27 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
             .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
-                self?.contentView.productListCollectionView.cartList = new
+                self?.contentView.productListCollectionView.reloadData()
             }
             .store(in: &cancellable)
     }
 }
 
-//MARK: - User Action Handling
-extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UICollectionViewDelegate, SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
-    
-    func sortButtonTapped(type newType: SortType) {
-        guard self.model.sortType != newType else { return }
-        self.contentView.hideToastActivity() // 스크롤 시 생기는 Indicator 삭제
-        self.contentView.makeToastActivity(.center)
-        self.model.sortType = newType
+//MARK: - CollectionView Delegate/DataSource/Prefatching
+extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.model.searchResult.items.count
     }
     
-    func cartButtonTapped(idx: Int) {
-        let productID = self.model.searchResult.items[idx].productId
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let productList = self.model.searchResult.items
+        let product = productList[indexPath.item]
+        let cartList = self.model.cartList
         
-        if (self.model.cartList.contains(productID)) {
-            self.model.removeFromCartList(productID: productID)
-        } else {
-            self.model.addToCartList(productID: productID)
-        }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.reusableIdentifier, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.configureCellData(data: product, isCart: cartList.contains(product.productId))
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
@@ -94,6 +95,27 @@ extension SearchResultViewController: UICollectionViewDataSourcePrefetching, UIC
         
         nextVC.productDetailViewControllerDelegate = self
         self.navigationController?.pushViewController(nextVC, animated: true)
+    }
+}
+
+//MARK: - User Action Handling
+extension SearchResultViewController: SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
+    
+    func sortButtonTapped(type newType: SortType) {
+        guard self.model.sortType != newType else { return }
+        self.contentView.hideToastActivity() // 스크롤 시 생기는 Indicator 삭제
+        self.contentView.makeToastActivity(.center)
+        self.model.sortType = newType
+    }
+    
+    func cartButtonTapped(idx: Int) {
+        let productID = self.model.searchResult.items[idx].productId
+        
+        if (self.model.cartList.contains(productID)) {
+            self.model.removeFromCartList(productID: productID)
+        } else {
+            self.model.addToCartList(productID: productID)
+        }
     }
     
     func showInvalidUrlToast() {
