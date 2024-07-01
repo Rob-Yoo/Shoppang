@@ -13,8 +13,16 @@ final class SettingListRootView: UIView, RootViewProtocol {
     var navigationTitle: String = Literal.NavigationTitle.Setting
     
     let profileView = ProfileView()
+    
     private let line = UIView().then { $0.backgroundColor = .black }
-    let settingListTableView = SettingListTableView()
+    
+    let settingListTableView = UITableView(frame: .zero, style: .plain).then {
+        $0.isScrollEnabled = false
+        $0.register(SettingListTableViewCell.self, forCellReuseIdentifier: SettingListTableViewCell.reusableIdentifier)
+        $0.rowHeight = 50
+        $0.separatorColor = .black
+        $0.separatorStyle = .singleLine
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

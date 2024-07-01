@@ -10,6 +10,17 @@ import Toast
 
 final class SettingListViewController: BaseViewController<SettingListRootView> {
     
+    private var cartListCount = 0 {
+        didSet {
+            if (oldValue != cartListCount) {
+                let indexPath = IndexPath(row: 0, section: 0)
+                guard let cartListCountCell = contentView.settingListTableView.cellForRow(at: indexPath) as? SettingListTableViewCell else { return }
+                
+                cartListCountCell.updateCartListCountLabel(cartListCount: cartListCount)
+            }
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.checkUserProfile()
@@ -20,6 +31,7 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
 
         self.contentView.profileView.addGestureRecognizer(tap)
         self.contentView.settingListTableView.delegate = self
+        self.contentView.settingListTableView.dataSource = self
     }
     
     func checkUserProfile() {
@@ -27,17 +39,23 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
         let profileImage = UIImage.profileImages[user.profileImageNumber]
         
         self.contentView.profileView.update(image: profileImage, nickname: user.nickname)
-        self.contentView.settingListTableView.cartListCount = user.cartListCount
+        self.cartListCount = user.cartListCount
     }
 }
 
-//MARK: - User Action Handling
-extension SettingListViewController: UITableViewDelegate {
+//MARK: - TableView Delegate/DataSource
+extension SettingListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SettingListType.allCases.count
+    }
     
-    @objc private func profileViewTapped() {
-        let nextVC = EditNicknameSettingViewController()
-
-        self.navigationController?.pushViewController(nextVC, animated: true)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let type = SettingListType.allCases[indexPath.row]
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingListTableViewCell.reusableIdentifier, for: indexPath) as? SettingListTableViewCell else { return UITableViewCell() }
+        
+        cell.configureCellData(type: type, cartListCount: self.cartListCount)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,6 +67,16 @@ extension SettingListViewController: UITableViewDelegate {
         } else {
             self.contentView.makeToast("🚧 아직 준비중이에요...", duration: 1.5, position: .center)
         }
+    }
+}
+
+//MARK: - User Action Handling
+extension SettingListViewController {
+    
+    @objc private func profileViewTapped() {
+        let nextVC = EditNicknameSettingViewController()
+
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

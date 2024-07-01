@@ -52,7 +52,6 @@
 		CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6EE2C1FD47C00DD5556 /* ProductDetailViewController.swift */; };
 		CC9AE6F32C1FDA3100DD5556 /* CartBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F22C1FDA3100DD5556 /* CartBarButton.swift */; };
 		CC9AE6F52C20075A00DD5556 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F42C20075A00DD5556 /* ProfileView.swift */; };
-		CC9AE6F72C2020CA00DD5556 /* SettingListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */; };
 		CC9AE6F92C2021AB00DD5556 /* SettingListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */; };
 		CC9AE6FB2C20223400DD5556 /* SettingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */; };
 		CC9AE6FF2C20336F00DD5556 /* EditNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */; };
@@ -136,7 +135,6 @@
 		CC9AE6EE2C1FD47C00DD5556 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		CC9AE6F22C1FDA3100DD5556 /* CartBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartBarButton.swift; sourceTree = "<group>"; };
 		CC9AE6F42C20075A00DD5556 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListTableView.swift; sourceTree = "<group>"; };
 		CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListType.swift; sourceTree = "<group>"; };
 		CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListTableViewCell.swift; sourceTree = "<group>"; };
 		CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameSettingViewController.swift; sourceTree = "<group>"; };
@@ -598,7 +596,6 @@
 			children = (
 				CCEE191B2C1C0B4A00405878 /* SettingListRootView.swift */,
 				CC9AE6F42C20075A00DD5556 /* ProfileView.swift */,
-				CC9AE6F62C2020CA00DD5556 /* SettingListTableView.swift */,
 				CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */,
 			);
 			path = View;
@@ -788,7 +785,6 @@
 				CC9AE70E2C20834500DD5556 /* CartButton.swift in Sources */,
 				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,
 				CCFA7CC82C2126EE009E1F24 /* AlertManager.swift in Sources */,
-				CC9AE6F72C2020CA00DD5556 /* SettingListTableView.swift in Sources */,
 				CC9AE7062C204EE800DD5556 /* EditProfileImageSettingView.swift in Sources */,
 				CC3804792C1D8A5A00172CAF /* NewProfileImageSettingView.swift in Sources */,
 				CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */,
