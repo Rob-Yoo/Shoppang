@@ -14,6 +14,9 @@ enum AppleProductType: CaseIterable {
     case iMac
     case AppleWatch
     case AirPods
+    case iPod
+    case AppleTV
+    case homePod
     
     var title: String {
         switch self {
@@ -29,6 +32,12 @@ enum AppleProductType: CaseIterable {
             return "Apple Watch"
         case .AirPods:
             return "AirPods"
+        case .iPod:
+            return "iPod"
+        case .AppleTV:
+            return "AppleTV"
+        case .homePod:
+            return "HomePod"
         }
     }
     

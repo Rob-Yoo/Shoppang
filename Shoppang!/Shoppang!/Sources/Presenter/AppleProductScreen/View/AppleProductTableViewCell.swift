@@ -42,7 +42,14 @@ final class AppleProductTableViewCell: UITableViewCell {
         return layout
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.productCollectionView.delegate = nil
+        self.productCollectionView.dataSource = nil
+    }
+    
     override func draw(_ rect: CGRect) {
+//        print(#function)
         guard let layout = self.productCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
             return
         }

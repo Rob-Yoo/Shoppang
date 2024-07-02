@@ -28,6 +28,7 @@ class AppleProductViewController: BaseViewController<AppleProductRootView> {
     private func addDelegate() {
         self.contentView.appleProductTableView.delegate = self
         self.contentView.appleProductTableView.dataSource = self
+//        self.contentView.appleProductTableView.prefetchDataSource = self
     }
     
     override func observeModel() {
@@ -54,19 +55,22 @@ extension AppleProductViewController: UITableViewDelegate, UITableViewDataSource
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AppleProductTableViewCell.reusableIdentifier, for: indexPath) as? AppleProductTableViewCell else {
             return UITableViewCell()
         }
+
         cell.configureCellData(title: title)
-        cell.productCollectionView.tag = indexPath.row
         return cell
     }
     
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let appleProductCell = cell as? AppleProductTableViewCell else {
             return
         }
-        
+
+        appleProductCell.productCollectionView.tag = indexPath.row
         appleProductCell.productCollectionView.delegate = self
         appleProductCell.productCollectionView.dataSource = self
     }
+
 }
 
 extension AppleProductViewController: UICollectionViewDelegate, UICollectionViewDataSource {
