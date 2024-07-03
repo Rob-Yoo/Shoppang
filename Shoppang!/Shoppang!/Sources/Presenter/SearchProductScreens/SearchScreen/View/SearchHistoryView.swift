@@ -24,7 +24,12 @@ final class SearchHistoryView: UIView {
         $0.isUserInteractionEnabled = true
     }
     
-    let searchHistoryTableView = SearchHistoryTableView()
+    let searchHistoryTableView = UITableView(frame: .zero, style: .plain).then {
+        $0.register(SearchHistoryTableViewCell.self, forCellReuseIdentifier: SearchHistoryTableViewCell.reusableIdentifier)
+        $0.showsVerticalScrollIndicator = false
+        $0.separatorStyle = .none
+        $0.rowHeight = 40
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

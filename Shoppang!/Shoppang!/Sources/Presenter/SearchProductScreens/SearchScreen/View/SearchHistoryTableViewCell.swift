@@ -29,7 +29,7 @@ final class SearchHistoryTableViewCell: UITableViewCell {
     
     private let searchedDateLabel = UILabel().then {
         $0.textColor = .lightGray
-        $0.textAlignment = .center
+        $0.textAlignment = .right
         $0.font = .regular13
     }
     
@@ -85,6 +85,8 @@ final class SearchHistoryTableViewCell: UITableViewCell {
             $0.verticalEdges.equalToSuperview()
             $0.trailing.equalToSuperview().inset(10)
         }
+        
+        
     }
     
     func configureCellData(data: SearchHistory) {
