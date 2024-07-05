@@ -70,11 +70,11 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let productList = self.searchResultModel.searchResult.items
         let product = productList[indexPath.item]
-        let cartList = self.cartListModel.cartList
+        let isCart = self.cartListModel.isCart(productID: product.productId)
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.reusableIdentifier, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configureCellData(data: product, isCart: self.cartListModel.isCart(productID: product.productId))
+        cell.configureCellData(data: product, isCart: isCart)
         return cell
     }
     
@@ -89,7 +89,6 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = self.searchResultModel.searchResult.items[indexPath.item]
-        let isCart = self.cartListModel.isCart(productID: product.productId)
         let nextVC = ProductDetailViewController(product: product, model: self.cartListModel)
         
         nextVC.productDetailViewControllerDelegate = self
