@@ -36,7 +36,7 @@ final class WishListRootView: UIView, RootViewProtocol {
         $0.showsMenuAsPrimaryAction = true
     }
     
-    lazy var productCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout()).then {
+    lazy var wishListCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout()).then {
         $0.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.reusableIdentifier)
         $0.showsVerticalScrollIndicator = false
     }
@@ -78,7 +78,7 @@ extension WishListRootView {
         self.addSubview(sortTitleLabel)
         self.addSubview(arrowImageView)
         self.addSubview(transparentButton)
-        self.addSubview(productCollectionView)
+        self.addSubview(wishListCollectionView)
     }
     
     private func configureLayout() {
@@ -100,7 +100,7 @@ extension WishListRootView {
             make.height.equalTo(sortTitleLabel.snp.height)
         }
 
-        productCollectionView.snp.makeConstraints { make in
+        wishListCollectionView.snp.makeConstraints { make in
             make.top.equalTo(wishListCountLabel).offset(40)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
@@ -110,7 +110,7 @@ extension WishListRootView {
             make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.trailing.equalToSuperview().offset(-20)
             make.width.equalToSuperview().multipliedBy(0.15)
-            make.bottom.equalTo(productCollectionView.snp.top).offset(-20)
+            make.bottom.equalTo(wishListCollectionView.snp.top).offset(-20)
         }
     }
 

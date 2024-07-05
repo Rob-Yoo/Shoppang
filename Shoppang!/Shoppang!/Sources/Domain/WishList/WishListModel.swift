@@ -16,6 +16,8 @@ final class WishListModel {
         }
     }
     
+    private var willDeleteWishList = [Product]()
+    
     private let repository = WishListRepository()
     
     init() {
@@ -39,7 +41,7 @@ extension WishListModel {
         self.repository.deleteItem(productID: productID)
         self.reloadData()
     }
-    
+        
     func isWishList(productID: String) -> Bool {
         guard let _ = self.wishList.first(where: {
             $0.productId == productID
@@ -47,6 +49,32 @@ extension WishListModel {
         
         return true
     }
+}
+
+//MARK: - Add/Delete Pending
+extension WishListModel {
+    
+    func isWillDeleteWishList(product: Product) -> Bool {
+        guard let _ = self.willDeleteWishList.first(where: {
+            $0.productId == product.productId
+        }) else { return false }
+        
+        return true
+    }
+    
+    func addToWillDeleteWishList(product: Product) {
+        self.willDeleteWishList.append(product)
+    }
+    
+    func removeToWillDeleteWishList(product: Product) {
+        self.willDeleteWishList = willDeleteWishList.filter { $0.productId != product.productId }
+    }
+    
+    func removePendingWishList() {
+        self.willDeleteWishList.forEach { self.repository.deleteItem(productID: $0.productId) }
+        self.reloadData()
+    }
+
 }
 
 //MARK: - Sorting

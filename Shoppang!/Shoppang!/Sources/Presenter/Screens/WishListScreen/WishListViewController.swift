@@ -24,9 +24,14 @@ final class WishListViewController: BaseViewController<WishListRootView> {
         self.model.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.model.removePendingWishList()
+    }
+    
     override func addUserAction() {
-        self.contentView.productCollectionView.delegate = self
-        self.contentView.productCollectionView.dataSource = self
+        self.contentView.wishListCollectionView.delegate = self
+        self.contentView.wishListCollectionView.dataSource = self
         self.contentView.transparentButton.menu = makePullDownMenu()
     }
     
@@ -36,7 +41,7 @@ final class WishListViewController: BaseViewController<WishListRootView> {
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.contentView.update(wishListCount: new.count)
-                self?.contentView.productCollectionView.reloadData()
+                self?.contentView.wishListCollectionView.reloadData()
             }
             .store(in: &cancellable)
     }
@@ -66,13 +71,20 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
 extension WishListViewController: ProductCollectionViewCellDelegate {
     func wishButtonTapped(idx: Int) {
         let product = self.model.wishList[idx]
-        let isWishList = self.model.isWishList(productID: product.productId)
+        let isWishList = !self.model.isWillDeleteWishList(product: product)
 
         if (isWishList) {
-            self.model.removeFromWishList(productID: product.productId)
+            // 위시 리스트라면 버퍼에 저장
+            self.model.addToWillDeleteWishList(product: product)
         } else {
-            self.model.addToWishList(product: product)
+            // 아니라면 버퍼에서 삭제
+            self.model.removeToWillDeleteWishList(product: product)
         }
+        
+        let indexPath = IndexPath(item: idx, section: 0)
+        guard let wishListCountCell = contentView.wishListCollectionView.cellForItem(at: indexPath) as? ProductCollectionViewCell else { return }
+        
+        wishListCountCell.configureCellData(data: product, isWishList: !isWishList)
     }
     
     private func makePullDownMenu() -> UIMenu {
