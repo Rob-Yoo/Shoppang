@@ -8,10 +8,15 @@
 import UIKit
 import Combine
 
-final class EditNicknameSettingViewController: BaseViewController<EditNicknameSettingView> {
+final class EditNicknameSettingViewController: BaseViewController<NicknameSettingView> {
     
-    private let model = EditProfileModel()
+    private let model: EditProfileModel
     private var cancellable = Set<AnyCancellable>()
+    
+    init(contentView: NicknameSettingView, model: EditProfileModel) {
+        self.model = model
+        super.init(contentView: contentView)
+    }
     
     override func addUserAction() {
         let saveButton = UIBarButtonItem(title: Literal.ButtonTitle.Save, style: .plain, target: self, action: #selector(saveButtonTapped))
@@ -19,8 +24,8 @@ final class EditNicknameSettingViewController: BaseViewController<EditNicknameSe
 
         
         self.navigationItem.rightBarButtonItem = saveButton
-        self.contentView.nicknameSettingView.editableProfileImageView.addGestureRecognizer(profileImageViewTapGR)
-        self.contentView.nicknameSettingView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
+        self.contentView.editableProfileImageView.addGestureRecognizer(profileImageViewTapGR)
+        self.contentView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
         self.addKeyboardDismissAction()
     }
     
@@ -53,7 +58,7 @@ extension EditNicknameSettingViewController {
     }
     
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController<EditProfileImageSettingView, EditProfileModel>(model: self.model)
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .Editing), model: self.model)
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -68,7 +73,7 @@ extension EditNicknameSettingViewController {
 extension EditNicknameSettingViewController {
     private func updateNickNicknameTextFieldView() {
         let status = self.model.checkNicknameValidationStatus()
-        let nicknameTextFieldView = self.contentView.nicknameSettingView.nicknameTextFieldView
+        let nicknameTextFieldView = self.contentView.nicknameTextFieldView
 
         nicknameTextFieldView.nicknameTextField.text = self.model.nickname
         nicknameTextFieldView.update(status: status)
@@ -76,7 +81,7 @@ extension EditNicknameSettingViewController {
     
     private func updateEditableProfileImageView() {
         let profileImage = UIImage.profileImages[self.model.profileImageNumber]
-        let profileImageView = self.contentView.nicknameSettingView.editableProfileImageView.profileImageView
+        let profileImageView = self.contentView.editableProfileImageView.profileImageView
         
         profileImageView.update(image: profileImage)
     }

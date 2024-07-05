@@ -9,7 +9,17 @@ import UIKit
 
 class BaseViewController<ContentView: UIView>: UIViewController, UIGestureRecognizerDelegate {
 
-    let contentView = ContentView()
+    let contentView: ContentView
+    
+    init(contentView: ContentView = ContentView()) {
+        self.contentView = contentView
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         self.view = contentView

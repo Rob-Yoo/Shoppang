@@ -24,7 +24,7 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
         self.model = model
         self.product = product
         self.isCart = isCart
-        super.init(nibName: nil, bundle: nil)
+        super.init()
     }
     
     required init?(coder: NSCoder) {

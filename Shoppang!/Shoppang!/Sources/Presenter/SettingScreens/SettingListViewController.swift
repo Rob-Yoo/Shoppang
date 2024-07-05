@@ -74,7 +74,7 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
 extension SettingListViewController {
     
     @objc private func profileViewTapped() {
-        let nextVC = EditNicknameSettingViewController()
+        let nextVC = EditNicknameSettingViewController(contentView: NicknameSettingView(type: .Editing), model: EditProfileModel())
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

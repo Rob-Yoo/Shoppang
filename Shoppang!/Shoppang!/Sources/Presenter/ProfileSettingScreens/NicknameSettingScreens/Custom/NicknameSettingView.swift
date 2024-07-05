@@ -9,17 +9,17 @@ import UIKit
 import SnapKit
 import Then
 
-final class NicknameSettingView: UIView {
-    let settingType: ProfileSettingType
+final class NicknameSettingView: UIView, RootViewProtocol {
+    var navigationTitle: String
     
     let editableProfileImageView = CurrentProfileImageView()
     let nicknameTextFieldView = NicknameTextFieldView()
     lazy var completeButton = TextButton(type: .complete)
     
     init(type: ProfileSettingType) {
-        self.settingType = type
+        self.navigationTitle = type.navigationTitle
         super.init(frame: .zero)
-        self.configureSubviews()
+        self.configureSubviews(type: type)
     }
     
     required init?(coder: NSCoder) {
@@ -29,11 +29,11 @@ final class NicknameSettingView: UIView {
 
 //MARK: - Configure Subviews
 extension NicknameSettingView {
-    private func configureSubviews() {
+    private func configureSubviews(type: ProfileSettingType) {
         self.configureEditableProfileImageView()
         self.configureNicknameTextFieldView()
         
-        if (settingType == .New) {
+        if (type == .New) {
             self.configureCompleteButton()
         }
     }

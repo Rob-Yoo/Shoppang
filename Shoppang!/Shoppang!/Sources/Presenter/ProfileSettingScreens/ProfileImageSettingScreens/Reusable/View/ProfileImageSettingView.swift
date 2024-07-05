@@ -8,7 +8,8 @@
 import UIKit
 import SnapKit
 
-class ProfileImageSettingView: UIView {
+class ProfileImageSettingView: UIView, RootViewProtocol {
+    var navigationTitle: String
     
     let currentProfileImageView = CurrentProfileImageView()
     
@@ -23,8 +24,9 @@ class ProfileImageSettingView: UIView {
         return layout
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(type: ProfileSettingType) {
+        self.navigationTitle = type.navigationTitle
+        super.init(frame: .zero)
         self.configureHierarchy()
         self.configureLayout()
     }

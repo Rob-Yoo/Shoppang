@@ -8,14 +8,14 @@
 import UIKit
 import Combine
 
-final class ProfileImageSettingViewController<ContentView: ProfileImageSettingView, Model: ProfileImageProtocol>: BaseViewController<ContentView> {
+final class ProfileImageSettingViewController: BaseViewController<ProfileImageSettingView> {
     
-    private var model: Model
+    private var model: ProfileImageProtocol
     private var cancellable = Set<AnyCancellable>()
     
-    init(model: Model) {
+    init(contentView: ProfileImageSettingView, model: ProfileImageProtocol) {
         self.model = model
-        super.init(nibName: nil, bundle: nil)
+        super.init(contentView: contentView)
     }
     
     required init?(coder: NSCoder) {
