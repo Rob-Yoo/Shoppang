@@ -60,6 +60,8 @@
 		CC9AE7102C20AA5C00DD5556 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70F2C20AA5C00DD5556 /* Literal.swift */; };
 		CCCBB1142C37BC2C00B4349C /* CartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1132C37BC2C00B4349C /* CartListViewController.swift */; };
 		CCCBB1162C37BC4100B4349C /* CartListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1152C37BC4100B4349C /* CartListRootView.swift */; };
+		CCCBB1192C37BCA100B4349C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCCBB1182C37BCA100B4349C /* RealmSwift */; };
+		CCCBB11A2C37BCBF00B4349C /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = CCCBB1182C37BCA100B4349C /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -85,6 +87,20 @@
 		CCFA7CC82C2126EE009E1F24 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */; };
 		CCFA7CCE2C212B4E009E1F24 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = CCFA7CCD2C212B4E009E1F24 /* Toast */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CCCBB11B2C37BCBF00B4349C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CCCBB11A2C37BCBF00B4349C /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CC021D522C29C1F700685E3A /* AppleProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCCBB1192C37BCA100B4349C /* RealmSwift in Frameworks */,
 				CCEE19002C1C074B00405878 /* Kingfisher in Frameworks */,
 				CCEE18FA2C1C073500405878 /* Alamofire in Frameworks */,
 				CCEE18FD2C1C074200405878 /* SnapKit in Frameworks */,
@@ -645,6 +662,7 @@
 				CCEE18DD2C1C06CC00405878 /* Sources */,
 				CCEE18DE2C1C06CC00405878 /* Frameworks */,
 				CCEE18DF2C1C06CC00405878 /* Resources */,
+				CCCBB11B2C37BCBF00B4349C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -657,6 +675,7 @@
 				CCEE18FF2C1C074B00405878 /* Kingfisher */,
 				CCEE19022C1C075400405878 /* Then */,
 				CCFA7CCD2C212B4E009E1F24 /* Toast */,
+				CCCBB1182C37BCA100B4349C /* RealmSwift */,
 			);
 			productName = "Shoppang!";
 			productReference = CCEE18E12C1C06CC00405878 /* Shoppang!.app */;
@@ -692,6 +711,7 @@
 				CCEE18FE2C1C074B00405878 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				CCEE19012C1C075400405878 /* XCRemoteSwiftPackageReference "Then" */,
 				CCFA7CCC2C212B4E009E1F24 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				CCCBB1172C37BCA100B4349C /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = CCEE18E22C1C06CC00405878 /* Products */;
 			projectDirPath = "";
@@ -935,7 +955,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shoppang!/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "유진영";
+				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -968,7 +988,7 @@
 				DEVELOPMENT_TEAM = YWNQ4RZBTS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shoppang!/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "유진영";
+				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1015,6 +1035,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CCCBB1172C37BCA100B4349C /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.52.1;
+			};
+		};
 		CCEE18F82C1C073500405878 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1058,6 +1086,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CCCBB1182C37BCA100B4349C /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CCCBB1172C37BCA100B4349C /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		CCEE18F92C1C073500405878 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CCEE18F82C1C073500405878 /* XCRemoteSwiftPackageReference "Alamofire" */;
