@@ -48,4 +48,12 @@ enum Literal {
         static let Dsc = "가격높은순"
         static let Asc = "가격낮은순"
     }
+    
+    enum WishListSort {
+        static let Add = "담은 순"
+        static let Asc = "낮은 가격순"
+        static let Dsc = "높은 가격순"
+        static let MallName = "브랜드 이름순"
+    }
+    
 }

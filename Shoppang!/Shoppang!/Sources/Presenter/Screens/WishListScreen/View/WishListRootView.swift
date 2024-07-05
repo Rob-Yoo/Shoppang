@@ -12,6 +12,30 @@ import Then
 final class WishListRootView: UIView, RootViewProtocol {
     let navigationTitle = Literal.NavigationTitle.WishList
     
+    private let wishListCountLabel = UILabel().then {
+        $0.textColor = .mainTheme
+        $0.font = .bold15
+    }
+    
+    private let sortTitleLabel = UILabel().then {
+        $0.font = .medium15
+        $0.textColor = .black
+        $0.text = WishListSortType.add.title
+    }
+    
+    private let arrowImageView = UIImageView().then {
+        let config = UIImage.SymbolConfiguration(font: .regular13)
+
+        $0.image = UIImage(systemName: "chevron.down", withConfiguration: config)
+        $0.contentMode = .center
+        $0.tintColor = .black
+    }
+    
+    let transparentButton = UIButton().then {
+        $0.backgroundColor = .clear
+        $0.showsMenuAsPrimaryAction = true
+    }
+    
     lazy var productCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout()).then {
         $0.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.reusableIdentifier)
         $0.showsVerticalScrollIndicator = false
@@ -38,15 +62,56 @@ final class WishListRootView: UIView, RootViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func update(wishListCount: Int) {
+        self.wishListCountLabel.text = wishListCount.formatted() + "개의 찜한 상품"
+    }
+    
+    func update(sortType: WishListSortType) {
+        self.sortTitleLabel.text = sortType.title
+    }
+}
+
+//MARK: - Configure Subviews
+extension WishListRootView {
     private func configureHierarchy() {
+        self.addSubview(wishListCountLabel)
+        self.addSubview(sortTitleLabel)
+        self.addSubview(arrowImageView)
+        self.addSubview(transparentButton)
         self.addSubview(productCollectionView)
     }
     
     private func configureLayout() {
-        productCollectionView.snp.makeConstraints { make in
+        
+        wishListCountLabel.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.leading.equalToSuperview().offset(20)
+        }
+        
+        sortTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.trailing.equalToSuperview().offset(-40)
+        }
+        
+        arrowImageView.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.leading.equalTo(sortTitleLabel.snp.trailing)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(sortTitleLabel.snp.height)
+        }
+
+        productCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(wishListCountLabel).offset(40)
             make.horizontalEdges.equalToSuperview().inset(20)
             make.bottom.equalTo(self.safeAreaLayoutGuide)
         }
+        
+        transparentButton.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.width.equalToSuperview().multipliedBy(0.15)
+            make.bottom.equalTo(productCollectionView.snp.top).offset(-20)
+        }
     }
+
 }

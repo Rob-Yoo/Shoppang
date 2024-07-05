@@ -21,12 +21,14 @@ final class WishListViewController: BaseViewController<WishListRootView> {
     override func addUserAction() {
         self.contentView.productCollectionView.delegate = self
         self.contentView.productCollectionView.dataSource = self
+        self.contentView.transparentButton.menu = makePullDownMenu()
     }
     
     override func observeModel() {
         self.model.$wishList
             .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] new in
+                self?.contentView.update(wishListCount: new.count)
                 self?.contentView.productCollectionView.reloadData()
             }
             .store(in: &cancellable)
@@ -64,5 +66,17 @@ extension WishListViewController: ProductCollectionViewCellDelegate {
         } else {
             self.model.addToWishList(product: product)
         }
+    }
+    
+    private func makePullDownMenu() -> UIMenu {
+        let actions = WishListSortType.allCases.map {
+            let sortType = $0
+            return UIAction(title: sortType.title) { [weak self] _ in
+                self?.model.sortWishList(type: sortType)
+                self?.contentView.update(sortType: sortType)
+            }
+        }
+        
+        return UIMenu(children: actions)
     }
 }

@@ -27,7 +27,7 @@ final class WishListRepository {
     }
     
     func fetchAll() -> [Product] {
-        return list.map { Product.createProduct(dto: $0) }
+        return list.map { Product.createProduct(dto: $0) }.reversed()
     }
     
     func deleteItem(productID: String) {

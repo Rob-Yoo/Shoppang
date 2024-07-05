@@ -48,3 +48,19 @@ extension WishListModel {
         return true
     }
 }
+
+//MARK: - Sorting
+extension WishListModel {
+    func sortWishList(type: WishListSortType) {
+        switch type {
+        case .add:
+            self.reloadData()
+        case .asc:
+            self.wishList = wishList.sorted { Int($0.lprice)! < Int($1.lprice)! }
+        case .dsc:
+            self.wishList = wishList.sorted { Int($0.lprice)! > Int($1.lprice)! }
+        case .mallName:
+            self.wishList = wishList.sorted { $0.mallName < $1.mallName }
+        }
+    }
+}
