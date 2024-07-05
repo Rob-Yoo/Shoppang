@@ -14,5 +14,5 @@ enum UserDefaultsKey: String, CaseIterable {
     case joinDate
 
     case searchHistory
-    case userCartList
+    case userCartListCount
 }

@@ -23,8 +23,6 @@ final class ProfileView: UIView {
     }
     
     private let joinDateLabel = UILabel().then {
-        $0.text = (UserDefaults.standard.string(forKey: UserDefaultsKey.joinDate.rawValue) ??
-        "0000.00.00") + " 가입"
         $0.textColor = .placeholder
         $0.font = .regular13
     }
@@ -45,9 +43,12 @@ final class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(image: UIImage, nickname: String) {
-        self.nicknameLabel.text = nickname
-        self.profileImageView.update(image: image)
+    func update(profile: UserProfile) {
+        let profileImage = UIImage.profileImages[profile.profileImageNumber]
+
+        self.nicknameLabel.text = profile.nickname
+        self.joinDateLabel.text = profile.userJoinDate + " 가입"
+        self.profileImageView.update(image: profileImage)
     }
 }
 

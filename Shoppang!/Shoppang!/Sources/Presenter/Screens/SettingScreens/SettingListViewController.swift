@@ -36,9 +36,8 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
     
     func checkUserProfile() {
         let user = UserProfile()
-        let profileImage = UIImage.profileImages[user.profileImageNumber]
-        
-        self.contentView.profileView.update(image: profileImage, nickname: user.nickname)
+
+        self.contentView.profileView.update(profile: user)
         self.cartListCount = user.cartListCount
     }
 }

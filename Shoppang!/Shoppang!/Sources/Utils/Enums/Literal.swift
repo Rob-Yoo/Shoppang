@@ -14,6 +14,7 @@ enum Literal {
         static let Setting = "SETTING"
         static let EditProfile = "EDIT PROFILE"
         static let AppleProduct = "APPLE COLLECTION"
+        static let CartList = "장바구니 목록"
     }
     
     enum Placeholder {

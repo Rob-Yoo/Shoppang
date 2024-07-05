@@ -14,16 +14,14 @@ protocol ProductDetailViewControllerDelegate: AnyObject {
 
 final class ProductDetailViewController: BaseViewController<ProductDetailView> {
 
-    private var model: CartProtocol
-    private var product: Product
-    private var isCart: Bool
+    private let model: CartListModel
+    private let product: Product
     
     weak var productDetailViewControllerDelegate: ProductDetailViewControllerDelegate?
     
-    init(product: Product, model: CartProtocol, isCart: Bool) {
+    init(product: Product, model: CartListModel) {
         self.model = model
         self.product = product
-        self.isCart = isCart
         super.init()
     }
     
@@ -39,17 +37,18 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
     }
     
     private func configureNavigationBar() {
-        self.navigationItem.title = product.title.htmlElementDeleted
-        let button = CartBarButton(isCart: self.isCart)
+        let isCart = self.model.isCart(productID: product.productId)
+        let button = CartBarButton(isCart: isCart)
         let barbutton = UIBarButtonItem(customView: button)
         
+        self.navigationItem.title = product.title.htmlElementDeleted
         self.navigationItem.rightBarButtonItem = barbutton
         button.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
     }
     
     @objc private func cartButtonTapped(sender: UIButton) {
         guard let cartButton = sender as? CartBarButton else { return }
-        cartButton.isCart ? self.model.removeFromCartList(productID: product.productId) : self.model.addToCartList(productID: product.productId)
+        cartButton.isCart ? self.model.removeFromCartList(productID: product.productId) : self.model.addToCartList(product: product)
         cartButton.isCart.toggle()
     }
 }

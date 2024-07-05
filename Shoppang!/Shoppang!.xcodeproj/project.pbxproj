@@ -55,13 +55,15 @@
 		CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */; };
 		CC9AE7082C2050D100DD5556 /* ProfileImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7072C2050D100DD5556 /* ProfileImageProtocol.swift */; };
 		CC9AE70A2C205B9500DD5556 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7092C205B9500DD5556 /* UserProfile.swift */; };
-		CC9AE70C2C20812E00DD5556 /* CartProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70B2C20812E00DD5556 /* CartProtocol.swift */; };
 		CC9AE70E2C20834500DD5556 /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70D2C20834500DD5556 /* CartButton.swift */; };
 		CC9AE7102C20AA5C00DD5556 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70F2C20AA5C00DD5556 /* Literal.swift */; };
 		CCCBB1142C37BC2C00B4349C /* CartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1132C37BC2C00B4349C /* CartListViewController.swift */; };
 		CCCBB1162C37BC4100B4349C /* CartListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1152C37BC4100B4349C /* CartListRootView.swift */; };
 		CCCBB1192C37BCA100B4349C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCCBB1182C37BCA100B4349C /* RealmSwift */; };
 		CCCBB11A2C37BCBF00B4349C /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = CCCBB1182C37BCA100B4349C /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		CCCBB11E2C37BF8B00B4349C /* CartProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB11D2C37BF8B00B4349C /* CartProductDTO.swift */; };
+		CCCBB1202C37C18E00B4349C /* CartListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB11F2C37C18E00B4349C /* CartListRepository.swift */; };
+		CCCBB1222C37C9EB00B4349C /* CartListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1212C37C9EB00B4349C /* CartListModel.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -151,11 +153,13 @@
 		CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileModel.swift; sourceTree = "<group>"; };
 		CC9AE7072C2050D100DD5556 /* ProfileImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageProtocol.swift; sourceTree = "<group>"; };
 		CC9AE7092C205B9500DD5556 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		CC9AE70B2C20812E00DD5556 /* CartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProtocol.swift; sourceTree = "<group>"; };
 		CC9AE70D2C20834500DD5556 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 		CC9AE70F2C20AA5C00DD5556 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
 		CCCBB1132C37BC2C00B4349C /* CartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListViewController.swift; sourceTree = "<group>"; };
 		CCCBB1152C37BC4100B4349C /* CartListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListRootView.swift; sourceTree = "<group>"; };
+		CCCBB11D2C37BF8B00B4349C /* CartProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProductDTO.swift; sourceTree = "<group>"; };
+		CCCBB11F2C37C18E00B4349C /* CartListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListRepository.swift; sourceTree = "<group>"; };
+		CCCBB1212C37C9EB00B4349C /* CartListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListModel.swift; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 		CC3804872C1DA8A500172CAF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CCCBB11C2C37BF5B00B4349C /* CarList */,
 				CC77E1702C2A70B400EF8598 /* AppleProduct */,
 				CC347B442C1F437800DD50A6 /* SearchHistory */,
 				CC4A6B352C1EBE3100AC878A /* SearchProduct */,
@@ -345,7 +350,6 @@
 				CC4A6B362C1EBE4A00AC878A /* SearchResult.swift */,
 				CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */,
 				CC9AE6E92C1FC0F800DD5556 /* SortType.swift */,
-				CC9AE70B2C20812E00DD5556 /* CartProtocol.swift */,
 			);
 			path = SearchProduct;
 			sourceTree = "<group>";
@@ -473,6 +477,16 @@
 				CCCBB1152C37BC4100B4349C /* CartListRootView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CCCBB11C2C37BF5B00B4349C /* CarList */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBB11D2C37BF8B00B4349C /* CartProductDTO.swift */,
+				CCCBB11F2C37C18E00B4349C /* CartListRepository.swift */,
+				CCCBB1212C37C9EB00B4349C /* CartListModel.swift */,
+			);
+			path = CarList;
 			sourceTree = "<group>";
 		};
 		CCEE18D82C1C06CC00405878 = {
@@ -740,6 +754,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC4A6B472C1EDF2700AC878A /* SearchResultCollectionViewCell.swift in Sources */,
+				CCCBB1202C37C18E00B4349C /* CartListRepository.swift in Sources */,
 				CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */,
 				CC4A6B372C1EBE4A00AC878A /* SearchResult.swift in Sources */,
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
@@ -747,7 +762,6 @@
 				CC4A6B4B2C1EDFE200AC878A /* ProductImageView.swift in Sources */,
 				CC9AE6F32C1FDA3100DD5556 /* CartBarButton.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
-				CC9AE70C2C20812E00DD5556 /* CartProtocol.swift in Sources */,
 				CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */,
 				CC021D5B2C29C3C200685E3A /* AppleProductCollectionViewCell.swift in Sources */,
 				CC9AE7102C20AA5C00DD5556 /* Literal.swift in Sources */,
@@ -793,9 +807,11 @@
 				CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */,
 				CC021D532C29C1F700685E3A /* AppleProductViewController.swift in Sources */,
 				CC77E16D2C2A65E500EF8598 /* AppleProductType.swift in Sources */,
+				CCCBB11E2C37BF8B00B4349C /* CartProductDTO.swift in Sources */,
 				CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */,
 				CC30CAC52C2B31BD00A2B9A1 /* AppleProductRootView.swift in Sources */,
 				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
+				CCCBB1222C37C9EB00B4349C /* CartListModel.swift in Sources */,
 				CC9AE7082C2050D100DD5556 /* ProfileImageProtocol.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
 				CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */,

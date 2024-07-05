@@ -10,11 +10,13 @@ import Combine
 
 final class SearchResultViewController: BaseViewController<SearchResultRootView> {
     
-    private let model: SearchResultModel
+    private let searchResultModel: SearchResultModel
+    private let cartListModel: CartListModel
     private var cancellable = Set<AnyCancellable>()
     
-    init(model: SearchResultModel) {
-        self.model = model
+    init(searchResultModel: SearchResultModel, cartListModel: CartListModel) {
+        self.searchResultModel = searchResultModel
+        self.cartListModel = cartListModel
         super.init()
     }
     
@@ -24,7 +26,7 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = self.model.searchingProduct
+        self.navigationItem.title = self.searchResultModel.searchingProduct
         self.contentView.makeToastActivity(.center)
     }
     
@@ -36,20 +38,20 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     }
     
     override func observeModel() {
-        self.model.$searchResult
+        self.searchResultModel.$searchResult
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.contentView.hideToastActivity()
                 
                 guard new.start != -1 else { return }
-                let isNew = (!new.items.isEmpty && self?.model.page == 1) ? true : false
+                let isNew = (!new.items.isEmpty && self?.searchResultModel.page == 1) ? true : false
         
                 self?.contentView.update(searchResult: new)
                 self?.contentView.productListCollectionView.update(isNew: isNew)
             }
             .store(in: &cancellable)
         
-        self.model.$cartList
+        self.cartListModel.$cartList
             .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
@@ -62,33 +64,33 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
 //MARK: - CollectionView Delegate/DataSource/Prefatching
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.model.searchResult.items.count
+        return self.searchResultModel.searchResult.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let productList = self.model.searchResult.items
+        let productList = self.searchResultModel.searchResult.items
         let product = productList[indexPath.item]
-        let cartList = self.model.cartList
+        let cartList = self.cartListModel.cartList
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.reusableIdentifier, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configureCellData(data: product, isCart: cartList.contains(product.productId))
+        cell.configureCellData(data: product, isCart: self.cartListModel.isCart(productID: product.productId))
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if self.model.searchResult.items.count - 2 == indexPath.item {
-                self.model.page += 1
+            if self.searchResultModel.searchResult.items.count - 2 == indexPath.item {
+                self.searchResultModel.page += 1
                 self.contentView.makeToastActivity(.center)
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let product = self.model.searchResult.items[indexPath.item]
-        let isCart = self.model.cartList.contains(product.productId)
-        let nextVC = ProductDetailViewController(product: product, model: self.model, isCart: isCart)
+        let product = self.searchResultModel.searchResult.items[indexPath.item]
+        let isCart = self.cartListModel.isCart(productID: product.productId)
+        let nextVC = ProductDetailViewController(product: product, model: self.cartListModel)
         
         nextVC.productDetailViewControllerDelegate = self
         self.navigationController?.pushViewController(nextVC, animated: true)
@@ -99,19 +101,20 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
 extension SearchResultViewController: SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
     
     func sortButtonTapped(type newType: SortType) {
-        guard self.model.sortType != newType else { return }
+        guard self.searchResultModel.sortType != newType else { return }
         self.contentView.hideToastActivity() // 스크롤 시 생기는 Indicator 삭제
         self.contentView.makeToastActivity(.center)
-        self.model.sortType = newType
+        self.searchResultModel.sortType = newType
     }
     
     func cartButtonTapped(idx: Int) {
-        let productID = self.model.searchResult.items[idx].productId
+        let product = self.searchResultModel.searchResult.items[idx]
+        let isCart = self.cartListModel.isCart(productID: product.productId)
         
-        if (self.model.cartList.contains(productID)) {
-            self.model.removeFromCartList(productID: productID)
+        if (isCart) {
+            self.cartListModel.removeFromCartList(productID: product.productId)
         } else {
-            self.model.addToCartList(productID: productID)
+            self.cartListModel.addToCartList(product: product)
         }
     }
     
