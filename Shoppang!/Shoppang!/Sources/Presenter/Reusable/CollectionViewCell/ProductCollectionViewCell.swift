@@ -10,11 +10,11 @@ import SnapKit
 import Then
 import Kingfisher
 
-protocol SearchResultCollectionViewCellDelegate: AnyObject {
+protocol ProductCollectionViewCellDelegate: AnyObject {
     func cartButtonTapped(idx: Int)
 }
 
-final class SearchResultCollectionViewCell: UICollectionViewCell {
+final class ProductCollectionViewCell: UICollectionViewCell {
     
     lazy var productImageView = ProductImageView().then {
         $0.cartButton.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
@@ -60,8 +60,8 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
     @objc func cartButtonTapped() {
         guard let collectionView = superview as? UICollectionView, let indexPath = collectionView.indexPath(for: self) else { return }
 
-        guard let delegate = collectionView.delegate as? SearchResultCollectionViewCellDelegate else {
-            print("SearchResultViewController가 UICollectionViewDelegate를 채택하지 않았습니다")
+        guard let delegate = collectionView.delegate as? ProductCollectionViewCellDelegate else {
+            print("ProductCollectionViewCellDelegate를 채택하지 않았습니다")
             return
         }
         
@@ -70,7 +70,7 @@ final class SearchResultCollectionViewCell: UICollectionViewCell {
 }
 
 //MARK: - Configure Subviews
-extension SearchResultCollectionViewCell {
+extension ProductCollectionViewCell {
     private func configureHierarchy() {
         self.addSubview(productImageView)
         self.addSubview(mallNameLabel)
@@ -81,7 +81,7 @@ extension SearchResultCollectionViewCell {
     private func configureLayout() {
         productImageView.snp.makeConstraints {
             $0.top.horizontalEdges.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.7)
+            $0.height.equalToSuperview().multipliedBy(0.6)
         }
         
         mallNameLabel.snp.makeConstraints {

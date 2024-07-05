@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class CartListModel {
-    @Published var cartList: Set<CartProductDTO> {
+    @Published var cartList: [Product] {
         didSet {
             let cartListCount = cartList.count
             UserDefaults.standard.setValue(cartListCount, forKey: UserDefaultsKey.userCartListCount.rawValue)
@@ -31,24 +31,20 @@ extension CartListModel {
     }
     
     func addToCartList(product: Product) {
-        self.repository.createItem(data: CartProductDTO(product: product))
+        self.repository.createItem(product: product)
         self.reloadData()
     }
     
     func removeFromCartList(productID: String) {
-        guard let product = self.cartList.first(where: {
-            $0.productId == productID
-        }) else { return }
-
-        self.repository.deleteItem(product: product)
+        self.repository.deleteItem(productID: productID)
         self.reloadData()
     }
     
     func isCart(productID: String) -> Bool {
-        guard let product = self.cartList.first(where: {
+        guard let _ = self.cartList.first(where: {
             $0.productId == productID
         }) else { return false }
         
-        return self.cartList.contains(product)
+        return true
     }
 }

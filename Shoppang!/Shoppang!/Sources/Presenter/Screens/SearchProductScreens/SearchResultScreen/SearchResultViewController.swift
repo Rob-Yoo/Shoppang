@@ -72,7 +72,7 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
         let product = productList[indexPath.item]
         let isCart = self.cartListModel.isCart(productID: product.productId)
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCollectionViewCell.reusableIdentifier, for: indexPath) as? SearchResultCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reusableIdentifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
         
         cell.configureCellData(data: product, isCart: isCart)
         return cell
@@ -97,7 +97,7 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
 }
 
 //MARK: - User Action Handling
-extension SearchResultViewController: SortButtonsViewDelegate, SearchResultCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
+extension SearchResultViewController: SortButtonsViewDelegate, ProductCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
     
     func sortButtonTapped(type newType: SortType) {
         guard self.searchResultModel.sortType != newType else { return }

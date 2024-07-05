@@ -24,12 +24,3 @@ struct SearchResult: Decodable {
         self.init(total: 0, start: -1, display: 0, items: [])
     }
 }
-
-struct Product: Decodable {
-    let title: String
-    let link: String
-    let image: String
-    let lprice: String
-    let mallName: String
-    let productId: String
-}

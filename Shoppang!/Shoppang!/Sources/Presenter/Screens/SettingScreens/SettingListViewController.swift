@@ -60,10 +60,14 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let type = SettingListType.allCases[indexPath.row]
 
-        if (type == .deleteAccount) {
+        switch type {
+        case .cartList:
+            let nextVC = CartListViewController(model: CartListModel())
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        case .deleteAccount:
             let alert = AlertManager.makeDeleteAccountAlert(handler: deleteUserAccount)
             self.present(alert, animated: true)
-        } else {
+        default:
             self.contentView.makeToast("🚧 아직 준비중이에요...", duration: 1.5, position: .center)
         }
     }

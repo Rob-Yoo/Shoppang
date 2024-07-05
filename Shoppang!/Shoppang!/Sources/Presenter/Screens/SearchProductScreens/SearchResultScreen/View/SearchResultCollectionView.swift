@@ -13,7 +13,7 @@ final class SearchResultCollectionView: UICollectionView {
 
     init(layout: () -> UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: layout())
-        self.register(SearchResultCollectionViewCell.self, forCellWithReuseIdentifier: SearchResultCollectionViewCell.reusableIdentifier)
+        self.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.reusableIdentifier)
         self.showsVerticalScrollIndicator = false
     }
 
