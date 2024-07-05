@@ -58,6 +58,8 @@
 		CC9AE70C2C20812E00DD5556 /* CartProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70B2C20812E00DD5556 /* CartProtocol.swift */; };
 		CC9AE70E2C20834500DD5556 /* CartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70D2C20834500DD5556 /* CartButton.swift */; };
 		CC9AE7102C20AA5C00DD5556 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70F2C20AA5C00DD5556 /* Literal.swift */; };
+		CCCBB1142C37BC2C00B4349C /* CartListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1132C37BC2C00B4349C /* CartListViewController.swift */; };
+		CCCBB1162C37BC4100B4349C /* CartListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1152C37BC4100B4349C /* CartListRootView.swift */; };
 		CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E42C1C06CC00405878 /* AppDelegate.swift */; };
 		CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */; };
 		CCEE18E92C1C06CC00405878 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEE18E82C1C06CC00405878 /* BaseViewController.swift */; };
@@ -136,6 +138,8 @@
 		CC9AE70B2C20812E00DD5556 /* CartProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProtocol.swift; sourceTree = "<group>"; };
 		CC9AE70D2C20834500DD5556 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 		CC9AE70F2C20AA5C00DD5556 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
+		CCCBB1132C37BC2C00B4349C /* CartListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListViewController.swift; sourceTree = "<group>"; };
+		CCCBB1152C37BC4100B4349C /* CartListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListRootView.swift; sourceTree = "<group>"; };
 		CCEE18E12C1C06CC00405878 /* Shoppang!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shoppang!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCEE18E42C1C06CC00405878 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCEE18E62C1C06CC00405878 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -424,6 +428,36 @@
 			path = Edit;
 			sourceTree = "<group>";
 		};
+		CCCBB1102C37BAF200B4349C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBB1112C37BC0200B4349C /* CartListScreen */,
+				CC021D512C29C1E000685E3A /* AppleProductScreen */,
+				CCEE19352C1C2F5A00405878 /* OnboardingScreens */,
+				CC38047A2C1D971100172CAF /* ProfileSettingScreens */,
+				CCEE19102C1C0A0E00405878 /* SearchProductScreens */,
+				CCEE190C2C1C09C400405878 /* SettingScreens */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CCCBB1112C37BC0200B4349C /* CartListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBB1122C37BC1C00B4349C /* View */,
+				CCCBB1132C37BC2C00B4349C /* CartListViewController.swift */,
+			);
+			path = CartListScreen;
+			sourceTree = "<group>";
+		};
+		CCCBB1122C37BC1C00B4349C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBB1152C37BC4100B4349C /* CartListRootView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CCEE18D82C1C06CC00405878 = {
 			isa = PBXGroup;
 			children = (
@@ -483,14 +517,10 @@
 		CCEE19072C1C081900405878 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				CC021D512C29C1E000685E3A /* AppleProductScreen */,
+				CCCBB1102C37BAF200B4349C /* Screens */,
 				CCEE192C2C1C29B100405878 /* Reusable */,
 				CCEE19142C1C0A6300405878 /* TabBar */,
 				CCEE19082C1C08B400405878 /* Base */,
-				CCEE19352C1C2F5A00405878 /* OnboardingScreens */,
-				CC38047A2C1D971100172CAF /* ProfileSettingScreens */,
-				CCEE19102C1C0A0E00405878 /* SearchProductScreens */,
-				CCEE190C2C1C09C400405878 /* SettingScreens */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -737,6 +767,7 @@
 				CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */,
 				CC77E16F2C2A695500EF8598 /* AppleProductTableViewCell.swift in Sources */,
 				CC9AE70A2C205B9500DD5556 /* UserProfile.swift in Sources */,
+				CCCBB1142C37BC2C00B4349C /* CartListViewController.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
 				CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */,
 				CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */,
@@ -752,6 +783,7 @@
 				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,
 				CCFA7CC82C2126EE009E1F24 /* AlertManager.swift in Sources */,
 				CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */,
+				CCCBB1162C37BC4100B4349C /* CartListRootView.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,
 				CC9954F62C1EA09E00CF1374 /* NavigationManager.swift in Sources */,
 				CCEE19322C1C2A9400405878 /* UIFont+Extension.swift in Sources */,
