@@ -9,15 +9,13 @@ import UIKit
 import Combine
 
 final class SearchResultViewController: BaseViewController<SearchResultRootView> {
-
-    private let query: String
-    private let model = SearchResultModel()
+    
+    private let model: SearchResultModel
     private var cancellable = Set<AnyCancellable>()
     
-    init(query: String) {
-        self.query = query
-        super.init(nibName: nil, bundle: nil)
-        self.navigationItem.title = query
+    init(model: SearchResultModel) {
+        self.model = model
+        super.init()
     }
     
     required init?(coder: NSCoder) {
@@ -26,8 +24,8 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = self.model.searchingProduct
         self.contentView.makeToastActivity(.center)
-        self.model.searchingProduct = query
     }
     
     override func addUserAction() {
@@ -39,7 +37,6 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func observeModel() {
         self.model.$searchResult
-            .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.contentView.hideToastActivity()

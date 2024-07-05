@@ -18,19 +18,15 @@ final class SearchResultModel {
         }
     }
 
-    var searchingProduct: String = "" {
+    var searchingProduct: String {
         willSet {
-            let url = API.searchProductURL(query: newValue, sort: self.sortType.rawValue, page: 1)
-            self.page = 1
-            self.fetchSearchResult(url: url)
+            self.fetchSearchResult(query: newValue, sort: sortType)
         }
     }
     
     var sortType: SortType = .sim {
         willSet {
-            let url = API.searchProductURL(query: self.searchingProduct, sort: newValue.rawValue, page: 1)
-            self.page = 1
-            self.fetchSearchResult(url: url)
+            self.fetchSearchResult(query: searchingProduct, sort: newValue)
         }
     }
     
@@ -47,20 +43,28 @@ final class SearchResultModel {
                 return
             }
             
-            let url = API.searchProductURL(query: self.searchingProduct, sort: self.sortType.rawValue, page: page)
-            self.fetchSearchResult(url: url, isAppend: true)
+            self.fetchSearchResult(query: searchingProduct, sort: sortType, page: page, isPagination: true)
         }
+    }
+    
+    init(query: String) {
+        self.searchingProduct = query
+        self.fetchSearchResult(query: query, sort: .sim)
     }
 }
 
 //MARK: - Data Manipulation
 extension SearchResultModel {
-    private func fetchSearchResult(url: String, isAppend: Bool = false) {
+    
+    private func fetchSearchResult(query: String, sort: SortType, page: Int = 1 , isPagination: Bool = false) {
+        let url = API.searchProductURL(query: query, sort: sort.rawValue, page: page)
+        
         let success: (SearchResult) -> Void = { [weak self] result in
-            if (isAppend) {
+            if (isPagination) {
                 self?.searchResult.items.append(contentsOf: result.items)
             } else {
                 self?.searchResult = result
+                self?.page = 1
             }
         }
         
