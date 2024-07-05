@@ -1,5 +1,5 @@
 //
-//  CartListRootView.swift
+//  WishListRootView.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 7/5/24.
@@ -9,8 +9,8 @@ import UIKit
 import SnapKit
 import Then
 
-final class CartListRootView: UIView, RootViewProtocol {
-    let navigationTitle = Literal.NavigationTitle.CartList
+final class WishListRootView: UIView, RootViewProtocol {
+    let navigationTitle = Literal.NavigationTitle.WishList
     
     lazy var productCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout()).then {
         $0.register(ProductCollectionViewCell.self, forCellWithReuseIdentifier: ProductCollectionViewCell.reusableIdentifier)

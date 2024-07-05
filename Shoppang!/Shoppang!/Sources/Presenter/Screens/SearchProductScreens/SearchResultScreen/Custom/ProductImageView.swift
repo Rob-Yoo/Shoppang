@@ -19,13 +19,13 @@ final class ProductImageView: UIView {
         $0.layer.borderWidth = 0.5
     }
     
-    lazy var cartButton = CartButton()
+    lazy var wishButton = WishButton()
     
-    init(hasCartButton: Bool = true) {
+    init(hasWishButton: Bool = true) {
         super.init(frame: .zero)
         self.backgroundColor = .clear
         self.configureImageView()
-        if (hasCartButton) {
+        if (hasWishButton) {
             self.configureCarButton()
         }
     }
@@ -46,12 +46,12 @@ extension ProductImageView {
     }
     
     private func configureCarButton() {
-        self.addSubview(cartButton)
+        self.addSubview(wishButton)
         
-        cartButton.snp.makeConstraints {
+        wishButton.snp.makeConstraints {
             $0.trailing.bottom.equalToSuperview().inset(10)
             $0.width.equalToSuperview().multipliedBy(0.2)
-            $0.height.equalTo(cartButton.snp.width)
+            $0.height.equalTo(wishButton.snp.width)
         }
     }
 }

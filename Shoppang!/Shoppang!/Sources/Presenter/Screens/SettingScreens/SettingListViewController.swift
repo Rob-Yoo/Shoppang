@@ -10,13 +10,13 @@ import Toast
 
 final class SettingListViewController: BaseViewController<SettingListRootView> {
     
-    private var cartListCount = 0 {
+    private var wishListCount = 0 {
         didSet {
-            if (oldValue != cartListCount) {
+            if (oldValue != wishListCount) {
                 let indexPath = IndexPath(row: 0, section: 0)
-                guard let cartListCountCell = contentView.settingListTableView.cellForRow(at: indexPath) as? SettingListTableViewCell else { return }
+                guard let wishListCountCell = contentView.settingListTableView.cellForRow(at: indexPath) as? SettingListTableViewCell else { return }
                 
-                cartListCountCell.updateCartListCountLabel(cartListCount: cartListCount)
+                wishListCountCell.updateWishListCountLabel(wishListCount: wishListCount)
             }
         }
     }
@@ -38,7 +38,7 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
         let user = UserProfile()
 
         self.contentView.profileView.update(profile: user)
-        self.cartListCount = user.cartListCount
+        self.wishListCount = user.wishListCount
     }
 }
 
@@ -53,7 +53,7 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingListTableViewCell.reusableIdentifier, for: indexPath) as? SettingListTableViewCell else { return UITableViewCell() }
         
-        cell.configureCellData(type: type, cartListCount: self.cartListCount)
+        cell.configureCellData(type: type, wishListCount: self.wishListCount)
         return cell
     }
     
@@ -61,8 +61,8 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
         let type = SettingListType.allCases[indexPath.row]
 
         switch type {
-        case .cartList:
-            let nextVC = CartListViewController(model: CartListModel())
+        case .wishList:
+            let nextVC = WishListViewController(model: WishListModel())
             self.navigationController?.pushViewController(nextVC, animated: true)
         case .deleteAccount:
             let alert = AlertManager.makeDeleteAccountAlert(handler: deleteUserAccount)

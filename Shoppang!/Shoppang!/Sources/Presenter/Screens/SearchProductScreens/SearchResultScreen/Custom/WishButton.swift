@@ -1,5 +1,5 @@
 //
-//  CartButton.swift
+//  WishButton.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 6/17/24.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-final class CartButton: UIButton {
+final class WishButton: UIButton {
     
-    var isCart: Bool = false {
+    var isWishList: Bool = false {
         didSet {
-            let image: UIImage = isCart ? .likeSelected : .likeUnselected
-            let bgColor: UIColor = isCart ? .white : UIColor(white: 0, alpha: 0.4)
+            let image: UIImage = isWishList ? .likeSelected : .likeUnselected
+            let bgColor: UIColor = isWishList ? .white : UIColor(white: 0, alpha: 0.4)
             
             self.setImage(image, for: .normal)
             self.backgroundColor = bgColor

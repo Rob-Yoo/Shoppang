@@ -1,5 +1,5 @@
 //
-//  CartListTableViewCell.swift
+//  SettingListTableViewCell.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 6/17/24.
@@ -16,12 +16,12 @@ final class SettingListTableViewCell: UITableViewCell {
         $0.font = .regular15
     }
     
-    private lazy var cartImageView = UIImageView().then {
+    private lazy var wishListImageView = UIImageView().then {
         $0.image = UIImage.likeSelected
         $0.contentMode = .scaleAspectFit
     }
     
-    private lazy var cartListCountLabel = UILabel().then {
+    private lazy var wishListCountLabel = UILabel().then {
         $0.font = .bold15
         $0.textColor = .black
     }
@@ -42,16 +42,16 @@ final class SettingListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCellData(type: SettingListType, cartListCount: Int) {
+    func configureCellData(type: SettingListType, wishListCount: Int) {
         self.titleLabel.text = type.title
         
-        guard type == .cartList else { return }
-        self.configureCartListCountView()
-        self.cartListCountLabel.text = cartListCount.formatted() + "개"
+        guard type == .wishList else { return }
+        self.configureWishListCountView()
+        self.wishListCountLabel.text = wishListCount.formatted() + "개"
     }
     
-    func updateCartListCountLabel(cartListCount: Int) {
-        self.cartListCountLabel.text = cartListCount.formatted() + "개"
+    func updateWishListCountLabel(wishListCount: Int) {
+        self.wishListCountLabel.text = wishListCount.formatted() + "개"
     }
 }
 
@@ -65,9 +65,9 @@ extension SettingListTableViewCell {
         }
     }
     
-    private func configureCartListCountView() {
-        self.contentView.addSubview(cartImageView)
-        self.contentView.addSubview(cartListCountLabel)
+    private func configureWishListCountView() {
+        self.contentView.addSubview(wishListImageView)
+        self.contentView.addSubview(wishListCountLabel)
         self.contentView.addSubview(suffixLabel)
         
         suffixLabel.snp.makeConstraints {
@@ -75,13 +75,13 @@ extension SettingListTableViewCell {
             $0.centerY.equalToSuperview()
         }
         
-        cartListCountLabel.snp.makeConstraints {
+        wishListCountLabel.snp.makeConstraints {
             $0.trailing.equalTo(suffixLabel.snp.leading)
             $0.centerY.equalToSuperview()
         }
         
-        cartImageView.snp.makeConstraints {
-            $0.trailing.equalTo(cartListCountLabel.snp.leading)
+        wishListImageView.snp.makeConstraints {
+            $0.trailing.equalTo(wishListCountLabel.snp.leading)
             $0.centerY.equalToSuperview()
         }
     }

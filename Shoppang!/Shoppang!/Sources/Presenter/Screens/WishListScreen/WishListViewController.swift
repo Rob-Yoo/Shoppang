@@ -1,5 +1,5 @@
 //
-//  CartListViewController.swift
+//  WishListViewController.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 7/5/24.
@@ -8,12 +8,12 @@
 import UIKit
 import Combine
 
-final class CartListViewController: BaseViewController<CartListRootView> {
+final class WishListViewController: BaseViewController<WishListRootView> {
     
-    private let model: CartListModel
+    private let model: WishListModel
     private var cancellable = Set<AnyCancellable>()
     
-    init(model: CartListModel) {
+    init(model: WishListModel) {
         self.model = model
         super.init()
     }
@@ -24,7 +24,7 @@ final class CartListViewController: BaseViewController<CartListRootView> {
     }
     
     override func observeModel() {
-        self.model.$cartList
+        self.model.$wishList
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in
                 self?.contentView.productCollectionView.reloadData()
@@ -34,35 +34,35 @@ final class CartListViewController: BaseViewController<CartListRootView> {
 }
 
 //MARK: - CollectionView Delegate/DataSource
-extension CartListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WishListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.model.cartList.count
+        return self.model.wishList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let product = self.model.cartList[indexPath.item]
-        let isCart = self.model.isCart(productID: product.productId)
+        let product = self.model.wishList[indexPath.item]
+        let isWishList = self.model.isWishList(productID: product.productId)
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reusableIdentifier, for: indexPath) as? ProductCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        cell.configureCellData(data: product, isCart: isCart)
+        cell.configureCellData(data: product, isWishList: isWishList)
         return cell
     }
 
 }
 
 //MARK: - User Action Handling
-extension CartListViewController: ProductCollectionViewCellDelegate {
-    func cartButtonTapped(idx: Int) {
-        let product = self.model.cartList[idx]
-        let isCart = self.model.isCart(productID: product.productId)
+extension WishListViewController: ProductCollectionViewCellDelegate {
+    func wishButtonTapped(idx: Int) {
+        let product = self.model.wishList[idx]
+        let isWishList = self.model.isWishList(productID: product.productId)
 
-        if (isCart) {
-            self.model.removeFromCartList(productID: product.productId)
+        if (isWishList) {
+            self.model.removeFromWishList(productID: product.productId)
         } else {
-            self.model.addToCartList(product: product)
+            self.model.addToWishList(product: product)
         }
     }
 }

@@ -12,7 +12,7 @@ import Then
 
 final class AppleProductCollectionViewCell: UICollectionViewCell {
     
-    private let productImageView = ProductImageView(hasCartButton: false).then {
+    private let productImageView = ProductImageView(hasWishButton: false).then {
         $0.contentMode = .scaleAspectFit
         $0.imageView.layer.borderWidth = 0
     }

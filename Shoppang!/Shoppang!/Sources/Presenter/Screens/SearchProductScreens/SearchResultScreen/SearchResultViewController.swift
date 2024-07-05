@@ -11,12 +11,12 @@ import Combine
 final class SearchResultViewController: BaseViewController<SearchResultRootView> {
     
     private let searchResultModel: SearchResultModel
-    private let cartListModel: CartListModel
+    private let wishListModel: WishListModel
     private var cancellable = Set<AnyCancellable>()
     
-    init(searchResultModel: SearchResultModel, cartListModel: CartListModel) {
+    init(searchResultModel: SearchResultModel, wishListModel: WishListModel) {
         self.searchResultModel = searchResultModel
-        self.cartListModel = cartListModel
+        self.wishListModel = wishListModel
         super.init()
     }
     
@@ -51,7 +51,7 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
             }
             .store(in: &cancellable)
         
-        self.cartListModel.$cartList
+        self.wishListModel.$wishList
             .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
@@ -70,11 +70,11 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let productList = self.searchResultModel.searchResult.items
         let product = productList[indexPath.item]
-        let isCart = self.cartListModel.isCart(productID: product.productId)
+        let isWishList = self.wishListModel.isWishList(productID: product.productId)
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reusableIdentifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configureCellData(data: product, isCart: isCart)
+        cell.configureCellData(data: product, isWishList: isWishList)
         return cell
     }
     
@@ -89,7 +89,7 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = self.searchResultModel.searchResult.items[indexPath.item]
-        let nextVC = ProductDetailViewController(product: product, model: self.cartListModel)
+        let nextVC = ProductDetailViewController(product: product, model: self.wishListModel)
         
         nextVC.productDetailViewControllerDelegate = self
         self.navigationController?.pushViewController(nextVC, animated: true)
@@ -106,14 +106,14 @@ extension SearchResultViewController: SortButtonsViewDelegate, ProductCollection
         self.searchResultModel.sortType = newType
     }
     
-    func cartButtonTapped(idx: Int) {
+    func wishButtonTapped(idx: Int) {
         let product = self.searchResultModel.searchResult.items[idx]
-        let isCart = self.cartListModel.isCart(productID: product.productId)
+        let isWishList = self.wishListModel.isWishList(productID: product.productId)
         
-        if (isCart) {
-            self.cartListModel.removeFromCartList(productID: product.productId)
+        if (isWishList) {
+            self.wishListModel.removeFromWishList(productID: product.productId)
         } else {
-            self.cartListModel.addToCartList(product: product)
+            self.wishListModel.addToWishList(product: product)
         }
     }
     

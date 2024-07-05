@@ -14,12 +14,12 @@ protocol ProductDetailViewControllerDelegate: AnyObject {
 
 final class ProductDetailViewController: BaseViewController<ProductDetailView> {
 
-    private let model: CartListModel
+    private let model: WishListModel
     private let product: Product
     
     weak var productDetailViewControllerDelegate: ProductDetailViewControllerDelegate?
     
-    init(product: Product, model: CartListModel) {
+    init(product: Product, model: WishListModel) {
         self.model = model
         self.product = product
         super.init()
@@ -37,19 +37,19 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
     }
     
     private func configureNavigationBar() {
-        let isCart = self.model.isCart(productID: product.productId)
-        let button = CartBarButton(isCart: isCart)
+        let isWishList = self.model.isWishList(productID: product.productId)
+        let button = WishListBarButton(isWishList: isWishList)
         let barbutton = UIBarButtonItem(customView: button)
         
         self.navigationItem.title = product.title.htmlElementDeleted
         self.navigationItem.rightBarButtonItem = barbutton
-        button.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(wishButtonTapped), for: .touchUpInside)
     }
     
-    @objc private func cartButtonTapped(sender: UIButton) {
-        guard let cartButton = sender as? CartBarButton else { return }
-        cartButton.isCart ? self.model.removeFromCartList(productID: product.productId) : self.model.addToCartList(product: product)
-        cartButton.isCart.toggle()
+    @objc private func wishButtonTapped(sender: UIButton) {
+        guard let wishButton = sender as? WishListBarButton else { return }
+        wishButton.isWishList ? self.model.removeFromWishList(productID: product.productId) : self.model.addToWishList(product: product)
+        wishButton.isWishList.toggle()
     }
 }
 

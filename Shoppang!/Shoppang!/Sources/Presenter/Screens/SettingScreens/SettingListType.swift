@@ -8,7 +8,7 @@
 import Foundation
 
 enum SettingListType: CaseIterable {
-    case cartList
+    case wishList
     case faq
     case privateAsking
     case notificationSetting
@@ -16,8 +16,8 @@ enum SettingListType: CaseIterable {
     
     var title: String {
         switch self {
-        case .cartList:
-            return Literal.SettingList.CartList
+        case .wishList:
+            return Literal.SettingList.WishList
         case .faq:
             return Literal.SettingList.FAQ
         case .privateAsking:

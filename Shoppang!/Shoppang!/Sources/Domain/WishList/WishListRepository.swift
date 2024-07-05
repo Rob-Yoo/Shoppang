@@ -1,5 +1,5 @@
 //
-//  CartListRepository.swift
+//  WishListRepository.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 7/5/24.
@@ -7,19 +7,19 @@
 
 import RealmSwift
 
-final class CartListRepository {
+final class WishListRepository {
     
     private let realm = try! Realm()
-    private var list: Results<CartProductDTO>
+    private var list: Results<WishProductDTO>
     
     init() {
-        self.list = realm.objects(CartProductDTO.self)
+        self.list = realm.objects(WishProductDTO.self)
     }
     
     func createItem(product: Product) {
         do {
             try realm.write {
-                realm.add(CartProductDTO(product: product))
+                realm.add(WishProductDTO(product: product))
             }
         } catch {
             print(error)

@@ -1,5 +1,5 @@
 //
-//  CartProduct.swift
+//  WishProductDTO.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 7/5/24.
@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-final class CartProductDTO: Object {
+final class WishProductDTO: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var title: String
     @Persisted var link: String

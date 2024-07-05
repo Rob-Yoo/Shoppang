@@ -11,13 +11,13 @@ import Then
 import Kingfisher
 
 protocol ProductCollectionViewCellDelegate: AnyObject {
-    func cartButtonTapped(idx: Int)
+    func wishButtonTapped(idx: Int)
 }
 
 final class ProductCollectionViewCell: UICollectionViewCell {
     
     lazy var productImageView = ProductImageView().then {
-        $0.cartButton.addTarget(self, action: #selector(cartButtonTapped), for: .touchUpInside)
+        $0.wishButton.addTarget(self, action: #selector(wishButtonTapped), for: .touchUpInside)
     }
     
     private let mallNameLabel = UILabel().then {
@@ -46,7 +46,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCellData(data: Product, isCart: Bool) {
+    func configureCellData(data: Product, isWishList: Bool) {
         let url = URL(string: data.image)
         let formattedPrice = Int(data.lprice)!.formatted()
 
@@ -54,10 +54,10 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         self.mallNameLabel.text = data.mallName
         self.productNameLabel.text = data.title.htmlElementDeleted
         self.priceLabel.text = formattedPrice + "원"
-        self.productImageView.cartButton.isCart = isCart
+        self.productImageView.wishButton.isWishList = isWishList
     }
     
-    @objc func cartButtonTapped() {
+    @objc func wishButtonTapped() {
         guard let collectionView = superview as? UICollectionView, let indexPath = collectionView.indexPath(for: self) else { return }
 
         guard let delegate = collectionView.delegate as? ProductCollectionViewCellDelegate else {
@@ -65,7 +65,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
             return
         }
         
-        delegate.cartButtonTapped(idx: indexPath.item)
+        delegate.wishButtonTapped(idx: indexPath.item)
     }
 }
 

@@ -14,7 +14,7 @@ enum Literal {
         static let Setting = "SETTING"
         static let EditProfile = "EDIT PROFILE"
         static let AppleProduct = "APPLE COLLECTION"
-        static let CartList = "장바구니 목록"
+        static let WishList = "내가 찜한 목록"
     }
     
     enum Placeholder {
@@ -31,7 +31,7 @@ enum Literal {
     }
     
     enum SettingList {
-        static let CartList = "나의 장바구니 목록"
+        static let WishList = "내가 찜한 목록"
         static let FAQ = "자주 묻는 질문"
         static let PrivateAsking = "1:1 문의"
         static let NotificationSetting = "알림 설정"

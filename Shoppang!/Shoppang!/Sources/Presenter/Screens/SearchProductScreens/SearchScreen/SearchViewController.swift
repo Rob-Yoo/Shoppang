@@ -85,7 +85,7 @@ extension SearchViewController: UISearchBarDelegate, SearchViewHistoryTableViewD
             return
         }
 
-        let nextVC = SearchResultViewController(searchResultModel: SearchResultModel(query: query), cartListModel: CartListModel())
+        let nextVC = SearchResultViewController(searchResultModel: SearchResultModel(query: query), wishListModel: WishListModel())
         self.model.saveSearchHistory(keyword: query)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
@@ -112,7 +112,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let history = self.model.searchHistory[indexPath.row]
-        let nextVC = SearchResultViewController(searchResultModel: SearchResultModel(query: history.keyword), cartListModel: CartListModel())
+        let nextVC = SearchResultViewController(searchResultModel: SearchResultModel(query: history.keyword), wishListModel: WishListModel())
         
         self.contentView.searchBar.text = history.keyword
         self.model.saveSearchHistory(keyword: history.keyword)

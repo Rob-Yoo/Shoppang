@@ -1,5 +1,5 @@
 //
-//  CartBarButton.swift
+//  WishListBarButton.swift
 //  Shoppang!
 //
 //  Created by Jinyoung Yoo on 6/17/24.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-final class CartBarButton: UIButton {
+final class WishListBarButton: UIButton {
     
-    var isCart: Bool {
+    var isWishList: Bool {
         didSet {
             self.configure()
         }
     }
     
-    init(isCart: Bool) {
-        self.isCart = isCart
+    init(isWishList: Bool) {
+        self.isWishList = isWishList
         super.init(frame: .zero)
         self.configure()
     }
@@ -26,7 +26,7 @@ final class CartBarButton: UIButton {
     }
     
     private func configure() {
-        let image = isCart ? UIImage.likeSelected : UIImage.likeUnselected
+        let image = isWishList ? UIImage.likeSelected : UIImage.likeUnselected
         self.setImage(image, for: .normal)
     }
 }
