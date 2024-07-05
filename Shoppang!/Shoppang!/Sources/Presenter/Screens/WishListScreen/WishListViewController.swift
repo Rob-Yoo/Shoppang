@@ -18,6 +18,12 @@ final class WishListViewController: BaseViewController<WishListRootView> {
         super.init()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.model.reloadData()
+    }
+    
     override func addUserAction() {
         self.contentView.productCollectionView.delegate = self
         self.contentView.productCollectionView.dataSource = self
@@ -26,6 +32,7 @@ final class WishListViewController: BaseViewController<WishListRootView> {
     
     override func observeModel() {
         self.model.$wishList
+            .dropFirst()
             .receive(on: RunLoop.main)
             .sink { [weak self] new in
                 self?.contentView.update(wishListCount: new.count)

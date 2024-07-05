@@ -26,7 +26,7 @@ final class WishListModel {
 
 //MARK: - Data Fetching
 extension WishListModel {
-    private func reloadData() {
+    func reloadData() {
         self.wishList = repository.fetchAll()
     }
     
