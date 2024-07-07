@@ -64,11 +64,26 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
         cell.configureCellData(data: product, isWishList: isWishList)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = self.model.wishList[indexPath.item]
+        let nextVC = ProductDetailViewController(product: product, model: self.model)
+        
+        nextVC.productDetailViewControllerDelegate = self
+        self.navigationController?.pushViewController(nextVC, animated: true)
+    }
 
 }
 
 //MARK: - User Action Handling
-extension WishListViewController: ProductCollectionViewCellDelegate {
+extension WishListViewController: ProductCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
+    
+    func showInvalidUrlToast() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            self.contentView.makeToast("🚨 해당 사이트의 주소가 없거나 유효하지 않아요", duration: 1.5)
+        }
+    }
+    
     func wishButtonTapped(idx: Int) {
         let product = self.model.wishList[idx]
         let isWishList = !self.model.isWillDeleteWishList(product: product)
