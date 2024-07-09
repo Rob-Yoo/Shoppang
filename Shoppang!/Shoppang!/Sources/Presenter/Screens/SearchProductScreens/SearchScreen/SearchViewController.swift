@@ -29,7 +29,7 @@ final class SearchViewController: BaseViewController<SearchRootView> {
         self.addKeyboardDismissAction()
     }
     
-    override func observeModel() {
+    override func binViewModel() {
         self.model.$searchHistory
             .receive(on: RunLoop.main)
             .sink { [weak self] new in

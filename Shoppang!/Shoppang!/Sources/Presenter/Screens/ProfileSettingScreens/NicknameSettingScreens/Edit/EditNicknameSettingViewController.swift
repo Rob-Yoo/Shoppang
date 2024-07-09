@@ -6,16 +6,19 @@
 //
 
 import UIKit
-import Combine
 
 final class EditNicknameSettingViewController: BaseViewController<NicknameSettingView> {
     
-    private let model: EditProfileModel
-    private var cancellable = Set<AnyCancellable>()
+    private let viewModel: ProfileViewModel
     
-    init(contentView: NicknameSettingView, model: EditProfileModel) {
-        self.model = model
+    init(contentView: NicknameSettingView, viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
         super.init(contentView: contentView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.inputViewWillAppearTrigger.value = ()
     }
     
     override func addUserAction() {
@@ -29,20 +32,20 @@ final class EditNicknameSettingViewController: BaseViewController<NicknameSettin
         self.addKeyboardDismissAction()
     }
     
-    override func observeModel() {
-        self.model.$nickname
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateNickNicknameTextFieldView()
-            }
-            .store(in: &cancellable)
+    override func binViewModel() {
+        self.viewModel.outputNicknameValidationStatus.bind { [weak self] status in
+            self?.updateNickNicknameTextFieldView(status: status)
+        }
         
-        self.model.$profileImageNumber
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateEditableProfileImageView()
+        self.viewModel.outputProfileImageNumber.bind { [weak self] imageNumber in
+            self?.updateEditableProfileImageView(imageNumber: imageNumber)
+        }
+        
+        self.viewModel.outputValidation.bind { [weak self] validation in
+            if (validation) {
+                self?.navigationController?.popViewController(animated: true)
             }
-            .store(in: &cancellable)
+        }
     }
     
 }
@@ -51,36 +54,32 @@ final class EditNicknameSettingViewController: BaseViewController<NicknameSettin
 extension EditNicknameSettingViewController {
     
     @objc private func saveButtonTapped() {
-        self.model.saveProfile()
-        if (self.model.checkNicknameValidationStatus() == .ok) {
-            self.navigationController?.popViewController(animated: true)            
-        }
+        self.viewModel.inputSaveButtonTapped.value = ()
     }
     
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .Editing), model: self.model)
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .Editing), viewModel: self.viewModel.profileImageViewModel)
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func nicknameTextFieldDidChange(_ sender: UITextField) {
         guard let text = sender.text else { return }
-        self.model.nickname = text
+        self.viewModel.inputNickname.value = text
     }
 }
 
 //MARK: - Update Views
 extension EditNicknameSettingViewController {
-    private func updateNickNicknameTextFieldView() {
-        let status = self.model.checkNicknameValidationStatus()
+    private func updateNickNicknameTextFieldView(status: NicknameValidationStatus) {
         let nicknameTextFieldView = self.contentView.nicknameTextFieldView
-
-        nicknameTextFieldView.nicknameTextField.text = self.model.nickname
+        
+        nicknameTextFieldView.nicknameTextField.text = self.viewModel.inputNickname.value
         nicknameTextFieldView.update(status: status)
     }
     
-    private func updateEditableProfileImageView() {
-        let profileImage = UIImage.profileImages[self.model.profileImageNumber]
+    private func updateEditableProfileImageView(imageNumber: Int) {
+        let profileImage = UIImage.profileImages[imageNumber]
         let profileImageView = self.contentView.editableProfileImageView.profileImageView
         
         profileImageView.update(image: profileImage)

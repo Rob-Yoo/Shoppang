@@ -19,7 +19,6 @@
 		CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804712C1D841800172CAF /* ProfileImageCollectionView.swift */; };
 		CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */; };
 		CC3804762C1D853C00172CAF /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804752C1D853C00172CAF /* ReusableProtocol.swift */; };
-		CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3804892C1DA91700172CAF /* ProfileModel.swift */; };
 		CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */; };
 		CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */; };
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
@@ -52,11 +51,12 @@
 		CC9AE6F92C2021AB00DD5556 /* SettingListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */; };
 		CC9AE6FB2C20223400DD5556 /* SettingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */; };
 		CC9AE6FF2C20336F00DD5556 /* EditNicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */; };
-		CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */; };
-		CC9AE7082C2050D100DD5556 /* ProfileImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7072C2050D100DD5556 /* ProfileImageProtocol.swift */; };
+		CC9AE7032C203C8300DD5556 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7022C203C8300DD5556 /* ProfileViewModel.swift */; };
+		CC9AE7082C2050D100DD5556 /* ProfileImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7072C2050D100DD5556 /* ProfileImageViewModel.swift */; };
 		CC9AE70A2C205B9500DD5556 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7092C205B9500DD5556 /* UserProfile.swift */; };
 		CC9AE70E2C20834500DD5556 /* WishButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70D2C20834500DD5556 /* WishButton.swift */; };
 		CC9AE7102C20AA5C00DD5556 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70F2C20AA5C00DD5556 /* Literal.swift */; };
+		CCBCD1B72C3D4D7A00D5A99D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCD1B62C3D4D7A00D5A99D /* Observable.swift */; };
 		CCCBB1142C37BC2C00B4349C /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1132C37BC2C00B4349C /* WishListViewController.swift */; };
 		CCCBB1162C37BC4100B4349C /* WishListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1152C37BC4100B4349C /* WishListRootView.swift */; };
 		CCCBB1192C37BCA100B4349C /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CCCBB1182C37BCA100B4349C /* RealmSwift */; };
@@ -119,7 +119,6 @@
 		CC3804712C1D841800172CAF /* ProfileImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionView.swift; sourceTree = "<group>"; };
 		CC3804732C1D84E700172CAF /* ProfileImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC3804752C1D853C00172CAF /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
-		CC3804892C1DA91700172CAF /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameValidationStatus.swift; sourceTree = "<group>"; };
 		CC38B1F72C1DE328000AFD92 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
@@ -152,11 +151,12 @@
 		CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListType.swift; sourceTree = "<group>"; };
 		CC9AE6FA2C20223400DD5556 /* SettingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListTableViewCell.swift; sourceTree = "<group>"; };
 		CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNicknameSettingViewController.swift; sourceTree = "<group>"; };
-		CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileModel.swift; sourceTree = "<group>"; };
-		CC9AE7072C2050D100DD5556 /* ProfileImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageProtocol.swift; sourceTree = "<group>"; };
+		CC9AE7022C203C8300DD5556 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		CC9AE7072C2050D100DD5556 /* ProfileImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewModel.swift; sourceTree = "<group>"; };
 		CC9AE7092C205B9500DD5556 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		CC9AE70D2C20834500DD5556 /* WishButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishButton.swift; sourceTree = "<group>"; };
 		CC9AE70F2C20AA5C00DD5556 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
+		CCBCD1B62C3D4D7A00D5A99D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		CCCBB1132C37BC2C00B4349C /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		CCCBB1152C37BC4100B4349C /* WishListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRootView.swift; sourceTree = "<group>"; };
 		CCCBB11D2C37BF8B00B4349C /* WishProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishProductDTO.swift; sourceTree = "<group>"; };
@@ -330,9 +330,8 @@
 		CC3804882C1DA8AB00172CAF /* ProfileSetting */ = {
 			isa = PBXGroup;
 			children = (
-				CC9AE7072C2050D100DD5556 /* ProfileImageProtocol.swift */,
-				CC3804892C1DA91700172CAF /* ProfileModel.swift */,
-				CC9AE7022C203C8300DD5556 /* EditProfileModel.swift */,
+				CC9AE7072C2050D100DD5556 /* ProfileImageViewModel.swift */,
+				CC9AE7022C203C8300DD5556 /* ProfileViewModel.swift */,
 				CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */,
 				CC9AE7092C205B9500DD5556 /* UserProfile.swift */,
 			);
@@ -411,6 +410,7 @@
 		CC9954F42C1EA08700CF1374 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CCBCD1B52C3D4D6700D5A99D /* CustomObservable */,
 				CC72DD832C2160510093AC09 /* Mangers */,
 				CCEE19092C1C092900405878 /* Protocols */,
 				CCEE19302C1C2A8200405878 /* Extensions */,
@@ -451,6 +451,14 @@
 				CC9AE6FE2C20336F00DD5556 /* EditNicknameSettingViewController.swift */,
 			);
 			path = Edit;
+			sourceTree = "<group>";
+		};
+		CCBCD1B52C3D4D6700D5A99D /* CustomObservable */ = {
+			isa = PBXGroup;
+			children = (
+				CCBCD1B62C3D4D7A00D5A99D /* Observable.swift */,
+			);
+			path = CustomObservable;
 			sourceTree = "<group>";
 		};
 		CCCBB1102C37BAF200B4349C /* Screens */ = {
@@ -769,7 +777,7 @@
 			files = (
 				CC4A6B472C1EDF2700AC878A /* ProductCollectionViewCell.swift in Sources */,
 				CCCBB1202C37C18E00B4349C /* WishListRepository.swift in Sources */,
-				CC9AE7032C203C8300DD5556 /* EditProfileModel.swift in Sources */,
+				CC9AE7032C203C8300DD5556 /* ProfileViewModel.swift in Sources */,
 				CC4A6B372C1EBE4A00AC878A /* SearchResult.swift in Sources */,
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
@@ -808,7 +816,6 @@
 				CC9AE6ED2C1FD40400DD5556 /* ProductDetailView.swift in Sources */,
 				CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */,
 				CC347B462C1F438800DD50A6 /* SearchHistoryModel.swift in Sources */,
-				CC38048A2C1DA91700172CAF /* ProfileModel.swift in Sources */,
 				CC4A6B432C1ECF7400AC878A /* SortButtonsView.swift in Sources */,
 				CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* SortButton.swift in Sources */,
@@ -827,7 +834,8 @@
 				CC30CAC52C2B31BD00A2B9A1 /* AppleProductRootView.swift in Sources */,
 				CCEE19162C1C0A7200405878 /* TabBarController.swift in Sources */,
 				CCCBB1222C37C9EB00B4349C /* WishListModel.swift in Sources */,
-				CC9AE7082C2050D100DD5556 /* ProfileImageProtocol.swift in Sources */,
+				CC9AE7082C2050D100DD5556 /* ProfileImageViewModel.swift in Sources */,
+				CCBCD1B72C3D4D7A00D5A99D /* Observable.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
 				CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */,
 				CC9AE70E2C20834500DD5556 /* WishButton.swift in Sources */,

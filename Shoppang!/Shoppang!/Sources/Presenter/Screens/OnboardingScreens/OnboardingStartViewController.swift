@@ -36,6 +36,7 @@ class OnboardingStartViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let appearance = UINavigationBarAppearance()
         
         appearance.configureWithTransparentBackground()
@@ -75,7 +76,7 @@ extension OnboardingStartViewController {
 //MARK: - User Action Handling
 extension OnboardingStartViewController {
     @objc func startButtonTapped() {
-        let nextVC = NewNicknameSettingViewController(contentView: NicknameSettingView(type: .New), model: ProfileModel())
+        let nextVC = NewNicknameSettingViewController(contentView: NicknameSettingView(type: .New), viewModel: ProfileViewModel())
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }

@@ -35,7 +35,7 @@ final class WishListViewController: BaseViewController<WishListRootView> {
         self.contentView.transparentButton.menu = makePullDownMenu()
     }
     
-    override func observeModel() {
+    override func binViewModel() {
         self.model.$wishList
             .dropFirst()
             .receive(on: RunLoop.main)

@@ -6,16 +6,19 @@
 //
 
 import UIKit
-import Combine
 
 class NewNicknameSettingViewController: BaseViewController<NicknameSettingView> {
     
-    private let model: ProfileModel
-    private var cancellable = Set<AnyCancellable>()
-
-    init(contentView: NicknameSettingView, model: ProfileModel) {
-        self.model = model
+    private let viewModel: ProfileViewModel
+    
+    init(contentView: NicknameSettingView, viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
         super.init(contentView: contentView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.inputViewWillAppearTrigger.value = ()
     }
     
     override func addUserAction() {
@@ -27,52 +30,58 @@ class NewNicknameSettingViewController: BaseViewController<NicknameSettingView> 
         self.addKeyboardDismissAction()
     }
     
-    override func observeModel() {
-        self.model.$nickname
-            .receive(on: RunLoop.main)
-            .sink { [weak self] _ in
-                self?.updateNickNicknameTextFieldView()
-            }
-            .store(in: &cancellable)
+    override func binViewModel() {
+        self.viewModel.outputNicknameValidationStatus.bind { [weak self] status in
+            self?.updateNicknameTextFieldView(status: status)
+            self?.updateCompleteButton(status: status)
+        }
         
-        self.model.$profileImageNumber
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.updateEditableProfileImageView(imageNumber: new)
+        self.viewModel.outputProfileImageNumber.bind { [weak self] imageNumber in
+            self?.updateEditableProfileImageView(imageNumber: imageNumber)
+        }
+        
+        self.viewModel.outputValidation.bind { validation in
+            if (validation) {
+                NavigationManager.changeWindowScene(didDeleteAccount: false)
             }
-            .store(in: &cancellable)
+        }
     }
 }
 
 //MARK: - User Action Handling
 extension NewNicknameSettingViewController {
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), model: self.model)
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), viewModel: self.viewModel.profileImageViewModel)
 
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc private func nicknameTextFieldDidChange(_ sender: UITextField) {
         guard let text = sender.text else { return }
-        self.model.nickname = text
+        self.viewModel.inputNickname.value = text
     }
     
     @objc private func completeButtonTapped() {
-        self.model.saveProfile()
-
-        if (self.model.checkNicknameValidationStatus() == .ok) {
-            NavigationManager.changeWindowScene(didDeleteAccount: false)
-        }
+        self.viewModel.inputSaveButtonTapped.value = ()
     }
 }
 
 //MARK: - Update Views
 extension NewNicknameSettingViewController {
-    private func updateNickNicknameTextFieldView() {
-        let status = self.model.checkNicknameValidationStatus()
+    private func updateNicknameTextFieldView(status: NicknameValidationStatus) {
         let nicknameTextFieldView = self.contentView.nicknameTextFieldView
 
         nicknameTextFieldView.update(status: status)
+    }
+    
+    private func updateCompleteButton(status: NicknameValidationStatus) {
+        if (status == .ok) {
+            self.contentView.completeButton.backgroundColor = .mainTheme
+            self.contentView.completeButton.isEnabled = true
+        } else {
+            self.contentView.completeButton.backgroundColor = .lightGray
+            self.contentView.completeButton.isEnabled = false
+        }
     }
     
     private func updateEditableProfileImageView(imageNumber: Int) {

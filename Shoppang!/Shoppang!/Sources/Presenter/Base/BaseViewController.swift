@@ -31,12 +31,12 @@ class BaseViewController<ContentView: UIView>: UIViewController, UIGestureRecogn
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         self.configureNavigationBar()
         self.addUserAction()
-        self.observeModel()
+        self.binViewModel()
     }
     
     //MARK: - Overriding Methods
     func addUserAction() {}
-    func observeModel() {}
+    func binViewModel() {}
     
     // Navigation Stack에 뷰가 2개 이상일 경우 스와이프 제스처 허용
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

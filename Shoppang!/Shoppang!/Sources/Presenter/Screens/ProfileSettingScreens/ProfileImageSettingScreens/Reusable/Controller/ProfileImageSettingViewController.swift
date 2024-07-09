@@ -6,15 +6,13 @@
 //
 
 import UIKit
-import Combine
 
 final class ProfileImageSettingViewController: BaseViewController<ProfileImageSettingView> {
     
-    private var model: ProfileImageProtocol
-    private var cancellable = Set<AnyCancellable>()
+    private var viewModel: ProfileImageViewModel
     
-    init(contentView: ProfileImageSettingView, model: ProfileImageProtocol) {
-        self.model = model
+    init(contentView: ProfileImageSettingView, viewModel: ProfileImageViewModel) {
+        self.viewModel = viewModel
         super.init(contentView: contentView)
     }
     
@@ -26,20 +24,17 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
         self.contentView.profileImageCollectionView.profileImageCollectionViewDelegate = self
     }
     
-    override func observeModel() {
-        self.model.profileImageNumberPublisher
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.updateProfileImageSettingView(imageNumber: new)
-            }
-            .store(in: &cancellable)
+    override func binViewModel() {
+        self.viewModel.outputProfileImageNumber.bind { [weak self] imageNumber in
+            self?.updateProfileImageSettingView(imageNumber: imageNumber)
+        }
     }
 }
 
 //MARK: - User Action Handling
 extension ProfileImageSettingViewController: ProfileImageCollectionViewDelegate {
     func profileImageSelected(idx: Int) {
-        self.model.setProfileImageNumber(number: idx)
+        self.viewModel.inputProfileImageNumber.value = idx
     }
 }
 

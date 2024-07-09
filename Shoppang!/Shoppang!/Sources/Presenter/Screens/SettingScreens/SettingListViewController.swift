@@ -36,7 +36,6 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
     
     func checkUserProfile() {
         let user = UserProfile()
-
         self.contentView.profileView.update(profile: user)
         self.wishListCount = user.wishListCount
     }
@@ -77,8 +76,8 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
 extension SettingListViewController {
     
     @objc private func profileViewTapped() {
-        let nextVC = EditNicknameSettingViewController(contentView: NicknameSettingView(type: .Editing), model: EditProfileModel())
-
+        let nextVC = EditNicknameSettingViewController(contentView: NicknameSettingView(type: .Editing), viewModel: ProfileViewModel())
+        
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
