@@ -29,8 +29,10 @@ final class ProfileViewModel {
             }
         }
         
-        inputViewWillAppearTrigger.bind { _ in
-            self.outputProfileImageNumber.value = self.profileImageViewModel.outputProfileImageNumber.value
+        inputViewWillAppearTrigger.bind { [weak self] _ in
+            guard let viewModel = self else { return }
+            
+            viewModel.outputProfileImageNumber.value = viewModel.profileImageViewModel.outputProfileImageNumber.value
         }
     }
     
