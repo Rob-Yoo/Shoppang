@@ -11,6 +11,7 @@
 		CC021D5B2C29C3C200685E3A /* AppleProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */; };
 		CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */; };
 		CC1E5C932C3EEEDD00F0768F /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */; };
+		CC1E5C952C3F012B00F0768F /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */; };
 		CC30CAC52C2B31BD00A2B9A1 /* AppleProductRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */; };
 		CC347B3F2C1F2F0100DD50A6 /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */; };
 		CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B422C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift */; };
@@ -112,6 +113,7 @@
 		CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
+		CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductRootView.swift; sourceTree = "<group>"; };
 		CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
 		CC347B422C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				CC9AE7022C203C8300DD5556 /* ProfileViewModel.swift */,
 				CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */,
 				CC9AE7092C205B9500DD5556 /* UserProfile.swift */,
+				CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */,
 			);
 			path = ProfileSetting;
 			sourceTree = "<group>";
@@ -821,6 +824,7 @@
 				CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */,
 				CC347B462C1F438800DD50A6 /* SearchHistoryViewModel.swift in Sources */,
 				CC4A6B432C1ECF7400AC878A /* SortButtonsView.swift in Sources */,
+				CC1E5C952C3F012B00F0768F /* ProfileRepository.swift in Sources */,
 				CC4A6B4D2C1EF90100AC878A /* String+Extension.swift in Sources */,
 				CCEE19342C1C2D8A00405878 /* SortButton.swift in Sources */,
 				CC9AE6F92C2021AB00DD5556 /* SettingListType.swift in Sources */,

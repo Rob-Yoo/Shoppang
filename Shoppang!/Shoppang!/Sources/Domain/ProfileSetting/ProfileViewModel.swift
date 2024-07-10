@@ -6,17 +6,18 @@
 //
 
 import Foundation
-import UIKit.UIImage
 
 final class ProfileViewModel {
-    lazy var inputNickname = self.loadNickname()
-    lazy var inputProfileImageNumber = self.loadProfileImageNumber()
+    lazy var inputNickname = repository.loadNickname()
+    lazy var inputProfileImageNumber = repository.loadProfileImageNumber()
     var inputSaveButtonTapped: Observable<Void?> = Observable(nil)
     
     var outputNicknameValidationStatus: Observable<NicknameValidationStatus> = Observable(.countError)
     var outputValidation = Observable(false)
     lazy var outputProfileImageNumber = Observable(inputProfileImageNumber.value)
 
+    private let repository = ProfileRepository()
+    
     init() {
         self.transfrom()
     }
@@ -46,35 +47,16 @@ final class ProfileViewModel {
             self.outputValidation.value = false
             return
         }
-
-        self.saveJoinInfo()
-        self.saveUserProfile()
+        
+        let nickname = self.inputNickname.value
+        let profileImageNumber = self.inputProfileImageNumber.value
+        
+        self.repository.saveUserProfile(nickname: nickname, profileImageNumber: profileImageNumber)
         self.outputValidation.value = true
     }
     
     private func changeProfileImage(imageNumber: Int) {
         self.outputProfileImageNumber.value = imageNumber
-    }
-}
-
-//MARK: - Load User Data From UserDefaults
-extension ProfileViewModel {
-    private func loadNickname() -> Observable<String> {
-        guard let nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) else {
-            return Observable("")
-        }
-        
-        return Observable(nickname)
-    }
-    
-    private func loadProfileImageNumber() -> Observable<Int> {
-        guard let imageNumber = UserDefaults.standard.string(forKey: UserDefaultsKey.profileImageNumber.rawValue) else {
-            let randomNumber = Int.random(in: 0..<UIImage.profileImages.count)
-            
-            return Observable(randomNumber)
-        }
-        
-        return Observable(Int(imageNumber)!)
     }
 }
 
@@ -114,31 +96,5 @@ extension ProfileViewModel {
         guard nickname.filter({ $0.isWhitespace }).count <= 1 else { return true }
         
         return false
-    }
-}
-
-//MARK: - Save User Profile Logic
-extension ProfileViewModel {
-    private func saveJoinInfo() {
-        let isUser = UserDefaults.standard.bool(forKey: UserDefaultsKey.isUser.rawValue)
-
-        if (isUser == false) {
-            UserDefaults.standard.setValue(true, forKey: UserDefaultsKey.isUser.rawValue)
-            self.saveJoinDate()
-        }
-    }
-    
-    private func saveJoinDate() {
-        let currentDate = String.getCurrentDate(dateFormat: "yyyy.MM.dd")
-
-        UserDefaults.standard.setValue(currentDate, forKey: UserDefaultsKey.joinDate.rawValue)
-    }
-    
-    private func saveUserProfile() {
-        let profileImageNumber = self.outputProfileImageNumber.value
-        let nickname = inputNickname.value
-        
-        UserDefaults.standard.setValue(profileImageNumber, forKey: UserDefaultsKey.profileImageNumber.rawValue)
-        UserDefaults.standard.setValue(nickname, forKey: UserDefaultsKey.nickname.rawValue)
     }
 }
