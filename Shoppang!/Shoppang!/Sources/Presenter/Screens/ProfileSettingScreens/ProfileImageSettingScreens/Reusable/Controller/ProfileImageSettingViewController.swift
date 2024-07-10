@@ -11,13 +11,18 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
     
     private var viewModel: ProfileImageViewModel
     
+    var deliverProfileImageNumber: ((Int) -> Void)?
+    
     init(contentView: ProfileImageSettingView, viewModel: ProfileImageViewModel) {
         self.viewModel = viewModel
         super.init(contentView: contentView)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let profileImageNumber = self.viewModel.outputProfileImageNumber.value
+
+        self.deliverProfileImageNumber?(profileImageNumber)
     }
 
     override func addUserAction() {

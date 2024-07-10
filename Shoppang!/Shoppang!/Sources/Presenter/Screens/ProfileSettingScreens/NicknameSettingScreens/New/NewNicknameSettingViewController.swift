@@ -16,11 +16,6 @@ class NewNicknameSettingViewController: BaseViewController<NicknameSettingView> 
         super.init(contentView: contentView)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewModel.inputViewWillAppearTrigger.value = ()
-    }
-    
     override func addUserAction() {
         let profileImageViewTapGR = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
         
@@ -51,8 +46,12 @@ class NewNicknameSettingViewController: BaseViewController<NicknameSettingView> 
 //MARK: - User Action Handling
 extension NewNicknameSettingViewController {
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), viewModel: self.viewModel.profileImageViewModel)
+        let profileImageNumber = self.viewModel.outputProfileImageNumber.value
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), viewModel: ProfileImageViewModel(imageNumber: profileImageNumber))
 
+        nextVC.deliverProfileImageNumber = { [weak self] number in
+            self?.viewModel.inputProfileImageNumber.value = number
+        }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     

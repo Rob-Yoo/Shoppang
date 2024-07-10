@@ -6,33 +6,34 @@
 //
 
 import Foundation
+import UIKit.UIImage
 
 final class ProfileViewModel {
     lazy var inputNickname = self.loadNickname()
+    lazy var inputProfileImageNumber = self.loadProfileImageNumber()
     var inputSaveButtonTapped: Observable<Void?> = Observable(nil)
-    var inputViewWillAppearTrigger: Observable<Void?> = Observable(nil)
     
     var outputNicknameValidationStatus: Observable<NicknameValidationStatus> = Observable(.countError)
     var outputValidation = Observable(false)
-    lazy var outputProfileImageNumber = Observable(profileImageViewModel.outputProfileImageNumber.value)
-    
-    var profileImageViewModel = ProfileImageViewModel()
+    lazy var outputProfileImageNumber = Observable(inputProfileImageNumber.value)
 
     init() {
-        inputNickname.bind { [weak self] _ in
+        self.transfrom()
+    }
+    
+    private func transfrom() {
+        self.inputNickname.bind { [weak self] _ in
             self?.checkNicknameValidationStatus()
         }
         
-        inputSaveButtonTapped.bind { [weak self] value in
+        self.inputProfileImageNumber.bind { [weak self] imageNumber in
+            self?.changeProfileImage(imageNumber: imageNumber)
+        }
+        
+        self.inputSaveButtonTapped.bind { [weak self] value in
             if value != nil {
                 self?.saveProfile()
             }
-        }
-        
-        inputViewWillAppearTrigger.bind { [weak self] _ in
-            guard let viewModel = self else { return }
-            
-            viewModel.outputProfileImageNumber.value = viewModel.profileImageViewModel.outputProfileImageNumber.value
         }
     }
     
@@ -50,6 +51,10 @@ final class ProfileViewModel {
         self.saveUserProfile()
         self.outputValidation.value = true
     }
+    
+    private func changeProfileImage(imageNumber: Int) {
+        self.outputProfileImageNumber.value = imageNumber
+    }
 }
 
 //MARK: - Load User Data From UserDefaults
@@ -60,6 +65,16 @@ extension ProfileViewModel {
         }
         
         return Observable(nickname)
+    }
+    
+    private func loadProfileImageNumber() -> Observable<Int> {
+        guard let imageNumber = UserDefaults.standard.string(forKey: UserDefaultsKey.profileImageNumber.rawValue) else {
+            let randomNumber = Int.random(in: 0..<UIImage.profileImages.count)
+            
+            return Observable(randomNumber)
+        }
+        
+        return Observable(Int(imageNumber)!)
     }
 }
 
@@ -120,7 +135,7 @@ extension ProfileViewModel {
     }
     
     private func saveUserProfile() {
-        let profileImageNumber = self.profileImageViewModel.outputProfileImageNumber.value
+        let profileImageNumber = self.outputProfileImageNumber.value
         let nickname = inputNickname.value
         
         UserDefaults.standard.setValue(profileImageNumber, forKey: UserDefaultsKey.profileImageNumber.rawValue)

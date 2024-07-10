@@ -16,11 +16,6 @@ final class EditNicknameSettingViewController: BaseViewController<NicknameSettin
         super.init(contentView: contentView)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.viewModel.inputViewWillAppearTrigger.value = ()
-    }
-    
     override func addUserAction() {
         let saveButton = UIBarButtonItem(title: Literal.ButtonTitle.Save, style: .plain, target: self, action: #selector(saveButtonTapped))
         let profileImageViewTapGR = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
@@ -58,8 +53,12 @@ extension EditNicknameSettingViewController {
     }
     
     @objc private func profileImageViewTapped() {
-        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .Editing), viewModel: self.viewModel.profileImageViewModel)
+        let profileImageNumber = self.viewModel.outputProfileImageNumber.value
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .Editing), viewModel: ProfileImageViewModel(imageNumber: profileImageNumber))
 
+        nextVC.deliverProfileImageNumber = { [weak self] number in
+            self?.viewModel.inputProfileImageNumber.value = number
+        }
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
