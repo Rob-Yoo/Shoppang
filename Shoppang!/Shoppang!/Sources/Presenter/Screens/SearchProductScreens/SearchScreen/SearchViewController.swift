@@ -7,16 +7,19 @@
 
 import UIKit
 import Toast
-import Combine
 
 final class SearchViewController: BaseViewController<SearchRootView> {
 
-    private let model = SearchHistoryModel()
-    private var cancellable = Set<AnyCancellable>()
+    private let viewModel = SearchHistoryViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.configureNavigationBar()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.viewModel.inputViewDidLoadTrigger.value = ()
     }
     
     override func addUserAction() {
@@ -30,17 +33,16 @@ final class SearchViewController: BaseViewController<SearchRootView> {
     }
     
     override func binViewModel() {
-        self.model.$searchHistory
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                if (new.isEmpty) {
-                    self?.contentView.presentEmptyHistoryView()
-                } else {
-                    self?.contentView.presentSearchHistoryView()
-                    self?.contentView.searchHistoryView.searchHistoryTableView.reloadData()
-                }
+        self.viewModel.outputSearchHistoryList.bind { [weak self] history in
+            if (history.isEmpty) {
+                self?.contentView.presentEmptyHistoryView()
+                self?.contentView.searchBar.text = ""
+                self?.keyboardDismiss()
+            } else {
+                self?.contentView.presentSearchHistoryView()
+                self?.contentView.searchHistoryView.searchHistoryTableView.reloadData()
             }
-            .store(in: &cancellable)
+        }
     }
     
     override func addKeyboardDismissAction() {
@@ -69,7 +71,7 @@ extension SearchViewController {
 extension SearchViewController: UISearchBarDelegate, SearchViewHistoryTableViewDelegate {
 
     @objc func deleteAllButtonTapped() {
-        self.model.removeAllSearchHistory()
+        self.viewModel.inputDeleteAllButtonTapped.value = ()
     }
     
     @objc func keyboardDismiss() {
@@ -78,31 +80,32 @@ extension SearchViewController: UISearchBarDelegate, SearchViewHistoryTableViewD
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text else { return }
-        let query = text.trimmingCharacters(in: .whitespaces)
+        let searchKeyword = text.trimmingCharacters(in: .whitespaces)
         
-        guard !query.isEmpty else {
+        guard !searchKeyword.isEmpty else {
             self.contentView.makeToast("검색어를 입력해주세요.", duration: 1.0, position: .center)
             return
         }
 
-        let nextVC = SearchResultViewController(searchResultModel: SearchResultModel(query: query), wishListModel: WishListModel())
-        self.model.saveSearchHistory(keyword: query)
+        let nextVC = SearchResultViewController(searchResultModel: SearchResultModel(query: searchKeyword), wishListModel: WishListModel())
+
+        self.viewModel.inputWillSaveSearchHistory.value = searchKeyword
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    func deleteCell(at: Int) {
-        self.model.removeSearchHistory(idx: at)
+    func deleteCell(at index: Int) {
+        self.viewModel.inputWillDeleteHistoryIndex.value = index
     }
 }
 
 //MARK: - TableView Delegate/DataSource
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.model.searchHistory.count
+        return self.viewModel.outputSearchHistoryList.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let history = self.model.searchHistory[indexPath.row]
+        let history = self.viewModel.outputSearchHistoryList.value[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchHistoryTableViewCell.reusableIdentifier, for: indexPath) as? SearchHistoryTableViewCell else { return UITableViewCell() }
         
@@ -111,11 +114,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let history = self.model.searchHistory[indexPath.row]
+        let history =  self.viewModel.outputSearchHistoryList.value[indexPath.row]
         let nextVC = SearchResultViewController(searchResultModel: SearchResultModel(query: history.keyword), wishListModel: WishListModel())
         
+        self.viewModel.inputWillSaveSearchHistory.value = history.keyword
         self.contentView.searchBar.text = history.keyword
-        self.model.saveSearchHistory(keyword: history.keyword)
         self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
