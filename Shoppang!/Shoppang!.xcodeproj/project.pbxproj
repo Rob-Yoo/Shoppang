@@ -12,6 +12,7 @@
 		CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */; };
 		CC1E5C932C3EEEDD00F0768F /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */; };
 		CC1E5C952C3F012B00F0768F /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */; };
+		CC1E5C972C3F04BB00F0768F /* SearchHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C962C3F04BB00F0768F /* SearchHistoryRepository.swift */; };
 		CC30CAC52C2B31BD00A2B9A1 /* AppleProductRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */; };
 		CC347B3F2C1F2F0100DD50A6 /* SearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */; };
 		CC347B432C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC347B422C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift */; };
@@ -114,6 +115,7 @@
 		CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 		CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		CC1E5C962C3F04BB00F0768F /* SearchHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryRepository.swift; sourceTree = "<group>"; };
 		CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductRootView.swift; sourceTree = "<group>"; };
 		CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryView.swift; sourceTree = "<group>"; };
 		CC347B422C1F323A00DD50A6 /* SearchHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				CC347B452C1F438800DD50A6 /* SearchHistoryViewModel.swift */,
 				CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */,
+				CC1E5C962C3F04BB00F0768F /* SearchHistoryRepository.swift */,
 			);
 			path = SearchHistory;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				CCCBB1142C37BC2C00B4349C /* WishListViewController.swift in Sources */,
 				CCEE192F2C1C29C400405878 /* TextButton.swift in Sources */,
 				CC3804742C1D84E700172CAF /* ProfileImageCollectionViewCell.swift in Sources */,
+				CC1E5C972C3F04BB00F0768F /* SearchHistoryRepository.swift in Sources */,
 				CCEE193E2C1C41E100405878 /* NicknameSettingView.swift in Sources */,
 				CC021D532C29C1F700685E3A /* AppleProductViewController.swift in Sources */,
 				CC77E16D2C2A65E500EF8598 /* AppleProductType.swift in Sources */,

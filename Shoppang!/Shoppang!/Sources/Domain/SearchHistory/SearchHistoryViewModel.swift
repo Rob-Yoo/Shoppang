@@ -16,11 +16,7 @@ final class SearchHistoryViewModel {
     
     var outputSearchHistoryList: Observable<[SearchHistory]> = Observable([])
     
-    private var encodedHistory: [Data] = [] {
-        didSet {
-            UserDefaults.standard.setValue(encodedHistory, forKey: UserDefaultsKey.searchHistory.rawValue)
-        }
-    }
+    private let repository = SearchHistoryRepository()
     
     init() {
         self.transform()
@@ -49,45 +45,25 @@ final class SearchHistoryViewModel {
     }
 }
 
-//MARK: - Load Search History
+//MARK: - Load/Add/Delete Search History
 extension SearchHistoryViewModel {
     private func loadSearchHistory() {
-        guard let history = UserDefaults.standard.array(forKey: UserDefaultsKey.searchHistory.rawValue) as? [Data] else {
-            self.outputSearchHistoryList.value = []
-            return
-        }
-        
-        self.encodedHistory = history
-        self.outputSearchHistoryList.value = history.convertType(type: SearchHistory.self)
+        self.outputSearchHistoryList.value = repository.loadSearchHistory()
     }
-}
-
-//MARK: - Add/Delete Search History
-extension SearchHistoryViewModel {
+    
     private func saveSearchHistory(keyword: String) {
-        let date = String.getCurrentDate(dateFormat: "MM.dd.")
-        let history = SearchHistory(keyword: keyword, date: date)
-
-        
-        for (idx, history) in outputSearchHistoryList.value.enumerated() {
-            if (history.keyword == keyword) {
-                self.removeSearchHistory(idx: idx)
-                break
-            }
-        }
-        
-        self.encodedHistory.insert(rawData: history, at: 0)
-        self.outputSearchHistoryList.value.insert(history, at: 0)
+        repository.saveSearchHistory(keyword: keyword)
+        self.outputSearchHistoryList.value = repository.decodedHistory
     }
     
     private func removeSearchHistory(idx: Int) {
-        self.encodedHistory.remove(at: idx)
-        self.outputSearchHistoryList.value.remove(at: idx)
+        repository.removeSearchHistory(idx: idx)
+        self.outputSearchHistoryList.value = repository.decodedHistory
     }
     
     private func removeAllSearchHistory() {
-        self.encodedHistory.removeAll()
-        self.outputSearchHistoryList.value.removeAll()
+        repository.removeAllSearchHistory()
+        self.outputSearchHistoryList.value = repository.decodedHistory
     }
 }
 
