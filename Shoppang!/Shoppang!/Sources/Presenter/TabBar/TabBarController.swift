@@ -55,7 +55,7 @@ extension TabBarController {
             case .appleCollection:
                 return AppleProductViewController()
             case .setting:
-                return SettingListViewController()
+                return SettingListViewController(viewModel: SettingListViewModel())
             }
         }
         

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CC021D532C29C1F700685E3A /* AppleProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D522C29C1F700685E3A /* AppleProductViewController.swift */; };
 		CC021D5B2C29C3C200685E3A /* AppleProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */; };
+		CC05CED52C3FAC0B00EC8C17 /* SettingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CED42C3FAC0B00EC8C17 /* SettingListViewModel.swift */; };
+		CC05CED72C3FAF4000EC8C17 /* SettingListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CED62C3FAF4000EC8C17 /* SettingListRepository.swift */; };
 		CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */; };
 		CC1E5C932C3EEEDD00F0768F /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */; };
 		CC1E5C952C3F012B00F0768F /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */; };
@@ -112,6 +114,8 @@
 /* Begin PBXFileReference section */
 		CC021D522C29C1F700685E3A /* AppleProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductViewController.swift; sourceTree = "<group>"; };
 		CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		CC05CED42C3FAC0B00EC8C17 /* SettingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListViewModel.swift; sourceTree = "<group>"; };
+		CC05CED62C3FAF4000EC8C17 /* SettingListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListRepository.swift; sourceTree = "<group>"; };
 		CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 		CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
@@ -230,6 +234,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		CC05CED32C3FA6FB00EC8C17 /* SettingList */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AE7092C205B9500DD5556 /* UserProfile.swift */,
+				CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */,
+				CC05CED42C3FAC0B00EC8C17 /* SettingListViewModel.swift */,
+				CC05CED62C3FAF4000EC8C17 /* SettingListRepository.swift */,
+			);
+			path = SettingList;
+			sourceTree = "<group>";
+		};
 		CC347B442C1F437800DD50A6 /* SearchHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +341,7 @@
 		CC3804872C1DA8A500172CAF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CC05CED32C3FA6FB00EC8C17 /* SettingList */,
 				CCCBB11C2C37BF5B00B4349C /* WishList */,
 				CC77E1702C2A70B400EF8598 /* AppleProduct */,
 				CC347B442C1F437800DD50A6 /* SearchHistory */,
@@ -341,7 +357,6 @@
 				CC9AE7072C2050D100DD5556 /* ProfileImageViewModel.swift */,
 				CC9AE7022C203C8300DD5556 /* ProfileViewModel.swift */,
 				CC38B1F12C1DAE57000AFD92 /* NicknameValidationStatus.swift */,
-				CC9AE7092C205B9500DD5556 /* UserProfile.swift */,
 				CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */,
 			);
 			path = ProfileSetting;
@@ -599,7 +614,6 @@
 			isa = PBXGroup;
 			children = (
 				CCEE191A2C1C0B3A00405878 /* View */,
-				CC9AE6F82C2021AB00DD5556 /* SettingListType.swift */,
 				CCEE190E2C1C09F400405878 /* SettingListViewController.swift */,
 			);
 			path = SettingScreens;
@@ -805,6 +819,7 @@
 				CCEE19402C1C422000405878 /* NewNicknameSettingViewController.swift in Sources */,
 				CC9AE6FF2C20336F00DD5556 /* EditNicknameSettingViewController.swift in Sources */,
 				CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */,
+				CC05CED52C3FAC0B00EC8C17 /* SettingListViewModel.swift in Sources */,
 				CCF4EC922C2BE14D00D6E1D1 /* ProductDetailStackView.swift in Sources */,
 				CC9AE6EA2C1FC0F800DD5556 /* SortType.swift in Sources */,
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
@@ -849,6 +864,7 @@
 				CC9AE7082C2050D100DD5556 /* ProfileImageViewModel.swift in Sources */,
 				CCBCD1B72C3D4D7A00D5A99D /* Observable.swift in Sources */,
 				CCEE18E52C1C06CC00405878 /* AppDelegate.swift in Sources */,
+				CC05CED72C3FAF4000EC8C17 /* SettingListRepository.swift in Sources */,
 				CC9AE6EF2C1FD47C00DD5556 /* ProductDetailViewController.swift in Sources */,
 				CC9AE70E2C20834500DD5556 /* WishButton.swift in Sources */,
 				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,

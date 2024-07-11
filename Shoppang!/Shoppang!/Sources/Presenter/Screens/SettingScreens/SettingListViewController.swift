@@ -10,20 +10,16 @@ import Toast
 
 final class SettingListViewController: BaseViewController<SettingListRootView> {
     
-    private var wishListCount = 0 {
-        didSet {
-            if (oldValue != wishListCount) {
-                let indexPath = IndexPath(row: 0, section: 0)
-                guard let wishListCountCell = contentView.settingListTableView.cellForRow(at: indexPath) as? SettingListTableViewCell else { return }
-                
-                wishListCountCell.updateWishListCountLabel(wishListCount: wishListCount)
-            }
-        }
+    private var viewModel: SettingListViewModel
+    
+    init(viewModel: SettingListViewModel) {
+        self.viewModel = viewModel
+        super.init()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.checkUserProfile()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.inputViewWillAppearTrigger.value = ()
     }
     
     override func addUserAction() {
@@ -34,10 +30,23 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
         self.contentView.settingListTableView.dataSource = self
     }
     
-    func checkUserProfile() {
-        let user = UserProfile()
-        self.contentView.profileView.update(profile: user)
-        self.wishListCount = user.wishListCount
+    override func binViewModel() {
+        self.viewModel.outputUserProfile.bind { [weak self] userProfile in
+            self?.contentView.profileView.update(profile: userProfile)
+        }
+        
+        self.viewModel.outputWishListCount.bind { [weak self] count in
+            let indexPath = IndexPath(row: 0, section: 0)
+            guard let wishListCountCell = self?.contentView.settingListTableView.cellForRow(at: indexPath) as? SettingListTableViewCell else { return }
+            
+            wishListCountCell.updateWishListCountLabel(wishListCount: count)
+        }
+        
+        self.viewModel.outputDeleteUserAccountTrigger.bind { signal in
+            if (signal != nil) {
+                NavigationManager.changeWindowScene(didDeleteAccount: true)                
+            }
+        }
     }
 }
 
@@ -48,11 +57,13 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let type = SettingListType.allCases[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingListTableViewCell.reusableIdentifier, for: indexPath) as? SettingListTableViewCell else { return UITableViewCell() }
+    
+        let type = SettingListType.allCases[indexPath.row]
+        let wishListCount = self.viewModel.outputWishListCount.value
         
-        cell.configureCellData(type: type, wishListCount: self.wishListCount)
+        cell.configureCellData(type: type, wishListCount: wishListCount)
         return cell
     }
     
@@ -64,7 +75,9 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
             let nextVC = WishListViewController(model: WishListModel())
             self.navigationController?.pushViewController(nextVC, animated: true)
         case .deleteAccount:
-            let alert = AlertManager.makeDeleteAccountAlert(handler: deleteUserAccount)
+            let alert = AlertManager.makeDeleteAccountAlert() { [weak self] _ in
+                self?.viewModel.inputDeleteUserAccountButtonTapped.value = ()
+            }
             self.present(alert, animated: true)
         default:
             self.contentView.makeToast("🚧 아직 준비중이에요...", duration: 1.5, position: .center)
@@ -74,19 +87,9 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
 
 //MARK: - User Action Handling
 extension SettingListViewController {
-    
     @objc private func profileViewTapped() {
         let nextVC = EditNicknameSettingViewController(contentView: NicknameSettingView(type: .Editing), viewModel: ProfileViewModel())
         
         self.navigationController?.pushViewController(nextVC, animated: true)
-    }
-}
-
-extension SettingListViewController {
-    private func deleteUserAccount(_ action: UIAlertAction) {
-        UserDefaultsKey.allCases.forEach {
-            UserDefaults.standard.removeObject(forKey: $0.rawValue)
-        }
-        NavigationManager.changeWindowScene(didDeleteAccount: true)
     }
 }
