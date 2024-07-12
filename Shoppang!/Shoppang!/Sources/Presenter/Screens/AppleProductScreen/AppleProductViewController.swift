@@ -31,7 +31,7 @@ class AppleProductViewController: BaseViewController<AppleProductRootView> {
 //        self.contentView.appleProductTableView.prefetchDataSource = self
     }
     
-    override func binViewModel() {
+    override func bindViewModel() {
         self.model.$appleProductList
             .dropFirst()
             .receive(on: RunLoop.main)

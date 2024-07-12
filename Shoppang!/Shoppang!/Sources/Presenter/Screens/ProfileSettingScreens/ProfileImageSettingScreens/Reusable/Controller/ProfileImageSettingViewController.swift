@@ -29,7 +29,7 @@ final class ProfileImageSettingViewController: BaseViewController<ProfileImageSe
         self.contentView.profileImageCollectionView.profileImageCollectionViewDelegate = self
     }
     
-    override func binViewModel() {
+    override func bindViewModel() {
         self.viewModel.outputProfileImageNumber.bind { [weak self] imageNumber in
             self?.updateProfileImageSettingView(imageNumber: imageNumber)
         }

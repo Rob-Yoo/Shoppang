@@ -38,7 +38,7 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
         self.contentView.sortButtonsView.sortButtonsViewDelegate = self
     }
     
-    override func binViewModel() {
+    override func bindViewModel() {
         self.searchResultModel.$searchResult
             .receive(on: RunLoop.main)
             .sink { [weak self] new in

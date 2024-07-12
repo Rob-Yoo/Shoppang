@@ -27,7 +27,7 @@ final class EditNicknameSettingViewController: BaseViewController<NicknameSettin
         self.addKeyboardDismissAction()
     }
     
-    override func binViewModel() {
+    override func bindViewModel() {
         self.viewModel.outputNicknameValidationStatus.bind { [weak self] status in
             self?.updateNickNicknameTextFieldView(status: status)
         }

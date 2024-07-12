@@ -30,7 +30,7 @@ final class SettingListViewController: BaseViewController<SettingListRootView> {
         self.contentView.settingListTableView.dataSource = self
     }
     
-    override func binViewModel() {
+    override func bindViewModel() {
         self.viewModel.outputUserProfile.bind { [weak self] userProfile in
             self?.contentView.profileView.update(profile: userProfile)
         }

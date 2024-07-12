@@ -32,7 +32,7 @@ final class SearchViewController: BaseViewController<SearchRootView> {
         self.addKeyboardDismissAction()
     }
     
-    override func binViewModel() {
+    override func bindViewModel() {
         self.viewModel.outputSearchHistoryList.bind { [weak self] history in
             if (history.isEmpty) {
                 self?.contentView.presentEmptyHistoryView()
