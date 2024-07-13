@@ -14,8 +14,4 @@ struct Product: Decodable {
     let lprice: String
     let mallName: String
     let productId: String
-    
-    static func createProduct(dto: WishProductDTO) -> Self {
-        return Product(title: dto.title, link: dto.link, image: dto.image, lprice: dto.lprice, mallName: dto.mallName, productId: dto.productId)
-    }
 }

@@ -6,28 +6,38 @@
 //
 
 import RealmSwift
+import Foundation
+import Combine
 
 final class WishListRepository {
     
     private let realm = try! Realm()
-    private var list: Results<WishProductDTO>
-    
+    private var list: Results<WishProduct>
+    private var cancellable = Set<AnyCancellable>()
+
     init() {
-        self.list = realm.objects(WishProductDTO.self)
+        self.list = realm.objects(WishProduct.self)
+        self.list.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                guard let list = self?.list else { return }
+                UserDefaults.standard.setValue(list.count, forKey: UserDefaultsKey.userWishListCount.rawValue)
+            }
+            .store(in: &cancellable)
     }
     
-    func createItem(product: Product) {
+    func createItem(product: ProductModel) {
         do {
             try realm.write {
-                realm.add(WishProductDTO(product: product))
+                realm.add(WishProduct(product: product))
             }
         } catch {
             print(error)
         }
     }
     
-    func fetchAll() -> [Product] {
-        return list.map { Product.createProduct(dto: $0) }.reversed()
+    func fetchAll() -> [ProductModel] {
+        return list.map { ProductModel.createProductModel($0) }.reversed()
     }
     
     func deleteItem(productID: String) {

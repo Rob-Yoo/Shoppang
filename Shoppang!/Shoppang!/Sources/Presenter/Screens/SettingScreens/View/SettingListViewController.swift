@@ -72,7 +72,7 @@ extension SettingListViewController: UITableViewDelegate, UITableViewDataSource 
 
         switch type {
         case .wishList:
-            let nextVC = WishListViewController(model: WishListModel())
+            let nextVC = WishListViewController(viewModel: WishListViewModel())
             self.navigationController?.pushViewController(nextVC, animated: true)
         case .deleteAccount:
             let alert = AlertManager.makeDeleteAccountAlert() { [weak self] _ in

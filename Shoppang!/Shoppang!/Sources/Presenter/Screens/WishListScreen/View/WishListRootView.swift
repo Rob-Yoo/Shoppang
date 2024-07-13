@@ -20,7 +20,6 @@ final class WishListRootView: UIView, RootViewProtocol {
     private let sortTitleLabel = UILabel().then {
         $0.font = .medium15
         $0.textColor = .black
-        $0.text = WishListSortType.add.title
     }
     
     private let arrowImageView = UIImageView().then {

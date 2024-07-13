@@ -13,11 +13,13 @@ final class SearchResultViewModel {
     var inputViewDidAppearTrigger: Observable<Void?> = Observable(nil)
     var inputSortType: Observable<SortType> = Observable(.sim)
     var inputPage: Observable<Int> = Observable(1)
+    var inputWishButtonTapped: Observable<Int?> = Observable(nil)
     
     var outputWillFetchData: Observable<String?> = Observable(nil)
     var outputTotalCount: Observable<Int?> = Observable(nil)
-    var outputProductList: Observable<[Product]> = Observable([])
+    var outputProductList: Observable<[ProductModel]> = Observable([])
     var outputShouldScrollUp: Observable<Void?> = Observable(nil)
+    var outputCollectionViewReloadTrigger: Observable<Void?> = Observable(nil)
     
     private var repository: SearchResultRepository
     
@@ -40,6 +42,15 @@ final class SearchResultViewModel {
         
         self.inputPage.bind { [weak self] page in
             self?.doPagination(page: page)
+        }
+        
+        self.inputWishButtonTapped.bind { [weak self] index in
+            guard let index = index else { return }
+            self?.updateWishList(idx: index)
+        }
+        
+        self.inputViewDidAppearTrigger.bind { [weak self] _ in
+            self?.reloadWishList()
         }
     }
 }
@@ -76,9 +87,38 @@ extension SearchResultViewModel {
     private func doPagination(page: Int) {
         self.repository.page = page
         if (repository.isValidPagination) {
-            Task { await self.fetchData() }            
+            Task { await self.fetchData() }
         } else {
             self.outputProductList.value = self.outputProductList.value
+        }
+    }
+    
+    private func updateWishList(idx: Int) {
+        let selectedProduct = self.outputProductList.value[idx]
+        let isWishList = selectedProduct.isWishList
+        
+        if (isWishList) {
+            self.repository.removeFromWishList(productID: selectedProduct.productId)
+        } else {
+            self.repository.addToWishList(product: selectedProduct)
+        }
+        
+        self.outputProductList.value[idx].isWishList.toggle()
+    }
+}
+
+extension SearchResultViewModel {
+    private func reloadWishList() {
+        var productList = self.outputProductList.value
+
+        self.repository.reloadWishList { (wishList: [ProductModel]) in
+            for (idx, product) in productList.enumerated() where product.isWishList {
+                if !(wishList.contains(where: { $0.productId == product.productId })) {
+                    productList[idx].isWishList.toggle()
+                }
+            }
+            
+            self.outputProductList.value = productList
         }
     }
 }

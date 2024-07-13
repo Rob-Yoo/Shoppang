@@ -11,11 +11,9 @@ import Toast
 final class SearchResultViewController: BaseViewController<SearchResultRootView> {
     
     private let viewModel: SearchResultViewModel
-    private let wishListModel: WishListModel
     
-    init(viewModel: SearchResultViewModel, wishListModel: WishListModel) {
+    init(viewModel: SearchResultViewModel) {
         self.viewModel = viewModel
-        self.wishListModel = wishListModel
         super.init()
     }
     
@@ -26,7 +24,7 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        self.wishListModel.reloadData()
+        self.viewModel.inputViewDidAppearTrigger.value = ()
     }
     
     override func addUserAction() {
@@ -58,15 +56,6 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
                 self?.contentView.productListCollectionView.scrollUpToTop()
             }
         }
-        
-//        
-//        self.wishListModel.$wishList
-//            .dropFirst()
-//            .receive(on: RunLoop.main)
-//            .sink { [weak self] new in
-//                self?.contentView.productListCollectionView.reloadData()
-//            }
-//            .store(in: &cancellable)
     }
 }
 
@@ -79,11 +68,10 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let productList = self.viewModel.outputProductList.value
         let product = productList[indexPath.item]
-        let isWishList = self.wishListModel.isWishList(productID: product.productId)
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCollectionViewCell.reusableIdentifier, for: indexPath) as? ProductCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configureCellData(data: product, isWishList: isWishList)
+        cell.configureCellData(data: product)
         return cell
     }
     
@@ -100,10 +88,10 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = self.viewModel.outputProductList.value[indexPath.row]
-        let nextVC = ProductDetailViewController(product: product, model: WishListModel())
+//        let nextVC = ProductDetailViewController(product: product, model: WishListModel())
         
-        nextVC.productDetailViewControllerDelegate = self
-        self.navigationController?.pushViewController(nextVC, animated: true)
+//        nextVC.productDetailViewControllerDelegate = self
+//        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -119,14 +107,7 @@ extension SearchResultViewController: SortButtonsViewDelegate, ProductCollection
     }
     
     func wishButtonTapped(idx: Int) {
-//        let product = self.searchResultModel.searchResult.items[idx]
-//        let isWishList = self.wishListModel.isWishList(productID: product.productId)
-//        
-//        if (isWishList) {
-//            self.wishListModel.removeFromWishList(productID: product.productId)
-//        } else {
-//            self.wishListModel.addToWishList(product: product)
-//        }
+        self.viewModel.inputWishButtonTapped.value = idx
     }
     
     func showInvalidUrlToast() {

@@ -16,26 +16,58 @@ final class SearchResultRepository {
     }
     var page: Int = 1
     var isValidPagination: Bool {
-        guard 1 < page && page <= 1000, let prev = self.prevSearchResult else { return false }
+        guard 1 < page && page <= 1000, let prev = self.prevShopping else { return false }
         guard page * prev.display <= prev.total else { return false }
         return true
     }
     
     private var total = -1
-    private var prevSearchResult: Shopping?
+    private var prevShopping: Shopping?
     private var request: NaverRequest {
         return .shopping(query: searchKeyword, sort: sortType.rawValue, start: page)
     }
-    
+    private let wishListRepository = WishListRepository()
+
     init(searchKeyword: String) {
         self.searchKeyword = searchKeyword
     }
 
     func fetchSearchResult() async -> SearchResultModel? {
-        guard let searchResult = await NetworkManager.shared.requestAPI(req: request, type: Shopping.self) else { return nil }
+        guard let shopping = await NetworkManager.shared.requestAPI(req: request, type: Shopping.self) else { return nil }
         
-        if (total == -1) { total = searchResult.total }
-        self.prevSearchResult = searchResult
-        return SearchResultModel(total: total, productList: searchResult.items, isPagination: page > 1)
+        if (total == -1) { total = shopping.total }
+        self.prevShopping = shopping
+        return await self.convertToSearchResultModel(shopping: shopping)
+    }
+    
+    @MainActor
+    private func convertToSearchResultModel(shopping: Shopping) -> SearchResultModel {
+        let productList = shopping.items
+        let wishList = self.wishListRepository.fetchAll()
+        let isPagination = self.page > 1
+        var result = [ProductModel]()
+
+        for product in productList {
+            let isWishList = wishList.contains { $0.productId == product.productId }
+            let converted = ProductModel.createProductModel(product, isWishList: isWishList)
+            result.append(converted)
+        }
+        
+        return SearchResultModel(total: self.total, productList: result, isPagination: isPagination)
+    }
+}
+
+extension SearchResultRepository {
+    func addToWishList(product: ProductModel) {
+        self.wishListRepository.createItem(product: product)
+    }
+
+    func removeFromWishList(productID: String) {
+        self.wishListRepository.deleteItem(productID: productID)
+    }
+    
+    func reloadWishList(closure: ([ProductModel]) -> Void) {
+        let wishList = self.wishListRepository.fetchAll()
+        closure(wishList)
     }
 }

@@ -46,7 +46,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCellData(data: Product, isWishList: Bool) {
+    func configureCellData(data: ProductModel) {
         let url = URL(string: data.image)
         let formattedPrice = Int(data.lprice)!.formatted()
 
@@ -54,7 +54,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         self.mallNameLabel.text = data.mallName
         self.productNameLabel.text = data.title.htmlElementDeleted
         self.priceLabel.text = formattedPrice + "원"
-        self.productImageView.wishButton.isWishList = isWishList
+        self.productImageView.wishButton.isWishList = data.isWishList
     }
     
     @objc func wishButtonTapped() {
@@ -65,6 +65,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
             return
         }
         
+        self.productImageView.wishButton.isWishList.toggle()
         delegate.wishButtonTapped(idx: indexPath.item)
     }
 }

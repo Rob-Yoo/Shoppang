@@ -7,7 +7,7 @@
 
 import RealmSwift
 
-final class WishProductDTO: Object {
+final class WishProduct: Object {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var title: String
     @Persisted var link: String
@@ -16,7 +16,7 @@ final class WishProductDTO: Object {
     @Persisted var mallName: String
     @Persisted var productId: String
     
-    convenience init(product: Product) {
+    convenience init(product: ProductModel) {
         self.init()
         self.title = product.title
         self.link = product.link

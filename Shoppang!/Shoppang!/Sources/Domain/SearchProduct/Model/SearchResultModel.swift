@@ -9,6 +9,6 @@ import Foundation
 
 struct SearchResultModel {
     let total: Int
-    let productList: [Product]
+    let productList: [ProductModel]
     let isPagination: Bool
 }
