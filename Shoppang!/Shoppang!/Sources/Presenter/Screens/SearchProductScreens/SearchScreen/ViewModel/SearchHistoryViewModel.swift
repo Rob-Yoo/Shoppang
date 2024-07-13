@@ -14,7 +14,7 @@ final class SearchHistoryViewModel {
     var inputDeleteAllButtonTapped: Observable<Void?> = Observable(nil)
     var inputWillDeleteHistoryIndex: Observable<Int?> = Observable(nil)
     
-    var outputSearchHistoryList: Observable<[SearchHistory]> = Observable([])
+    var outputSearchHistoryList: Observable<[SearchHistoryModel]> = Observable([])
     
     private let repository = SearchHistoryRepository()
     

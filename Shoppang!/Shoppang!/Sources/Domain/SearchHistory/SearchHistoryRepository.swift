@@ -14,11 +14,11 @@ final class SearchHistoryRepository {
         }
     }
     
-    var decodedHistory: [SearchHistory] {
-        return encodedHistory.convertType(type: SearchHistory.self)
+    var decodedHistory: [SearchHistoryModel] {
+        return encodedHistory.convertType(type: SearchHistoryModel.self)
     }
     
-    func loadSearchHistory() -> [SearchHistory] {
+    func loadSearchHistory() -> [SearchHistoryModel] {
         guard let history = UserDefaults.standard.array(forKey: UserDefaultsKey.searchHistory.rawValue) as? [Data] else {
             return []
         }
@@ -29,7 +29,7 @@ final class SearchHistoryRepository {
     
     func saveSearchHistory(keyword: String) {
         let date = String.getCurrentDate(dateFormat: "MM.dd.")
-        let history = SearchHistory(keyword: keyword, date: date)
+        let history = SearchHistoryModel(keyword: keyword, date: date)
 
         
         for (idx, history) in decodedHistory.enumerated() {

@@ -89,7 +89,7 @@ final class SearchHistoryTableViewCell: UITableViewCell {
         
     }
     
-    func configureCellData(data: SearchHistory) {
+    func configureCellData(data: SearchHistoryModel) {
         self.searchKeywordLabel.text = data.keyword
         self.searchedDateLabel.text = data.date
     }

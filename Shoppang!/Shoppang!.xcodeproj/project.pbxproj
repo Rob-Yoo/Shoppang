@@ -15,7 +15,7 @@
 		CC05CEDE2C42BCB700EC8C17 /* NaverRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CEDD2C42BCB700EC8C17 /* NaverRequest.swift */; };
 		CC05CEE12C42C69B00EC8C17 /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CEE02C42C69B00EC8C17 /* SearchResultModel.swift */; };
 		CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */; };
-		CC1E5C932C3EEEDD00F0768F /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */; };
+		CC1E5C932C3EEEDD00F0768F /* SearchHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C922C3EEEDD00F0768F /* SearchHistoryModel.swift */; };
 		CC1E5C952C3F012B00F0768F /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */; };
 		CC1E5C972C3F04BB00F0768F /* SearchHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C962C3F04BB00F0768F /* SearchHistoryRepository.swift */; };
 		CC30CAC52C2B31BD00A2B9A1 /* AppleProductRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */; };
@@ -123,7 +123,7 @@
 		CC05CEDD2C42BCB700EC8C17 /* NaverRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverRequest.swift; sourceTree = "<group>"; };
 		CC05CEE02C42C69B00EC8C17 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
-		CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
+		CC1E5C922C3EEEDD00F0768F /* SearchHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryModel.swift; sourceTree = "<group>"; };
 		CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		CC1E5C962C3F04BB00F0768F /* SearchHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryRepository.swift; sourceTree = "<group>"; };
 		CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductRootView.swift; sourceTree = "<group>"; };
@@ -276,11 +276,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		CC347B442C1F437800DD50A6 /* SearchHistory */ = {
+		CC05CEE32C42DA0100EC8C17 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				CC347B452C1F438800DD50A6 /* SearchHistoryViewModel.swift */,
-				CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CC347B442C1F437800DD50A6 /* SearchHistory */ = {
+			isa = PBXGroup;
+			children = (
+				CC1E5C922C3EEEDD00F0768F /* SearchHistoryModel.swift */,
 				CC1E5C962C3F04BB00F0768F /* SearchHistoryRepository.swift */,
 			);
 			path = SearchHistory;
@@ -664,8 +671,8 @@
 		CCEE19112C1C0A3C00405878 /* SearchScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CC05CEE32C42DA0100EC8C17 /* ViewModel */,
 				CCEE19172C1C0ADC00405878 /* View */,
-				CCEE19122C1C0A4F00405878 /* SearchViewController.swift */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -681,6 +688,7 @@
 		CCEE19172C1C0ADC00405878 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCEE19122C1C0A4F00405878 /* SearchViewController.swift */,
 				CCEE19182C1C0AEE00405878 /* SearchRootView.swift */,
 				CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */,
 				CC347B3E2C1F2F0100DD50A6 /* SearchHistoryView.swift */,
@@ -839,7 +847,7 @@
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
 				CC4A6B4B2C1EDFE200AC878A /* ProductImageView.swift in Sources */,
 				CC05CEDE2C42BCB700EC8C17 /* NaverRequest.swift in Sources */,
-				CC1E5C932C3EEEDD00F0768F /* SearchHistory.swift in Sources */,
+				CC1E5C932C3EEEDD00F0768F /* SearchHistoryModel.swift in Sources */,
 				CC9AE6F32C1FDA3100DD5556 /* WishListBarButton.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
 				CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */,
