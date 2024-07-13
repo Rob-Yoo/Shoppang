@@ -43,7 +43,7 @@ final class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(profile: UserProfile) {
+    func update(profile: UserProfileModel) {
         let profileImage = UIImage.profileImages[profile.profileImageNumber]
 
         self.nicknameLabel.text = profile.nickname

@@ -11,7 +11,7 @@ final class SettingListViewModel {
     var inputViewWillAppearTrigger: Observable<Void?> = Observable(nil)
     var inputDeleteUserAccountButtonTapped: Observable<Void?> = Observable(nil)
     
-    lazy var outputUserProfile: Observable<UserProfile> = Observable(repository.loadUserProfile())
+    lazy var outputUserProfile: Observable<UserProfileModel> = Observable(repository.loadUserProfile())
     lazy var outputWishListCount = Observable(repository.loadWishListCount())
     var outputDeleteUserAccountTrigger: Observable<Void?> = Observable(nil)
     

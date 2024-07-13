@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserProfile {
+struct UserProfileModel {
     let nickname: String
     let profileImageNumber: Int
     let userJoinDate: String

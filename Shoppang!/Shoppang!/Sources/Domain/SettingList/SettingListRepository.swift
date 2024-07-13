@@ -12,12 +12,12 @@ final class SettingListRepository {
     
     private let realm = try! Realm()
     
-    func loadUserProfile() -> UserProfile {
+    func loadUserProfile() -> UserProfileModel {
         let nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? "옹골찬 고래밥"
         let profileImageNumber = UserDefaults.standard.integer(forKey: UserDefaultsKey.profileImageNumber.rawValue)
         let userJoinDate = UserDefaults.standard.string(forKey: UserDefaultsKey.joinDate.rawValue) ?? "0000.00.00"
         
-        return UserProfile(nickname: nickname, profileImageNumber: profileImageNumber, userJoinDate: userJoinDate)
+        return UserProfileModel(nickname: nickname, profileImageNumber: profileImageNumber, userJoinDate: userJoinDate)
     }
     
     func loadWishListCount() -> Int {
