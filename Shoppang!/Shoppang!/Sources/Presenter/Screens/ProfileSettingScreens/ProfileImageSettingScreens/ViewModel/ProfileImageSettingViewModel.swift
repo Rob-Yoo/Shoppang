@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ProfileImageViewModel {
+final class ProfileImageSettingViewModel {
     var inputProfileImageNumber: Observable<Int>
     lazy var outputProfileImageNumber = Observable(inputProfileImageNumber.value)
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ProfileViewModel {
+final class ProfileSettingViewModel {
     lazy var inputNickname = repository.loadNickname()
     lazy var inputProfileImageNumber = repository.loadProfileImageNumber()
     var inputSaveButtonTapped: Observable<Void?> = Observable(nil)
@@ -61,7 +61,7 @@ final class ProfileViewModel {
 }
 
 //MARK: - 닉네임 유효성 검사 로직
-extension ProfileViewModel {
+extension ProfileSettingViewModel {
     private func validateNickname(nickname: String) -> NicknameValidationStatus {
         if (isCountError(nickname)) { return .countError }
         if (isCharacterError(nickname)) { return .characterError }

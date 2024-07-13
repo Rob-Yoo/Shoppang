@@ -9,11 +9,11 @@ import UIKit
 
 final class ProfileImageSettingViewController: BaseViewController<ProfileImageSettingView> {
     
-    private var viewModel: ProfileImageViewModel
+    private var viewModel: ProfileImageSettingViewModel
     
     var deliverProfileImageNumber: ((Int) -> Void)?
     
-    init(contentView: ProfileImageSettingView, viewModel: ProfileImageViewModel) {
+    init(contentView: ProfileImageSettingView, viewModel: ProfileImageSettingViewModel) {
         self.viewModel = viewModel
         super.init(contentView: contentView)
     }

@@ -1,53 +1,60 @@
 //
-//  NewNicknameSettingViewController.swift
+//  EditNicknameSettingViewController.swift
 //  Shoppang!
 //
-//  Created by Jinyoung Yoo on 6/14/24.
+//  Created by Jinyoung Yoo on 6/17/24.
 //
 
 import UIKit
 
-class NewNicknameSettingViewController: BaseViewController<NicknameSettingView> {
+final class EditProfileSettingViewController: BaseViewController<ProfileSettingView> {
     
-    private let viewModel: ProfileViewModel
+    private let viewModel: ProfileSettingViewModel
     
-    init(contentView: NicknameSettingView, viewModel: ProfileViewModel) {
+    init(contentView: ProfileSettingView, viewModel: ProfileSettingViewModel) {
         self.viewModel = viewModel
         super.init(contentView: contentView)
     }
     
     override func addUserAction() {
+        let saveButton = UIBarButtonItem(title: Literal.ButtonTitle.Save, style: .plain, target: self, action: #selector(saveButtonTapped))
         let profileImageViewTapGR = UITapGestureRecognizer(target: self, action: #selector(profileImageViewTapped))
+
         
+        self.navigationItem.rightBarButtonItem = saveButton
         self.contentView.editableProfileImageView.addGestureRecognizer(profileImageViewTapGR)
         self.contentView.nicknameTextFieldView.nicknameTextField.addTarget(self, action: #selector(nicknameTextFieldDidChange), for: .editingChanged)
-        self.contentView.completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
         self.addKeyboardDismissAction()
     }
     
     override func bindViewModel() {
         self.viewModel.outputNicknameValidationStatus.bind { [weak self] status in
-            self?.updateNicknameTextFieldView(status: status)
-            self?.updateCompleteButton(status: status)
+            self?.updateNickNicknameTextFieldView(status: status)
         }
         
         self.viewModel.outputProfileImageNumber.bind { [weak self] imageNumber in
             self?.updateEditableProfileImageView(imageNumber: imageNumber)
         }
         
-        self.viewModel.outputValidation.bind { validation in
+        self.viewModel.outputValidation.bind { [weak self] validation in
             if (validation) {
-                NavigationManager.changeWindowScene(didDeleteAccount: false)
+                self?.navigationController?.popViewController(animated: true)
             }
         }
     }
+    
 }
 
 //MARK: - User Action Handling
-extension NewNicknameSettingViewController {
+extension EditProfileSettingViewController {
+    
+    @objc private func saveButtonTapped() {
+        self.viewModel.inputSaveButtonTapped.value = ()
+    }
+    
     @objc private func profileImageViewTapped() {
         let profileImageNumber = self.viewModel.outputProfileImageNumber.value
-        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .New), viewModel: ProfileImageViewModel(imageNumber: profileImageNumber))
+        let nextVC = ProfileImageSettingViewController(contentView: ProfileImageSettingView(type: .Editing), viewModel: ProfileImageSettingViewModel(imageNumber: profileImageNumber))
 
         nextVC.deliverProfileImageNumber = { [weak self] number in
             self?.viewModel.inputProfileImageNumber.value = number
@@ -59,28 +66,15 @@ extension NewNicknameSettingViewController {
         guard let text = sender.text else { return }
         self.viewModel.inputNickname.value = text
     }
-    
-    @objc private func completeButtonTapped() {
-        self.viewModel.inputSaveButtonTapped.value = ()
-    }
 }
 
 //MARK: - Update Views
-extension NewNicknameSettingViewController {
-    private func updateNicknameTextFieldView(status: NicknameValidationStatus) {
+extension EditProfileSettingViewController {
+    private func updateNickNicknameTextFieldView(status: NicknameValidationStatus) {
         let nicknameTextFieldView = self.contentView.nicknameTextFieldView
-
+        
+        nicknameTextFieldView.nicknameTextField.text = self.viewModel.inputNickname.value
         nicknameTextFieldView.update(status: status)
-    }
-    
-    private func updateCompleteButton(status: NicknameValidationStatus) {
-        if (status == .ok) {
-            self.contentView.completeButton.backgroundColor = .mainTheme
-            self.contentView.completeButton.isEnabled = true
-        } else {
-            self.contentView.completeButton.backgroundColor = .lightGray
-            self.contentView.completeButton.isEnabled = false
-        }
     }
     
     private func updateEditableProfileImageView(imageNumber: Int) {
