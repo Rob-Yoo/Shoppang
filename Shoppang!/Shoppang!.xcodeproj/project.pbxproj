@@ -284,6 +284,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		CC05CEE42C42DB5500EC8C17 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A6B382C1EC0C700AC878A /* SearchResultViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CC347B442C1F437800DD50A6 /* SearchHistory */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				CC05CEDF2C42C36000EC8C17 /* Decodable */,
-				CC4A6B382C1EC0C700AC878A /* SearchResultViewModel.swift */,
 				CC05CEE02C42C69B00EC8C17 /* SearchResultModel.swift */,
 				CC9AE6E92C1FC0F800DD5556 /* SortType.swift */,
 				CC05CEDA2C42A33600EC8C17 /* SearchResultRepository.swift */,
@@ -424,9 +431,8 @@
 		CC4A6B3C2C1EC76D00AC878A /* SearchResultScreen */ = {
 			isa = PBXGroup;
 			children = (
-				CC4A6B492C1EDF8F00AC878A /* Custom */,
+				CC05CEE42C42DB5500EC8C17 /* ViewModel */,
 				CC4A6B3F2C1EC78F00AC878A /* View */,
-				CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */,
 			);
 			path = SearchResultScreen;
 			sourceTree = "<group>";
@@ -434,6 +440,8 @@
 		CC4A6B3F2C1EC78F00AC878A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC4A6B492C1EDF8F00AC878A /* Custom */,
+				CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */,
 				CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */,
 				CC4A6B422C1ECF7400AC878A /* SortButtonsView.swift */,
 				CC4A6B442C1EDEC600AC878A /* SearchResultCollectionView.swift */,
