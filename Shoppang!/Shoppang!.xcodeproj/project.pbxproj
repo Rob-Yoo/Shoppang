@@ -11,6 +11,9 @@
 		CC021D5B2C29C3C200685E3A /* AppleProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */; };
 		CC05CED52C3FAC0B00EC8C17 /* SettingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CED42C3FAC0B00EC8C17 /* SettingListViewModel.swift */; };
 		CC05CED72C3FAF4000EC8C17 /* SettingListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CED62C3FAF4000EC8C17 /* SettingListRepository.swift */; };
+		CC05CEDB2C42A33600EC8C17 /* SearchResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CEDA2C42A33600EC8C17 /* SearchResultRepository.swift */; };
+		CC05CEDE2C42BCB700EC8C17 /* NaverRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CEDD2C42BCB700EC8C17 /* NaverRequest.swift */; };
+		CC05CEE12C42C69B00EC8C17 /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC05CEE02C42C69B00EC8C17 /* SearchResultModel.swift */; };
 		CC1A5AEC2C2D43FF008CAABF /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */; };
 		CC1E5C932C3EEEDD00F0768F /* SearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */; };
 		CC1E5C952C3F012B00F0768F /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */; };
@@ -29,8 +32,8 @@
 		CC38B1FE2C1E05B9000AFD92 /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */; };
 		CC4A6B322C1EB31400AC878A /* EmptySearchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */; };
 		CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */; };
-		CC4A6B372C1EBE4A00AC878A /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B362C1EBE4A00AC878A /* SearchResult.swift */; };
-		CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */; };
+		CC4A6B372C1EBE4A00AC878A /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B362C1EBE4A00AC878A /* Shopping.swift */; };
+		CC4A6B392C1EC0C700AC878A /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B382C1EC0C700AC878A /* SearchResultViewModel.swift */; };
 		CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3A2C1EC18A00AC878A /* API.swift */; };
 		CC4A6B3E2C1EC78100AC878A /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */; };
 		CC4A6B412C1EC7A200AC878A /* SearchResultRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */; };
@@ -116,6 +119,9 @@
 		CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		CC05CED42C3FAC0B00EC8C17 /* SettingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListViewModel.swift; sourceTree = "<group>"; };
 		CC05CED62C3FAF4000EC8C17 /* SettingListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListRepository.swift; sourceTree = "<group>"; };
+		CC05CEDA2C42A33600EC8C17 /* SearchResultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRepository.swift; sourceTree = "<group>"; };
+		CC05CEDD2C42BCB700EC8C17 /* NaverRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverRequest.swift; sourceTree = "<group>"; };
+		CC05CEE02C42C69B00EC8C17 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		CC1A5AEB2C2D43FF008CAABF /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
 		CC1E5C922C3EEEDD00F0768F /* SearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistory.swift; sourceTree = "<group>"; };
 		CC1E5C942C3F012B00F0768F /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
@@ -134,8 +140,8 @@
 		CC38B1FD2C1E05B9000AFD92 /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
 		CC4A6B312C1EB31400AC878A /* EmptySearchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchHistoryView.swift; sourceTree = "<group>"; };
 		CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		CC4A6B362C1EBE4A00AC878A /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
+		CC4A6B362C1EBE4A00AC878A /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
+		CC4A6B382C1EC0C700AC878A /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
 		CC4A6B3A2C1EC18A00AC878A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CC4A6B3D2C1EC78100AC878A /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		CC4A6B402C1EC7A200AC878A /* SearchResultRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRootView.swift; sourceTree = "<group>"; };
@@ -243,6 +249,24 @@
 				CC05CED62C3FAF4000EC8C17 /* SettingListRepository.swift */,
 			);
 			path = SettingList;
+			sourceTree = "<group>";
+		};
+		CC05CEDC2C42BCA500EC8C17 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */,
+				CC05CEDD2C42BCB700EC8C17 /* NaverRequest.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CC05CEDF2C42C36000EC8C17 /* Decodable */ = {
+			isa = PBXGroup;
+			children = (
+				CC4A6B362C1EBE4A00AC878A /* Shopping.swift */,
+				CCF4C5462C3821D6000414FD /* Product.swift */,
+			);
+			path = Decodable;
 			sourceTree = "<group>";
 		};
 		CC347B442C1F437800DD50A6 /* SearchHistory */ = {
@@ -374,10 +398,11 @@
 		CC4A6B352C1EBE3100AC878A /* SearchProduct */ = {
 			isa = PBXGroup;
 			children = (
-				CCF4C5462C3821D6000414FD /* Product.swift */,
-				CC4A6B362C1EBE4A00AC878A /* SearchResult.swift */,
-				CC4A6B382C1EC0C700AC878A /* SearchResultModel.swift */,
+				CC05CEDF2C42C36000EC8C17 /* Decodable */,
+				CC4A6B382C1EC0C700AC878A /* SearchResultViewModel.swift */,
+				CC05CEE02C42C69B00EC8C17 /* SearchResultModel.swift */,
 				CC9AE6E92C1FC0F800DD5556 /* SortType.swift */,
+				CC05CEDA2C42A33600EC8C17 /* SearchResultRepository.swift */,
 			);
 			path = SearchProduct;
 			sourceTree = "<group>";
@@ -415,8 +440,8 @@
 		CC72DD832C2160510093AC09 /* Mangers */ = {
 			isa = PBXGroup;
 			children = (
+				CC05CEDC2C42BCA500EC8C17 /* Network */,
 				CCFA7CC72C2126EE009E1F24 /* AlertManager.swift */,
-				CC4A6B332C1EBD6B00AC878A /* NetworkManager.swift */,
 				CC9954F52C1EA09E00CF1374 /* NavigationManager.swift */,
 			);
 			path = Mangers;
@@ -801,10 +826,11 @@
 				CC4A6B472C1EDF2700AC878A /* ProductCollectionViewCell.swift in Sources */,
 				CCCBB1202C37C18E00B4349C /* WishListRepository.swift in Sources */,
 				CC9AE7032C203C8300DD5556 /* ProfileViewModel.swift in Sources */,
-				CC4A6B372C1EBE4A00AC878A /* SearchResult.swift in Sources */,
+				CC4A6B372C1EBE4A00AC878A /* Shopping.swift in Sources */,
 				CC7D8C132C1C45A40079FD71 /* ProfileImageView.swift in Sources */,
 				CCEE19132C1C0A4F00405878 /* SearchViewController.swift in Sources */,
 				CC4A6B4B2C1EDFE200AC878A /* ProductImageView.swift in Sources */,
+				CC05CEDE2C42BCB700EC8C17 /* NaverRequest.swift in Sources */,
 				CC1E5C932C3EEEDD00F0768F /* SearchHistory.swift in Sources */,
 				CC9AE6F32C1FDA3100DD5556 /* WishListBarButton.swift in Sources */,
 				CCEE190F2C1C09F400405878 /* SettingListViewController.swift in Sources */,
@@ -832,7 +858,7 @@
 				CC4A6B322C1EB31400AC878A /* EmptySearchHistoryView.swift in Sources */,
 				CCEE19192C1C0AEE00405878 /* SearchRootView.swift in Sources */,
 				CC347B3F2C1F2F0100DD50A6 /* SearchHistoryView.swift in Sources */,
-				CC4A6B392C1EC0C700AC878A /* SearchResultModel.swift in Sources */,
+				CC4A6B392C1EC0C700AC878A /* SearchResultViewModel.swift in Sources */,
 				CC4A6B342C1EBD6B00AC878A /* NetworkManager.swift in Sources */,
 				CC4A6B3B2C1EC18A00AC878A /* API.swift in Sources */,
 				CC9AE6F52C20075A00DD5556 /* ProfileView.swift in Sources */,
@@ -869,11 +895,13 @@
 				CC9AE70E2C20834500DD5556 /* WishButton.swift in Sources */,
 				CC38B1F82C1DE328000AFD92 /* UserDefaultsKey.swift in Sources */,
 				CCFA7CC82C2126EE009E1F24 /* AlertManager.swift in Sources */,
+				CC05CEE12C42C69B00EC8C17 /* SearchResultModel.swift in Sources */,
 				CC3804722C1D841800172CAF /* ProfileImageCollectionView.swift in Sources */,
 				CCCBB1162C37BC4100B4349C /* WishListRootView.swift in Sources */,
 				CCF4C54C2C384BB5000414FD /* WishListSortType.swift in Sources */,
 				CCEE18E72C1C06CC00405878 /* SceneDelegate.swift in Sources */,
 				CC9954F62C1EA09E00CF1374 /* NavigationManager.swift in Sources */,
+				CC05CEDB2C42A33600EC8C17 /* SearchResultRepository.swift in Sources */,
 				CCEE19322C1C2A9400405878 /* UIFont+Extension.swift in Sources */,
 				CC4A6B3E2C1EC78100AC878A /* SearchResultViewController.swift in Sources */,
 				CC38046D2C1D82D500172CAF /* ProfileImageSettingViewController.swift in Sources */,

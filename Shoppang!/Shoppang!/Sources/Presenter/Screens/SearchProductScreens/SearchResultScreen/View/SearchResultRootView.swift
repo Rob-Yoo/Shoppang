@@ -37,10 +37,6 @@ final class SearchResultRootView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func update(searchResult: SearchResult) {
-        self.totalCountLabel.text = searchResult.total.formatted() + "개의 검색 결과"
-    }
 
 }
 

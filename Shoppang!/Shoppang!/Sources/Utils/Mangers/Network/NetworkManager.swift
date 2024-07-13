@@ -13,8 +13,12 @@ final class NetworkManager {
     
     private init() {}
 
-    static func requestAPI<T: Decodable>(url: String, success: @escaping (_ value: T) -> Void, failure: @escaping (_ error: Error) -> Void = { error in print(error) }) {
-        AF.request(url, headers: API.headers)
+    static func requestAPI<T: Decodable>(req: NaverRequest, success: @escaping (_ value: T) -> Void, failure: @escaping (_ error: Error) -> Void = { error in print(error) }) {
+        AF.request(req.endPoint,
+                             method: req.method,
+                             parameters: req.parameters,
+                             encoding: URLEncoding(destination: .queryString),
+                             headers: req.header)
             .validate()
             .responseDecodable(of: T.self) { res in
                 switch res.result {
@@ -26,7 +30,20 @@ final class NetworkManager {
             }
     }
     
-    func requestAPI<T: Decodable>(url: String, type: T.Type) async throws -> T {
-        return try await AF.request(url, headers: API.headers).validate().serializingDecodable(type).value
+    func requestAPI<T: Decodable>(req: NaverRequest, type: T.Type) async -> T? {
+        do {
+            let response = try await AF.request(req.endPoint,
+                                                method: req.method,
+                                                parameters: req.parameters,
+                                                encoding: URLEncoding(destination: .queryString),
+                                                headers: req.header)
+                .validate().serializingDecodable(type).value
+            
+            return response
+        } catch {
+            print(error)
+        }
+        
+        return nil
     }
 }

@@ -32,7 +32,7 @@ enum NaverRequest {
     var parameters: Parameters {
         switch self {
         case .shopping(let query, let sort, let start):
-            return ["query": query, "sort": sort, "start": start, "display": 30]
+            return ["query": query, "sort": sort, "start": start, "display": API.Shopping.display]
         }
     }
     

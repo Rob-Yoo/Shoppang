@@ -6,29 +6,27 @@
 //
 
 import UIKit
-import Combine
+import Toast
 
 final class SearchResultViewController: BaseViewController<SearchResultRootView> {
     
-    private let searchResultModel: SearchResultModel
+    private let viewModel: SearchResultViewModel
     private let wishListModel: WishListModel
-    private var cancellable = Set<AnyCancellable>()
     
-    init(searchResultModel: SearchResultModel, wishListModel: WishListModel) {
-        self.searchResultModel = searchResultModel
+    init(viewModel: SearchResultViewModel, wishListModel: WishListModel) {
+        self.viewModel = viewModel
         self.wishListModel = wishListModel
         super.init()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = self.searchResultModel.searchingProduct
-        self.contentView.makeToastActivity(.center)
+        self.viewModel.inputViewDidLoadTrigger.value = ()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.wishListModel.reloadData()
+//        self.wishListModel.reloadData()
     }
     
     override func addUserAction() {
@@ -39,37 +37,47 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     }
     
     override func bindViewModel() {
-        self.searchResultModel.$searchResult
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.contentView.hideToastActivity()
-                
-                guard new.start != -1 else { return }
-                let isNew = (!new.items.isEmpty && self?.searchResultModel.page == 1) ? true : false
+        self.viewModel.outputWillFetchData.bind { [weak self] searchKeyword in
+            guard let searchKeyword = searchKeyword else { return }
+            self?.navigationItem.title = searchKeyword
+            self?.contentView.makeToastActivity(.center)
+        }
         
-                self?.contentView.update(searchResult: new)
-                self?.contentView.productListCollectionView.update(isNew: isNew)
-            }
-            .store(in: &cancellable)
+        self.viewModel.outputTotalCount.bind { [weak self] count in
+            guard let count = count else { return }
+            self?.contentView.totalCountLabel.text = count.formatted() + "개의 검색 결과"
+        }
         
-        self.wishListModel.$wishList
-            .dropFirst()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] new in
-                self?.contentView.productListCollectionView.reloadData()
+        self.viewModel.outputProductList.bind { [weak self] productList in
+            self?.contentView.hideToastActivity()
+            self?.contentView.productListCollectionView.reloadData()
+        }
+        
+        self.viewModel.outputShouldScrollUp.bind { [weak self] shouldScrollUp in
+            if shouldScrollUp != nil {
+                self?.contentView.productListCollectionView.scrollUpToTop()
             }
-            .store(in: &cancellable)
+        }
+        
+//        
+//        self.wishListModel.$wishList
+//            .dropFirst()
+//            .receive(on: RunLoop.main)
+//            .sink { [weak self] new in
+//                self?.contentView.productListCollectionView.reloadData()
+//            }
+//            .store(in: &cancellable)
     }
 }
 
 //MARK: - CollectionView Delegate/DataSource/Prefatching
 extension SearchResultViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.searchResultModel.searchResult.items.count
+        return self.viewModel.outputProductList.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let productList = self.searchResultModel.searchResult.items
+        let productList = self.viewModel.outputProductList.value
         let product = productList[indexPath.item]
         let isWishList = self.wishListModel.isWishList(productID: product.productId)
         
@@ -80,17 +88,19 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        let productList = self.viewModel.outputProductList.value
+
         for indexPath in indexPaths {
-            if self.searchResultModel.searchResult.items.count - 2 == indexPath.item {
-                self.searchResultModel.page += 1
+            if productList.count - 2 == indexPath.item {
                 self.contentView.makeToastActivity(.center)
+                self.viewModel.inputPage.value += 1
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let product = self.searchResultModel.searchResult.items[indexPath.item]
-        let nextVC = ProductDetailViewController(product: product, model: self.wishListModel)
+        let product = self.viewModel.outputProductList.value[indexPath.row]
+        let nextVC = ProductDetailViewController(product: product, model: WishListModel())
         
         nextVC.productDetailViewControllerDelegate = self
         self.navigationController?.pushViewController(nextVC, animated: true)
@@ -101,21 +111,22 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
 extension SearchResultViewController: SortButtonsViewDelegate, ProductCollectionViewCellDelegate, ProductDetailViewControllerDelegate {
     
     func sortButtonTapped(type newType: SortType) {
-        guard self.searchResultModel.sortType != newType else { return }
+        guard self.viewModel.inputSortType.value != newType else { return }
+
         self.contentView.hideToastActivity() // 스크롤 시 생기는 Indicator 삭제
         self.contentView.makeToastActivity(.center)
-        self.searchResultModel.sortType = newType
+        self.viewModel.inputSortType.value = newType
     }
     
     func wishButtonTapped(idx: Int) {
-        let product = self.searchResultModel.searchResult.items[idx]
-        let isWishList = self.wishListModel.isWishList(productID: product.productId)
-        
-        if (isWishList) {
-            self.wishListModel.removeFromWishList(productID: product.productId)
-        } else {
-            self.wishListModel.addToWishList(product: product)
-        }
+//        let product = self.searchResultModel.searchResult.items[idx]
+//        let isWishList = self.wishListModel.isWishList(productID: product.productId)
+//        
+//        if (isWishList) {
+//            self.wishListModel.removeFromWishList(productID: product.productId)
+//        } else {
+//            self.wishListModel.addToWishList(product: product)
+//        }
     }
     
     func showInvalidUrlToast() {

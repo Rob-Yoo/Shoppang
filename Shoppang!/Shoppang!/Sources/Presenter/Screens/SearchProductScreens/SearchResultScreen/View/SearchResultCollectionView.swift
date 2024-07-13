@@ -21,12 +21,7 @@ final class SearchResultCollectionView: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(isNew: Bool) {
-        self.reloadData()
-        if (isNew) { self.scrollUpToTop() }
-    }
-    
-    private func scrollUpToTop() {
+    func scrollUpToTop() {
         let indexPath = IndexPath(row: 0, section: 0)
         self.scrollToItem(at: indexPath, at: .top, animated: false)
     }
