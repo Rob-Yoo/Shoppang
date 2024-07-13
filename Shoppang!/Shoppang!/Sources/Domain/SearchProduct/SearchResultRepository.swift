@@ -41,6 +41,7 @@ final class SearchResultRepository {
     }
     
     @MainActor
+    // Realm 객체 생성 스레드와 접근하는 스레드가 같아야하기 때문에 Main Thread에서 접근할 수 있게 @MainActor 붙혀줌
     private func convertToSearchResultModel(shopping: Shopping) -> SearchResultModel {
         let productList = shopping.items
         let wishList = self.wishListRepository.fetchAll()
