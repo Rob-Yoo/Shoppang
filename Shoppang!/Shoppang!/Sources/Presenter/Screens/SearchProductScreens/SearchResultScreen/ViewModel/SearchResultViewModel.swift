@@ -111,9 +111,11 @@ extension SearchResultViewModel {
     private func reloadWishList() {
         var productList = self.outputProductList.value
 
-        self.repository.reloadWishList { (wishList: [ProductModel]) in
+        self.repository.reloadWishList { (list: [ProductModel]) in
+            let wishList = Set(list)
+
             for (idx, product) in productList.enumerated() where product.isWishList {
-                if !(wishList.contains(where: { $0.productId == product.productId })) {
+                if !(wishList.contains(product)) {
                     productList[idx].isWishList.toggle()
                 }
             }

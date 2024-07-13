@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductModel {
+struct ProductModel: Hashable {
     let title: String
     let link: String
     let image: String

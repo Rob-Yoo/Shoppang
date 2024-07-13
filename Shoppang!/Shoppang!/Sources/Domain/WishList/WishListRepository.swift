@@ -36,8 +36,12 @@ final class WishListRepository {
         }
     }
     
-    func fetchAll() -> [ProductModel] {
+    func fetchAllProductModel() -> [ProductModel] {
         return list.map { ProductModel.createProductModel($0) }.reversed()
+    }
+    
+    func fetchAllProduct() -> [Product] {
+        return list.map{ Product(title: $0.title, link: $0.link, image: $0.image, lprice: $0.lprice, mallName: $0.mallName, productId: $0.productId) }
     }
     
     func deleteItem(productID: String) {

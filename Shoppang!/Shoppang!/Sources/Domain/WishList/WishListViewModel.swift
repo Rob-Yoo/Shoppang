@@ -46,7 +46,7 @@ final class WishListViewModel {
     }
     
     private func loadWishList() {
-        let wishList = repository.fetchAll()
+        let wishList = repository.fetchAllProductModel()
 
         switch inputWishListSortType.value {
         case .add:

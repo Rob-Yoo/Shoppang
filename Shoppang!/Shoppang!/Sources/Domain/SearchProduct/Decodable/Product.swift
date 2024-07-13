@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product: Decodable {
+struct Product: Decodable, Hashable {
     let title: String
     let link: String
     let image: String
