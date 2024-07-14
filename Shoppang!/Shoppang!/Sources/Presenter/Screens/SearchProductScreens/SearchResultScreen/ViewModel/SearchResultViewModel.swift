@@ -111,10 +111,8 @@ extension SearchResultViewModel {
         
         self.repository.reloadWishList { (list: [ProductModel]) in
             let wishList = Set(list)
-            
-            wishList.forEach { print($0.title) }
+
             for (idx, product) in productList.enumerated() {
-                print(product.title)
                 productList[idx].isWishList = wishList.contains(product)
             }
         }
