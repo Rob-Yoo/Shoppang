@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 import Then
 import SnapKit
+import Toast
 
 final class ProductDetailView: UIView {
     
@@ -41,6 +42,7 @@ final class ProductDetailView: UIView {
         }
         let request = URLRequest(url: url)
         
+        self.makeToastActivity(.center)
         self.webView.load(request)
     }
 }
@@ -48,5 +50,9 @@ final class ProductDetailView: UIView {
 extension ProductDetailView: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
         handleURLError?()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        self.hideToastActivity()
     }
 }
