@@ -64,11 +64,11 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let product = self.viewModel.outputWishList.value[indexPath.item]
-//        let nextVC = ProductDetailViewController(product: product, model: self.model)
-//        
-//        nextVC.productDetailViewControllerDelegate = self
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        let product = self.viewModel.outputWishList.value[indexPath.item]
+        let nextVC = ProductDetailViewController(viewModel: ProductDetailViewModel(product: product))
+        
+        nextVC.productDetailViewControllerDelegate = self
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }

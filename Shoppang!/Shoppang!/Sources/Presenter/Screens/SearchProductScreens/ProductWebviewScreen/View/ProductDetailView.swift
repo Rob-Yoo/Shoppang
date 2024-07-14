@@ -10,27 +10,11 @@ import WebKit
 import Then
 import SnapKit
 
-protocol ProductDetailViewDelegate: AnyObject {
-    func handleURLError()
-}
-
 final class ProductDetailView: UIView {
     
     private let webView = WKWebView()
-    var urlLink = "" {
-        didSet {
-            guard let url = URL(string: urlLink) else {
-                guard let delegate = self.productDetailViewDelegate else { return }
-                delegate.handleURLError()
-                return
-            }
-            let request = URLRequest(url: url)
-            
-            webView.load(request)
-        }
-    }
     
-    weak var productDetailViewDelegate: ProductDetailViewDelegate?
+    var handleURLError: (() -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,12 +33,20 @@ final class ProductDetailView: UIView {
             $0.edges.equalToSuperview()
         }
     }
+    
+    func loadWebView(url: String) {
+        guard let url = URL(string: url) else {
+            handleURLError?()
+            return
+        }
+        let request = URLRequest(url: url)
+        
+        self.webView.load(request)
+    }
 }
 
 extension ProductDetailView: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: any Error) {
-        print(navigation.description)
-        guard let delegate = self.productDetailViewDelegate else { return }
-        delegate.handleURLError()
+        handleURLError?()
     }
 }

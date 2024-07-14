@@ -17,6 +17,10 @@ final class WishListRepository {
 
     init() {
         self.list = realm.objects(WishProduct.self)
+        self.saveWishListCount()
+    }
+    
+    private func saveWishListCount() {
         self.list.objectWillChange
             .receive(on: RunLoop.main)
             .sink { [weak self] _ in

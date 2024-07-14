@@ -88,10 +88,10 @@ extension SearchResultViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let product = self.viewModel.outputProductList.value[indexPath.row]
-//        let nextVC = ProductDetailViewController(product: product, model: WishListModel())
+        let nextVC = ProductDetailViewController(viewModel: ProductDetailViewModel(product: product))
         
-//        nextVC.productDetailViewControllerDelegate = self
-//        self.navigationController?.pushViewController(nextVC, animated: true)
+        nextVC.productDetailViewControllerDelegate = self
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

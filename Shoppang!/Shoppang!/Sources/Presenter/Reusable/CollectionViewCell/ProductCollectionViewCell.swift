@@ -55,6 +55,7 @@ final class ProductCollectionViewCell: UICollectionViewCell {
         self.productNameLabel.text = data.title.htmlElementDeleted
         self.priceLabel.text = formattedPrice + "원"
         self.productImageView.wishButton.isWishList = data.isWishList
+//        if (data.isWishList) { print(data.title) }
     }
     
     @objc func wishButtonTapped() {
