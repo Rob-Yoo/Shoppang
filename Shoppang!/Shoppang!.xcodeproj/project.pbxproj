@@ -478,6 +478,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		CC6962942C439B2700145B89 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCCBB1212C37C9EB00B4349C /* WishListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CC72DD832C2160510093AC09 /* Mangers */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,8 +575,8 @@
 		CCCBB1112C37BC0200B4349C /* WishListScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CC6962942C439B2700145B89 /* ViewModel */,
 				CCCBB1122C37BC1C00B4349C /* View */,
-				CCCBB1132C37BC2C00B4349C /* WishListViewController.swift */,
 			);
 			path = WishListScreen;
 			sourceTree = "<group>";
@@ -576,6 +584,7 @@
 		CCCBB1122C37BC1C00B4349C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CCCBB1132C37BC2C00B4349C /* WishListViewController.swift */,
 				CCCBB1152C37BC4100B4349C /* WishListRootView.swift */,
 			);
 			path = View;
@@ -587,7 +596,6 @@
 				CCF4C54B2C384BB5000414FD /* WishListSortType.swift */,
 				CCCBB11D2C37BF8B00B4349C /* WishProduct.swift */,
 				CCCBB11F2C37C18E00B4349C /* WishListRepository.swift */,
-				CCCBB1212C37C9EB00B4349C /* WishListViewModel.swift */,
 			);
 			path = WishList;
 			sourceTree = "<group>";
