@@ -71,7 +71,7 @@ extension SearchResultViewModel {
                 self?.outputProductList.value = searchResult.productList
                 
                 if (!searchResult.productList.isEmpty) {
-                    self?.outputShouldScrollUp.value = ()                    
+                    self?.outputShouldScrollUp.value = ()
                 }
             }
         }
@@ -105,15 +105,13 @@ extension SearchResultViewModel {
         
         self.outputProductList.value[idx].isWishList.toggle()
     }
-}
-
-extension SearchResultViewModel {
+    
     private func reloadWishList() {
         var productList = self.outputProductList.value
-
+        
         self.repository.reloadWishList { (list: [ProductModel]) in
             let wishList = Set(list)
-
+            
             for (idx, product) in productList.enumerated() where product.isWishList {
                 if !(wishList.contains(product)) {
                     productList[idx].isWishList.toggle()

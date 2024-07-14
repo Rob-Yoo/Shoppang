@@ -31,7 +31,10 @@ final class SearchResultRepository {
     init(searchKeyword: String) {
         self.searchKeyword = searchKeyword
     }
+}
 
+//MARK: - Fetch Data By Network
+extension SearchResultRepository {
     func fetchSearchResult() async -> SearchResultModel? {
         guard let shopping = await NetworkManager.shared.requestAPI(req: request, type: Shopping.self) else { return nil }
         
@@ -58,6 +61,7 @@ final class SearchResultRepository {
     }
 }
 
+// MARK: - Fetch Data By Realm
 extension SearchResultRepository {
     func addToWishList(product: ProductModel) {
         self.wishListRepository.createItem(product: product)
