@@ -83,8 +83,7 @@ extension WishListViewController: ProductCollectionViewCellDelegate, ProductDeta
     }
     
     func wishButtonTapped(idx: Int) {
-        let product = self.viewModel.outputWishList.value[idx]
-        self.viewModel.inputWishButtonTapped.value = product
+        self.viewModel.inputWishButtonTapped.value = idx
     }
     
     private func makePullDownMenu() -> UIMenu {

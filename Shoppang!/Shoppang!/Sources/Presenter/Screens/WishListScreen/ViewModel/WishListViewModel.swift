@@ -9,7 +9,7 @@ import Foundation
 
 final class WishListViewModel {
     var inputViewWillAppearTrigger: Observable<Void?> = Observable(nil)
-    var inputWishButtonTapped: Observable<ProductModel?> = Observable(nil)
+    var inputWishButtonTapped: Observable<Int?> = Observable(nil)
     var inputWishListSortType: Observable<WishListSortType> = Observable(.add)
     var inputViewWillDisappearTrigger: Observable<Void?> = Observable(nil)
     
@@ -30,9 +30,9 @@ final class WishListViewModel {
             }
         }
         
-        inputWishButtonTapped.bind { [weak self] product in
-            guard let product = product else { return }
-            self?.wishButtonTapped(product: product)
+        inputWishButtonTapped.bind { [weak self] idx in
+            guard let idx = idx else { return }
+            self?.wishButtonTapped(idx: idx)
         }
         
         inputWishListSortType.bind { [weak self] type in
@@ -60,15 +60,16 @@ final class WishListViewModel {
         }
     }
     
-    private func wishButtonTapped(product: ProductModel) {
+    private func wishButtonTapped(idx: Int) {
+        let product = self.outputWishList.value[idx]
         let isWishList = !self.isWillDeleteWishList(product: product)
 
         if (isWishList) {
-            // 위시 리스트라면 버퍼에 저장
-            self.addToWillDeleteWishList(product: product)
+            // 위시 리스트라면 찜 목록 삭제 버퍼에 저장
+            self.addToWillDeleteWishList(product: product, idx: idx)
         } else {
-            // 아니라면 버퍼에서 삭제
-            self.removeToWillDeleteWishList(product: product)
+            // 아니라면 찜 목록 삭제 버퍼에서 제거
+            self.removeToWillDeleteWishList(product: product, idx: idx)
         }
     }
 }
@@ -76,19 +77,17 @@ final class WishListViewModel {
 //MARK: - Add/Delete Pending
 extension WishListViewModel {
     private func isWillDeleteWishList(product: ProductModel) -> Bool {
-        guard let _ = self.willDeleteWishList.first(where: {
-            $0.productId == product.productId
-        }) else { return false }
-        
-        return true
+        return self.willDeleteWishList.contains { $0.productId == product.productId }
     }
     
-    private func addToWillDeleteWishList(product: ProductModel) {
+    private func addToWillDeleteWishList(product: ProductModel, idx: Int) {
         self.willDeleteWishList.append(product)
+        self.outputWishList.value[idx].isWishList.toggle()
     }
     
-    private func removeToWillDeleteWishList(product: ProductModel) {
+    private func removeToWillDeleteWishList(product: ProductModel, idx: Int) {
         self.willDeleteWishList = willDeleteWishList.filter { $0.productId != product.productId }
+        self.outputWishList.value[idx].isWishList.toggle()
     }
     
     private func removePendingWishList() {
