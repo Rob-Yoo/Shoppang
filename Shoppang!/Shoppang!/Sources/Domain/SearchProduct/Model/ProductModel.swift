@@ -23,4 +23,12 @@ struct ProductModel: Hashable {
     static func createProductModel(_ product: WishProduct) -> ProductModel {
         return ProductModel(title: product.title, link: product.link, image: product.image, lprice: product.lprice, mallName: product.mallName, productId: product.productId, isWishList: true)
     }
+    
+    static func ==(lhs: ProductModel, rhs: ProductModel) -> Bool {
+        return lhs.productId == rhs.productId
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(productId)
+    }
 }
