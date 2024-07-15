@@ -58,11 +58,6 @@ final class SearchViewController: BaseViewController<SearchRootView> {
 extension SearchViewController {
     private func configureNavigationBar() {
         let nickname = UserDefaults.standard.string(forKey: UserDefaultsKey.nickname.rawValue) ?? "옹골찬 고래밥"
-        let appearance = UINavigationBarAppearance()
-        
-        appearance.configureWithTransparentBackground()
-        self.navigationController?.navigationBar.standardAppearance = appearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.navigationItem.title = nickname + "'s Shoppang!"
     }
 }

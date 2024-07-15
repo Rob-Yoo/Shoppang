@@ -59,7 +59,7 @@ extension SearchRootView {
         self.addSubview(searchBar)
         
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(self.safeAreaLayoutGuide)
+            $0.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             $0.horizontalEdges.equalToSuperview().inset(10)
             $0.height.equalToSuperview().multipliedBy(0.05)
         }

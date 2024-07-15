@@ -74,9 +74,11 @@ extension BaseViewController {
         let appearence = UINavigationBarAppearance()
         
         appearence.configureWithOpaqueBackground()
+        appearence.backgroundColor = .mainTheme
+        appearence.titleTextAttributes = [.foregroundColor: UIColor.white]
         self.navigationController?.navigationBar.standardAppearance = appearence
         self.navigationController?.navigationBar.scrollEdgeAppearance = appearence
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     private func configureNavBarTitle() {
@@ -93,6 +95,6 @@ extension BaseViewController {
         let backButton = UIBarButtonItem(image: backButtonImage, style: .plain, target: self, action: #selector(backButtonTapped))
 
         self.navigationItem.leftBarButtonItem = backButton
-        self.navigationItem.leftBarButtonItem?.tintColor = .black
+        self.navigationItem.leftBarButtonItem?.tintColor = .white
     }
 }

@@ -19,7 +19,7 @@ final class SortButton: TextButton {
         }
     }
     
-    init(type: SortType, selectedBgColor: UIColor = .charcoal, unselectedBgColor: UIColor = .white, isSelected: Bool = false) {
+    init(type: SortType, selectedBgColor: UIColor = .mainTheme, unselectedBgColor: UIColor = .white, isSelected: Bool = false) {
         self.selectedBgColor = selectedBgColor
         self.unselectedBgColor = unselectedBgColor
         self.type = type
