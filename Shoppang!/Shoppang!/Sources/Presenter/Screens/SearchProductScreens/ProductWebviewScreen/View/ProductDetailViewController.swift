@@ -29,7 +29,15 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.inputViewDidLoadTrigger.value = ()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if (self.viewModel.inputLoadProductDetailTrigger.value == nil) {
+            self.viewModel.inputLoadProductDetailTrigger.value = ()
+        } else {
+            self.viewModel.inputShouldUpdateWishStatus.value = ()
+        }
     }
     
     override func addUserAction() {
@@ -53,12 +61,15 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
         
         self.viewModel.outputIsWishList.bind { [weak self] isWishList in
             guard let isWishList = isWishList else { return }
-            guard let wishButton = self?.navigationItem.rightBarButtonItem?.customView as? WishListBarButton else {
-                print(#function)
-                return
-            }
+            let toastMessage = isWishList ? "찜 목록에 추가되었습니다." : "찜 목록에서 삭제되었습니다."
             
-            wishButton.isWishList = isWishList
+            self?.updateWishListButton(isWishList: isWishList)
+            self?.contentView.makeToast(toastMessage, duration: 1, position: .center)
+        }
+        
+        self.viewModel.outputUpdatedWishStatus.bind { [weak self] isWishList in
+            guard let isWishList = isWishList else { return }
+            self?.updateWishListButton(isWishList: isWishList)
         }
     }
     
@@ -77,5 +88,14 @@ final class ProductDetailViewController: BaseViewController<ProductDetailView> {
 extension ProductDetailViewController {
     @objc private func wishButtonTapped() {
         self.viewModel.inputWishButtonTapped.value = ()
+    }
+}
+
+//MARK: - Update UI
+extension ProductDetailViewController {
+    private func updateWishListButton(isWishList: Bool) {
+        guard let wishButton = self.navigationItem.rightBarButtonItem?.customView as? WishListBarButton else { return }
+        
+        wishButton.isWishList = isWishList
     }
 }
