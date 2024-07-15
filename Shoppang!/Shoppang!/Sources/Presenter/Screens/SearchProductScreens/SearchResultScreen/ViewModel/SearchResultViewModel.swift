@@ -9,8 +9,8 @@ import Foundation
 import Combine
 
 final class SearchResultViewModel {
-    var inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
-    var inputViewDidAppearTrigger: Observable<Void?> = Observable(nil)
+    var inputLoadProductListTrigger: Observable<Void?> = Observable(nil)
+    var inputShoulUpdateWishListTrigger: Observable<Void?> = Observable(nil)
     var inputSortType: Observable<SortType> = Observable(.sim)
     var inputPage: Observable<Int> = Observable(1)
     var inputWishButtonTapped: Observable<Int?> = Observable(nil)
@@ -29,7 +29,7 @@ final class SearchResultViewModel {
     }
     
     private func transform() {
-        self.inputViewDidLoadTrigger.bind { [weak self] signal in
+        self.inputLoadProductListTrigger.bind { [weak self] signal in
             if (signal != nil), let self = self {
                 self.outputWillFetchData.value = self.repository.searchKeyword
                 Task { await self.fetchData() }
@@ -49,7 +49,7 @@ final class SearchResultViewModel {
             self?.updateWishList(idx: index)
         }
         
-        self.inputViewDidAppearTrigger.bind { [weak self] _ in
+        self.inputShoulUpdateWishListTrigger.bind { [weak self] _ in
             self?.reloadWishList()
         }
     }
@@ -78,7 +78,7 @@ extension SearchResultViewModel {
     }
     
     private func changeSortType(type: SortType) {
-        guard inputViewDidLoadTrigger.value != nil else { return }
+        guard inputLoadProductListTrigger.value != nil else { return }
 
         self.repository.sortType = type
         Task { await self.fetchData() }

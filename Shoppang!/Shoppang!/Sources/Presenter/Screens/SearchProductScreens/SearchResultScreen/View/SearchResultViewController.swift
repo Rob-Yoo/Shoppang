@@ -19,12 +19,15 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.viewModel.inputViewDidLoadTrigger.value = ()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewModel.inputViewDidAppearTrigger.value = ()
+        if (self.viewModel.inputLoadProductListTrigger.value == nil) {
+            self.viewModel.inputLoadProductListTrigger.value = ()
+        } else {
+            self.viewModel.inputShoulUpdateWishListTrigger.value = ()
+        }
     }
     
     override func addUserAction() {
