@@ -17,8 +17,8 @@ final class SearchResultViewController: BaseViewController<SearchResultRootView>
         super.init()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
         if (self.viewModel.inputLoadProductListTrigger.value == nil) {
             self.viewModel.inputLoadProductListTrigger.value = ()
         } else {
