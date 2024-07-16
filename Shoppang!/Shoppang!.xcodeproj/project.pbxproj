@@ -67,6 +67,7 @@
 		CC9AE70A2C205B9500DD5556 /* UserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE7092C205B9500DD5556 /* UserProfileModel.swift */; };
 		CC9AE70E2C20834500DD5556 /* WishButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70D2C20834500DD5556 /* WishButton.swift */; };
 		CC9AE7102C20AA5C00DD5556 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9AE70F2C20AA5C00DD5556 /* Literal.swift */; };
+		CCA3D8962C44269D008982AD /* AppleProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA3D8952C44269D008982AD /* AppleProductViewModel.swift */; };
 		CCBCD1B72C3D4D7A00D5A99D /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBCD1B62C3D4D7A00D5A99D /* Observable.swift */; };
 		CCCBB1142C37BC2C00B4349C /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1132C37BC2C00B4349C /* WishListViewController.swift */; };
 		CCCBB1162C37BC4100B4349C /* WishListRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCBB1152C37BC4100B4349C /* WishListRootView.swift */; };
@@ -177,6 +178,7 @@
 		CC9AE7092C205B9500DD5556 /* UserProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileModel.swift; sourceTree = "<group>"; };
 		CC9AE70D2C20834500DD5556 /* WishButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishButton.swift; sourceTree = "<group>"; };
 		CC9AE70F2C20AA5C00DD5556 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
+		CCA3D8952C44269D008982AD /* AppleProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleProductViewModel.swift; sourceTree = "<group>"; };
 		CCBCD1B62C3D4D7A00D5A99D /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		CCCBB1132C37BC2C00B4349C /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		CCCBB1152C37BC4100B4349C /* WishListRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListRootView.swift; sourceTree = "<group>"; };
@@ -227,8 +229,8 @@
 		CC021D512C29C1E000685E3A /* AppleProductScreen */ = {
 			isa = PBXGroup;
 			children = (
+				CCA3D8942C43F937008982AD /* ViewModel */,
 				CC021D562C29C2DB00685E3A /* View */,
-				CC021D522C29C1F700685E3A /* AppleProductViewController.swift */,
 			);
 			path = AppleProductScreen;
 			sourceTree = "<group>";
@@ -236,6 +238,7 @@
 		CC021D562C29C2DB00685E3A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC021D522C29C1F700685E3A /* AppleProductViewController.swift */,
 				CC30CAC42C2B31BD00A2B9A1 /* AppleProductRootView.swift */,
 				CC77E16E2C2A695500EF8598 /* AppleProductTableViewCell.swift */,
 				CC021D5A2C29C3C200685E3A /* AppleProductCollectionViewCell.swift */,
@@ -562,6 +565,14 @@
 			path = Edit;
 			sourceTree = "<group>";
 		};
+		CCA3D8942C43F937008982AD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CCA3D8952C44269D008982AD /* AppleProductViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CCBCD1B52C3D4D6700D5A99D /* CustomObservable */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,7 +584,6 @@
 		CCCBB1102C37BAF200B4349C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				CCCBB1112C37BC0200B4349C /* WishListScreen */,
 				CC021D512C29C1E000685E3A /* AppleProductScreen */,
 				CCEE19352C1C2F5A00405878 /* OnboardingScreens */,
 				CC38047A2C1D971100172CAF /* ProfileSettingScreens */,
@@ -698,6 +708,7 @@
 		CCEE190C2C1C09C400405878 /* SettingScreens */ = {
 			isa = PBXGroup;
 			children = (
+				CCCBB1112C37BC0200B4349C /* WishListScreen */,
 				CC05CEE22C42D96A00EC8C17 /* ViewModel */,
 				CCEE191A2C1C0B3A00405878 /* View */,
 			);
@@ -909,6 +920,7 @@
 				CC05CED52C3FAC0B00EC8C17 /* SettingListViewModel.swift in Sources */,
 				CCF4EC922C2BE14D00D6E1D1 /* ProductDetailStackView.swift in Sources */,
 				CC9AE6EA2C1FC0F800DD5556 /* SortType.swift in Sources */,
+				CCA3D8962C44269D008982AD /* AppleProductViewModel.swift in Sources */,
 				CC7C83082C1D73CB007406DA /* ProfileSettingType.swift in Sources */,
 				CC38B1F22C1DAE57000AFD92 /* NicknameValidationStatus.swift in Sources */,
 				CC05CEEC2C42DEAA00EC8C17 /* NewProfileSettingViewController.swift in Sources */,
@@ -1118,8 +1130,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1151,8 +1165,10 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Shoppang!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
