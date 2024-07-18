@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 final class SearchHistoryViewModel {
     var inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)

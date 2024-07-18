@@ -6,12 +6,10 @@
 //
 
 import UIKit
-import Combine
 
 final class WishListViewController: BaseViewController<WishListRootView> {
     
     private let viewModel: WishListViewModel
-    private var cancellable = Set<AnyCancellable>()
     
     init(viewModel: WishListViewModel) {
         self.viewModel = viewModel

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 final class SearchResultViewModel {
     var inputLoadProductListTrigger: Observable<Void?> = Observable(nil)
