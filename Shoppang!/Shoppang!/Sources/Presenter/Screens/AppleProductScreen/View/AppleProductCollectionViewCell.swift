@@ -30,7 +30,7 @@ final class AppleProductCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCellData(data: Product) {
+    func configureCellData(data: ProductDTO) {
         let url = URL(string: data.image)
         
         self.productImageView.imageView.kf.setImage(with: url)

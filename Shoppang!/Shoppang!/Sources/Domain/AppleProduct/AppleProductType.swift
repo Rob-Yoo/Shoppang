@@ -41,8 +41,8 @@ enum AppleProductType: CaseIterable {
         }
     }
     
-    var url: String {
-        return API.searchProductURL(query: self.title, sort: SortType.sim.rawValue, page: 1)
+    var request: NaverRequest {
+        return .shopping(query: self.title, sort: SortType.sim.rawValue, start: 1)
     }
     
 }

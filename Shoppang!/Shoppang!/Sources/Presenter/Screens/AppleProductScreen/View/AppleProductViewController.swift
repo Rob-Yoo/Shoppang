@@ -28,7 +28,6 @@ class AppleProductViewController: BaseViewController<AppleProductRootView> {
     private func addDelegate() {
         self.contentView.appleProductTableView.delegate = self
         self.contentView.appleProductTableView.dataSource = self
-//        self.contentView.appleProductTableView.prefetchDataSource = self
     }
     
     override func bindViewModel() {

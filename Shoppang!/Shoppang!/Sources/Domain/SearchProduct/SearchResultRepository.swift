@@ -22,7 +22,7 @@ final class SearchResultRepository {
     }
     
     private var total = -1
-    private var prevShopping: Shopping?
+    private var prevShopping: ShoppingDTO?
     private var request: NaverRequest {
         return .shopping(query: searchKeyword, sort: sortType.rawValue, start: page)
     }
@@ -36,7 +36,7 @@ final class SearchResultRepository {
 //MARK: - Fetch Data By Network
 extension SearchResultRepository {
     func fetchSearchResult() async -> SearchResultModel? {
-        guard let shopping = await NetworkManager.shared.requestAPI(req: request, type: Shopping.self) else { return nil }
+        guard let shopping = await NetworkManager.shared.requestAPI(req: request, type: ShoppingDTO.self) else { return nil }
         
         if (total == -1) { total = shopping.total }
         self.prevShopping = shopping
@@ -45,7 +45,7 @@ extension SearchResultRepository {
     
     @MainActor
     // Realm 객체 생성 스레드와 접근하는 스레드가 같아야하기 때문에 Main Thread에서 접근할 수 있게 @MainActor 붙혀줌
-    private func convertToSearchResultModel(shopping: Shopping) -> SearchResultModel {
+    private func convertToSearchResultModel(shopping: ShoppingDTO) -> SearchResultModel {
         let productList = shopping.items
         let wishList = Set(self.wishListRepository.fetchAllProduct())
         let isPagination = self.page > 1

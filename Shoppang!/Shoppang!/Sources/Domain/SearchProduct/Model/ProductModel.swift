@@ -16,7 +16,7 @@ struct ProductModel: Hashable {
     let productId: String
     var isWishList: Bool
     
-    static func createProductModel(_ product: Product, isWishList: Bool) -> ProductModel {
+    static func createProductModel(_ product: ProductDTO, isWishList: Bool) -> ProductModel {
         return ProductModel(title: product.title, link: product.link, image: product.image, lprice: product.lprice, mallName: product.mallName, productId: product.productId, isWishList: isWishList)
     }
     

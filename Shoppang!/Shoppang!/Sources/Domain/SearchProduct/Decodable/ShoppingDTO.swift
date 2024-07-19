@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Shopping: Decodable {
+// DTO1, DTO2 --> Entity
+struct ShoppingDTO: Decodable {
     let total: Int
     let start: Int
     let display: Int
-    var items: [Product]
+    var items: [ProductDTO]
 }

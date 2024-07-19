@@ -46,7 +46,7 @@ final class ProductDetailStackView: UIStackView {
         self.detailLabels.forEach { self.addArrangedSubview($0) }
     }
     
-    func update(product: Product) {
+    func update(product: ProductDTO) {
         let formattedPrice = Int(product.lprice)!.formatted()
 
         self.mallNameLabel.text = product.mallName

@@ -9,20 +9,20 @@ import Foundation
 import Combine
 
 final class AppleProductModel {
-    @Published var appleProductList = [SearchResult]()
+    @Published var appleProductList = [ShoppingDTO]()
 }
 
 extension AppleProductModel {
     func fetchAppleProductResult() {
-        let urls = AppleProductType.allCases.map { $0.url }
-        var productList = Array(repeating: SearchResult(), count: AppleProductType.allCases.count)
+        let requests = AppleProductType.allCases.map { $0.request }
+        var productList: [ShoppingDTO?] = Array(repeating: nil, count: AppleProductType.allCases.count)
 
         let group = DispatchGroup()
         
-        for (idx, url) in urls.enumerated() {
+        for (idx, request) in requests.enumerated() {
             group.enter()
             DispatchQueue.global().async(group: group) {
-                NetworkManager.requestURL(url: url){ (result: SearchResult) in
+                NetworkManager.requestAPI(req: request){ (result: ShoppingDTO) in
                     productList[idx] = result
                     group.leave()
                 } failure: { _ in
@@ -32,7 +32,7 @@ extension AppleProductModel {
         }
         
         group.notify(queue: .main) {
-            self.appleProductList = productList
+            self.appleProductList = productList.compactMap { $0 }
         }
     }
 }
