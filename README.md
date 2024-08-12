@@ -153,7 +153,7 @@ func fetchAppleCollectionResult() {
 
 <br>
 
-### 3. 정상적인 웹 페이지 링크임에도 웹뷰를 띄울 수 없는 문제
+### 3. 정상적인 URL임에도 웹뷰를 띄울 수 없는 문제
 
 <br>
 
