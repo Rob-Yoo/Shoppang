@@ -9,7 +9,7 @@
 </div>
 <br>
 
-소개글
+> 네이버 쇼핑 검색 API를 활용하여 마음에 드는 상품을 검색하고 찜할 수 있는 앱
 
 <br>
 <br>
@@ -101,7 +101,19 @@ func fetchAppleCollectionResult() {
 
 ## 📌 고려 사항
 
+### 1. API 과다 호출 방지
 
+- 검색 결과 화면 정렬 버튼 클릭
+- 검색 결과 화면에서 마지막 페이지일 경우 스크롤 시 API 호출하지 않음
+
+### 2. 찜한 목록에서 찜 삭제 시 바로 사라지지 않게 구현
+
+- 
+
+### 3. 검색 결과 화면에서의 찜한 상품 판단 로직 관련 시간복잡도
+
+- 검색 결과 화면에 보여주는 상품 리스트와 찜한 상품 리스트끼리 비교 로직은 O(n2)
+- 찜한 상품 리스트를 Array에서 Set으로 바꿔 판단 로직을 O(n)으로 개선
 
 ## 🚨 트러블 슈팅
 
@@ -130,7 +142,7 @@ func fetchAppleCollectionResult() {
 
 <br>
 
-### 2. 찜한 목록에서 삭제 시 다른 화면에서 반영이 안되는 문제
+### 2. 찜한 목록에서 삭제 시 다른 화면에 반영이 안되는 문제
 
 <br>
 
@@ -144,7 +156,7 @@ func fetchAppleCollectionResult() {
 
 - 원인
   - `찜한 목록 리스트 화면`에서는 `viewWillDisappear` 시점에 Realm에서 해당 상품을 삭제
-  - `검색 결과 화면`에서는 `viewWillAppear` 시점에 찜 상품에 대한 정보를 리로드
+  - `검색 결과 화면`에서는 `viewWillAppear` 시점에 찜 상품에 대한 정보를 업데이트
   - `viewWillDisappear보다 viewWillAppear가 더 먼저 호출`
 <br>
 
