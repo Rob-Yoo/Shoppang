@@ -86,7 +86,7 @@
 ### 1. UITableView에서의 UICollectionViewDelegate/Datasource 위임 문제
 
  - 특정 CollectionView의 렌더링 누락 현상
-   - 원인 분석: `cellForRowAt` 메서드 호출 시점에 위임되어 렌더링 되지 않은 UITableViewCell에서 CollectionView를 렌더링하려고 함
+   - 원인 분석: `cellForRowAt` 메서드 호출 시점에 위임되어 렌더링 되지 않은 TableViewCell에서 CollectionView를 렌더링하려고 함
    - 해결: `willDisplay` 메서드 호출 시점에 위임
 
  - UITableViewCell 재사용 시 데이터 불일치 문제
@@ -109,7 +109,7 @@
 
 <br>
 
-### 3. ATS 정책에 따른 특정 링크에서 웹뷰 로드가 실패되는 문제
+### 3. ATS 정책에 의해 특정 링크에서 웹뷰 로드에 실패되는 문제
 
 - 원인 분석
 
