@@ -1,7 +1,7 @@
 # Shoppang!
 <br>
 
-네이버 쇼핑 검색 API를 활용하여 마음에 드는 상품을 검색하고 찜할 수 있는 앱
+네이버 쇼핑 검색 API를 활용하여 상품을 검색하고 찜할 수 있는 앱
 
 <br>
 
@@ -37,47 +37,35 @@
 
 <br>
 
-## 🧰 주요 기능 구현 방법
+## 🧰 주요 기능 기술 사항
 
 ### 상품 검색
 
-- `UserDefaults`에 검색어와 검색 날짜로 이루어진 `Struct를 Encoding`하여 저장하는 방식으로 `최근 검색어 조회 기능` 구현
-- `Alamofire`을 통해 `네이버 쇼핑 검색 API`로부터 받아온 검색 결과를 `UICollectionViewFlowLayout`을 사용한 UICollectionView로 보여주는 방식으로 `상품 검색 결과 조회 기능` 구현
-  - `UICollectionViewDataSourcePrefetching`을 활용하여 `페이지네이션` 기능 구현
-- 상품 상세 웹페이지 링크를 활용하여 `WKWebView`로 띄우는 방식으로 `상품 상세 정보 조회 기능` 구현
+- `UserDefaults`와 `JSONEncoder/Decoder`를 활용하여 `최근 검색어 조회 기능` 구현
+
+- `Repository 패턴`을 활용하여 `외부 데이터 소스 접근 작업 추상화`
+
+  - `라우터 패턴`과 `싱글턴 패턴` 활용하여 `네트워크 작업 추상화`
+
+- `UICollectionViewDataSourcePrefetching`을 활용하여 `페이지네이션` 기능 구현
+
+- `WKWebView`를 활용하여 `상품 상세 정보 조회 기능` 구현
 
 <br>
 
 ### Apple 브랜드관
 
-- Apple 제품별 네이버 쇼핑 API 결과 리스트를 `UITableView 내부의 UICollectionView` 형태의 뷰로 보여주는 방식으로 `Apple 제품 콜렉션 조회 기능` 구현
-- `DispatchGroup`을 사용
+- `UITableView`와 `UICollectionView`을 혼합하여 `수직/수평 스크롤 뷰` 구현
+
+- `DispatchGroup`을 사용하여 `데이터 순서 보장과 TableView의 중복 갱신 방지`
 
 <br>
 
 ### 상품 찜하기
 
-- `Realm`을 활용하여 찜한 상품의 정보를 로컬 DB에 저장
-- `UIMenu`를 사용하여 찜한 목록의 정렬 옵션의 `Pull-Down 버튼` 구현
-- `ViewController LifeCycle` 메서드를 사용하여 각 화면에서의 `찜 표시 연동` 기능 구현
+- `Repoistory 패턴`을 사용하여 `로컬 데이터 소스 접근 작업 추상화`
 
-<br>
-
-## 📌 고려 사항
-
-### 1. API 과다 호출 방지
-
-- 검색 결과 화면 정렬 버튼 클릭
-- 검색 결과 화면에서 마지막 페이지일 경우 스크롤 시 API 호출하지 않음
-
-### 2. 찜한 목록에서 찜 삭제 시 바로 사라지지 않게 구현
-
-- 찜 목록 화면에서 삭제 시 바로 삭제되지 않고 viewWillDisappear 시점에서 찜이 삭제되도록 하여 유저로 하여금 찜 목록에서 다시 추가할 수 있게 함
-
-### 3. 검색 결과 화면에서의 찜한 상품 판단 로직 관련 시간복잡도
-
-- 검색 결과 화면에 보여주는 상품 리스트와 찜한 상품 리스트끼리 비교 로직은 O(n2)
-- 찜한 상품 리스트를 Array에서 Set으로 바꿔 판단 로직을 O(n)으로 개선
+- 검색 결과 상품 리스트의 `찜 여부 판단 로직`을 `O(N^2)에서 O(N)`으로 개선
 
 <br>
 
@@ -85,11 +73,11 @@
 
 ### 1. UITableView에서의 UICollectionViewDelegate/Datasource 위임 문제
 
- - 특정 CollectionView의 렌더링 누락 현상
+ - 특정 CollectionView의 `렌더링 누락 현상`
    - 원인 분석: `cellForRowAt` 메서드 호출 시점에 위임되어 렌더링 되지 않은 TableViewCell에서 CollectionView를 렌더링하려고 함
    - 해결: `willDisplay` 메서드 호출 시점에 위임
 
- - UITableViewCell 재사용 시 데이터 불일치 문제
+ - UITableViewCell 재사용 시 `데이터 불일치 문제`
    - 원인 분석: 재사용 시 이전에 설정한 위임이 해제되지 않아, 기존 셀의 데이터가 남아있어 불일치 문제 발생
    - 해결: `prepareForReuse` 메서드에서 위임을 해제하여 해결
 
