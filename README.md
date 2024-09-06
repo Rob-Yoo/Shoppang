@@ -6,7 +6,7 @@
 <br>
 
 ## 🗄️ 프로젝트 정보
-- **기간** : `2024.06.14 ~ 2024.07.19` (약 1개월)
+- **기간** : `2024.06.14 ~ 2024.06.30` (약 2주)
 - **개발 인원** : `iOS 1명`
 - **지원 버전**: <img src="https://img.shields.io/badge/iOS-15.0+-black?logo=apple"/>
 - **기술 스택 및 라이브러리** : `UIKit` `Webkit` `SnapKit` `Then` `Toast-Swift` `Kingfisher` `Realm` `Alamofire`
